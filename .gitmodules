@@ -1,0 +1,6 @@
+[submodule "SandTrucksManager"]
+	path = SandTrucksManager
+	url = ssh://vavasthi@git.androiddevelopers.in:/home/vavasthi/repo/stm
+[submodule "SandTrucksManagerBackend"]
+	path = SandTrucksManagerBackend
+	url = ssh://vavasthi@git.androiddevelopers.in:/home/vavasthi/repo/stm
