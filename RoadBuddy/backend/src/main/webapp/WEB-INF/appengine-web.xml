@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://appengine.google.com/ns/1.0 ">
+    <application>myApplicationId</application>
+    <version>1</version>
+    <threadsafe>true</threadsafe>
+
+    <system-properties>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
+
+        <!--
+            TODO: Before you run your application, you need a Google Cloud Messaging API id.
+
+            To get one, follow this link, follow the directions and press "Create" at the end:
+
+              https://console.developers.google.com/flows/enableapi?apiid=googlecloudmessaging&keyType=SERVER_SIDE&r=0.0.0.0/0
+
+            Once you have your API id (which starts with “AIza...”), replace the "gcm.api.id" string in this file.
+            -->
+
+        <property name="gcm.api.id" value="AIzaSyAceRvz4U4XeZE8jpvxZL6qoCWmwfnFbLI" />
+        <property name="gcm.api.sender" value="562827710053" />
+    </system-properties>
+</appengine-web-app>

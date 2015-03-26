@@ -1,0 +1,51 @@
+// If you would like more information on the gradle-appengine-plugin please refer to the github page
+// https://github.com/GoogleCloudPlatform/gradle-appengine-plugin
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.14'
+    }
+}
+
+repositories {
+    jcenter();
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'appengine'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+dependencies {
+    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.14'
+    compile 'com.google.appengine:appengine-endpoints:1.9.14'
+    compile 'com.google.appengine:appengine-endpoints-deps:1.9.14'
+    compile 'javax.servlet:servlet-api:2.5'
+    compile 'com.googlecode.objectify:objectify:4.0b3'
+    compile 'com.ganyo:gcm-server:1.0.2'
+    compile files('src/main/webapp/WEB-INF/lib/datanucleus-appengine-1.0.10.final.jar')
+    compile files('src/main/webapp/WEB-INF/lib/datanucleus-core-1.1.5.jar')
+    compile files('src/main/webapp/WEB-INF/lib/datanucleus-jpa-1.1.5.jar')
+    compile files('src/main/webapp/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar')
+    compile files('src/main/webapp/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar')
+    compile files('src/main/webapp/WEB-INF/lib/jdo2-api-2.3-eb.jar')
+    compile 'javax.jdo:jdo-api:3.1'
+    compile 'org.datanucleus:datanucleus-api-jdo:4.1.0-m2'
+    compile 'com.googlecode.objectify:objectify:5.1.5'
+}
+
+appengine {
+    downloadSdk = true
+    appcfg {
+        oauth2 = true
+    }
+    endpoints {
+        getClientLibsOnBuild = true
+        getDiscoveryDocsOnBuild = true
+    }
+}
