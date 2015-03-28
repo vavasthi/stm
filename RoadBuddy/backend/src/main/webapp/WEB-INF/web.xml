@@ -13,8 +13,8 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>com.avasthi.android.apps.roadbuddy.backend.MessagingEndpoint,,
-                com.avasthi.android.apps.roadbuddy.backend.bean.RoadMeasurementBeanEndpoint</param-value>
+            <param-value>com.avasthi.android.apps.roadbuddy.backend.MessagingEndpoint,
+            com.avasthi.android.apps.roadbuddy.backend.bean.RoadMeasurementBeanEndpoint</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

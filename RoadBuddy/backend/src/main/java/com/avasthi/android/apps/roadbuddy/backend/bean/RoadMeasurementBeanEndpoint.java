@@ -3,6 +3,7 @@ package com.avasthi.android.apps.roadbuddy.backend.bean;
 import com.avasthi.android.apps.roadbuddy.backend.PMF;
 import com.avasthi.android.apps.roadbuddy.backend.RoadBuddyConstants;
 import com.google.api.server.spi.Constant;
+import com.google.api.server.spi.config.AnnotationBoolean;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -23,11 +24,9 @@ import javax.jdo.PersistenceManager;
         name = "roadMeasurementBeanApi",
         version = "v1",
         resource = "roadMeasurementBean",
-        namespace = @ApiNamespace(
-                ownerDomain = "bean.backend.roadbuddy.apps.android.avasthi.com",
-                ownerName = "bean.backend.roadbuddy.apps.android.avasthi.com",
-                packagePath = ""
-        )
+        clientIds = {RoadBuddyConstants.ANDROID_CLIENT_ID, RoadBuddyConstants.WEB_CLIENT_ID, com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID},
+        audiences = {RoadBuddyConstants.ANDROID_AUDIENCE},
+        defaultVersion = AnnotationBoolean.TRUE
 )
 public class RoadMeasurementBeanEndpoint {
 
@@ -39,10 +38,7 @@ public class RoadMeasurementBeanEndpoint {
      * @param id The id of the object to be returned.
      * @return The <code>RoadMeasurementBean</code> associated with <code>id</code>.
      */
-    @ApiMethod(name = "getRoadMeasurementBean", scopes = {RoadBuddyConstants.EMAIL_SCOPE},
-    clientIds = {RoadBuddyConstants.ANDROID_CLIENT_ID,
-    Constant.API_EXPLORER_CLIENT_ID},
-    audiences = {RoadBuddyConstants.ANDROID_AUDIENCE})
+    @ApiMethod(name = "getRoadMeasurementBean",scopes = {RoadBuddyConstants.EMAIL_SCOPE})
     public RoadMeasurementBean getRoadMeasurementBean(@Named("id") Long id) {
         // TODO: Implement this function
         PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -63,10 +59,7 @@ public class RoadMeasurementBeanEndpoint {
      * @param newMeasurement The object to be added.
      * @return The object to be added.
      */
-    @ApiMethod(name = "insertRoadMeasurementBean", scopes = {RoadBuddyConstants.EMAIL_SCOPE},
-            clientIds = {RoadBuddyConstants.ANDROID_CLIENT_ID,
-                    Constant.API_EXPLORER_CLIENT_ID},
-            audiences = {RoadBuddyConstants.ANDROID_AUDIENCE})
+    @ApiMethod(name = "insertRoadMeasurementBean",scopes = {RoadBuddyConstants.EMAIL_SCOPE})
     public RoadMeasurementBean insertRoadMeasurementBean(RoadMeasurementBean newMeasurement) throws ConflictException {
         if (newMeasurement.getId() != null) {
             if (ofy().load().type(RoadMeasurementBean.class).id(newMeasurement.getId()) != null) {
