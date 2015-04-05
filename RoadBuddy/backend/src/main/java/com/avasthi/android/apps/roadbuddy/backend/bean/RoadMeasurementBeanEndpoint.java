@@ -38,7 +38,7 @@ public class RoadMeasurementBeanEndpoint {
      * @param id The id of the object to be returned.
      * @return The <code>RoadMeasurementBean</code> associated with <code>id</code>.
      */
-    @ApiMethod(name = "getRoadMeasurementBean",scopes = {RoadBuddyConstants.EMAIL_SCOPE})
+    @ApiMethod(name = "getRoadMeasurementBean",httpMethod = "GET")
     public RoadMeasurementBean getRoadMeasurementBean(@Named("id") Long id) {
         // TODO: Implement this function
         PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -59,8 +59,9 @@ public class RoadMeasurementBeanEndpoint {
      * @param newMeasurement The object to be added.
      * @return The object to be added.
      */
-    @ApiMethod(name = "insertRoadMeasurementBean",scopes = {RoadBuddyConstants.EMAIL_SCOPE})
+    @ApiMethod(name = "insertRoadMeasurementBean",httpMethod = "POST")
     public RoadMeasurementBean insertRoadMeasurementBean(RoadMeasurementBean newMeasurement) throws ConflictException {
+        logger.info("Trying to insert bean with id " + newMeasurement.getId());
         if (newMeasurement.getId() != null) {
             if (ofy().load().type(RoadMeasurementBean.class).id(newMeasurement.getId()) != null) {
                 throw new ConflictException("Object already exists");

@@ -1,5 +1,8 @@
 package com.avasthi.android.apps.roadbuddy.backend.bean;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -11,38 +14,24 @@ import javax.jdo.annotations.PrimaryKey;
 /**
  * Created by vavasthi on 22/3/15.
  */
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@Entity
 public class RoadMeasurementBean {
 
-    @PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    @Id
     private Long id;
-    @Persistent
-    Date timestamp;
-    @Persistent
-    double accuracy;
-    @Persistent
-    double altitude;
-    @Persistent
-    float bearing;
-    @Persistent
-    double latitude;
-    @Persistent
-    double longitude;
-    @Persistent
-    float speed;
-    @Persistent
-    float accelX;
-    @Persistent
-    float accelY;
-    @Persistent
-    float accelZ;
-    @Persistent
-    float accelXDev;
-    @Persistent
-    float accelYDev;
-    @Persistent
-    float accelZDev;
+    private Date timestamp;
+    private double accuracy;
+    private double altitude;
+    private float bearing;
+    private double latitude;
+    private double longitude;
+    private float speed;
+    private float accelX;
+    private float accelY;
+    private float accelZ;
+    private float accelXDev;
+    private float accelYDev;
+    private float accelZDev;
 
     public RoadMeasurementBean() {
 
@@ -57,7 +46,10 @@ public class RoadMeasurementBean {
                                float speed,
                                float accelX,
                                float accelY,
-                               float accelZ) {
+                               float accelZ,
+                               float accelXDev,
+                               float accelYDev,
+                               float accelZDev) {
         this.id = key;
         this.timestamp = timestamp;
         this.accuracy = accuracy;
@@ -69,6 +61,9 @@ public class RoadMeasurementBean {
         this.accelX = accelX;
         this.accelY = accelY;
         this.accelZ = accelZ;
+        this.accelXDev = accelXDev;
+        this.accelYDev = accelYDev;
+        this.accelZDev = accelZDev;
     }
 
     public Long getId() {

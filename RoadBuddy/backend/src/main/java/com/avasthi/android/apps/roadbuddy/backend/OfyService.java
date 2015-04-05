@@ -1,5 +1,6 @@
 package com.avasthi.android.apps.roadbuddy.backend;
 
+import com.avasthi.android.apps.roadbuddy.backend.bean.RoadMeasurementBean;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
@@ -12,6 +13,7 @@ public class OfyService {
 
     static {
         ObjectifyService.register(RegistrationRecord.class);
+        ObjectifyService.register(RoadMeasurementBean.class);
     }
 
     public static Objectify ofy() {
