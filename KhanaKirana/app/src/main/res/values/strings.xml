@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">KhanaKirana</string>
+
+    <string name="kk_master_item_list">Master Item List</string>
+    <string name="kk_list_items">List Items</string>
+    <string name="kk_add_item">Add Item</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="chooseLocation">Select Location</string>
+    <string name="admin">Administration</string>
+    <string name="reset">Reset</string>
+    <string name="kk_address1_hint">Address1</string>
+    <string name="kk_name_hint">Name</string>
+    <string name="kk_address2_hint">Address2</string>
+    <string name="kk_email_hint">Email</string>
+    <string name="kk_mobile_hint">Mobile</string>
+    <string name="kk_password_hint">Password</string>
+    <string name="kk_reenter_password_hint">Reenter Password</string>
+    <string name="kk_city_hint">City</string>
+    <string name="kk_state_hint">State</string>
+    <string name="kk_cancel_button">Cancel</string>
+    <string name="kk_register_button">Register</string>
+    <string name="kk_text_location_advice">Please select the button below if you are currently in your home. Your home location helps us in delivering things easily. If you are not currently at home, don\'t select it. You can choose location later.\n अगर आप अभी अपने पते पर हैं तो कृपया नीचे दिए बटन को सेलेक्ट करें। आपके सही स्थान से हमें सामान पहुंचाने में आसानी होती है। अगर अभी आप अपने पते पर नहीं हैं तो कृपया इसे छोड़ दें। जब आप अपने पते पर पहुंचे तो आप अपने स्थान को सेलेक्ट कर सकते हैं। </string>
+</resources>
