@@ -1,0 +1,393 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/cVCKgbP6FNCKtkaprGN5lj0wyTE\"",
+ "discoveryVersion": "v1",
+ "id": "userRegistrationApi:v1",
+ "name": "userRegistrationApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.khanakirana.com",
+ "ownerName": "backend.khanakirana.com",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://myApplicationId.appspot.com/_ah/api/userRegistrationApi/v1/",
+ "basePath": "/_ah/api/userRegistrationApi/v1/",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "servicePath": "userRegistrationApi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Blob": {
+   "id": "Blob",
+   "type": "object",
+   "properties": {
+    "binaryStream": {
+     "$ref": "InputStream"
+    }
+   }
+  },
+  "InputStream": {
+   "id": "InputStream",
+   "type": "object"
+  },
+  "MasterItem": {
+   "id": "MasterItem",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "image": {
+     "$ref": "Blob"
+    },
+    "imageType": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "upc": {
+     "type": "string"
+    },
+    "user": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAccount": {
+   "id": "UserAccount",
+   "type": "object",
+   "properties": {
+    "address": {
+     "type": "string"
+    },
+    "businessAdministrator": {
+     "type": "boolean"
+    },
+    "email": {
+     "type": "string"
+    },
+    "fullname": {
+     "type": "string"
+    },
+    "googleUser": {
+     "type": "boolean"
+    },
+    "latitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "mobile": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    },
+    "region": {
+     "$ref": "UserAccountRegion"
+    },
+    "systemAdministrator": {
+     "type": "boolean"
+    }
+   }
+  },
+  "UserAccountRegion": {
+   "id": "UserAccountRegion",
+   "type": "object",
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAccountRegionCollection": {
+   "id": "UserAccountRegionCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "UserAccountRegion"
+     }
+    }
+   }
+  }
+ },
+ "methods": {
+  "addMasterItem": {
+   "id": "userRegistrationApi.addMasterItem",
+   "path": "addMasterItem/{name}/{upc}/{imageType}/{user}",
+   "httpMethod": "POST",
+   "parameters": {
+    "imageType": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "upc": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "upc",
+    "imageType",
+    "user"
+   ],
+   "request": {
+    "$ref": "Blob",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "MasterItem"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "authenticate": {
+   "id": "userRegistrationApi.authenticate",
+   "path": "authenticate/{email}/{password}/{googleUser}",
+   "httpMethod": "POST",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
+    "password": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "email",
+    "password",
+    "googleUser"
+   ],
+   "response": {
+    "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertSystemAdministrator": {
+   "id": "userRegistrationApi.insertSystemAdministrator",
+   "path": "useraccount/{email}/{mobile}",
+   "httpMethod": "POST",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "mobile": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "email",
+    "mobile"
+   ],
+   "response": {
+    "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "isRegisteredUser": {
+   "id": "userRegistrationApi.isRegisteredUser",
+   "path": "isRegisteredUser/{email}",
+   "httpMethod": "POST",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "email"
+   ],
+   "response": {
+    "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "register": {
+   "id": "userRegistrationApi.register",
+   "path": "register/{fullname}/{address}/{email}/{mobile}/{password}/{city}/{state}/{latitude}/{longitude}/{googleUser}",
+   "httpMethod": "POST",
+   "parameters": {
+    "address": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "city": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "fullname": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
+    "latitude": {
+     "type": "number",
+     "required": true,
+     "format": "double",
+     "location": "path"
+    },
+    "longitude": {
+     "type": "number",
+     "required": true,
+     "format": "double",
+     "location": "path"
+    },
+    "mobile": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "password": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "state": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "fullname",
+    "address",
+    "email",
+    "mobile",
+    "password",
+    "city",
+    "state",
+    "latitude",
+    "longitude",
+    "googleUser"
+   ],
+   "response": {
+    "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "supportedRegions": {
+   "id": "userRegistrationApi.supportedRegions",
+   "path": "supportedRegions",
+   "httpMethod": "POST",
+   "response": {
+    "$ref": "UserAccountRegionCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

@@ -15,6 +15,7 @@ import com.googlecode.objectify.Objectify;
 
 import org.omg.CORBA.DynAnyPackage.Invalid;
 
+import java.sql.Blob;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,7 @@ import javax.inject.Named;
 public class UserRegistrationEndpoint {
 
     private final static Logger logger = Logger.getLogger(UserRegistrationEndpoint.class.getName());
+
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
@@ -60,10 +62,11 @@ public class UserRegistrationEndpoint {
         OfyService.ofy().save().entity(account).now();
         return account;
     }
+
     @ApiMethod(name = "authenticate")
     public UserAccount authenticate(@Named("email") String email,
-                                @Named("password") String password,
-                                @Named("googleUser") Boolean googleUser) {
+                                    @Named("password") String password,
+                                    @Named("googleUser") Boolean googleUser) {
         try {
 
             UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
@@ -73,15 +76,15 @@ public class UserRegistrationEndpoint {
                 throw new InvalidUserAccountException();
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Exception thrown by the load.", e);
         }
         return null;
     }
+
     @ApiMethod(name = "insertSystemAdministrator")
     public UserAccount insertSystemAdministrator(@Named("email") String email,
-                                @Named("mobile") String mobile) {
+                                                 @Named("mobile") String mobile) {
         UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
         if (account != null) {
             account.setSystemAdministrator(Boolean.TRUE);
@@ -89,16 +92,18 @@ public class UserRegistrationEndpoint {
         OfyService.ofy().save().entity(account);
         return account;
     }
+
     @ApiMethod(name = "supportedRegions")
     public List<UserAccountRegion> supportedRegions() {
         List<UserAccountRegion> regions = OfyService.ofy().load().type(UserAccountRegion.class).list();
         return regions;
     }
+
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public UserAccount isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException{
+    public UserAccount isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
 
         try {
 
@@ -109,11 +114,22 @@ public class UserRegistrationEndpoint {
             }
             logger.log(Level.INFO, "User Account retrieved." + account.toString());
             return account;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Exception thrown by the load.", e);
         }
         return null;
+    }
+
+    @ApiMethod(name = "addMasterItem")
+    public MasterItem addMasterItem(@Named("name") String name,
+                                    @Named("upc") String upc,
+                                    @Named("imageType") String imageType,
+                                    Blob image,
+                                    @Named("user") String user) {
+
+        MasterItem item = new MasterItem(name, upc, imageType, image, user);
+        OfyService.ofy().save().entity(item).now();
+        return item;
     }
 
 }

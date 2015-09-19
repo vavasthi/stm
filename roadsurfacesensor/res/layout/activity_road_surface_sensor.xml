@@ -1,0 +1,149 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#0099cc"
+    tools:context=".RoadSurfaceSensorMainActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <GridLayout android:id="@+id/top_content_controls" 
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:rowCount="3"
+            android:columnCount="3"
+            android:background="@color/black_overlay" android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_x" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_y" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_z" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_r_x" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_r_y" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/orientation_r_z" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_x" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_y" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_z" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_g_x" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_g_y" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="125dp"
+                android:textSize="24sp"
+                android:textColor="@color/translucent_red"
+                android:text="NaN"
+                android:id="@+id/acceleration_g_z" />
+            </GridLayout>
+
+        <LinearLayout android:id="@+id/bottom_content_controls" style="?metaButtonBarStyle"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay" android:orientation="horizontal"
+            tools:ignore="UselessParent">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/roadConditionSeekBar"
+            android:layout_gravity="center_horizontal|bottom"
+            android:max="20" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</FrameLayout>

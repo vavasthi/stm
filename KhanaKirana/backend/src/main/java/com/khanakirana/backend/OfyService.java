@@ -20,6 +20,7 @@ public class OfyService {
         ObjectifyService.register(UserAccount.class);
         ObjectifyService.register(UserAccountRegion.class);
         ObjectifyService.register(RegisteredBusiness.class);
+        ObjectifyService.register(MasterItem.class);
     }
 
     public static Objectify ofy() {

@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".KhanaKiranaMainActivity">
+
+        <group
+            android:id="@+id/masterItemList"
+            android:checkableBehavior="single"
+            android:title="@string/kk_master_item_list">
+            <item
+                android:id="@+id/add_item"
+                android:title="@string/kk_add_item"></item>
+            <item
+                android:id="@+id/list_items"
+                android:title="@string/kk_list_items"></item>
+        </group>
+        <item
+            android:id="@+id/reset"
+            android:title="@string/reset"></item>
+        <item
+            android:id="@+id/action_settings"
+            android:orderInCategory="100"
+            android:title="@string/action_settings"
+            app:showAsAction="never" ></item>
+</menu>
