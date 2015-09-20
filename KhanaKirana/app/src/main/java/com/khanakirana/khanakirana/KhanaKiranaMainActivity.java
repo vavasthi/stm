@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
@@ -320,52 +321,6 @@ public class KhanaKiranaMainActivity extends Activity {
                 }
                 break;
         }
-    }
-    // The method that displays the popup.
-    void showPopup() {
-        Point p = new Point(0, 0);
-        int popupWidth = 200;
-        int popupHeight = 150;
-
-        // Inflate the popup_layout.xml
-        LinearLayout viewGroup = (LinearLayout) this.findViewById(R.id.registration_google_layout);
-        LayoutInflater layoutInflater = (LayoutInflater) this
-                .getSystemService(this.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.registration_google_user, viewGroup);
-
-        // Creating the PopupWindow
-        final PopupWindow popup = new PopupWindow(this);
-        popup.setContentView(layout);
-        popup.setWidth(popupWidth);
-        popup.setHeight(popupHeight);
-        popup.setFocusable(true);
-
-        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 5;
-        int OFFSET_Y = 5;
-
-        // Clear the default translucent background
-        popup.setBackgroundDrawable(new BitmapDrawable());
-
-        // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
-
-        // Getting a reference to Close button, and close the popup when clicked.
-        ((Button) layout.findViewById(R.id.register)).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                popup.dismiss();
-            }
-        });
-        // Getting a reference to Close button, and close the popup when clicked.
-        ((Button) layout.findViewById(R.id.cancel)).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                popup.dismiss();
-            }
-        });
     }
 
     private void updateRegistrationLocation() {
