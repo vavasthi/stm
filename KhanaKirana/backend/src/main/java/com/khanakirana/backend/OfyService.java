@@ -21,6 +21,8 @@ public class OfyService {
         ObjectifyService.register(UserAccountRegion.class);
         ObjectifyService.register(RegisteredBusiness.class);
         ObjectifyService.register(MasterItem.class);
+        ObjectifyService.register(MeasurementCategory.class);
+        ObjectifyService.register(MeasurementUnit.class);
     }
 
     public static Objectify ofy() {

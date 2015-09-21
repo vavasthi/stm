@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/cVCKgbP6FNCKtkaprGN5lj0wyTE\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/y2k52ySmZ_FJ7LKP9IPFmWFTLCI\"",
  "discoveryVersion": "v1",
  "id": "userRegistrationApi:v1",
  "name": "userRegistrationApi",
@@ -100,11 +100,62 @@
     "name": {
      "type": "string"
     },
+    "unit": {
+     "$ref": "MeasurementUnit"
+    },
     "upc": {
      "type": "string"
     },
     "user": {
      "type": "string"
+    }
+   }
+  },
+  "MeasurementCategory": {
+   "id": "MeasurementCategory",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementUnit": {
+   "id": "MeasurementUnit",
+   "type": "object",
+   "properties": {
+    "factor": {
+     "type": "number",
+     "format": "double"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "measurementCategory": {
+     "$ref": "MeasurementCategory"
+    },
+    "name": {
+     "type": "string"
+    },
+    "primaryUnit": {
+     "type": "boolean"
+    }
+   }
+  },
+  "MeasurementUnitCollection": {
+   "id": "MeasurementUnitCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementUnit"
+     }
     }
    }
   },
@@ -182,12 +233,20 @@
      "type": "string",
      "required": true
     },
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    },
     "name": {
      "type": "string",
      "required": true
     },
     "resource": {
      "$ref": "Blob"
+    },
+    "unit": {
+     "type": "string",
+     "required": true
     },
     "upc": {
      "type": "string",
@@ -203,10 +262,64 @@
     "name",
     "upc",
     "imageType",
-    "user"
+    "user",
+    "measurementCategory",
+    "unit"
    ],
    "returns": {
     "$ref": "MasterItem"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userRegistrationApi.addMeasurementCategory": {
+   "id": "userRegistrationApi.addMeasurementCategory",
+   "parameters": {
+    "name": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name"
+   ],
+   "returns": {
+    "$ref": "MeasurementCategory"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userRegistrationApi.addMeasurementUnit": {
+   "id": "userRegistrationApi.addMeasurementUnit",
+   "parameters": {
+    "factor": {
+     "type": "number",
+     "required": true,
+     "format": "double"
+    },
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "primaryUnit": {
+     "type": "boolean",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "measurementCategory",
+    "primaryUnit",
+    "factor"
+   ],
+   "returns": {
+    "$ref": "MeasurementUnit"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
@@ -235,6 +348,25 @@
    ],
    "returns": {
     "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userRegistrationApi.getUnitsForCategory": {
+   "id": "userRegistrationApi.getUnitsForCategory",
+   "allowGet": true,
+   "parameters": {
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "measurementCategory"
+   ],
+   "returns": {
+    "$ref": "MeasurementUnitCollection"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

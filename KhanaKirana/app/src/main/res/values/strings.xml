@@ -24,4 +24,8 @@
     <string name="kk_text_location_advice">Please select the button below if you are currently in your home. Your home location helps us in delivering things easily. If you are not currently at home, don\'t select it. You can choose location later.\n अगर आप अभी अपने पते पर हैं तो कृपया नीचे दिए बटन को सेलेक्ट करें। आपके सही स्थान से हमें सामान पहुंचाने में आसानी होती है। अगर अभी आप अपने पते पर नहीं हैं तो कृपया इसे छोड़ दें। जब आप अपने पते पर पहुंचे तो आप अपने स्थान को सेलेक्ट कर सकते हैं। </string>
     <string name="photo">Photo</string>
     <string name="barcodeWillAppearHere">Bar code value will appear hear</string>
+    <string name="measurement_category">Measurement Category</string>
+    <string name="kk_add_category">Add Category</string>
+    <string name="kk_measurement_category_addition_failed">Measurement Category Addition Failed</string>
+    <string name="kk_add_measurement_category">Add Measurement Category</string>
 </resources>

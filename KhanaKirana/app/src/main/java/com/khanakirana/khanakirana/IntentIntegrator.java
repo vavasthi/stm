@@ -96,7 +96,6 @@ import android.util.Log;
  */
 public class IntentIntegrator {
 
-    public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
     private static final String TAG = IntentIntegrator.class.getSimpleName();
 
     public static final String DEFAULT_TITLE = "Install Barcode Scanner?";
@@ -309,7 +308,7 @@ public class IntentIntegrator {
         intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         attachMoreExtras(intentScan);
-        startActivityForResult(intentScan, REQUEST_CODE);
+        startActivityForResult(intentScan, KKAndroidConstants.BARCODE_SCAN_REQUEST);
         return null;
     }
 
@@ -400,7 +399,7 @@ public class IntentIntegrator {
      *  the fields will be null.
      */
     public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == KKAndroidConstants.BARCODE_SCAN_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");

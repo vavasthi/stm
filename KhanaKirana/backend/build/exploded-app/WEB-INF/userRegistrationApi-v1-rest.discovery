@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/cVCKgbP6FNCKtkaprGN5lj0wyTE\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/y2k52ySmZ_FJ7LKP9IPFmWFTLCI\"",
  "discoveryVersion": "v1",
  "id": "userRegistrationApi:v1",
  "name": "userRegistrationApi",
@@ -102,11 +102,62 @@
     "name": {
      "type": "string"
     },
+    "unit": {
+     "$ref": "MeasurementUnit"
+    },
     "upc": {
      "type": "string"
     },
     "user": {
      "type": "string"
+    }
+   }
+  },
+  "MeasurementCategory": {
+   "id": "MeasurementCategory",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementUnit": {
+   "id": "MeasurementUnit",
+   "type": "object",
+   "properties": {
+    "factor": {
+     "type": "number",
+     "format": "double"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "measurementCategory": {
+     "$ref": "MeasurementCategory"
+    },
+    "name": {
+     "type": "string"
+    },
+    "primaryUnit": {
+     "type": "boolean"
+    }
+   }
+  },
+  "MeasurementUnitCollection": {
+   "id": "MeasurementUnitCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementUnit"
+     }
     }
    }
   },
@@ -179,7 +230,7 @@
  "methods": {
   "addMasterItem": {
    "id": "userRegistrationApi.addMasterItem",
-   "path": "addMasterItem/{name}/{upc}/{imageType}/{user}",
+   "path": "addMasterItem/{name}/{upc}/{imageType}/{user}/{measurementCategory}/{unit}",
    "httpMethod": "POST",
    "parameters": {
     "imageType": {
@@ -187,7 +238,17 @@
      "required": true,
      "location": "path"
     },
+    "measurementCategory": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
     "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "unit": {
      "type": "string",
      "required": true,
      "location": "path"
@@ -207,7 +268,9 @@
     "name",
     "upc",
     "imageType",
-    "user"
+    "user",
+    "measurementCategory",
+    "unit"
    ],
    "request": {
     "$ref": "Blob",
@@ -215,6 +278,67 @@
    },
    "response": {
     "$ref": "MasterItem"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "addMeasurementCategory": {
+   "id": "userRegistrationApi.addMeasurementCategory",
+   "path": "addMeasurementCategory/{name}",
+   "httpMethod": "POST",
+   "parameters": {
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name"
+   ],
+   "response": {
+    "$ref": "MeasurementCategory"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "addMeasurementUnit": {
+   "id": "userRegistrationApi.addMeasurementUnit",
+   "path": "addMeasurementUnit/{name}/{measurementCategory}/{primaryUnit}/{factor}",
+   "httpMethod": "POST",
+   "parameters": {
+    "factor": {
+     "type": "number",
+     "required": true,
+     "format": "double",
+     "location": "path"
+    },
+    "measurementCategory": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "primaryUnit": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "measurementCategory",
+    "primaryUnit",
+    "factor"
+   ],
+   "response": {
+    "$ref": "MeasurementUnit"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
@@ -248,6 +372,27 @@
    ],
    "response": {
     "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getUnitsForCategory": {
+   "id": "userRegistrationApi.getUnitsForCategory",
+   "path": "measurementunitcollection/{measurementCategory}",
+   "httpMethod": "GET",
+   "parameters": {
+    "measurementCategory": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "measurementCategory"
+   ],
+   "response": {
+    "$ref": "MeasurementUnitCollection"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

@@ -11,13 +11,14 @@ import java.sql.Blob;
  */
 @Entity
 public class MasterItem {
-    public MasterItem(String name, String upc, String imageType, Blob image, String user) {
+    public MasterItem(String name, String upc, String imageType, Blob image, String user, MeasurementUnit unit) {
         this.id = id;
         this.name = name;
         this.upc = upc;
         this.imageType = imageType;
         this.image = image;
         this.user = user;
+        this.unit = unit;
     }
     public MasterItem() {
 
@@ -71,13 +72,24 @@ public class MasterItem {
         this.user = user;
     }
 
+    public MeasurementUnit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(MeasurementUnit unit) {
+        this.unit = unit;
+    }
+
     @Override
     public String toString() {
         return "MasterItem{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", upc=" + upc +
+                ", upc='" + upc + '\'' +
                 ", imageType='" + imageType + '\'' +
+                ", image=" + image +
+                ", user='" + user + '\'' +
+                ", unit=" + unit +
                 '}';
     }
 
@@ -90,4 +102,5 @@ public class MasterItem {
     private String imageType;
     private Blob image;
     private String user;
+    private MeasurementUnit unit;
 }

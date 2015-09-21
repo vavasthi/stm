@@ -5,24 +5,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
@@ -35,6 +28,11 @@ import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
+import com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity;
+import com.khanakirana.khanakirana.activities.KKCameraActivity;
+import com.khanakirana.khanakirana.background.tasks.AuthenticateUserAsyncTask;
+import com.khanakirana.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
+import com.khanakirana.khanakirana.background.tasks.RegisterUserAsyncTask;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -43,7 +41,7 @@ import java.util.logging.Logger;
 
 public class KhanaKiranaMainActivity extends Activity {
 
-        public UserRegistrationApi getEndpoints() {
+        public static UserRegistrationApi getEndpoints() {
 
             // Create API handler
             HttpTransport transport = AndroidHttp.newCompatibleTransport();
@@ -199,7 +197,9 @@ public class KhanaKiranaMainActivity extends Activity {
                 settings.edit().clear().commit();
                 break;
             case R.id.add_item:
-                startActivityForResult(new Intent(this, KKCameraActivity.class), KKCameraActivity.CAMERA_REQUEST);
+                startActivityForResult(new Intent(this, KKCameraActivity.class), KKAndroidConstants.CAMERA_REQUEST);
+            case R.id.adding_measurement_category_popup_item:
+                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity.class), KKAndroidConstants.ADD_MEASUREMENT_CATEGORY_REQUEST);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -359,5 +359,9 @@ public class KhanaKiranaMainActivity extends Activity {
                 }
             }, null);
         }
+    }
+
+    public Location getRegistrationLocation() {
+        return registrationLocation;
     }
 }
