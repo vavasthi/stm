@@ -12,8 +12,9 @@ public class MeasurementCategory {
     public MeasurementCategory() {
 
     }
-    public MeasurementCategory(String name) {
+    public MeasurementCategory(String name, Boolean fractional) {
         this.name = name;
+        this.fractional = fractional;
     }
 
     public Long getId() {
@@ -40,8 +41,17 @@ public class MeasurementCategory {
                 '}';
     }
 
+    public Boolean getFractional() {
+        return fractional;
+    }
+
+    public void setFractional(Boolean fractional) {
+        this.fractional = fractional;
+    }
+
     @Id
     private Long id;
     @Index
     private String name;
+    private Boolean fractional;
 }

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/y2k52ySmZ_FJ7LKP9IPFmWFTLCI\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/LopKZZ5rCzTA7hmdLlXI4NfJhS8\"",
  "discoveryVersion": "v1",
  "id": "userRegistrationApi:v1",
  "name": "userRegistrationApi",
@@ -115,6 +115,9 @@
    "id": "MeasurementCategory",
    "type": "object",
    "properties": {
+    "fractional": {
+     "type": "boolean"
+    },
     "id": {
      "type": "string",
      "format": "int64"
@@ -124,10 +127,25 @@
     }
    }
   },
+  "MeasurementCategoryCollection": {
+   "id": "MeasurementCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementCategory"
+     }
+    }
+   }
+  },
   "MeasurementUnit": {
    "id": "MeasurementUnit",
    "type": "object",
    "properties": {
+    "acronym": {
+     "type": "string"
+    },
     "factor": {
      "type": "number",
      "format": "double"
@@ -276,13 +294,18 @@
   "userRegistrationApi.addMeasurementCategory": {
    "id": "userRegistrationApi.addMeasurementCategory",
    "parameters": {
+    "fractional": {
+     "type": "boolean",
+     "required": true
+    },
     "name": {
      "type": "string",
      "required": true
     }
    },
    "parameterOrder": [
-    "name"
+    "name",
+    "fractional"
    ],
    "returns": {
     "$ref": "MeasurementCategory"
@@ -294,6 +317,10 @@
   "userRegistrationApi.addMeasurementUnit": {
    "id": "userRegistrationApi.addMeasurementUnit",
    "parameters": {
+    "acronym": {
+     "type": "string",
+     "required": true
+    },
     "factor": {
      "type": "number",
      "required": true,
@@ -314,6 +341,7 @@
    },
    "parameterOrder": [
     "name",
+    "acronym",
     "measurementCategory",
     "primaryUnit",
     "factor"
@@ -408,6 +436,15 @@
    ],
    "returns": {
     "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userRegistrationApi.listMeasurementCategories": {
+   "id": "userRegistrationApi.listMeasurementCategories",
+   "returns": {
+    "$ref": "MeasurementCategoryCollection"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

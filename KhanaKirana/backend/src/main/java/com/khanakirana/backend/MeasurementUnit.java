@@ -2,6 +2,7 @@ package com.khanakirana.backend;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * Created by vavasthi on 21/9/15.
@@ -11,8 +12,9 @@ public class MeasurementUnit {
     public MeasurementUnit() {
     }
 
-    public MeasurementUnit(String name, MeasurementCategory measurementCategory, Boolean primaryUnit, Double factor) {
+    public MeasurementUnit(String name, String acronym, MeasurementCategory measurementCategory, Boolean primaryUnit, Double factor) {
         this.name = name;
+        this.acronym = acronym;
         this.measurementCategory = measurementCategory;
         this.primaryUnit = primaryUnit;
         this.factor = factor;
@@ -32,6 +34,14 @@ public class MeasurementUnit {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 
     public MeasurementCategory getMeasurementCategory() {
@@ -63,6 +73,7 @@ public class MeasurementUnit {
         return "MeasurementUnit{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", acronym='" + acronym + '\'' +
                 ", measurementCategory=" + measurementCategory +
                 ", primaryUnit=" + primaryUnit +
                 ", factor=" + factor +
@@ -71,7 +82,11 @@ public class MeasurementUnit {
 
     @Id
     private Long id;
+    @Index
     private String name;
+    @Index
+    private String acronym;
+    @Index
     private MeasurementCategory measurementCategory;
     private Boolean primaryUnit;
     private Double factor;

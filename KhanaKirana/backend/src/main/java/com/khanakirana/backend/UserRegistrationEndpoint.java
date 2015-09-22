@@ -126,7 +126,7 @@ public class UserRegistrationEndpoint {
                                     Blob image,
                                     @Named("user") String user,
                                     @Named("measurementCategory") String measurementCategory,
-                                    @Named("unit") String unit) throws MeasurementCategoryAlreadyExists {
+                                    @Named("unit") String unit) throws MeasurementCategoryDoesntExist {
 
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
         MeasurementUnit mu = getMeasurementUnit(mc, unit);
@@ -135,14 +135,9 @@ public class UserRegistrationEndpoint {
         return item;
     }
 
-    @ApiMethod(name = "addMeasurementCategory")
-    public MeasurementCategory addMeasurementCategory(@Named("name") String name) throws MeasurementCategoryAlreadyExists {
-        name = name.toUpperCase();
-        return getMeasurementCategory(name);
-    }
-
     @ApiMethod(name = "addMeasurementUnit")
     public MeasurementUnit addMeasurementUnit(@Named("name") String name,
+                                              @Named("acronym") String acronym,
                                               @Named("measurementCategory") String measurementCategory,
                                               @Named("primaryUnit") Boolean primaryUnit,
                                               @Named("factor") Double factor) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
@@ -161,32 +156,54 @@ public class UserRegistrationEndpoint {
                 throw MeasurementPrimaryUnitException.getExceptionForPrimaryUnitDoesntExist(mc);
             }
         }
-        MeasurementUnit unit = new MeasurementUnit(name, mc, primaryUnit, factor);
+        MeasurementUnit unit = new MeasurementUnit(name, acronym, mc, primaryUnit, factor);
         OfyService.ofy().save().entity(unit).now();
         return unit;
     }
 
+    @ApiMethod(name = "listMeasurementCategories")
+    public List<MeasurementCategory> lisMeasurementCategories() throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
+
+        return OfyService.ofy().load().type(MeasurementCategory.class).list();
+    }
+
     @ApiMethod(name = "getUnitsForCategory")
-    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryAlreadyExists {
+    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryDoesntExist {
+
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
         return OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategory", measurementCategory).list();
     }
 
-    private MeasurementCategory getMeasurementCategory(String name) throws MeasurementCategoryAlreadyExists {
+    private MeasurementCategory getMeasurementCategory(String name) throws MeasurementCategoryDoesntExist {
 
         name = name.toUpperCase();
         MeasurementCategory measurementCategory  = OfyService.ofy().load().type(MeasurementCategory.class).filter("name", name).first().now();
-        if (measurementCategory != null) {
-            throw new MeasurementCategoryAlreadyExists();
+        if (measurementCategory == null) {
+            throw new MeasurementCategoryDoesntExist();
         }
-        measurementCategory = new MeasurementCategory(name);
+        return measurementCategory;
+    }
+
+    @ApiMethod(name = "addMeasurementCategory")
+    public MeasurementCategory addMeasurementCategory(@Named("name") String name, @Named("fractional") Boolean fractional) throws MeasurementCategoryAlreadyExists {
+
+        name = name.toUpperCase();
+        MeasurementCategory measurementCategory = null;
+        try {
+            measurementCategory = getMeasurementCategory(name);
+            throw new MeasurementCategoryAlreadyExists();
+
+        } catch (MeasurementCategoryDoesntExist e) {
+        }
+
+        measurementCategory = new MeasurementCategory(name, fractional);
         OfyService.ofy().save().entity(measurementCategory).now();
         return measurementCategory;
     }
-    private MeasurementUnit getMeasurementUnit(MeasurementCategory measurementCategory, String name) throws MeasurementCategoryAlreadyExists {
+
+    private MeasurementUnit getMeasurementUnit(MeasurementCategory measurementCategory, String name) {
 
         name = name.toUpperCase();
-        measurementCategory = new MeasurementCategory(name);
         MeasurementUnit measurementUnit = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategory", measurementCategory).filter("name", name).first().now();
         return measurementUnit;
     }

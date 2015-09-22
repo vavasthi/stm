@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -40,7 +41,7 @@ public class KKAddMeasurementCategoryActivity extends Activity {
     // The method that displays the popup.
     void showPopup() {
         int popupWidth = 400;
-        int popupHeight = 250;
+        int popupHeight = 350;
 
         // Inflate the popup_layout.xml
         RelativeLayout viewGroup = (RelativeLayout) this.findViewById(R.id.adding_measurement_category);
@@ -90,8 +91,9 @@ public class KKAddMeasurementCategoryActivity extends Activity {
 
         RelativeLayout viewGroup = (RelativeLayout) popup.getContentView().findViewById(R.id.adding_measurement_category);
         String measurementCategory = ((EditText)(popup.getContentView().findViewById(R.id.measurement_category))).getText().toString();
+        Boolean fractional = ((CheckBox)(popup.getContentView().findViewById(R.id.fractional))).isChecked();
         logger.log(Level.INFO, "Adding measurement category for " + measurementCategory);
-        new com.khanakirana.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), measurementCategory).execute();
+        new com.khanakirana.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), measurementCategory, fractional).execute();
 
     }
     public void dismiss() {

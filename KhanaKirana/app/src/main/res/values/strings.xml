@@ -27,5 +27,15 @@
     <string name="measurement_category">Measurement Category</string>
     <string name="kk_add_category">Add Category</string>
     <string name="kk_measurement_category_addition_failed">Measurement Category Addition Failed</string>
-    <string name="kk_add_measurement_category">Add Measurement Category</string>
+    <string name="kk_add_measurement_category">Add Unit Category</string>
+    <string name="primaryUnit">Primary Unit</string>
+    <string name="unit">Unit</string>
+    <string name="kk_add_unit">Add Unit</string>
+    <string name="kk_factor">1.0</string>
+    <string name="fractional">Fractional</string>
+    <string name="kk_measurement_unit_addition_failed">Measurement Unit Additional Failed</string>
+    <string name="kk_add_measurement_unit">Add Unit</string>
+    <string name="unit_activity_label">KhanaKiranaUnitActivity</string>
+    <string name="category_activity_label">KhanaKiranaCategoryActivity</string>
+    <string name="acronym">Acronym</string>
 </resources>

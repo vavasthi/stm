@@ -32,6 +32,7 @@ public class KKAndroidConstants {
     public static final int CAMERA_REQUEST = 1888;
     public static final int SCAN_REQUEST = 1999;
     public static final int ADD_MEASUREMENT_CATEGORY_REQUEST = 2111;
+    public static final int ADD_MEASUREMENT_UNIT_REQUEST = 2112;
     public static final int BARCODE_SCAN_REQUEST = 0x0000c0de; // Only use bottom 16 bits
 
 

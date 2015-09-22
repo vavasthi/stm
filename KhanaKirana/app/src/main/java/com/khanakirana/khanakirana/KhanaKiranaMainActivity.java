@@ -198,8 +198,13 @@ public class KhanaKiranaMainActivity extends Activity {
                 break;
             case R.id.add_item:
                 startActivityForResult(new Intent(this, KKCameraActivity.class), KKAndroidConstants.CAMERA_REQUEST);
+                break;
             case R.id.adding_measurement_category_popup_item:
                 startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity.class), KKAndroidConstants.ADD_MEASUREMENT_CATEGORY_REQUEST);
+                break;
+            case R.id.adding_measurement_unit_popup_item:
+                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementUnitActivity.class), KKAndroidConstants.ADD_MEASUREMENT_UNIT_REQUEST);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

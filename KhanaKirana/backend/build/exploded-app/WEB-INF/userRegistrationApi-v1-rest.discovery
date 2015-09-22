@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/y2k52ySmZ_FJ7LKP9IPFmWFTLCI\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/LopKZZ5rCzTA7hmdLlXI4NfJhS8\"",
  "discoveryVersion": "v1",
  "id": "userRegistrationApi:v1",
  "name": "userRegistrationApi",
@@ -117,6 +117,9 @@
    "id": "MeasurementCategory",
    "type": "object",
    "properties": {
+    "fractional": {
+     "type": "boolean"
+    },
     "id": {
      "type": "string",
      "format": "int64"
@@ -126,10 +129,25 @@
     }
    }
   },
+  "MeasurementCategoryCollection": {
+   "id": "MeasurementCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementCategory"
+     }
+    }
+   }
+  },
   "MeasurementUnit": {
    "id": "MeasurementUnit",
    "type": "object",
    "properties": {
+    "acronym": {
+     "type": "string"
+    },
     "factor": {
      "type": "number",
      "format": "double"
@@ -285,9 +303,14 @@
   },
   "addMeasurementCategory": {
    "id": "userRegistrationApi.addMeasurementCategory",
-   "path": "addMeasurementCategory/{name}",
+   "path": "addMeasurementCategory/{name}/{fractional}",
    "httpMethod": "POST",
    "parameters": {
+    "fractional": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
     "name": {
      "type": "string",
      "required": true,
@@ -295,7 +318,8 @@
     }
    },
    "parameterOrder": [
-    "name"
+    "name",
+    "fractional"
    ],
    "response": {
     "$ref": "MeasurementCategory"
@@ -306,9 +330,14 @@
   },
   "addMeasurementUnit": {
    "id": "userRegistrationApi.addMeasurementUnit",
-   "path": "addMeasurementUnit/{name}/{measurementCategory}/{primaryUnit}/{factor}",
+   "path": "addMeasurementUnit/{name}/{acronym}/{measurementCategory}/{primaryUnit}/{factor}",
    "httpMethod": "POST",
    "parameters": {
+    "acronym": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
     "factor": {
      "type": "number",
      "required": true,
@@ -333,6 +362,7 @@
    },
    "parameterOrder": [
     "name",
+    "acronym",
     "measurementCategory",
     "primaryUnit",
     "factor"
@@ -441,6 +471,17 @@
    ],
    "response": {
     "$ref": "UserAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listMeasurementCategories": {
+   "id": "userRegistrationApi.listMeasurementCategories",
+   "path": "lisMeasurementCategories",
+   "httpMethod": "POST",
+   "response": {
+    "$ref": "MeasurementCategoryCollection"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
