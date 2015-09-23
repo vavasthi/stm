@@ -9,12 +9,14 @@ package com.khanakirana.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.response.CollectionResponse;
 import com.khanakirana.backend.exceptions.InvalidUserAccountException;
 import com.khanakirana.backend.exceptions.MeasurementCategoryAlreadyExists;
 import com.khanakirana.backend.exceptions.MeasurementCategoryDoesntExist;
 import com.khanakirana.backend.exceptions.MeasurementPrimaryUnitException;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -143,20 +145,22 @@ public class UserRegistrationEndpoint {
                                               @Named("factor") Double factor) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
 
         name = name.toUpperCase();
+        measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc  = getMeasurementCategory(measurementCategory);
+        logger.log(Level.INFO, "Queried Measurement Category " + mc.toString() + " " + mc.getId());
         if (primaryUnit) {
             factor = 1.0;
-            if (OfyService.ofy().load().type(MeasurementUnit.class).filter("primaryUnit", Boolean.TRUE).filter("name", name).list().size() > 0) {
+            if (OfyService.ofy().load().type(MeasurementUnit.class).filter("primaryUnit", Boolean.TRUE).filter("measurementCategoryId", mc.getId()).list().size() > 0) {
                 throw MeasurementPrimaryUnitException.getExceptionForPrimaryUnitAlreadyExists(mc);
             }
         }
         else {
 
-            if (OfyService.ofy().load().type(MeasurementUnit.class).filter("primaryUnit", Boolean.TRUE).filter("name", name).list().size() == 0) {
+            if (OfyService.ofy().load().type(MeasurementUnit.class).filter("primaryUnit", Boolean.TRUE).filter("measurementCategoryId", mc.getId()).list().size() == 0) {
                 throw MeasurementPrimaryUnitException.getExceptionForPrimaryUnitDoesntExist(mc);
             }
         }
-        MeasurementUnit unit = new MeasurementUnit(name, acronym, mc, primaryUnit, factor);
+        MeasurementUnit unit = new MeasurementUnit(name, acronym, mc.getId(), primaryUnit, factor);
         OfyService.ofy().save().entity(unit).now();
         return unit;
     }
@@ -170,8 +174,11 @@ public class UserRegistrationEndpoint {
     @ApiMethod(name = "getUnitsForCategory")
     public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryDoesntExist {
 
+        measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
-        return OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategory", measurementCategory).list();
+        List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
+        logger.log(Level.INFO, "Count for units for category :" + mc.toString() + " = " + lmu.size());
+        return lmu;
     }
 
     private MeasurementCategory getMeasurementCategory(String name) throws MeasurementCategoryDoesntExist {
@@ -204,7 +211,7 @@ public class UserRegistrationEndpoint {
     private MeasurementUnit getMeasurementUnit(MeasurementCategory measurementCategory, String name) {
 
         name = name.toUpperCase();
-        MeasurementUnit measurementUnit = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategory", measurementCategory).filter("name", name).first().now();
+        MeasurementUnit measurementUnit = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", measurementCategory.getId()).filter("name", name).first().now();
         return measurementUnit;
     }
 }

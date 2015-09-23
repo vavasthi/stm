@@ -38,4 +38,6 @@
     <string name="unit_activity_label">KhanaKiranaUnitActivity</string>
     <string name="category_activity_label">KhanaKiranaCategoryActivity</string>
     <string name="acronym">Acronym</string>
+    <string name="measurement_category_dialog_title">Add Unit Category</string>
+    <string name="unit_dialog_title">Add Unit</string>
 </resources>

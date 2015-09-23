@@ -1,5 +1,6 @@
 package com.khanakirana.khanakirana.background.tasks;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -49,7 +50,6 @@ public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
         switch (result) {
             case ServerInteractionReturnStatus.SUCCESS:
-                context.dismiss();
                 break;
             default:
                 Toast.makeText(context, R.string.kk_measurement_category_addition_failed, Toast.LENGTH_LONG);

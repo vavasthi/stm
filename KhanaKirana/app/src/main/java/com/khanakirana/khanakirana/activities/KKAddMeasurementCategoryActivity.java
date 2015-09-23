@@ -1,13 +1,14 @@
 package com.khanakirana.khanakirana.activities;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.PopupWindow;
@@ -15,7 +16,6 @@ import android.widget.RelativeLayout;
 
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
-import com.khanakirana.khanakirana.background.tasks.AddMeasurementCategoryTask;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +28,7 @@ public class KKAddMeasurementCategoryActivity extends Activity {
 
     private Logger logger = Logger.getLogger(KKAddMeasurementCategoryActivity.class.getName());
 
-    PopupWindow popup;
+    Dialog dialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class KKAddMeasurementCategoryActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
-    // The method that displays the popup.
+    // The method that displays the dialog.
     void showPopup() {
         int popupWidth = 400;
         int popupHeight = 350;
@@ -50,53 +50,50 @@ public class KKAddMeasurementCategoryActivity extends Activity {
         final View layout = layoutInflater.inflate(R.layout.adding_measurement_category_layout, viewGroup);
 
         // Creating the PopupWindow
-        popup = new PopupWindow(this);
-        popup.setContentView(layout);
-        popup.setWidth(popupWidth);
-        popup.setHeight(popupHeight);
-        popup.setFocusable(true);
+        dialog = new Dialog(this);
+        dialog.setTitle(R.string.measurement_category_dialog_title);
+        dialog.setContentView(layout);
 
 
-        // Clear the default translucent background
-        popup.setBackgroundDrawable(new BitmapDrawable());
-
-        popup.setContentView(layout);
-        // Displaying the popup at the specified location, + offsets.
+        dialog.setContentView(layout);
+        // Displaying the dialog at the specified location, + offsets.
         layout.post(new Runnable() {
             @Override
             public void run() {
 
-                popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+                dialog.show();
             }
         });
 
-        // Getting a reference to Close button, and close the popup when clicked.
+        // Getting a reference to Close button, and close the dialog when clicked.
 /*        ((Button) layout.findViewById(R.id.register)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                popup.dismiss();
+                dialog.dismiss();
             }
         });
-        // Getting a reference to Close button, and close the popup when clicked.
+        // Getting a reference to Close button, and close the dialog when clicked.
         ((Button) layout.findViewById(R.id.cancel)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                popup.dismiss();
+                dialog.dismiss();
             }
         });*/
     }
     public void addMeasurementCategory(View v) {
 
-        RelativeLayout viewGroup = (RelativeLayout) popup.getContentView().findViewById(R.id.adding_measurement_category);
-        String measurementCategory = ((EditText)(popup.getContentView().findViewById(R.id.measurement_category))).getText().toString();
-        Boolean fractional = ((CheckBox)(popup.getContentView().findViewById(R.id.fractional))).isChecked();
+        RelativeLayout viewGroup = (RelativeLayout) dialog.findViewById(R.id.adding_measurement_category);
+        String measurementCategory = ((EditText)(dialog.findViewById(R.id.measurement_category))).getText().toString();
+        Boolean fractional = ((CheckBox)(dialog.findViewById(R.id.fractional))).isChecked();
         logger.log(Level.INFO, "Adding measurement category for " + measurementCategory);
+        dialog.dismiss();
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.show();
         new com.khanakirana.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), measurementCategory, fractional).execute();
+        progressDialog.dismiss();
+        finish();
+    }
 
-    }
-    public void dismiss() {
-        popup.dismiss();
-    }
 }

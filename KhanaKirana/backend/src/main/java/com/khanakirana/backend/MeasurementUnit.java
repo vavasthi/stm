@@ -12,10 +12,10 @@ public class MeasurementUnit {
     public MeasurementUnit() {
     }
 
-    public MeasurementUnit(String name, String acronym, MeasurementCategory measurementCategory, Boolean primaryUnit, Double factor) {
+    public MeasurementUnit(String name, String acronym, Long measurementCategoryId, Boolean primaryUnit, Double factor) {
         this.name = name;
         this.acronym = acronym;
-        this.measurementCategory = measurementCategory;
+        this.measurementCategoryId = measurementCategoryId;
         this.primaryUnit = primaryUnit;
         this.factor = factor;
     }
@@ -44,14 +44,6 @@ public class MeasurementUnit {
         this.acronym = acronym;
     }
 
-    public MeasurementCategory getMeasurementCategory() {
-        return measurementCategory;
-    }
-
-    public void setMeasurementCategory(MeasurementCategory measurementCategory) {
-        this.measurementCategory = measurementCategory;
-    }
-
     public Boolean getPrimaryUnit() {
         return primaryUnit;
     }
@@ -68,13 +60,21 @@ public class MeasurementUnit {
         this.factor = factor;
     }
 
+    public Long getMeasurementCategoryId() {
+        return measurementCategoryId;
+    }
+
+    public void setMeasurementCategoryId(Long measurementCategoryId) {
+        this.measurementCategoryId = measurementCategoryId;
+    }
+
     @Override
     public String toString() {
         return "MeasurementUnit{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", acronym='" + acronym + '\'' +
-                ", measurementCategory=" + measurementCategory +
+                ", measurementCategoryId=" + measurementCategoryId +
                 ", primaryUnit=" + primaryUnit +
                 ", factor=" + factor +
                 '}';
@@ -87,7 +87,8 @@ public class MeasurementUnit {
     @Index
     private String acronym;
     @Index
-    private MeasurementCategory measurementCategory;
+    private Long measurementCategoryId;
+    @Index
     private Boolean primaryUnit;
     private Double factor;
 }

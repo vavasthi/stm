@@ -28,7 +28,6 @@ import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity;
 import com.khanakirana.khanakirana.activities.KKCameraActivity;
 import com.khanakirana.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
@@ -106,8 +105,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private static Boolean isRegistered = null;
     private static Boolean isAccountChosen = null;
     private static SharedPreferences settings;
-    static final int REQUEST_ACCOUNT_PICKER = 2;
-//    private static GoogleAccountCredential gac;
+    //    private static GoogleAccountCredential gac;
     private UserRegistrationApi registrationApiService;
     private String detectedPhoneNumber;
     Location registrationLocation;
@@ -214,7 +212,7 @@ public class KhanaKiranaMainActivity extends Activity {
         String[] accountTypes = new String[]{"com.google"};
         Intent  intent = AccountPicker.newChooseAccountIntent(null, null, accountTypes, false, null, null, null, null);
             // Play services exist but not account not chosen yet..
-        startActivityForResult(intent, REQUEST_ACCOUNT_PICKER);
+        startActivityForResult(intent, KKAndroidConstants.REQUEST_ACCOUNT_PICKER);
     }
     private void obtainCredentials() {
         setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
@@ -314,7 +312,7 @@ public class KhanaKiranaMainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case REQUEST_ACCOUNT_PICKER :
+            case KKAndroidConstants.REQUEST_ACCOUNT_PICKER :
                 if (resultCode == RESULT_OK && data != null && data.getExtras() != null) {
                     String accountName = data.getExtras().getString(AccountManager.KEY_ACCOUNT_NAME);
                     if (accountName != null) {

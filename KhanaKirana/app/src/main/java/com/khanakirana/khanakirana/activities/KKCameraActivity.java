@@ -50,10 +50,10 @@ public class KKCameraActivity extends Activity {
             imageView.setImageBitmap(photo);
         }
     }
-    // The method that displays the popup.
+    // The method that displays the dialog.
     void showPopup() {
         final Point p = new Point(0, 0);
-        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+        // Some offset to align the dialog a bit to the right, and a bit down, relative to button's position.
         final int OFFSET_X = 5;
         final int OFFSET_Y = 5;
 
@@ -98,7 +98,7 @@ public class KKCameraActivity extends Activity {
         popup.setBackgroundDrawable(new BitmapDrawable());
 
         popup.setContentView(layout);
-        // Displaying the popup at the specified location, + offsets.
+        // Displaying the dialog at the specified location, + offsets.
         layout.post(new Runnable() {
             @Override
             public void run() {
@@ -107,20 +107,20 @@ public class KKCameraActivity extends Activity {
             }
         });
 
-        // Getting a reference to Close button, and close the popup when clicked.
+        // Getting a reference to Close button, and close the dialog when clicked.
 /*        ((Button) layout.findViewById(R.id.register)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                popup.dismiss();
+                dialog.dismiss();
             }
         });
-        // Getting a reference to Close button, and close the popup when clicked.
+        // Getting a reference to Close button, and close the dialog when clicked.
         ((Button) layout.findViewById(R.id.cancel)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                popup.dismiss();
+                dialog.dismiss();
             }
         });*/
     }

@@ -34,8 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.KKCameraActivity" android:label="@string/app_name"/>
-        <activity android:name=".activities.KKAddMeasurementUnitActivity" android:label="@string/unit_activity_label"/>
-        <activity android:name=".activities.KKAddMeasurementCategoryActivity" android:label="@string/category_activity_label"/>
+        <activity android:name=".activities.KKAddMeasurementUnitActivity" android:label="@string/unit_activity_label" android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name=".activities.KKAddMeasurementCategoryActivity" android:label="@string/category_activity_label" android:configChanges="keyboardHidden|orientation"/>
      </application>
 
 </manifest>

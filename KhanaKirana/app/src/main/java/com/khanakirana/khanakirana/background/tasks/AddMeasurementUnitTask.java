@@ -60,7 +60,6 @@ public class AddMeasurementUnitTask extends AsyncTask<Void, Void, Integer> {
 
         switch (result) {
             case ServerInteractionReturnStatus.SUCCESS:
-                context.dismiss();
                 break;
             default:
                 Toast.makeText(context, R.string.kk_measurement_unit_addition_failed, Toast.LENGTH_LONG);
