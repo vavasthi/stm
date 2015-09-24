@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
@@ -31,31 +28,21 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKAddMeasurementUnitActivity extends Activity {
+public class KKAddMeasurementUnitActivity extends KKMeasurementCategoryReceivingActivity {
 
     private Logger logger = Logger.getLogger(KKAddMeasurementUnitActivity.class.getName());
     private View layout;
-    private List<MeasurementCategory> mcList;
 
-    Dialog dialog;
-    ProgressDialog progressDialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createPopup();
-        progressDialog = new ProgressDialog(this);
-        progressDialog.show();
-        new ListMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
-//        setContentView(R.layout.adding_items_master_list);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 
-    private void createPopup () {
+    void createPopup () {
 
-        int popupWidth = 400;
-        int popupHeight = 450;
 
         // Inflate the popup_layout.xml
         RelativeLayout viewGroup = (RelativeLayout) this.findViewById(R.id.adding_measurement_unit);
@@ -82,6 +69,7 @@ public class KKAddMeasurementUnitActivity extends Activity {
         });
         // Displaying the dialog at the specified location, + offsets.
     }
+
     // The method that displays the dialog.
     void showPopup() {
 
@@ -139,14 +127,4 @@ public class KKAddMeasurementUnitActivity extends Activity {
         finish();
     }
 
-    public void setCategories(List<MeasurementCategory> categories) {
-        this.mcList = categories;
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                showPopup();
-            }
-        });
-    }
 }

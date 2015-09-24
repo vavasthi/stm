@@ -3,6 +3,12 @@ package com.khanakirana.backend;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
+import com.khanakirana.backend.entity.MasterItem;
+import com.khanakirana.backend.entity.MeasurementCategory;
+import com.khanakirana.backend.entity.MeasurementUnit;
+import com.khanakirana.backend.entity.RegisteredBusiness;
+import com.khanakirana.backend.entity.UserAccount;
+import com.khanakirana.backend.entity.UserAccountRegion;
 
 /**
  * Created by vavasthi on 13/9/15.
@@ -23,6 +29,7 @@ public class OfyService {
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);
+        ObjectifyService.register(MasterItem.class);
     }
 
     public static Objectify ofy() {

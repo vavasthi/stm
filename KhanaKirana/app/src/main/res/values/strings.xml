@@ -40,4 +40,9 @@
     <string name="acronym">Acronym</string>
     <string name="measurement_category_dialog_title">Add Unit Category</string>
     <string name="unit_dialog_title">Add Unit</string>
+    <string name="add_item_to_master_list">Add to Master List</string>
+    <string name="item_title">Item Title</string>
+    <string name="item_description">Please enter item description</string>
+    <string name="kk_add_master_item">Add Item</string>
+    <string name="kk_master_item_addition_failed">Master Item %s additional failed</string>
 </resources>

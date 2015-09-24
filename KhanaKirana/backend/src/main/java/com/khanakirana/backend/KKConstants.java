@@ -10,4 +10,7 @@ public class KKConstants {
     public static final String ANDROID_AUDIENCE = WEB_CLIENT_ID;
 
     public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+
+    public static final String IMAGE_PART_NAME = "imageToBeUploaded";
+    public static final String MASTER_ITEM_IMAGE_UPLOAD_URL = "/masterItemImageUpload";
 }

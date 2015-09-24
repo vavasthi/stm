@@ -3,6 +3,7 @@ package com.khanakirana.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import com.khanakirana.backend.entity.RegisteredBusiness;
 
 /**
  * The object model for the data we are sending through endpoints

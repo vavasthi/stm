@@ -54,16 +54,8 @@ public class KKAddMeasurementCategoryActivity extends Activity {
         dialog.setTitle(R.string.measurement_category_dialog_title);
         dialog.setContentView(layout);
 
-
         dialog.setContentView(layout);
-        // Displaying the dialog at the specified location, + offsets.
-        layout.post(new Runnable() {
-            @Override
-            public void run() {
-
                 dialog.show();
-            }
-        });
 
         // Getting a reference to Close button, and close the dialog when clicked.
 /*        ((Button) layout.findViewById(R.id.register)).setOnClickListener(new View.OnClickListener() {

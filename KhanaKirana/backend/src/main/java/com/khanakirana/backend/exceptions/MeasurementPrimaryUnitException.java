@@ -1,7 +1,7 @@
 package com.khanakirana.backend.exceptions;
 
 import com.google.api.server.spi.ServiceException;
-import com.khanakirana.backend.MeasurementCategory;
+import com.khanakirana.backend.entity.MeasurementCategory;
 
 /**
  * Created by vavasthi on 13/9/15.

@@ -1,13 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".KhanaKiranaMainActivity"
     android:id="@+id/add_item_master_list"
+    android:orientation="vertical"
     android:background="@color/kk_app_background">
 
     <LinearLayout
@@ -16,18 +17,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView android:id="@+id/itemImage" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_camera_alt_white_48dp"
             android:id="@+id/takeItemPicture" />
+        <ImageView android:id="@+id/itemImage" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pictureLayout">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_barcode_white_48dp"
+                android:id="@+id/scanBarcode" />
+        </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,17 +53,40 @@
                 android:textColor="@color/kk_app_foreground"
                 android:layout_gravity="center_vertical"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.30">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_barcode_white_48dp"
-                android:id="@+id/scanBarcode" />
-        </RelativeLayout>
 
     </LinearLayout>
+    <EditText
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/item_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/kk_app_foreground" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="@string/item_description"
+        android:ems="10"
+        android:textColor="@color/kk_app_foreground"
+        android:id="@+id/item_description" />
 
-</RelativeLayout>
+    <Spinner
+        android:id="@+id/measurement_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/kk_app_foreground"
+        android:textSize="@dimen/kk_registration_popup_text_size" />
+
+    <Button
+        android:id="@+id/add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:onClick="addMasterItem"
+        android:text="@string/kk_add_master_item"
+        android:textColor="@color/kk_app_foreground" />
+
+
+</LinearLayout>

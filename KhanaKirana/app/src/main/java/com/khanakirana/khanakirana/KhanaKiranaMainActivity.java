@@ -28,7 +28,7 @@ import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.khanakirana.activities.KKCameraActivity;
+import com.khanakirana.khanakirana.activities.KKAddProductInMasterListActivity;
 import com.khanakirana.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.RegisterUserAsyncTask;
@@ -43,12 +43,11 @@ public class KhanaKiranaMainActivity extends Activity {
         public static UserRegistrationApi getEndpoints() {
 
             // Create API handler
-            HttpTransport transport = AndroidHttp.newCompatibleTransport();
-            JsonFactory jsonFactory = new AndroidJsonFactory();
             HttpRequestInitializer requestInitializer = getRequestInitializer();
             UserRegistrationApi.Builder builder = new UserRegistrationApi.Builder(
-                    transport,
-                    jsonFactory, requestInitializer)
+                    AndroidHttp.newCompatibleTransport(),
+                    new AndroidJsonFactory(),
+                    requestInitializer)
                     .setRootUrl(KKAndroidConstants.ROOT_URL)
                     .setGoogleClientRequestInitializer(
                             new GoogleClientRequestInitializer() {
@@ -98,7 +97,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private static final String PREF_IS_ACCOUNT_CHOSEN = "KKIsAccountChosen";
     private static final String PREF_ACCOUNT_PASSWORD = "KKPreferredAccountPassword";
     private static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
-    private static String selectedAccountName = null;
+    static String selectedAccountName = null;
     private static Boolean isGoogleAuthentication = null;
     private static String password = null;
     private static Boolean isAuthenticated = null;
@@ -195,7 +194,7 @@ public class KhanaKiranaMainActivity extends Activity {
                 settings.edit().clear().commit();
                 break;
             case R.id.add_item:
-                startActivityForResult(new Intent(this, KKCameraActivity.class), KKAndroidConstants.CAMERA_REQUEST);
+                startActivityForResult(new Intent(this, KKAddProductInMasterListActivity.class), KKAndroidConstants.CAMERA_REQUEST);
                 break;
             case R.id.adding_measurement_category_popup_item:
                 startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity.class), KKAndroidConstants.ADD_MEASUREMENT_CATEGORY_REQUEST);
@@ -327,43 +326,53 @@ public class KhanaKiranaMainActivity extends Activity {
     }
 
     private void updateRegistrationLocation() {
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (location != null) {
+        Location location;
+        try {
 
-            registrationLocation = location;
-        } else if (location != null && (Calendar.getInstance().getTimeInMillis() - location.getTime()) > 2 * 60 * 1000) {
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (location != null) {
 
-            Criteria criteria = new Criteria();
-            criteria.setAccuracy(Criteria.ACCURACY_FINE);
-            criteria.setAltitudeRequired(false);
-            criteria.setBearingRequired(false);
-            criteria.setCostAllowed(true);
-            criteria.setPowerRequirement(Criteria.POWER_LOW);
-            locationManager.requestSingleUpdate(criteria, new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                    registrationLocation = location;
-                }
+                registrationLocation = location;
+            } else if (location != null && (Calendar.getInstance().getTimeInMillis() - location.getTime()) > 2 * 60 * 1000) {
 
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
+                Criteria criteria = new Criteria();
+                criteria.setAccuracy(Criteria.ACCURACY_FINE);
+                criteria.setAltitudeRequired(false);
+                criteria.setBearingRequired(false);
+                criteria.setCostAllowed(true);
+                criteria.setPowerRequirement(Criteria.POWER_LOW);
+                locationManager.requestSingleUpdate(criteria, new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        registrationLocation = location;
+                    }
 
-                }
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-                @Override
-                public void onProviderEnabled(String provider) {
+                    }
 
-                }
+                    @Override
+                    public void onProviderEnabled(String provider) {
 
-                @Override
-                public void onProviderDisabled(String provider) {
+                    }
 
-                }
-            }, null);
+                    @Override
+                    public void onProviderDisabled(String provider) {
+
+                    }
+                }, null);
+            }
+        } catch(SecurityException e) {
+
         }
     }
 
+    public static String getSelectedAccountName() {
+        return selectedAccountName;
+    }
     public Location getRegistrationLocation() {
         return registrationLocation;
     }

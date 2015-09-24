@@ -5,12 +5,29 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>com.khanakirana.backend.UserRegistrationEndpoint</param-value>
+            <param-value>com.khanakirana.backend.endpoints.UserRegistrationEndpoint</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>com.khanakirana.backend.servlet.KKUpload</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Serve</servlet-name>
+        <servlet-class>com.khanakirana.backend.servlet.KKServe</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>SystemServiceServlet</servlet-name>
         <url-pattern>/_ah/spi/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/kkupload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SystemServiceServlet</servlet-name>
+        <url-pattern>/kkserve</url-pattern>
     </servlet-mapping>
     <filter>
         <filter-name>ObjectifyFilter</filter-name>

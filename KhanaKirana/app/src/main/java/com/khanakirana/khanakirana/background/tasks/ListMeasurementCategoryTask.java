@@ -8,6 +8,7 @@ import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity;
 import com.khanakirana.khanakirana.activities.KKAddMeasurementUnitActivity;
+import com.khanakirana.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,14 +19,14 @@ import java.util.logging.Logger;
  */
 public class ListMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
-    private final KKAddMeasurementUnitActivity context;
+    private final KKMeasurementCategoryReceivingActivity context;
     private final UserRegistrationApi registrationApiService;
     private List<MeasurementCategory> categories;
 
     private Logger logger = Logger.getLogger(ListMeasurementCategoryTask.class.getName());
 
 
-    public ListMeasurementCategoryTask(KKAddMeasurementUnitActivity context,
+    public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context,
                                        UserRegistrationApi registrationApiService) {
         this.context = context;
         this.registrationApiService = registrationApiService;
