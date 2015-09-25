@@ -11,12 +11,12 @@ import java.sql.Blob;
  */
 @Entity
 public class MasterItem {
-    public MasterItem(String name, String description, String upc, String imageType, String uploadURL, String userEmailId, Long measurementCategoryId) {
+    public MasterItem(String name, String description, String upc, String imageType, String imageCloudKey, String userEmailId, Long measurementCategoryId) {
         this.name = name;
         this.description = description;
         this.upc = upc;
         this.imageType = imageType;
-        this.uploadURL = uploadURL;
+        this.imageCloudKey = imageCloudKey;
         this.userEmailId = userEmailId;
         this.measurementCategoryId = measurementCategoryId;
     }
@@ -25,11 +25,11 @@ public class MasterItem {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,14 +65,13 @@ public class MasterItem {
         this.imageType = imageType;
     }
 
-    public String getUploadURL() {
-        return uploadURL;
+    public String getImageCloudKey() {
+        return imageCloudKey;
     }
 
-    public void setUploadURL(String uploadURL) {
-        this.uploadURL = uploadURL;
+    public void setImageCloudKey(String imageCloudKey) {
+        this.imageCloudKey = imageCloudKey;
     }
-
     public String getUserEmailId() {
         return userEmailId;
     }
@@ -80,6 +79,7 @@ public class MasterItem {
     public void setUserEmailId(String userEmailId) {
         this.userEmailId = userEmailId;
     }
+
 
     public Long getMeasurementCategoryId() {
         return measurementCategoryId;
@@ -90,14 +90,14 @@ public class MasterItem {
     }
 
     @Id
-    private String id;
+    private Long id;
     @Index
     private String name;
     private String description;
     @Index
     private String upc;
     private String imageType;
-    private String uploadURL;
+    private String imageCloudKey;
     @Index
     private String userEmailId;
     @Index

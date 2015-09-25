@@ -1,6 +1,8 @@
 package com.khanakirana.backend.servlet;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +17,17 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
  */
 
 public class KKServe extends HttpServlet {
+
+    private final static Logger logger = Logger.getLogger(KKServe.class.getName());
+
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
+
         BlobKey blobKey = new BlobKey(req.getParameter("blob-key"));
+        logger.info("Serving BlobKey = " + blobKey);
         blobstoreService.serve(blobKey, res);
     }
 }

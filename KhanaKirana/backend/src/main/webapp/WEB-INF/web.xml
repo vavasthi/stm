@@ -23,11 +23,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Upload</servlet-name>
-        <url-pattern>/kkupload</url-pattern>
+        <url-pattern>/_ah/kkupload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SystemServiceServlet</servlet-name>
-        <url-pattern>/kkserve</url-pattern>
+        <servlet-name>Serve</servlet-name>
+        <url-pattern>/_ah/kkserve</url-pattern>
     </servlet-mapping>
     <filter>
         <filter-name>ObjectifyFilter</filter-name>

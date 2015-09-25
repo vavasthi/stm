@@ -35,6 +35,10 @@ public class KKAndroidConstants {
     public static final int ADD_MEASUREMENT_CATEGORY_REQUEST = 2111;
     public static final int ADD_MEASUREMENT_UNIT_REQUEST = 2112;
     public static final int BARCODE_SCAN_REQUEST = 0x0000c0de; // Only use bottom 16 bits
+    public static final String BLOB_STORE_MASTER_LIST_PREFIX = "MasterList-Item-";
+    public static final String BLOB_STORE_KEY_NAME = "name";
+    public static final String BLOB_STORE_KEY_FILE = "file";
+    public static final String BLOB_CLOUD_KEY = "X-KhanaKirana-Blob-Cloud-key";
 
 
     /**

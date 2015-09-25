@@ -54,14 +54,14 @@ public class KKImageUtils {
         int w = source.getWidth();
         double factor = 1.0;
         if (w > PRODUCT_IMAGE_WIDTH) {
+            factor = ((double)w) / ((double)PRODUCT_IMAGE_WIDTH);
         }
         else {
 
-            factor = w / PRODUCT_IMAGE_WIDTH;
         }
 
-        int dw = PRODUCT_IMAGE_WIDTH;
-        int dh = new Double(factor * source.getHeight()).intValue();
+        int dw = new Double((((double)factor) * ((double)(source.getWidth())))).intValue();
+        int dh = new Double((((double)factor) * ((double)(source.getHeight())))).intValue();
         return Bitmap.createScaledBitmap(source, dw, dh, false);
     }
 

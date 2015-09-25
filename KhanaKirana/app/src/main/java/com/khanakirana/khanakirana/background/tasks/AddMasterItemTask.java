@@ -1,11 +1,11 @@
 package com.khanakirana.khanakirana.background.tasks;
 
 import android.os.AsyncTask;
-import android.provider.MediaStore;
 import android.widget.Toast;
 
 import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
 import com.khanakirana.backend.userRegistrationApi.model.MasterItem;
+import com.khanakirana.khanakirana.KKAndroidConstants;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.activities.KKAddProductInMasterListActivity;
 import com.squareup.okhttp.MediaType;
@@ -17,9 +17,10 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
-
-import okio.BufferedSink;
 
 
 /**
@@ -37,6 +38,8 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
     private final String measurementCategory;
     private final byte[] content;
 
+    public static final String IMAGE_PART_NAME = "imageToBeUploaded";
+    public static final String UNKNOWN_UPC = "UNKNOWN-UPC-CODE";
     private Logger logger = Logger.getLogger(AddMasterItemTask.class.getName());
 
 
@@ -53,7 +56,12 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
         this.registrationApiService = registrationApiService;
         this.title = title;
         this.description = description;
-        this.upc = upc;
+        if (upc == null || upc.trim().equals("")) {
+            this.upc = UNKNOWN_UPC;
+        }
+        else {
+            this.upc = upc;
+        }
         this.imageType = imageType;
         this.userEmailId = userEmailId;
         this.measurementCategory = measurementCategory;
@@ -66,15 +74,20 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
         try{
             String uploadURL = registrationApiService.getUploadURL().execute().getUrl();
             OkHttpClient httpClient = new OkHttpClient();
-            MultipartBuilder mpb = new MultipartBuilder();
-            RequestBody body = mpb.addPart(RequestBody.create(MediaType.parse("image/png"), content)).build();
-            Request request = new Request.Builder().url(uploadURL).method("POST", body).build();
+            String filename = UUID.randomUUID().toString() + ".png";
+            RequestBody body = new MultipartBuilder(IMAGE_PART_NAME)
+                    .type(MultipartBuilder.FORM)
+                    .addFormDataPart(KKAndroidConstants.BLOB_STORE_KEY_FILE, filename, RequestBody.create(MediaType.parse("image/png"), content))
+                    .build();
+            Request request = new Request.Builder().url(uploadURL).post(body).build();
             Response response = httpClient.newCall(request).execute();
+            logger.info("Upload request/response is " + request.toString() + "\n" + response.toString());
+            String cloudKey = response.header(KKAndroidConstants.BLOB_CLOUD_KEY);
+            MasterItem mi = registrationApiService.addItemInMasterList(title, description, upc, imageType, cloudKey, userEmailId, measurementCategory).execute();
             if (!response.isSuccessful()) {
 
                 return ServerInteractionReturnStatus.FATAL_ERROR;
             }
-            MasterItem mi = registrationApiService.addItemInMasterList(title, description, upc, imageType, uploadURL, userEmailId, measurementCategory).execute();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,6 +98,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
 
         switch (result) {
             case ServerInteractionReturnStatus.SUCCESS:
+                context.dismisProgressIndicator();
                 break;
             default:
                 Formatter formatter = new Formatter();

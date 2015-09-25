@@ -217,13 +217,13 @@ public class UserRegistrationEndpoint {
                                           @Named("description") String description,
                                           @Named("upc") String upc,
                                           @Named("imageType") String imageType,
-                                          @Named("uploadURL") String uploadURL,
+                                          @Named("imageCloudKey") String imageCloudKey,
                                           @Named("userEmailId") String userEmailId,
                                           @Named("measurementCategory") String measurementCategory) throws MeasurementCategoryAlreadyExists, MeasurementCategoryDoesntExist, InvalidUserAccountException {
 
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
         UserAccount userAccount = getUserAccount(userEmailId);
-        MasterItem mi = new MasterItem(name, description, upc, imageType, uploadURL, userAccount.getEmail(), mc.getId());
+        MasterItem mi = new MasterItem(name, description, upc, imageType, imageCloudKey, userAccount.getEmail(), mc.getId());
         OfyService.ofy().save().entity(mi).now();
         return mi;
     }

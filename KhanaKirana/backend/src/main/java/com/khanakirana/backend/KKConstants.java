@@ -12,5 +12,13 @@ public class KKConstants {
     public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
 
     public static final String IMAGE_PART_NAME = "imageToBeUploaded";
-    public static final String MASTER_ITEM_IMAGE_UPLOAD_URL = "/masterItemImageUpload";
+    public static final String MASTER_ITEM_IMAGE_UPLOAD_URL = "/_ah/kkupload";
+    public static final String UNKNOWN_UPC = "UNKNOWN-UPC-CODE";
+
+    public static final String BLOB_STORE_MASTER_LIST_PREFIX = "MasterList-Item-";
+    public static final String BLOB_STORE_KEY_FILE = "file";
+
+    public static final String BLOB_CLOUD_KEY = "X-KhanaKirana-Blob-Cloud-key";
+
+
 }

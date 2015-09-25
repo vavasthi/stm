@@ -1,8 +1,12 @@
 package com.khanakirana.backend.servlet;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.blobstore.FileInfo;
 import com.khanakirana.backend.KKConstants;
 
 /**
@@ -19,6 +24,9 @@ import com.khanakirana.backend.KKConstants;
  */
 
 public class KKUpload extends HttpServlet {
+
+    private final static Logger logger = Logger.getLogger(KKUpload.class.getName());
+
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
     @Override
@@ -26,12 +34,10 @@ public class KKUpload extends HttpServlet {
             throws ServletException, IOException {
 
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
-        List<BlobKey> blobKeys = blobs.get(KKConstants.IMAGE_PART_NAME);
-
+        List<BlobKey> blobKeys = blobs.get(KKConstants.BLOB_STORE_KEY_FILE);
         if (blobKeys == null || blobKeys.isEmpty()) {
-            res.sendRedirect("/");
         } else {
-            res.sendRedirect("/kkserve?blob-key=" + blobKeys.get(0).getKeyString());
+            res.setHeader(KKConstants.BLOB_CLOUD_KEY, blobKeys.get(0).getKeyString());
         }
     }
 }

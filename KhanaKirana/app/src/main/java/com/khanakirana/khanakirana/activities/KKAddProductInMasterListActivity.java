@@ -116,14 +116,13 @@ public class KKAddProductInMasterListActivity extends KKMeasurementCategoryRecei
         if (requestCode == KKAndroidConstants.CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(photo);
+            imageView.setTag(R.id.item_bitmap, photo);
         }
         else if (requestCode == KKAndroidConstants.BARCODE_SCAN_REQUEST && resultCode == RESULT_OK) {
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if (result != null) {
                 scannedValue.setText(result.getContents());
             }
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(photo);
         }
     }
 
@@ -147,7 +146,7 @@ public class KKAddProductInMasterListActivity extends KKMeasurementCategoryRecei
         String itemDescription = ((EditText)(dialog.findViewById(R.id.item_description))).getText().toString();
         Spinner categories = (Spinner)(dialog.findViewById(R.id.measurement_category));
         String measurementCategory = categories.getSelectedItem().toString();
-        byte[] imageBytes = KKImageUtils.getByteArrayFromBitmap(((BitmapDrawable)imageView.getDrawable()).getBitmap(), true);
+        byte[] imageBytes = KKImageUtils.getByteArrayFromBitmap((Bitmap) imageView.getTag(R.id.item_bitmap), true);
 
         /*Blob content = new Blob();
         ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
@@ -166,8 +165,14 @@ public class KKAddProductInMasterListActivity extends KKMeasurementCategoryRecei
                 KhanaKiranaMainActivity.getSelectedAccountName(),
                 measurementCategory,
                 imageBytes).execute();
-        progressDialog.dismiss();
-        finish();
     }
-
+    public void dismisProgressIndicator() {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+                KKAddProductInMasterListActivity.this.finish();
+            }
+        });
+    }
 }
