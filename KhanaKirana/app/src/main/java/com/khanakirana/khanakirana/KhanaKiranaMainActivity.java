@@ -204,6 +204,9 @@ public class KhanaKiranaMainActivity extends Activity {
             case R.id.adding_measurement_unit_popup_item:
                 startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementUnitActivity.class), KKAndroidConstants.ADD_MEASUREMENT_UNIT_REQUEST);
                 break;
+            case R.id.add_item_category:
+                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKManageItemCategoryActivity.class), KKAndroidConstants.ADD_ITEM_CATEGORY_REQUEST);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

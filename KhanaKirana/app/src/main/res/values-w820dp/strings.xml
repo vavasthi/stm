@@ -45,5 +45,6 @@
     <string name="item_description">Please enter item description</string>
     <string name="kk_add_master_item">Add Item</string>
     <string name="kk_master_item_addition_failed">Master Item %s additional failed</string>
+    <string name="item_category_activity_label">ItemCategoryLabel</string>
 
 </resources>

@@ -5,34 +5,35 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
 
 import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
 import com.khanakirana.khanakirana.KKAndroidConstants;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
+import com.khanakirana.khanakirana.adapters.CustomItemCategoryAdapter;
+import com.khanakirana.khanakirana.background.tasks.GetItemCategoryTask;
+import com.khanakirana.khanakirana.background.tasks.ListMeasurementCategoryTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKManageItemCategory extends Activity {
+public class KKManageItemCategoryActivity extends Activity {
 
-    private Logger logger = Logger.getLogger(KKManageItemCategory.class.getName());
+    private Logger logger = Logger.getLogger(KKManageItemCategoryActivity.class.getName());
     Map<Long, List<ItemCategory>> itemCategoryMap;
+    private long currentParent = 0;
+    ProgressDialog progressDialog;
 
     Dialog dialog;
     @Override
@@ -40,6 +41,10 @@ public class KKManageItemCategory extends Activity {
         super.onCreate(savedInstanceState);
         itemCategoryMap = new HashMap<>();
         setContentView(R.layout.kk_item_category_listview);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.show();
+        new GetItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -72,13 +77,25 @@ public class KKManageItemCategory extends Activity {
     }
 
     public void setItemCategories(List<ItemCategory> itemCategories) {
-        for (ItemCategory ic : itemCategories) {
-            List<ItemCategory> icList = itemCategoryMap.get(ic.getParentId());
-            if (icList == null) {
-                icList = new ArrayList<>();
-                itemCategoryMap.put(ic.getParentId(), icList);
+
+        itemCategoryMap.clear();
+        progressDialog.dismiss();
+        if (itemCategories != null && itemCategories.size() > 0) {
+
+            for (ItemCategory ic : itemCategories) {
+                List<ItemCategory> icList = itemCategoryMap.get(ic.getParentId());
+                if (icList == null) {
+                    icList = new ArrayList<>();
+                    itemCategoryMap.put(ic.getParentId(), icList);
+                }
+                icList.add(ic);
             }
-            icList.add(ic);
+            List<ItemCategory> list = itemCategoryMap.get(currentParent);
+            if (list != null) {
+                CustomItemCategoryAdapter cica = new CustomItemCategoryAdapter(this, list);
+                ListView listView = (ListView)findViewById(R.id.kk_item_category_listview);
+                listView.setAdapter(cica);
+            }
         }
     }
 }

@@ -5,15 +5,11 @@ import android.widget.Toast;
 
 import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
 import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
 import com.khanakirana.khanakirana.R;
-import com.khanakirana.khanakirana.activities.KKManageItemCategory;
-import com.khanakirana.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
+import com.khanakirana.khanakirana.activities.KKManageItemCategoryActivity;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -21,14 +17,14 @@ import java.util.logging.Logger;
  */
 public class GetItemCategoryTask extends AsyncTask<Void, Void, Integer> {
 
-    private final KKManageItemCategory context;
+    private final KKManageItemCategoryActivity context;
     private final UserRegistrationApi registrationApiService;
     private List<ItemCategory> itemCategoryList;
 
     private Logger logger = Logger.getLogger(GetItemCategoryTask.class.getName());
 
 
-    public GetItemCategoryTask(KKManageItemCategory context,
+    public GetItemCategoryTask(KKManageItemCategoryActivity context,
                                UserRegistrationApi registrationApiService) {
         this.context = context;
         this.registrationApiService = registrationApiService;

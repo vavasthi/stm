@@ -11,6 +11,9 @@
                 android:id="@+id/add_item"
                 android:title="@string/kk_add_item"></item>
             <item
+                android:id="@+id/add_item_category"
+                android:title="@string/kk_add_item_category"></item>
+            <item
                 android:id="@+id/list_items"
                 android:title="@string/kk_list_items"></item>
             <item
