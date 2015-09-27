@@ -40,7 +40,63 @@ import java.util.logging.Logger;
 
 public class KhanaKiranaMainActivity extends Activity {
 
-        public static UserRegistrationApi getEndpoints() {
+    private static final String AUTH_PREF = "KKAuthenticationPreferences";
+    private static final String PREF_ACCOUNT_NAME = "KKPreferredAccountName";
+    private static final String PREF_IS_GOOGLE_ACCOUNT = "KKIsGoogleAccount";
+    private static final String PREF_IS_AUTHENTICATED = "KKIsAuthenticated";
+    private static final String PREF_IS_REGISTERED = "KKIsRegistered";
+    private static final String PREF_IS_ACCOUNT_CHOSEN = "KKIsAccountChosen";
+    private static final String PREF_ACCOUNT_PASSWORD = "KKPreferredAccountPassword";
+    private static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
+    static String selectedAccountName = null;
+    private static Boolean isGoogleAuthentication = null;
+    private static String password = null;
+    private static Boolean isAuthenticated = null;
+    private static Boolean isRegistered = null;
+    private static Boolean isAccountChosen = null;
+    private static SharedPreferences settings;
+    //    private static GoogleAccountCredential gac;
+    private UserRegistrationApi registrationApiService;
+    private String detectedPhoneNumber;
+    Location registrationLocation;
+
+    private Logger logger = Logger.getLogger(KhanaKiranaMainActivity.class.getName());
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        loadSharedPreferences();
+        updateRegistrationLocation();
+        registrationApiService = getEndpoints();
+        TelephonyManager telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
+        detectedPhoneNumber = telephonyManager.getLine1Number();
+        if (isGoogleAuthentication) {
+            if (isRegistered) {
+                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.TRUE, null).execute();
+            }
+            else if (isAccountChosen) {
+                registerIfRequired();
+            }
+            else {
+                chooseAccount();
+            }
+        }
+        else {
+            if (isAuthenticated) {
+
+                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.FALSE, password).execute();
+            }
+            else if (isRegistered) {
+                reauthorizeUserScreen();
+            }
+            else {
+                splashRegistrationScreen();
+            }
+        }
+    }
+
+
+    public static UserRegistrationApi getEndpoints() {
 
             // Create API handler
             HttpRequestInitializer requestInitializer = getRequestInitializer();
@@ -89,27 +145,6 @@ public class KhanaKiranaMainActivity extends Activity {
         }*/
         }
 
-    private static final String AUTH_PREF = "KKAuthenticationPreferences";
-    private static final String PREF_ACCOUNT_NAME = "KKPreferredAccountName";
-    private static final String PREF_IS_GOOGLE_ACCOUNT = "KKIsGoogleAccount";
-    private static final String PREF_IS_AUTHENTICATED = "KKIsAuthenticated";
-    private static final String PREF_IS_REGISTERED = "KKIsRegistered";
-    private static final String PREF_IS_ACCOUNT_CHOSEN = "KKIsAccountChosen";
-    private static final String PREF_ACCOUNT_PASSWORD = "KKPreferredAccountPassword";
-    private static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
-    static String selectedAccountName = null;
-    private static Boolean isGoogleAuthentication = null;
-    private static String password = null;
-    private static Boolean isAuthenticated = null;
-    private static Boolean isRegistered = null;
-    private static Boolean isAccountChosen = null;
-    private static SharedPreferences settings;
-    //    private static GoogleAccountCredential gac;
-    private UserRegistrationApi registrationApiService;
-    private String detectedPhoneNumber;
-    Location registrationLocation;
-
-    private Logger logger = Logger.getLogger(KhanaKiranaMainActivity.class.getName());
 
     private void loadSharedPreferences() {
 
@@ -139,39 +174,6 @@ public class KhanaKiranaMainActivity extends Activity {
         editor.commit();
 //        gac.setSelectedAccountName(selectedAccountName);
     }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        loadSharedPreferences();
-        updateRegistrationLocation();
-        registrationApiService = getEndpoints();
-        TelephonyManager telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
-        detectedPhoneNumber = telephonyManager.getLine1Number();
-        if (isGoogleAuthentication) {
-            if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.TRUE, null).execute();
-            }
-            else if (isAccountChosen) {
-                registerIfRequired();
-            }
-            else {
-                chooseAccount();
-            }
-        }
-        else {
-            if (isAuthenticated) {
-
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.FALSE, password).execute();
-            }
-            else if (isRegistered) {
-                reauthorizeUserScreen();
-            }
-            else {
-                splashRegistrationScreen();
-            }
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
