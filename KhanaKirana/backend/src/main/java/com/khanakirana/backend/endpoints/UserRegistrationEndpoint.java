@@ -26,6 +26,7 @@ import com.khanakirana.backend.exceptions.MeasurementPrimaryUnitException;
 import com.khanakirana.backend.jsonresource.UploadURL;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -255,6 +256,15 @@ public class UserRegistrationEndpoint {
         ItemCategory ic = new ItemCategory(ric.getId(), false, name, description);
         OfyService.ofy().save().entity(ic).now();
         return ic;
+    }
+    @ApiMethod(name = "getItemCategories")
+    public List<ItemCategory> getItemCategories() {
+
+        List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
+        if (itemCategories == null || itemCategories.size() == 0) {
+            return new ArrayList<ItemCategory>();
+        }
+        return itemCategories;
     }
     private ItemCategory getRootItemCategory() {
         ItemCategory ric = OfyService.ofy().load().type(ItemCategory.class).filter("root", Boolean.TRUE).first().now();

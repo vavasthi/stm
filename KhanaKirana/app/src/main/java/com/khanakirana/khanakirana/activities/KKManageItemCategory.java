@@ -13,10 +13,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
 import com.khanakirana.khanakirana.KKAndroidConstants;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,11 +32,13 @@ import java.util.logging.Logger;
 public class KKManageItemCategory extends Activity {
 
     private Logger logger = Logger.getLogger(KKManageItemCategory.class.getName());
+    Map<Long, List<ItemCategory>> itemCategoryMap;
 
     Dialog dialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        itemCategoryMap = new HashMap<>();
         setContentView(R.layout.kk_item_category_listview);
     }
 
@@ -64,4 +71,14 @@ public class KKManageItemCategory extends Activity {
 
     }
 
+    public void setItemCategories(List<ItemCategory> itemCategories) {
+        for (ItemCategory ic : itemCategories) {
+            List<ItemCategory> icList = itemCategoryMap.get(ic.getParentId());
+            if (icList == null) {
+                icList = new ArrayList<>();
+                itemCategoryMap.put(ic.getParentId(), icList);
+            }
+            icList.add(ic);
+        }
+    }
 }
