@@ -5,16 +5,26 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
+import com.khanakirana.khanakirana.IntentIntegrator;
 import com.khanakirana.khanakirana.KKAndroidConstants;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.adapters.CustomItemCategoryAdapter;
+import com.khanakirana.khanakirana.background.tasks.AddItemCategoryTask;
 import com.khanakirana.khanakirana.background.tasks.GetItemCategoryTask;
 import com.khanakirana.khanakirana.background.tasks.ListMeasurementCategoryTask;
 
@@ -31,8 +41,9 @@ import java.util.logging.Logger;
 public class KKManageItemCategoryActivity extends Activity {
 
     private Logger logger = Logger.getLogger(KKManageItemCategoryActivity.class.getName());
-    Map<Long, List<ItemCategory>> itemCategoryMap;
+    Map<Long, List<ItemCategory> > itemCategoryMap;
     private long currentParent = 0;
+    private String currentParentName;
     ProgressDialog progressDialog;
 
     Dialog dialog;
@@ -41,6 +52,17 @@ public class KKManageItemCategoryActivity extends Activity {
         super.onCreate(savedInstanceState);
         itemCategoryMap = new HashMap<>();
         setContentView(R.layout.kk_item_category_listview);
+        final ListView lv = (ListView)findViewById(R.id.kk_item_category_listview);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ItemCategory ic = (ItemCategory)parent.getAdapter().getItem(position);
+                currentParent = ic.getId();
+                currentParentName = ic.getName();
+                repopulateListView();
+            }
+        });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
         new GetItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
@@ -48,6 +70,7 @@ public class KKManageItemCategoryActivity extends Activity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 
     @Override
@@ -66,23 +89,31 @@ public class KKManageItemCategoryActivity extends Activity {
         //noinspection SimplifiableIfStatement
         switch(id) {
             case R.id.add_item_category:
-                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementUnitActivity.class), KKAndroidConstants.ADD_MEASUREMENT_UNIT_REQUEST);
+                createAndShowPopup();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void addMeasurementCategory(View v) {
+    public void addItemCategory(View v) {
 
+        LinearLayout viewGroup = (LinearLayout) this.findViewById(R.id.add_item_category);
+        String name = ((TextView)dialog.findViewById(R.id.item_category_name)).getText().toString();
+        String description = ((TextView)dialog.findViewById(R.id.item_category_description)).getText().toString();
+        dialog.dismiss();
+        progressDialog.show();
+        new AddItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), currentParent, name, description).execute();
     }
 
     public void setItemCategories(List<ItemCategory> itemCategories) {
 
         itemCategoryMap.clear();
-        progressDialog.dismiss();
         if (itemCategories != null && itemCategories.size() > 0) {
 
             for (ItemCategory ic : itemCategories) {
+                if (ic.getId().equals(currentParent)) {
+                    currentParentName = ic.getName();
+                }
                 List<ItemCategory> icList = itemCategoryMap.get(ic.getParentId());
                 if (icList == null) {
                     icList = new ArrayList<>();
@@ -90,12 +121,40 @@ public class KKManageItemCategoryActivity extends Activity {
                 }
                 icList.add(ic);
             }
-            List<ItemCategory> list = itemCategoryMap.get(currentParent);
-            if (list != null) {
-                CustomItemCategoryAdapter cica = new CustomItemCategoryAdapter(this, list);
-                ListView listView = (ListView)findViewById(R.id.kk_item_category_listview);
-                listView.setAdapter(cica);
-            }
+            repopulateListView();
         }
+        progressDialog.dismiss();
     }
+    private void repopulateListView() {
+
+        List<ItemCategory> list = itemCategoryMap.get(currentParent);
+        if (list == null) {
+            list = new ArrayList<>();
+        }
+        CustomItemCategoryAdapter cica = new CustomItemCategoryAdapter(this, list);
+        ListView listView = (ListView)findViewById(R.id.kk_item_category_listview);
+        listView.setAdapter(cica);
+        ((BaseAdapter)listView.getAdapter()).notifyDataSetChanged();
+    }
+    void createAndShowPopup() {
+
+        // Inflate the popup_layout.xml
+        LinearLayout viewGroup = (LinearLayout) this.findViewById(R.id.add_item_category);
+        LayoutInflater layoutInflater = (LayoutInflater) this
+                .getSystemService(this.LAYOUT_INFLATER_SERVICE);
+        final View layout = layoutInflater.inflate(R.layout.adding_items_category, viewGroup);
+        // Creating the PopupWindow
+        dialog = new Dialog(this);
+        dialog.setTitle(R.string.kk_add_item_category);
+        dialog.setContentView(layout);
+        if (currentParent == 0) {
+
+            dialog.setTitle(R.string.kk_root);
+        }
+        else {
+            dialog.setTitle(currentParentName);
+        }
+        dialog.show();
+    }
+
 }

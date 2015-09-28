@@ -46,5 +46,9 @@
     <string name="kk_add_master_item">Add Item</string>
     <string name="kk_master_item_addition_failed">Master Item %s additional failed</string>
     <string name="kk_add_item_category">Add Item Category</string>
-    <string name="item_category_activity_label">ItemCategoryLabel</string>
+    <string name="item_category_activity_label">Item Category</string>
+    <string name="item_category">Item Category</string>
+    <string name="item_category_description">Item Category Description</string>
+    <string name="kk_root">+</string>
+    <string name="kk_item_category_operation_failed">Item Category Operation Failed</string>
 </resources>

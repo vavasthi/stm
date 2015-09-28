@@ -237,26 +237,32 @@ public class UserRegistrationEndpoint {
         return new UploadURL(blobstoreService.createUploadUrl(KKConstants.MASTER_ITEM_IMAGE_UPLOAD_URL));
     }
     @ApiMethod(name = "createChildItemCategory")
-    public ItemCategory createChildItemCategory(@Named("parentId") Long parentId,
+    public List<ItemCategory> createChildItemCategory(@Named("parentId") Long parentId,
                                                 @Named("name") String name,
                                                  @Named("description") String description) {
 
         ItemCategory pic = OfyService.ofy().load().type(ItemCategory.class).id(parentId).now();
+        ItemCategory ic;
         if (pic == null) {
-            pic = getRootItemCategory();
+
+            ic = new ItemCategory(0L, true, name, description);
         }
-        ItemCategory ic = new ItemCategory(pic.getId(), false, name, description);
+        else {
+
+            ic = new ItemCategory(pic.getId(), false, name, description);
+        }
         OfyService.ofy().save().entity(ic).now();
-        return ic;
+        return getItemCategories();
     }
+
     @ApiMethod(name = "createItemCategory")
-    public ItemCategory createItemCategory(@Named("name") String name,
+    public List<ItemCategory> createItemCategory(@Named("name") String name,
                                            @Named("description") String description) {
-        ItemCategory ric = getRootItemCategory();
-        ItemCategory ic = new ItemCategory(ric.getId(), false, name, description);
+        ItemCategory ic = new ItemCategory(0L, true, name, description);
         OfyService.ofy().save().entity(ic).now();
-        return ic;
+        return getItemCategories();
     }
+
     @ApiMethod(name = "getItemCategories")
     public List<ItemCategory> getItemCategories() {
 
@@ -265,15 +271,6 @@ public class UserRegistrationEndpoint {
             return new ArrayList<ItemCategory>();
         }
         return itemCategories;
-    }
-    private ItemCategory getRootItemCategory() {
-        ItemCategory ric = OfyService.ofy().load().type(ItemCategory.class).filter("root", Boolean.TRUE).first().now();
-        if (ric == null) {
-            ric = new ItemCategory(0L, true,"root", "This is dummy root category");
-            OfyService.ofy().save().entity(ric).now();
-            return ric;
-        }
-        return ric;
     }
     private MeasurementUnit getMeasurementUnit(MeasurementCategory measurementCategory, String name) {
 
