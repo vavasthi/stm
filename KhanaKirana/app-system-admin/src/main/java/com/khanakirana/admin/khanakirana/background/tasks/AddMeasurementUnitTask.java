@@ -5,8 +5,8 @@ import android.widget.Toast;
 
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddMeasurementUnitActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementUnit;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.MeasurementUnit;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class AddMeasurementUnitTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKAddMeasurementUnitActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final SysadminApi sysadminApi;
     private final String name;
     private final String acronym;
     private final String measurementCategory;
@@ -28,14 +28,14 @@ public class AddMeasurementUnitTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AddMeasurementUnitTask(KKAddMeasurementUnitActivity context,
-                                  UserRegistrationApi registrationApiService,
+                                  SysadminApi sysadminApi,
                                   String name,
                                   String acronym,
                                   String measurementCategory,
                                   Boolean primaryUnit,
                                   Double factor) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
         this.name = name;
         this.acronym = acronym;
         this.measurementCategory = measurementCategory;
@@ -47,7 +47,7 @@ public class AddMeasurementUnitTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try {
-            MeasurementUnit unit = registrationApiService.addMeasurementUnit(name, acronym, measurementCategory, primaryUnit, factor).execute();
+            MeasurementUnit unit = sysadminApi.addMeasurementUnit(name, acronym, measurementCategory, primaryUnit, factor).execute();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

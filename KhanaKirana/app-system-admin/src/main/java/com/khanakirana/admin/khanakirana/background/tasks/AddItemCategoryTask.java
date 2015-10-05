@@ -1,7 +1,7 @@
 package com.khanakirana.admin.khanakirana.background.tasks;
 
 import com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -18,11 +18,11 @@ public class AddItemCategoryTask extends AbstractItemCategoryTask {
 
 
     public AddItemCategoryTask(KKManageItemCategoryActivity context,
-                               UserRegistrationApi registrationApiService,
+                               SysadminApi sysadminApi,
                                Long parentId,
                                String name,
                                String description) {
-        super(context, registrationApiService);
+        super(context, sysadminApi);
         this.parentId = parentId;
         this.name = name;
         this.description = description;
@@ -34,11 +34,11 @@ public class AddItemCategoryTask extends AbstractItemCategoryTask {
         try {
             if (parentId == null || parentId.equals(0L)) {
 
-                this.itemCategoryList = registrationApiService.createItemCategory(name, description).execute().getItems();
+                this.itemCategoryList = sysadminApi.createItemCategory(name, description).execute().getItems();
             }
             else {
 
-                this.itemCategoryList = registrationApiService.createChildItemCategory(parentId, name, description).execute().getItems();
+                this.itemCategoryList = sysadminApi.createChildItemCategory(parentId, name, description).execute().getItems();
             }
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {

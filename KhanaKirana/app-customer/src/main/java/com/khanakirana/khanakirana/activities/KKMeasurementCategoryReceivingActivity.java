@@ -5,7 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
+import com.khanakirana.backend.customerApi.model.MeasurementCategory;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.background.tasks.ListMeasurementCategoryTask;
 

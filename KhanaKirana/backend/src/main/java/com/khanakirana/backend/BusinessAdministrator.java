@@ -3,7 +3,7 @@ package com.khanakirana.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import com.khanakirana.backend.entity.RegisteredBusiness;
+import com.khanakirana.backend.entity.BusinessAccount;
 
 /**
  * The object model for the data we are sending through endpoints
@@ -13,9 +13,9 @@ public class BusinessAdministrator {
     public BusinessAdministrator() {
     }
 
-    public BusinessAdministrator(Long id, RegisteredBusiness registeredBusiness) {
+    public BusinessAdministrator(Long id, BusinessAccount registeredBusinessAccount) {
         this.id = id;
-        this.registeredBusiness = registeredBusiness;
+        this.registeredBusinessAccount = registeredBusinessAccount;
     }
 
     public Long getId() {
@@ -26,24 +26,24 @@ public class BusinessAdministrator {
         this.id = id;
     }
 
-    public RegisteredBusiness getRegisteredBusiness() {
-        return registeredBusiness;
+    public BusinessAccount getRegisteredBusinessAccount() {
+        return registeredBusinessAccount;
     }
 
-    public void setRegisteredBusiness(RegisteredBusiness registeredBusiness) {
-        this.registeredBusiness = registeredBusiness;
+    public void setRegisteredBusinessAccount(BusinessAccount registeredBusinessAccount) {
+        this.registeredBusinessAccount = registeredBusinessAccount;
     }
 
     @Override
     public String toString() {
         return "BusinessAdministrator{" +
                 "id=" + id +
-                ", registeredBusiness=" + registeredBusiness +
+                ", registeredBusinessAccount=" + registeredBusinessAccount +
                 '}';
     }
 
     @Id
     private Long id;
     @Index
-    private RegisteredBusiness registeredBusiness;
+    private BusinessAccount registeredBusinessAccount;
 }

@@ -21,7 +21,7 @@ import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AddMasterItemTask;
 import com.khanakirana.admin.khanakirana.utils.KKImageUtils;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
+import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 
 import java.io.File;
 import java.util.ArrayList;

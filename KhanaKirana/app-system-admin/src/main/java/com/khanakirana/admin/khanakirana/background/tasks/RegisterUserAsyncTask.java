@@ -8,8 +8,8 @@ import android.widget.EditText;
 import com.khanakirana.admin.khanakirana.KKHashing;
 import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.UserAccount;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.SysadminAccount;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final SysadminApi sysadminApi;
     private final String fullname;
     private final String address;
     private final String email;
@@ -36,11 +36,11 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
     public RegisterUserAsyncTask(KhanaKiranaMainActivity context,
-                                 UserRegistrationApi registrationApiService,
+                                 SysadminApi sysadminApi,
                                  View v,
                                  Boolean isGoogleAccount) throws NoSuchAlgorithmException {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
         this.fullname = getValueFromWidget(R.id.fullname);
         this.address = getValueFromWidget(R.id.address);
         this.email = getValueFromWidget(R.id.email);
@@ -78,14 +78,14 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
         try {
             if (isGoogleAccount) {
 
-                UserAccount registeredUser = registrationApiService.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
+                SysadminAccount registeredUser = sysadminApi.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
                 } else {
                     return ServerInteractionReturnStatus.REGISTRATION_FAILED;
                 }
             } else {
-                UserAccount registeredUser = registrationApiService.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
+                SysadminAccount registeredUser = sysadminApi.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
                 }

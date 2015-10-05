@@ -29,7 +29,7 @@ import com.khanakirana.admin.khanakirana.activities.KKAddProductInMasterListActi
 import com.khanakirana.admin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.admin.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.admin.khanakirana.background.tasks.RegisterUserAsyncTask;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -54,7 +54,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private static Boolean isAccountChosen = null;
     private static SharedPreferences settings;
     //    private static GoogleAccountCredential gac;
-    private UserRegistrationApi registrationApiService;
+    private SysadminApi sysadminApi;
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
     Location registrationLocation;
@@ -66,12 +66,12 @@ public class KhanaKiranaMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
         updateRegistrationLocation();
-        registrationApiService = getEndpoints();
+        sysadminApi = getEndpoints();
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
         if (isGoogleAuthentication) {
             if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.TRUE, null).execute();
+                new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
             }
             else if (isAccountChosen) {
                 registerIfRequired();
@@ -83,7 +83,7 @@ public class KhanaKiranaMainActivity extends Activity {
         else {
             if (isAuthenticated) {
 
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.FALSE, password).execute();
+                new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.FALSE, password).execute();
             }
             else if (isRegistered) {
                 reauthorizeUserScreen();
@@ -95,11 +95,11 @@ public class KhanaKiranaMainActivity extends Activity {
     }
 
 
-    public static UserRegistrationApi getEndpoints() {
+    public static SysadminApi getEndpoints() {
 
             // Create API handler
             HttpRequestInitializer requestInitializer = getRequestInitializer();
-            UserRegistrationApi.Builder builder = new UserRegistrationApi.Builder(
+            SysadminApi.Builder builder = new SysadminApi.Builder(
                     AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(),
                     requestInitializer)
@@ -228,10 +228,10 @@ public class KhanaKiranaMainActivity extends Activity {
         }
     }
     private void registerIfRequired() {
-        new IsRegisteredUserAsyncTask(this, registrationApiService, selectedAccountName).execute();
+        new IsRegisteredUserAsyncTask(this, sysadminApi, selectedAccountName).execute();
     }
     void registerUser(View v) throws NoSuchAlgorithmException {
-        new RegisterUserAsyncTask(this, registrationApiService, v, isGoogleAuthentication).execute();
+        new RegisterUserAsyncTask(this, sysadminApi, v, isGoogleAuthentication).execute();
     }
 
     private void setSelectedAccountName(String accountName) {

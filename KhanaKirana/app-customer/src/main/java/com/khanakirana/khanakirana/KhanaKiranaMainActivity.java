@@ -25,8 +25,7 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.khanakirana.activities.KKAddProductInMasterListActivity;
+import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.RegisterUserAsyncTask;
@@ -54,7 +53,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private static Boolean isAccountChosen = null;
     private static SharedPreferences settings;
     //    private static GoogleAccountCredential gac;
-    private UserRegistrationApi registrationApiService;
+    private CustomerApi customerApi;
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
     Location registrationLocation;
@@ -66,12 +65,12 @@ public class KhanaKiranaMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
         updateRegistrationLocation();
-        registrationApiService = getEndpoints();
+        customerApi = getEndpoints();
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
         if (isGoogleAuthentication) {
             if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.TRUE, null).execute();
+                new AuthenticateUserAsyncTask(this, customerApi, selectedAccountName, Boolean.TRUE, null).execute();
             }
             else if (isAccountChosen) {
                 registerIfRequired();
@@ -83,7 +82,7 @@ public class KhanaKiranaMainActivity extends Activity {
         else {
             if (isAuthenticated) {
 
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.FALSE, password).execute();
+                new AuthenticateUserAsyncTask(this, customerApi, selectedAccountName, Boolean.FALSE, password).execute();
             }
             else if (isRegistered) {
                 reauthorizeUserScreen();
@@ -95,11 +94,11 @@ public class KhanaKiranaMainActivity extends Activity {
     }
 
 
-    public static UserRegistrationApi getEndpoints() {
+    public static CustomerApi getEndpoints() {
 
             // Create API handler
             HttpRequestInitializer requestInitializer = getRequestInitializer();
-            UserRegistrationApi.Builder builder = new UserRegistrationApi.Builder(
+        CustomerApi.Builder builder = new CustomerApi.Builder(
                     AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(),
                     requestInitializer)
@@ -194,18 +193,6 @@ public class KhanaKiranaMainActivity extends Activity {
             case R.id.reset:
                 settings.edit().clear().commit();
                 break;
-            case R.id.add_item:
-                startActivityForResult(new Intent(this, KKAddProductInMasterListActivity.class), KKAndroidConstants.CAMERA_REQUEST);
-                break;
-            case R.id.adding_measurement_category_popup_item:
-                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementCategoryActivity.class), KKAndroidConstants.ADD_MEASUREMENT_CATEGORY_REQUEST);
-                break;
-            case R.id.adding_measurement_unit_popup_item:
-                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKAddMeasurementUnitActivity.class), KKAndroidConstants.ADD_MEASUREMENT_UNIT_REQUEST);
-                break;
-            case R.id.add_item_category:
-                startActivityForResult(new Intent(this, com.khanakirana.khanakirana.activities.KKManageItemCategoryActivity.class), KKAndroidConstants.ADD_ITEM_CATEGORY_REQUEST);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -228,10 +215,10 @@ public class KhanaKiranaMainActivity extends Activity {
         }
     }
     private void registerIfRequired() {
-        new IsRegisteredUserAsyncTask(this, registrationApiService, selectedAccountName).execute();
+        new IsRegisteredUserAsyncTask(this, customerApi, selectedAccountName).execute();
     }
     void registerUser(View v) throws NoSuchAlgorithmException {
-        new RegisterUserAsyncTask(this, registrationApiService, v, isGoogleAuthentication).execute();
+        new RegisterUserAsyncTask(this, customerApi, v, isGoogleAuthentication).execute();
     }
 
     private void setSelectedAccountName(String accountName) {

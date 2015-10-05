@@ -7,7 +7,7 @@ import com.khanakirana.backend.entity.ItemCategory;
 import com.khanakirana.backend.entity.MasterItem;
 import com.khanakirana.backend.entity.MeasurementCategory;
 import com.khanakirana.backend.entity.MeasurementUnit;
-import com.khanakirana.backend.entity.RegisteredBusiness;
+import com.khanakirana.backend.entity.BusinessAccount;
 import com.khanakirana.backend.entity.UserAccount;
 import com.khanakirana.backend.entity.UserAccountRegion;
 
@@ -16,7 +16,7 @@ import com.khanakirana.backend.entity.UserAccountRegion;
  */
 
 /**
- * Objectify service wrapper so we can statically register our persistence classes
+ * Objectify service wrapper so we can statically registerCustomer our persistence classes
  * More on Objectify here : https://code.google.com/p/objectify-appengine/pushd ~
  *
  *
@@ -26,7 +26,7 @@ public class OfyService {
     static {
         ObjectifyService.register(UserAccount.class);
         ObjectifyService.register(UserAccountRegion.class);
-        ObjectifyService.register(RegisteredBusiness.class);
+        ObjectifyService.register(BusinessAccount.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);

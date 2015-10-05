@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -25,8 +24,7 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.badmin.khanakirana.activities.KKAddProductInMasterListActivity;
+import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.badmin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.RegisterUserAsyncTask;
@@ -54,7 +52,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private static Boolean isAccountChosen = null;
     private static SharedPreferences settings;
     //    private static GoogleAccountCredential gac;
-    private UserRegistrationApi registrationApiService;
+    private BusinessApi businessApiService;
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
     Location registrationLocation;
@@ -66,12 +64,12 @@ public class KhanaKiranaMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
         updateRegistrationLocation();
-        registrationApiService = getEndpoints();
+        businessApiService = getEndpoints();
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
         if (isGoogleAuthentication) {
             if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.TRUE, null).execute();
+                new AuthenticateUserAsyncTask(this, businessApiService, selectedAccountName, Boolean.TRUE, null).execute();
             }
             else if (isAccountChosen) {
                 registerIfRequired();
@@ -83,7 +81,7 @@ public class KhanaKiranaMainActivity extends Activity {
         else {
             if (isAuthenticated) {
 
-                new AuthenticateUserAsyncTask(this, registrationApiService, selectedAccountName, Boolean.FALSE, password).execute();
+                new AuthenticateUserAsyncTask(this, businessApiService, selectedAccountName, Boolean.FALSE, password).execute();
             }
             else if (isRegistered) {
                 reauthorizeUserScreen();
@@ -95,11 +93,11 @@ public class KhanaKiranaMainActivity extends Activity {
     }
 
 
-    public static UserRegistrationApi getEndpoints() {
+    public static BusinessApi getEndpoints() {
 
             // Create API handler
             HttpRequestInitializer requestInitializer = getRequestInitializer();
-            UserRegistrationApi.Builder builder = new UserRegistrationApi.Builder(
+        BusinessApi.Builder builder = new BusinessApi.Builder(
                     AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(),
                     requestInitializer)
@@ -148,6 +146,7 @@ public class KhanaKiranaMainActivity extends Activity {
     private void loadSharedPreferences() {
 
         boolean isGoogleAuthenticationDefault = false;
+
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
             isGoogleAuthenticationDefault = true;
         }
@@ -159,7 +158,6 @@ public class KhanaKiranaMainActivity extends Activity {
         isAccountChosen = settings.getBoolean(PREF_IS_ACCOUNT_CHOSEN, Boolean.FALSE);
         password = settings.getString(PREF_ACCOUNT_PASSWORD, null);
         logger.info("Loading shared preferences : GA = " + isGoogleAuthentication + " Authed = " + isAuthenticated + " ACChosen = " + isAccountChosen + " Regd :" + isRegistered);
-
     }
     private void saveSharedPreferences() {
 
@@ -194,28 +192,16 @@ public class KhanaKiranaMainActivity extends Activity {
             case R.id.reset:
                 settings.edit().clear().commit();
                 break;
-            case R.id.add_item:
-                startActivityForResult(new Intent(this, KKAddProductInMasterListActivity.class), KKAndroidConstants.CAMERA_REQUEST);
-                break;
-            case R.id.adding_measurement_category_popup_item:
-                startActivityForResult(new Intent(this, com.khanakirana.badmin.khanakirana.activities.KKAddMeasurementCategoryActivity.class), KKAndroidConstants.ADD_MEASUREMENT_CATEGORY_REQUEST);
-                break;
-            case R.id.adding_measurement_unit_popup_item:
-                startActivityForResult(new Intent(this, com.khanakirana.badmin.khanakirana.activities.KKAddMeasurementUnitActivity.class), KKAndroidConstants.ADD_MEASUREMENT_UNIT_REQUEST);
-                break;
-            case R.id.add_item_category:
-                startActivityForResult(new Intent(this, com.khanakirana.badmin.khanakirana.activities.KKManageItemCategoryActivity.class), KKAndroidConstants.ADD_ITEM_CATEGORY_REQUEST);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void chooseAccount() {
-
+/*
         String[] accountTypes = new String[]{"com.google"};
         Intent  intent = AccountPicker.newChooseAccountIntent(null, null, accountTypes, false, null, null, null, null);
             // Play services exist but not account not chosen yet..
-        startActivityForResult(intent, KKAndroidConstants.REQUEST_ACCOUNT_PICKER);
+        startActivityForResult(intent, KKAndroidConstants.REQUEST_ACCOUNT_PICKER);*/
     }
     private void obtainCredentials() {
         setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
@@ -228,10 +214,10 @@ public class KhanaKiranaMainActivity extends Activity {
         }
     }
     private void registerIfRequired() {
-        new IsRegisteredUserAsyncTask(this, registrationApiService, selectedAccountName).execute();
+        new IsRegisteredUserAsyncTask(this, businessApiService, selectedAccountName).execute();
     }
     void registerUser(View v) throws NoSuchAlgorithmException {
-        new RegisterUserAsyncTask(this, registrationApiService, v, isGoogleAuthentication).execute();
+        new RegisterUserAsyncTask(this, businessApiService, v, isGoogleAuthentication).execute();
     }
 
     private void setSelectedAccountName(String accountName) {

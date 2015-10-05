@@ -5,9 +5,9 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
 import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.background.tasks.ListMeasurementCategoryTask;
+import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 
 import java.util.List;
 

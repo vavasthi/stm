@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
 import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.adapters.CustomItemCategoryAdapter;
 import com.khanakirana.admin.khanakirana.background.tasks.AddItemCategoryTask;
 import com.khanakirana.admin.khanakirana.background.tasks.GetItemCategoryTask;
+import com.khanakirana.backend.sysadminApi.model.ItemCategory;
 
 import java.util.ArrayList;
 import java.util.HashMap;

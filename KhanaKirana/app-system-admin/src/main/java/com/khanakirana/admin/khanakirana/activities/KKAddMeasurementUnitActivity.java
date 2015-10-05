@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementUnitTask;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
+import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 
 import java.util.ArrayList;
 import java.util.List;

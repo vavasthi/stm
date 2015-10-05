@@ -5,8 +5,8 @@ import android.widget.Toast;
 
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddMeasurementCategoryActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKAddMeasurementCategoryActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final SysadminApi sysadminApi;
     private final String measurementCategory;
     private final Boolean fractional;
 
@@ -25,11 +25,11 @@ public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AddMeasurementCategoryTask(KKAddMeasurementCategoryActivity context,
-                                      UserRegistrationApi registrationApiService,
+                                      SysadminApi sysadminApi,
                                       String measurementCategory,
                                       Boolean fractional) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
         this.measurementCategory = measurementCategory;
         this.fractional = fractional;
     }
@@ -38,7 +38,7 @@ public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try {
-            MeasurementCategory mc = registrationApiService.addMeasurementCategory(measurementCategory, fractional).execute();
+            MeasurementCategory mc = sysadminApi.addMeasurementCategory(measurementCategory, fractional).execute();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

@@ -3,8 +3,8 @@ package com.khanakirana.admin.khanakirana.background.tasks;
 import android.os.AsyncTask;
 
 import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.UserAccount;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.SysadminAccount;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,14 +15,14 @@ import java.util.logging.Logger;
 public class IsRegisteredUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final SysadminApi sysadminApi;
     private final String selectedAccountName;
 
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
-    public IsRegisteredUserAsyncTask(KhanaKiranaMainActivity context, UserRegistrationApi registrationApiService, String selectedAccountName) {
+    public IsRegisteredUserAsyncTask(KhanaKiranaMainActivity context, SysadminApi sysadminApi, String selectedAccountName) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
         this.selectedAccountName = selectedAccountName;
     }
 
@@ -31,7 +31,7 @@ public class IsRegisteredUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
         try {
             logger.log(Level.INFO, "Checking if the user is registered." + selectedAccountName);
-            UserAccount registeredUser = registrationApiService.isRegisteredUser(selectedAccountName).execute();
+            SysadminAccount registeredUser = sysadminApi.isRegisteredUser(selectedAccountName).execute();
             if (registeredUser != null) {
                 logger.info("Registered user is :" + registeredUser.toString() );
                 return ServerInteractionReturnStatus.ALREADY_REGISTERED;

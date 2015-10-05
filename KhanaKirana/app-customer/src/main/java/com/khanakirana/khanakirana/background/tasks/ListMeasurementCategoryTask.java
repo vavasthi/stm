@@ -3,8 +3,8 @@ package com.khanakirana.khanakirana.background.tasks;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.MeasurementCategory;
+import com.khanakirana.backend.customerApi.CustomerApi;
+import com.khanakirana.backend.customerApi.model.MeasurementCategory;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
 
@@ -18,23 +18,23 @@ import java.util.logging.Logger;
 public class ListMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKMeasurementCategoryReceivingActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final CustomerApi customerApi;
     private List<MeasurementCategory> categories;
 
     private Logger logger = Logger.getLogger(ListMeasurementCategoryTask.class.getName());
 
 
     public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context,
-                                       UserRegistrationApi registrationApiService) {
+                                       CustomerApi customerApi) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.customerApi = customerApi;
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            categories = registrationApiService.listMeasurementCategories().execute().getItems();
+            categories = customerApi.listMeasurementCategories().execute().getItems();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

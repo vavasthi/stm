@@ -3,8 +3,8 @@ package com.khanakirana.badmin.khanakirana.background.tasks;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
+import com.khanakirana.backend.businessApi.BusinessApi;
+import com.khanakirana.backend.businessApi.model.ItemCategory;
 import com.khanakirana.badmin.khanakirana.R;
 import com.khanakirana.badmin.khanakirana.activities.KKManageItemCategoryActivity;
 
@@ -17,16 +17,16 @@ import java.util.logging.Logger;
 abstract class AbstractItemCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     final KKManageItemCategoryActivity context;
-    final UserRegistrationApi registrationApiService;
+    final BusinessApi businessApiService;
     List<ItemCategory> itemCategoryList;
 
     private Logger logger = Logger.getLogger(AbstractItemCategoryTask.class.getName());
 
 
     public AbstractItemCategoryTask(KKManageItemCategoryActivity context,
-                               UserRegistrationApi registrationApiService) {
+                                    BusinessApi businessApiService) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.businessApiService = businessApiService;
     }
 
     protected void onPostExecute (Integer result) {

@@ -1,1 +1,1 @@
-include ':backend', ':app-customer', ':app-system-admin', ':app-business-admin'
+include ':backend', ':app-business-admin', ':app-customer', ':app-system-admin'

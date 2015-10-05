@@ -2,8 +2,8 @@ package com.khanakirana.khanakirana.background.tasks;
 
 import android.os.AsyncTask;
 
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.UserAccount;
+import com.khanakirana.backend.customerApi.CustomerApi;
+import com.khanakirana.backend.customerApi.model.UserAccount;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 
 import java.util.logging.Level;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final CustomerApi customerApi;
     private final String selectedAccountName;
     private final String password;
     private final Boolean isGoogleAccount;
@@ -24,11 +24,11 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AuthenticateUserAsyncTask(KhanaKiranaMainActivity context,
-                                     UserRegistrationApi registrationApiService,
+                                     CustomerApi customerApi,
                                      String selectedAccountName,
                                      Boolean isGoogleAccount, String password) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.customerApi = customerApi;
         this.selectedAccountName = selectedAccountName;
         this.isGoogleAccount = isGoogleAccount;
         this.password = password;
@@ -40,7 +40,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
         try {
             if (isGoogleAccount) {
 
-                UserAccount registeredUser = registrationApiService.isRegisteredUser(selectedAccountName).execute();
+                UserAccount registeredUser = customerApi.isRegisteredUser(selectedAccountName).execute();
                 System.out.println("Registered user is :" + registeredUser.toString());
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
@@ -48,7 +48,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
                     return ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED;
                 }
             } else {
-                UserAccount registeredUser = registrationApiService.authenticate(selectedAccountName, password, isGoogleAccount).execute();
+                UserAccount registeredUser = customerApi.authenticate(selectedAccountName, password, isGoogleAccount).execute();
                 if (registeredUser != null) {
                     logger.info(registeredUser.toPrettyString());
                     return ServerInteractionReturnStatus.AUTHORIZED;

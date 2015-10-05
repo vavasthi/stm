@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.UserAccount;
+import com.khanakirana.backend.businessApi.BusinessApi;
+import com.khanakirana.backend.businessApi.model.BusinessAccount;
 import com.khanakirana.badmin.khanakirana.KKHashing;
 import com.khanakirana.badmin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.badmin.khanakirana.R;
@@ -21,8 +21,8 @@ import java.util.logging.Logger;
 public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final UserRegistrationApi registrationApiService;
-    private final String fullname;
+    private final BusinessApi businessApi;
+    private final String name;
     private final String address;
     private final String email;
     private final String mobile;
@@ -36,12 +36,12 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
     public RegisterUserAsyncTask(KhanaKiranaMainActivity context,
-                                 UserRegistrationApi registrationApiService,
+                                 BusinessApi businessApi,
                                  View v,
                                  Boolean isGoogleAccount) throws NoSuchAlgorithmException {
         this.context = context;
-        this.registrationApiService = registrationApiService;
-        this.fullname = getValueFromWidget(R.id.fullname);
+        this.businessApi = businessApi;
+        this.name = getValueFromWidget(R.id.fullname);
         this.address = getValueFromWidget(R.id.address);
         this.email = getValueFromWidget(R.id.email);
         this.mobile = getValueFromWidget(R.id.mobile);
@@ -78,14 +78,14 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
         try {
             if (isGoogleAccount) {
 
-                UserAccount registeredUser = registrationApiService.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
+                BusinessAccount registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
                 } else {
                     return ServerInteractionReturnStatus.REGISTRATION_FAILED;
                 }
             } else {
-                UserAccount registeredUser = registrationApiService.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
+                BusinessAccount registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
                 }

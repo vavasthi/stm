@@ -13,13 +13,11 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
+import com.khanakirana.backend.customerApi.model.ItemCategory;
 import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.adapters.CustomItemCategoryAdapter;
-import com.khanakirana.khanakirana.background.tasks.AddItemCategoryTask;
 import com.khanakirana.khanakirana.background.tasks.GetItemCategoryTask;
 
 import java.util.ArrayList;
@@ -87,16 +85,6 @@ public class KKManageItemCategoryActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void addItemCategory(View v) {
-
-        LinearLayout viewGroup = (LinearLayout) this.findViewById(R.id.add_item_category);
-        String name = ((TextView)dialog.findViewById(R.id.item_category_name)).getText().toString();
-        String description = ((TextView)dialog.findViewById(R.id.item_category_description)).getText().toString();
-        dialog.dismiss();
-        progressDialog.show();
-        new AddItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), currentParent, name, description).execute();
     }
 
     public void setItemCategories(List<ItemCategory> itemCategories) {

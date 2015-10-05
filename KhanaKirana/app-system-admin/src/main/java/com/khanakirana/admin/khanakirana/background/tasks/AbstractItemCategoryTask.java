@@ -5,8 +5,8 @@ import android.widget.Toast;
 
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.ItemCategory;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,16 +17,16 @@ import java.util.logging.Logger;
 abstract class AbstractItemCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     final KKManageItemCategoryActivity context;
-    final UserRegistrationApi registrationApiService;
+    final SysadminApi sysadminApi;
     List<ItemCategory> itemCategoryList;
 
     private Logger logger = Logger.getLogger(AbstractItemCategoryTask.class.getName());
 
 
     public AbstractItemCategoryTask(KKManageItemCategoryActivity context,
-                               UserRegistrationApi registrationApiService) {
+                                    SysadminApi sysadminApi) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
     }
 
     protected void onPostExecute (Integer result) {

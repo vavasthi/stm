@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.khanakirana.backend.userRegistrationApi.model.ItemCategory;
+import com.khanakirana.backend.customerApi.model.ItemCategory;
 import com.khanakirana.khanakirana.R;
 
 import java.util.List;

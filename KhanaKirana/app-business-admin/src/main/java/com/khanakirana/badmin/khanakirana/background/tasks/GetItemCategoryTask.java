@@ -1,6 +1,6 @@
 package com.khanakirana.badmin.khanakirana.background.tasks;
 
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
+import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.badmin.khanakirana.activities.KKManageItemCategoryActivity;
 
 import java.io.IOException;
@@ -16,15 +16,15 @@ public class GetItemCategoryTask extends AbstractItemCategoryTask {
 
 
     public GetItemCategoryTask(KKManageItemCategoryActivity context,
-                               UserRegistrationApi registrationApiService) {
-        super(context, registrationApiService);
+                               BusinessApi businessApi) {
+        super(context, businessApi);
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            this.itemCategoryList= registrationApiService.getItemCategories().execute().getItems();
+            this.itemCategoryList= businessApiService.getItemCategories().execute().getItems();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

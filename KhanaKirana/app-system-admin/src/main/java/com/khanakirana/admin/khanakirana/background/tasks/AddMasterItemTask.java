@@ -6,8 +6,8 @@ import android.widget.Toast;
 import com.khanakirana.admin.khanakirana.KKAndroidConstants;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddProductInMasterListActivity;
-import com.khanakirana.backend.userRegistrationApi.UserRegistrationApi;
-import com.khanakirana.backend.userRegistrationApi.model.MasterItem;
+import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.backend.sysadminApi.model.MasterItem;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKAddProductInMasterListActivity context;
-    private final UserRegistrationApi registrationApiService;
+    private final SysadminApi sysadminApi;
     private final String title;
     private final String description;
     private final String upc;
@@ -42,7 +42,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AddMasterItemTask(KKAddProductInMasterListActivity context,
-                             UserRegistrationApi registrationApiService,
+                             SysadminApi sysadminApi,
                              String title,
                              String description,
                              String upc,
@@ -51,7 +51,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
                              String measurementCategory,
                              byte[] content) {
         this.context = context;
-        this.registrationApiService = registrationApiService;
+        this.sysadminApi = sysadminApi;
         this.title = title;
         this.description = description;
         if (upc == null || upc.trim().equals("")) {
@@ -70,7 +70,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try{
-            String uploadURL = registrationApiService.getUploadURL().execute().getUrl();
+            String uploadURL = sysadminApi.getUploadURL().execute().getUrl();
             OkHttpClient httpClient = new OkHttpClient();
             String filename = UUID.randomUUID().toString() + ".png";
             RequestBody body = new MultipartBuilder(IMAGE_PART_NAME)
@@ -81,7 +81,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
             Response response = httpClient.newCall(request).execute();
             logger.info("Upload request/response is " + request.toString() + "\n" + response.toString());
             String cloudKey = response.header(KKAndroidConstants.BLOB_CLOUD_KEY);
-            MasterItem mi = registrationApiService.addItemInMasterList(title, description, upc, imageType, cloudKey, userEmailId, measurementCategory).execute();
+            MasterItem mi = sysadminApi.addItemInMasterList(title, description, upc, imageType, cloudKey, userEmailId, measurementCategory).execute();
             if (!response.isSuccessful()) {
 
                 return ServerInteractionReturnStatus.FATAL_ERROR;
