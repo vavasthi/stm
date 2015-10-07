@@ -67,7 +67,7 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
     public void splashUserNotApprovedScreen() {
         isRegistered = true;
         saveSharedPreferences();
-        setContentView(R.layout.activity_khana_kirana_main);
+        setContentView(R.layout.business_user_not_approved);
     }
     public void splashReauthenticateScreen() {
 
@@ -227,7 +227,14 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
                                     splashRegistrationScreen();
                                     break;
                                 case ServerInteractionReturnStatus.SUCCESS:
-                                    splashMainScreen();
+                                    if (bar.getAccount().getLocked()) {
+
+                                        splashUserNotApprovedScreen();
+                                    }
+                                    else {
+
+                                        splashMainScreen();
+                                    }
                                     break;
                                 case ServerInteractionReturnStatus.INVALID_USER:
                                     splashBadUserScreen();
