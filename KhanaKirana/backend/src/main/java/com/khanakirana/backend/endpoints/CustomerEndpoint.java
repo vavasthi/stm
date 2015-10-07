@@ -9,7 +9,7 @@ package com.khanakirana.backend.endpoints;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.khanakirana.backend.utils.KKConstants;
+import com.khanakirana.common.KKConstants;
 import com.khanakirana.backend.OfyService;
 import com.khanakirana.backend.entity.ItemCategory;
 import com.khanakirana.backend.entity.MeasurementCategory;

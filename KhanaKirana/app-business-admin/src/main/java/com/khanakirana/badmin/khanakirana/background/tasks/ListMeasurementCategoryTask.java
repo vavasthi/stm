@@ -7,6 +7,7 @@ import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.MeasurementCategory;
 import com.khanakirana.badmin.khanakirana.R;
 import com.khanakirana.badmin.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
 import java.util.List;

@@ -115,6 +115,7 @@
                 android:textSize="@dimen/kk_registration_popup_text_size"
                 android:text="@string/kk_cancel_button"
                 android:layout_alignParentLeft="true"
+                android:onClick="cancelRegister"
                 android:textColor="@color/kk_app_foreground" />
 
             <Button
@@ -125,6 +126,7 @@
                 android:textSize="@dimen/kk_registration_popup_text_size"
                 android:text="@string/kk_register_button"
                 android:layout_alignParentRight="true"
+                android:onClick="registerUser"
                 android:textColor="@color/kk_app_foreground" />
         </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.khanakirana.badmin.khanakirana.background.tasks;
 
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.badmin.khanakirana.activities.KKManageItemCategoryActivity;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
 import java.util.logging.Logger;

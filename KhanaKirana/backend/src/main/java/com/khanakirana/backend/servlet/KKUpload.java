@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.khanakirana.backend.utils.KKConstants;
+import com.khanakirana.common.KKConstants;
 
 /**
  * Created by vavasthi on 24/9/15.

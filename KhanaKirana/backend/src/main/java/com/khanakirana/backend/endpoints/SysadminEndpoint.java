@@ -23,7 +23,7 @@ import com.khanakirana.backend.exceptions.MeasurementCategoryAlreadyExists;
 import com.khanakirana.backend.exceptions.MeasurementCategoryDoesntExist;
 import com.khanakirana.backend.exceptions.MeasurementPrimaryUnitException;
 import com.khanakirana.backend.jsonresource.UploadURL;
-import com.khanakirana.backend.utils.KKConstants;
+import com.khanakirana.common.KKConstants;
 
 import java.util.ArrayList;
 import java.util.List;

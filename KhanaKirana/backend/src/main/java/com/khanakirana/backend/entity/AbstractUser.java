@@ -44,11 +44,11 @@ public class AbstractUser {
         this.locked = locked;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -132,6 +132,14 @@ public class AbstractUser {
         this.accountType = accountType;
     }
 
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
     @Override
     public String toString() {
         return "AbstractUser{" +
@@ -150,7 +158,7 @@ public class AbstractUser {
     }
 
     @Id
-    private String id;
+    private Long id;
     @Index
     private String name;
     private String address;

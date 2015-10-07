@@ -4,7 +4,9 @@ import android.os.AsyncTask;
 
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.BusinessAccount;
-import com.khanakirana.badmin.khanakirana.KhanaKiranaMainActivity;
+import com.khanakirana.backend.businessApi.model.BusinessAccountResult;
+import com.khanakirana.badmin.khanakirana.activities.KhanaKiranaBusinessMainActivity;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,9 +14,9 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 14/9/15.
  */
-public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
+public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, BusinessAccountResult> {
 
-    private final KhanaKiranaMainActivity context;
+    private final KhanaKiranaBusinessMainActivity context;
     private final BusinessApi businessApiService;
     private final String selectedAccountName;
     private final String password;
@@ -23,7 +25,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
 
-    public AuthenticateUserAsyncTask(KhanaKiranaMainActivity context,
+    public AuthenticateUserAsyncTask(KhanaKiranaBusinessMainActivity context,
                                      BusinessApi businessApiService,
                                      String selectedAccountName,
                                      Boolean isGoogleAccount, String password) {
@@ -35,45 +37,34 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(Void... params) {
+    protected BusinessAccountResult doInBackground(Void... params) {
 
         try {
             if (isGoogleAccount) {
 
-                BusinessAccount registeredUser = businessApiService.isRegisteredUser(selectedAccountName).execute();
+                BusinessAccountResult registeredUser = businessApiService.isRegisteredUser(selectedAccountName).execute();
                 System.out.println("Registered user is :" + registeredUser.toString());
                 if (registeredUser != null) {
-                    return ServerInteractionReturnStatus.AUTHORIZED;
+                    return registeredUser;
                 } else {
-                    return ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED;
+                    return null;
                 }
             } else {
-                BusinessAccount registeredUser = businessApiService.authenticate(selectedAccountName, password, isGoogleAccount).execute();
+                BusinessAccountResult registeredUser = businessApiService.authenticate(selectedAccountName, password, isGoogleAccount).execute();
                 if (registeredUser != null) {
-                    logger.info(registeredUser.toPrettyString());
-                    return ServerInteractionReturnStatus.AUTHORIZED;
+                    return registeredUser;
                 }
                 else {
-                    return ServerInteractionReturnStatus.INVALID_USER;
+                    return null;
                 }
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Failure in remote call ", e);
         }
-        return ServerInteractionReturnStatus.FATAL_ERROR;
+        return null;
     }
-    protected void onPostExecute (Integer result) {
+    protected void onPostExecute (BusinessAccountResult account) {
 
-        switch (result) {
-            case ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED:
-                context.splashRegistrationScreen();
-                break;
-            case ServerInteractionReturnStatus.AUTHORIZED:
-                context.splashMainScreen();
-                break;
-            case ServerInteractionReturnStatus.INVALID_USER:
-                context.reauthorizeUserScreen();
-                break;
-        }
+        context.splashAppropriateViewForAccount(account);
     }
 }

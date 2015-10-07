@@ -7,8 +7,9 @@ import android.widget.EditText;
 
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.BusinessAccount;
+import com.khanakirana.backend.businessApi.model.BusinessAccountResult;
 import com.khanakirana.badmin.khanakirana.KKHashing;
-import com.khanakirana.badmin.khanakirana.KhanaKiranaMainActivity;
+import com.khanakirana.badmin.khanakirana.activities.KhanaKiranaBusinessMainActivity;
 import com.khanakirana.badmin.khanakirana.R;
 
 import java.security.NoSuchAlgorithmException;
@@ -18,9 +19,9 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 14/9/15.
  */
-public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
+public class RegisterUserAsyncTask extends AsyncTask<Void, Void, BusinessAccountResult> {
 
-    private final KhanaKiranaMainActivity context;
+    private final KhanaKiranaBusinessMainActivity context;
     private final BusinessApi businessApi;
     private final String name;
     private final String address;
@@ -35,7 +36,7 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
-    public RegisterUserAsyncTask(KhanaKiranaMainActivity context,
+    public RegisterUserAsyncTask(KhanaKiranaBusinessMainActivity context,
                                  BusinessApi businessApi,
                                  View v,
                                  Boolean isGoogleAccount) throws NoSuchAlgorithmException {
@@ -73,40 +74,33 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(Void... params) {
+    protected BusinessAccountResult doInBackground(Void... params) {
 
         try {
             if (isGoogleAccount) {
 
-                BusinessAccount registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
+                BusinessAccountResult registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
                 if (registeredUser != null) {
-                    return ServerInteractionReturnStatus.AUTHORIZED;
+                    return registeredUser;
                 } else {
-                    return ServerInteractionReturnStatus.REGISTRATION_FAILED;
+                    return null;
                 }
             } else {
-                BusinessAccount registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
+                BusinessAccountResult registeredUser = businessApi.register(name, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
                 if (registeredUser != null) {
-                    return ServerInteractionReturnStatus.AUTHORIZED;
+                    return registeredUser;
                 }
                 else {
-                    return ServerInteractionReturnStatus.REGISTRATION_FAILED;
+                    return null;
                 }
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Remote call register failed", e);
         }
-        return ServerInteractionReturnStatus.FATAL_ERROR;
+        return null;
     }
-    protected void onPostExecute (Integer result) {
+    protected void onPostExecute (BusinessAccountResult account) {
 
-        switch (result) {
-            case ServerInteractionReturnStatus.AUTHORIZED:
-                context.splashMainScreen();
-                break;
-            case ServerInteractionReturnStatus.REGISTRATION_FAILED:
-                context.registrationFailedScreen();
-                break;
-        }
+        context.splashAppropriateViewForAccount(account);
     }
 }

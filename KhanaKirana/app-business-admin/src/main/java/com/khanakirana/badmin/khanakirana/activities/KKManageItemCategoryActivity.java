@@ -13,10 +13,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.khanakirana.backend.businessApi.model.ItemCategory;
-import com.khanakirana.badmin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.badmin.khanakirana.R;
 import com.khanakirana.badmin.khanakirana.adapters.CustomItemCategoryAdapter;
 import com.khanakirana.badmin.khanakirana.background.tasks.GetItemCategoryTask;
@@ -31,7 +29,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKManageItemCategoryActivity extends Activity {
+public class KKManageItemCategoryActivity extends KhanaKiranaBusinessAbstractActivity {
 
     private Logger logger = Logger.getLogger(KKManageItemCategoryActivity.class.getName());
     Map<Long, List<ItemCategory> > itemCategoryMap;
@@ -58,7 +56,7 @@ public class KKManageItemCategoryActivity extends Activity {
         });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new GetItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
+        new GetItemCategoryTask(this, KhanaKiranaBusinessMainActivity.getEndpoints()).execute();
 
     }
 

@@ -52,5 +52,7 @@
     <string name="kk_item_category_operation_failed">Item Category Operation Failed</string>
     <string name="kk_businessname_hint">Business Name</string>
     <string name="kk_address_hint">Address</string>
+    <string name="kk_business_user_not_approved">Business User is not approved.\\nPlease wait for approval.</string>
+    <string name="kk_registration_failed_message">User registration failed.\\nPlease try again.</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.khanakirana.backend.utils;
+package com.khanakirana.common;
 
 /**
  * Created by vavasthi on 19/9/15.

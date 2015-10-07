@@ -14,7 +14,7 @@ public class UserAccount extends AbstractUser {
 
     public UserAccount(String name, String address, String email, String mobile, String password, String city, String state, Double latitude, Double longitude,Boolean googleUser) {
 
-        super(name, address, city, state, email, mobile, password, latitude, longitude, googleUser, AccountType.CUSTOMER, Boolean.TRUE);
+        super(name, address, city, state, email, mobile, password, latitude, longitude, googleUser, AccountType.CUSTOMER, Boolean.FALSE);
     }
 
 }

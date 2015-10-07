@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app-customer" />
             <option value="$PROJECT_DIR$/app-system-admin" />
             <option value="$PROJECT_DIR$/backend" />
+            <option value="$PROJECT_DIR$/common" />
           </set>
         </option>
       </GradleProjectSettings>

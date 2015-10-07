@@ -12,6 +12,7 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.khanakirana.backend.OfyService;
+import com.khanakirana.backend.entity.BusinessAccountResult;
 import com.khanakirana.backend.entity.ItemCategory;
 import com.khanakirana.backend.entity.MasterItem;
 import com.khanakirana.backend.entity.MeasurementCategory;
@@ -24,7 +25,8 @@ import com.khanakirana.backend.exceptions.MeasurementCategoryAlreadyExists;
 import com.khanakirana.backend.exceptions.MeasurementCategoryDoesntExist;
 import com.khanakirana.backend.exceptions.MeasurementPrimaryUnitException;
 import com.khanakirana.backend.jsonresource.UploadURL;
-import com.khanakirana.backend.utils.KKConstants;
+import com.khanakirana.common.KKConstants;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,28 +58,28 @@ public class BusinessEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public BusinessAccount isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
+    public BusinessAccountResult isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
 
         try {
 
             BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", email).first().now();
             if (account == null) {
 
-                throw new InvalidUserAccountException();
+                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
             }
             logger.log(Level.INFO, "User Account retrieved." + account.toString());
-            return account;
+            return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Exception thrown by the load.", e);
         }
-        return null;
+        return new BusinessAccountResult(null, ServerInteractionReturnStatus.INVALID_USER);
     }
 
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "register")
-    public BusinessAccount register(@Named("name") String name,
+    public BusinessAccountResult register(@Named("name") String name,
                                         @Named("address") String address,
                                         @Named("email") String email,
                                         @Named("mobile") String mobile,
@@ -93,11 +95,11 @@ public class BusinessEndpoint {
             account.setPassword(null);
         }
         OfyService.ofy().save().entity(account).now();
-        return account;
+        return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
     }
 
     @ApiMethod(name = "authenticate")
-    public BusinessAccount authenticate(@Named("email") String email,
+    public BusinessAccountResult authenticate(@Named("email") String email,
                                     @Named("password") String password,
                                     @Named("googleUser") Boolean googleUser) {
         try {
@@ -106,40 +108,22 @@ public class BusinessEndpoint {
             logger.log(Level.INFO, "User Account retrieved." + account.toString());
             if (account == null) {
 
-                throw new InvalidUserAccountException();
+                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
+            } else if (!googleUser && !password.equalsIgnoreCase(password)) {
+
+                return new BusinessAccountResult(account, ServerInteractionReturnStatus.AUTHENTICATION_FAILED);
             }
-            return account;
+            return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Exception thrown by the load.", e);
         }
-        return null;
+        return new BusinessAccountResult(null, ServerInteractionReturnStatus.FATAL_ERROR);
     }
 
     @ApiMethod(name = "supportedRegions")
     public List<UserAccountRegion> supportedRegions() {
         List<UserAccountRegion> regions = OfyService.ofy().load().type(UserAccountRegion.class).list();
         return regions;
-    }
-
-    /**
-     * A simple endpoint method that takes a name and says Hi back
-     */
-    @ApiMethod(name = "isRegistered")
-    public UserAccount isRegistered(@Named("email") String email) throws InvalidUserAccountException {
-
-        try {
-
-            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
-            if (account == null) {
-
-                throw new InvalidUserAccountException();
-            }
-            logger.log(Level.INFO, "User Account retrieved." + account.toString());
-            return account;
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception thrown by the load.", e);
-        }
-        return null;
     }
 
     @ApiMethod(name = "listMeasurementCategories")
