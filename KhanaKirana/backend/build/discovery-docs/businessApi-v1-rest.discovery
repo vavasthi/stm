@@ -1,0 +1,646 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/MJ9UXJAThPOZCbiE70cH4iV9-jU\"",
+ "discoveryVersion": "v1",
+ "id": "businessApi:v1",
+ "name": "businessApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.khanakirana.com",
+ "ownerName": "backend.khanakirana.com",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://myApplicationId.appspot.com/_ah/api/businessApi/v1/",
+ "basePath": "/_ah/api/businessApi/v1/",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "servicePath": "businessApi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "BusinessAccount": {
+   "id": "BusinessAccount",
+   "type": "object",
+   "properties": {
+    "accountType": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "address": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "googleUser": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "latitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "locked": {
+     "type": "boolean"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "mobile": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    },
+    "region": {
+     "$ref": "UserAccountRegion"
+    }
+   }
+  },
+  "BusinessAccountResult": {
+   "id": "BusinessAccountResult",
+   "type": "object",
+   "properties": {
+    "account": {
+     "$ref": "BusinessAccount"
+    },
+    "status": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "ItemCategory": {
+   "id": "ItemCategory",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "parentId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "root": {
+     "type": "boolean"
+    }
+   }
+  },
+  "ItemCategoryCollection": {
+   "id": "ItemCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "ItemCategory"
+     }
+    }
+   }
+  },
+  "MasterItem": {
+   "id": "MasterItem",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "imageCloudKey": {
+     "type": "string"
+    },
+    "imageType": {
+     "type": "string"
+    },
+    "measurementCategoryId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "upc": {
+     "type": "string"
+    },
+    "userEmailId": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementCategory": {
+   "id": "MeasurementCategory",
+   "type": "object",
+   "properties": {
+    "fractional": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementCategoryCollection": {
+   "id": "MeasurementCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementCategory"
+     }
+    }
+   }
+  },
+  "MeasurementUnit": {
+   "id": "MeasurementUnit",
+   "type": "object",
+   "properties": {
+    "acronym": {
+     "type": "string"
+    },
+    "factor": {
+     "type": "number",
+     "format": "double"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "measurementCategoryId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "primaryUnit": {
+     "type": "boolean"
+    }
+   }
+  },
+  "MeasurementUnitCollection": {
+   "id": "MeasurementUnitCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementUnit"
+     }
+    }
+   }
+  },
+  "UploadURL": {
+   "id": "UploadURL",
+   "type": "object",
+   "properties": {
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAccountRegion": {
+   "id": "UserAccountRegion",
+   "type": "object",
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAccountRegionCollection": {
+   "id": "UserAccountRegionCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "UserAccountRegion"
+     }
+    }
+   }
+  }
+ },
+ "methods": {
+  "addItemInMasterList": {
+   "id": "businessApi.addItemInMasterList",
+   "path": "addItemInMasterList/{name}/{description}/{upc}/{imageType}/{imageCloudKey}/{userEmailId}/{measurementCategory}",
+   "httpMethod": "POST",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "imageCloudKey": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "imageType": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "measurementCategory": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "upc": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "userEmailId": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "description",
+    "upc",
+    "imageType",
+    "imageCloudKey",
+    "userEmailId",
+    "measurementCategory"
+   ],
+   "response": {
+    "$ref": "MasterItem"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "addMeasurementCategory": {
+   "id": "businessApi.addMeasurementCategory",
+   "path": "addMeasurementCategory/{name}/{fractional}",
+   "httpMethod": "POST",
+   "parameters": {
+    "fractional": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "fractional"
+   ],
+   "response": {
+    "$ref": "MeasurementCategory"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "authenticate": {
+   "id": "businessApi.authenticate",
+   "path": "authenticate/{email}/{password}/{googleUser}",
+   "httpMethod": "POST",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
+    "password": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "email",
+    "password",
+    "googleUser"
+   ],
+   "response": {
+    "$ref": "BusinessAccountResult"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "createChildItemCategory": {
+   "id": "businessApi.createChildItemCategory",
+   "path": "createChildItemCategory/{parentId}/{name}/{description}",
+   "httpMethod": "POST",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "parentId": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "parentId",
+    "name",
+    "description"
+   ],
+   "response": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "createItemCategory": {
+   "id": "businessApi.createItemCategory",
+   "path": "createItemCategory/{name}/{description}",
+   "httpMethod": "POST",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "description"
+   ],
+   "response": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getItemCategories": {
+   "id": "businessApi.getItemCategories",
+   "path": "itemcategorycollection",
+   "httpMethod": "GET",
+   "response": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getUnitsForCategory": {
+   "id": "businessApi.getUnitsForCategory",
+   "path": "measurementunitcollection/{measurementCategory}",
+   "httpMethod": "GET",
+   "parameters": {
+    "measurementCategory": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "measurementCategory"
+   ],
+   "response": {
+    "$ref": "MeasurementUnitCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getUploadURL": {
+   "id": "businessApi.getUploadURL",
+   "path": "uploadurl",
+   "httpMethod": "GET",
+   "response": {
+    "$ref": "UploadURL"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "isRegisteredUser": {
+   "id": "businessApi.isRegisteredUser",
+   "path": "isRegisteredUser/{email}",
+   "httpMethod": "POST",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "email"
+   ],
+   "response": {
+    "$ref": "BusinessAccountResult"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listMeasurementCategories": {
+   "id": "businessApi.listMeasurementCategories",
+   "path": "lisMeasurementCategories",
+   "httpMethod": "POST",
+   "response": {
+    "$ref": "MeasurementCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "register": {
+   "id": "businessApi.register",
+   "path": "register/{name}/{address}/{email}/{mobile}/{password}/{city}/{state}/{latitude}/{longitude}/{googleUser}",
+   "httpMethod": "POST",
+   "parameters": {
+    "address": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "city": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "email": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true,
+     "location": "path"
+    },
+    "latitude": {
+     "type": "number",
+     "required": true,
+     "format": "double",
+     "location": "path"
+    },
+    "longitude": {
+     "type": "number",
+     "required": true,
+     "format": "double",
+     "location": "path"
+    },
+    "mobile": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "password": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "state": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "address",
+    "email",
+    "mobile",
+    "password",
+    "city",
+    "state",
+    "latitude",
+    "longitude",
+    "googleUser"
+   ],
+   "response": {
+    "$ref": "BusinessAccountResult"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "supportedRegions": {
+   "id": "businessApi.supportedRegions",
+   "path": "supportedRegions",
+   "httpMethod": "POST",
+   "response": {
+    "$ref": "UserAccountRegionCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

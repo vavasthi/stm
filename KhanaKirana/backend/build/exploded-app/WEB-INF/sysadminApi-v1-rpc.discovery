@@ -1,0 +1,723 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/TUiF0FUJ4RKeKimaLegkklEjbf8\"",
+ "discoveryVersion": "v1",
+ "id": "sysadminApi:v1",
+ "name": "sysadminApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.khanakirana.com",
+ "ownerName": "backend.khanakirana.com",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rpcUrl": "https://myApplicationId.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Actionable": {
+   "id": "Actionable",
+   "type": "object",
+   "properties": {
+    "actionTitle": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "actionType": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "description": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "details": {
+     "type": "string"
+    },
+    "done": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "title": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "ActionableCollection": {
+   "id": "ActionableCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Actionable"
+     }
+    }
+   }
+  },
+  "BusinessAccount": {
+   "id": "BusinessAccount",
+   "type": "object",
+   "properties": {
+    "accountType": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "address": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "googleUser": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "latitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "locked": {
+     "type": "boolean"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "mobile": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    },
+    "region": {
+     "$ref": "UserAccountRegion"
+    }
+   }
+  },
+  "ItemCategory": {
+   "id": "ItemCategory",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "parentId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "root": {
+     "type": "boolean"
+    }
+   }
+  },
+  "ItemCategoryCollection": {
+   "id": "ItemCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "ItemCategory"
+     }
+    }
+   }
+  },
+  "MasterItem": {
+   "id": "MasterItem",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "imageCloudKey": {
+     "type": "string"
+    },
+    "imageType": {
+     "type": "string"
+    },
+    "measurementCategoryId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "upc": {
+     "type": "string"
+    },
+    "userEmailId": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementCategory": {
+   "id": "MeasurementCategory",
+   "type": "object",
+   "properties": {
+    "fractional": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "MeasurementCategoryCollection": {
+   "id": "MeasurementCategoryCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementCategory"
+     }
+    }
+   }
+  },
+  "MeasurementUnit": {
+   "id": "MeasurementUnit",
+   "type": "object",
+   "properties": {
+    "acronym": {
+     "type": "string"
+    },
+    "factor": {
+     "type": "number",
+     "format": "double"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "measurementCategoryId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "primaryUnit": {
+     "type": "boolean"
+    }
+   }
+  },
+  "MeasurementUnitCollection": {
+   "id": "MeasurementUnitCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "MeasurementUnit"
+     }
+    }
+   }
+  },
+  "SysadminAccount": {
+   "id": "SysadminAccount",
+   "type": "object",
+   "properties": {
+    "accountType": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "address": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "googleUser": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "latitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "locked": {
+     "type": "boolean"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "double"
+    },
+    "mobile": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    },
+    "region": {
+     "$ref": "UserAccountRegion"
+    }
+   }
+  },
+  "UploadURL": {
+   "id": "UploadURL",
+   "type": "object",
+   "properties": {
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAccountRegion": {
+   "id": "UserAccountRegion",
+   "type": "object",
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "sysadminApi.addItemInMasterList": {
+   "id": "sysadminApi.addItemInMasterList",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true
+    },
+    "imageCloudKey": {
+     "type": "string",
+     "required": true
+    },
+    "imageType": {
+     "type": "string",
+     "required": true
+    },
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "upc": {
+     "type": "string",
+     "required": true
+    },
+    "userEmailId": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "description",
+    "upc",
+    "imageType",
+    "imageCloudKey",
+    "userEmailId",
+    "measurementCategory"
+   ],
+   "returns": {
+    "$ref": "MasterItem"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.addMeasurementCategory": {
+   "id": "sysadminApi.addMeasurementCategory",
+   "parameters": {
+    "fractional": {
+     "type": "boolean",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "fractional"
+   ],
+   "returns": {
+    "$ref": "MeasurementCategory"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.addMeasurementUnit": {
+   "id": "sysadminApi.addMeasurementUnit",
+   "parameters": {
+    "acronym": {
+     "type": "string",
+     "required": true
+    },
+    "factor": {
+     "type": "number",
+     "required": true,
+     "format": "double"
+    },
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "primaryUnit": {
+     "type": "boolean",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "acronym",
+    "measurementCategory",
+    "primaryUnit",
+    "factor"
+   ],
+   "returns": {
+    "$ref": "MeasurementUnit"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.approveBusiness": {
+   "id": "sysadminApi.approveBusiness",
+   "parameters": {
+    "approve": {
+     "type": "boolean",
+     "required": true
+    },
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id",
+    "approve"
+   ],
+   "returns": {
+    "$ref": "BusinessAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.authenticate": {
+   "id": "sysadminApi.authenticate",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true
+    },
+    "password": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "email",
+    "password",
+    "googleUser"
+   ],
+   "returns": {
+    "$ref": "SysadminAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.createChildItemCategory": {
+   "id": "sysadminApi.createChildItemCategory",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "parentId": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "parentId",
+    "name",
+    "description"
+   ],
+   "returns": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.createItemCategory": {
+   "id": "sysadminApi.createItemCategory",
+   "parameters": {
+    "description": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "description"
+   ],
+   "returns": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.getActionables": {
+   "id": "sysadminApi.getActionables",
+   "allowGet": true,
+   "returns": {
+    "$ref": "ActionableCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.getItemCategories": {
+   "id": "sysadminApi.getItemCategories",
+   "allowGet": true,
+   "returns": {
+    "$ref": "ItemCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.getUnitsForCategory": {
+   "id": "sysadminApi.getUnitsForCategory",
+   "allowGet": true,
+   "parameters": {
+    "measurementCategory": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "measurementCategory"
+   ],
+   "returns": {
+    "$ref": "MeasurementUnitCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.getUploadURL": {
+   "id": "sysadminApi.getUploadURL",
+   "allowGet": true,
+   "returns": {
+    "$ref": "UploadURL"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.isRegisteredUser": {
+   "id": "sysadminApi.isRegisteredUser",
+   "parameters": {
+    "email": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "email"
+   ],
+   "returns": {
+    "$ref": "SysadminAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.listMeasurementCategories": {
+   "id": "sysadminApi.listMeasurementCategories",
+   "returns": {
+    "$ref": "MeasurementCategoryCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sysadminApi.register": {
+   "id": "sysadminApi.register",
+   "parameters": {
+    "address": {
+     "type": "string",
+     "required": true
+    },
+    "city": {
+     "type": "string",
+     "required": true
+    },
+    "email": {
+     "type": "string",
+     "required": true
+    },
+    "googleUser": {
+     "type": "boolean",
+     "required": true
+    },
+    "latitude": {
+     "type": "number",
+     "required": true,
+     "format": "double"
+    },
+    "longitude": {
+     "type": "number",
+     "required": true,
+     "format": "double"
+    },
+    "mobile": {
+     "type": "string",
+     "required": true
+    },
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "password": {
+     "type": "string",
+     "required": true
+    },
+    "state": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "name",
+    "address",
+    "email",
+    "mobile",
+    "password",
+    "city",
+    "state",
+    "latitude",
+    "longitude",
+    "googleUser"
+   ],
+   "returns": {
+    "$ref": "SysadminAccount"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
