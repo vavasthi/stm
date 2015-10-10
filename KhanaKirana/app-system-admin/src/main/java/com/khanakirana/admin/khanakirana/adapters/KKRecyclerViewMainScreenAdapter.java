@@ -41,9 +41,6 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
             pb = (ProgressBar)(itemView.findViewById(R.id.progressBar));
             pb.setVisibility(View.INVISIBLE);
             ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
-            if (actionable != null && actionable.getDone()) {
-                button_ok.setVisibility(View.INVISIBLE);
-            }
             button_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -54,9 +51,6 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
                 }
             });
             ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
-            if (actionable != null && actionable.getDone()) {
-                button_cancel.setVisibility(View.INVISIBLE);
-            }
             button_cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -65,6 +59,7 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
 
                 }
             });
+            setButtonVisibility();
         }
         public void setActionable(Actionable actionable) {
             this.actionable = actionable;
@@ -75,7 +70,19 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
         public void setActionableStatus(Boolean status) {
             actionable.setDone(status);
             pb.setVisibility(View.INVISIBLE);
+            setButtonVisibility();
         }
+        private void setButtonVisibility() {
+            ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
+            if (actionable != null && actionable.getDone()) {
+                button_ok.setVisibility(View.INVISIBLE);
+            }
+            ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
+            if (actionable != null && actionable.getDone()) {
+                button_cancel.setVisibility(View.INVISIBLE);
+            }
+        }
+
     }
 
     @Override
@@ -93,6 +100,7 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
         ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_action)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getActionTitle()]);
         ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_details)).setText(actionables[position].getDetails());
         ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_description)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getDescription()]);
+        holder.setButtonVisibility();
     }
 
     @Override

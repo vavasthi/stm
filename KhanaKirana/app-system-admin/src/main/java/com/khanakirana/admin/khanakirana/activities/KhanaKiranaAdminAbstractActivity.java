@@ -24,9 +24,11 @@ import com.khanakirana.admin.khanakirana.utils.ObjectWithStatus;
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.Actionable;
+import com.khanakirana.common.KKStringCodes;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -73,6 +75,16 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
         setContentView(R.layout.activity_khana_kirana_sysadmin_main);
         RecyclerView rv = (RecyclerView)findViewById(R.id.kk_sysadmin_recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        if (actionables == null || actionables.size() == 0) {
+            actionables = new ArrayList<>();
+            Actionable actionable = new Actionable();
+            actionable.setDone(Boolean.TRUE);
+            actionable.setTitle(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_TITLE);
+            actionable.setActionTitle(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_ACTION_TITLE);
+            actionable.setDescription(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_DESCRIPTION);;
+            actionable.setDetails(getResources().getString(R.string.kk_actionable_nothing_to_do));
+            actionables.add(actionable);
+        }
         rv.setAdapter(new KKRecyclerViewMainScreenAdapter(this, actionables.toArray(new Actionable[actionables.size()])));
     }
 

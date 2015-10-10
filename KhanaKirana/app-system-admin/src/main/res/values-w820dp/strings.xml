@@ -54,5 +54,6 @@
     <string name="kk_address_hint">Address</string>
     <string name="kk_not_valid_admin_user">Not a valid admin user</string>
     <string name="business_user_approval_failed">Business User Approval Failed</string>
+    <string name="kk_actionable_nothing_to_do">There is nothing to do.</string>
 
 </resources>

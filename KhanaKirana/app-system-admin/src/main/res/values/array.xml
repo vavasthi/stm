@@ -4,5 +4,8 @@
         <item>Business</item>
         <item>Approval</item>
         <item>This done will allow this business user to use the service of this platform as a business user.</item>
+        <item>Nothing</item>
+        <item>To Do</item>
+        <item>If there is something to be taken care of urgently, you will see it listed here.</item>
     </string-array>
 </resources>
