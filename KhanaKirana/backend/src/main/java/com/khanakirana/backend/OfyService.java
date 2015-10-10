@@ -8,6 +8,8 @@ import com.khanakirana.backend.entity.MasterItem;
 import com.khanakirana.backend.entity.MeasurementCategory;
 import com.khanakirana.backend.entity.MeasurementUnit;
 import com.khanakirana.backend.entity.BusinessAccount;
+import com.khanakirana.backend.entity.NotApprovedBusinessAccount;
+import com.khanakirana.backend.entity.SysadminAccount;
 import com.khanakirana.backend.entity.UserAccount;
 import com.khanakirana.backend.entity.UserAccountRegion;
 
@@ -27,11 +29,13 @@ public class OfyService {
         ObjectifyService.register(UserAccount.class);
         ObjectifyService.register(UserAccountRegion.class);
         ObjectifyService.register(BusinessAccount.class);
+        ObjectifyService.register(SysadminAccount.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(ItemCategory.class);
+        ObjectifyService.register(NotApprovedBusinessAccount.class);
     }
 
     public static Objectify ofy() {

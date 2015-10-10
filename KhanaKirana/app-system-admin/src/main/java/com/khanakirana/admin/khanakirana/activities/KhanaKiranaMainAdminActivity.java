@@ -1,7 +1,6 @@
-package com.khanakirana.admin.khanakirana;
+package com.khanakirana.admin.khanakirana.activities;
 
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,30 +12,18 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.gms.common.AccountPicker;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.admin.khanakirana.activities.KKAddProductInMasterListActivity;
+import com.khanakirana.admin.khanakirana.KKAndroidConstants;
+import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
-import com.khanakirana.admin.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
-import com.khanakirana.admin.khanakirana.background.tasks.RegisterUserAsyncTask;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
-public class KhanaKiranaMainActivity extends Activity {
+public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivity {
 
     private static final String AUTH_PREF = "KKAuthenticationPreferences";
     private static final String PREF_ACCOUNT_NAME = "KKPreferredAccountName";
@@ -46,20 +33,10 @@ public class KhanaKiranaMainActivity extends Activity {
     private static final String PREF_IS_ACCOUNT_CHOSEN = "KKIsAccountChosen";
     private static final String PREF_ACCOUNT_PASSWORD = "KKPreferredAccountPassword";
     private static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
-    static String selectedAccountName = null;
-    private static Boolean isGoogleAuthentication = null;
-    private static String password = null;
-    private static Boolean isAuthenticated = null;
-    private static Boolean isRegistered = null;
-    private static Boolean isAccountChosen = null;
-    private static SharedPreferences settings;
     //    private static GoogleAccountCredential gac;
     private SysadminApi sysadminApi;
-    static String detectedPhoneNumber;
-    static TelephonyManager telephonyManager;
-    Location registrationLocation;
 
-    private Logger logger = Logger.getLogger(KhanaKiranaMainActivity.class.getName());
+    private Logger logger = Logger.getLogger(KhanaKiranaMainAdminActivity.class.getName());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,56 +46,14 @@ public class KhanaKiranaMainActivity extends Activity {
         sysadminApi = getEndpoints();
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
-        if (isGoogleAuthentication) {
-            if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
-            }
-            else if (isAccountChosen) {
-                registerIfRequired();
-            }
-            else {
-                chooseAccount();
-            }
+        if (isAccountChosen) {
+            new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
         }
-        else {
-            if (isAuthenticated) {
-
-                new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.FALSE, password).execute();
-            }
-            else if (isRegistered) {
-                reauthorizeUserScreen();
-            }
-            else {
-                splashRegistrationScreen();
-            }
+        else if (!isAccountChosen) {
+            chooseAccount();
         }
     }
 
-
-    public static SysadminApi getEndpoints() {
-
-            // Create API handler
-            HttpRequestInitializer requestInitializer = getRequestInitializer();
-            SysadminApi.Builder builder = new SysadminApi.Builder(
-                    AndroidHttp.newCompatibleTransport(),
-                    new AndroidJsonFactory(),
-                    requestInitializer)
-                    .setRootUrl(KKAndroidConstants.ROOT_URL)
-                    .setGoogleClientRequestInitializer(
-                            new GoogleClientRequestInitializer() {
-                                @Override
-                                public void initialize(
-                                        final AbstractGoogleClientRequest<?>
-                                                abstractGoogleClientRequest)
-                                        throws IOException {
-                                    abstractGoogleClientRequest
-                                            .setDisableGZipContent(true);
-                                }
-                            }
-                    );
-
-            return builder.build();
-        }
 
         /**
          * Returns appropriate HttpRequestInitializer depending whether the
@@ -145,34 +80,6 @@ public class KhanaKiranaMainActivity extends Activity {
         }
 
 
-    private void loadSharedPreferences() {
-
-        boolean isGoogleAuthenticationDefault = false;
-        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-            isGoogleAuthenticationDefault = true;
-        }
-        settings = getSharedPreferences(AUTH_PREF, 0);
-        selectedAccountName = settings.getString(PREF_ACCOUNT_NAME, null);
-        isGoogleAuthentication = settings.getBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthenticationDefault);
-        isAuthenticated = settings.getBoolean(PREF_IS_AUTHENTICATED, Boolean.FALSE);
-        isRegistered = settings.getBoolean(PREF_IS_REGISTERED, Boolean.FALSE);
-        isAccountChosen = settings.getBoolean(PREF_IS_ACCOUNT_CHOSEN, Boolean.FALSE);
-        password = settings.getString(PREF_ACCOUNT_PASSWORD, null);
-        logger.info("Loading shared preferences : GA = " + isGoogleAuthentication + " Authed = " + isAuthenticated + " ACChosen = " + isAccountChosen + " Regd :" + isRegistered);
-
-    }
-    private void saveSharedPreferences() {
-
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PREF_ACCOUNT_NAME, selectedAccountName);
-        editor.putBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthentication);
-        editor.putBoolean(PREF_IS_AUTHENTICATED, isAuthenticated);
-        editor.putBoolean(PREF_IS_ACCOUNT_CHOSEN, isAccountChosen);
-        editor.putBoolean(PREF_IS_REGISTERED, isRegistered);
-        editor.putString(PREF_ACCOUNT_PASSWORD, password);
-        editor.commit();
-//        gac.setSelectedAccountName(selectedAccountName);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -227,89 +134,12 @@ public class KhanaKiranaMainActivity extends Activity {
             chooseAccount();
         }
     }
-    private void registerIfRequired() {
-        new IsRegisteredUserAsyncTask(this, sysadminApi, selectedAccountName).execute();
-    }
-    void registerUser(View v) throws NoSuchAlgorithmException {
-        new RegisterUserAsyncTask(this, sysadminApi, v, isGoogleAuthentication).execute();
-    }
 
     private void setSelectedAccountName(String accountName) {
 
         isAccountChosen = true;
         selectedAccountName = accountName;
         saveSharedPreferences();
-    }
-
-    public void splashMainScreen() {
-        isRegistered = true;
-        saveSharedPreferences();
-        setContentView(R.layout.activity_khana_kirana_main);
-    }
-    public void reauthorizeUserScreen() {
-
-    }
-    public void registrationFailedScreen() {
-
-    }
-    public void splashRegistrationScreen() {
-
-        if (isGoogleAuthentication) {
-
-            setContentView(R.layout.registration_google_user);
-            final View v = findViewById(R.id.registration_google_user_view);
-            final KhanaKiranaMainActivity context = this;
-            if (selectedAccountName != null) {
-
-                EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
-            }
-            if (detectedPhoneNumber != null) {
-
-                EditText mobile = (EditText)(v.findViewById(R.id.mobile));
-                mobile.setText(detectedPhoneNumber);
-            }
-            final Button button = (Button)findViewById(R.id.register);
-            button.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    try {
-                        context.registerUser(v);
-                    } catch (NoSuchAlgorithmException e) {
-                        registrationFailedScreen();
-                    }
-                }
-            });
-        }
-        else {
-
-            setContentView(R.layout.registration_nongoogle_user);
-            final View v = findViewById(R.id.registration_nongoogle_user_view);
-            if (selectedAccountName != null) {
-
-                EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
-            }
-            if (detectedPhoneNumber != null) {
-
-                EditText mobile = (EditText)(v.findViewById(R.id.mobile));
-                mobile.setText(detectedPhoneNumber);
-            }
-            final KhanaKiranaMainActivity context = this;
-            final Button button = (Button)findViewById(R.id.register);
-            button.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    try {
-                        context.registerUser(v);
-                    } catch (NoSuchAlgorithmException e) {
-                        registrationFailedScreen();
-                    }
-                }
-            });
-        }
     }
 
     @Override
@@ -322,7 +152,7 @@ public class KhanaKiranaMainActivity extends Activity {
                         setSelectedAccountName(accountName);
                         isGoogleAuthentication = Boolean.TRUE;
                         // User is selected, we can splash registration screen now.
-                        splashRegistrationScreen();
+                        new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
                     }
                 }
                 break;

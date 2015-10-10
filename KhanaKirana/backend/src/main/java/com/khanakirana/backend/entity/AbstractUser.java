@@ -174,6 +174,7 @@ public class AbstractUser {
     private Boolean googleUser;
     @Index
     private int accountType;
+    @Index
     private Boolean locked;
 
 }

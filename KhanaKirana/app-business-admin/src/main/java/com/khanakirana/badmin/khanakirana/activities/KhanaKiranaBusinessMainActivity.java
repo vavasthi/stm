@@ -113,7 +113,7 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
     private void registerIfRequired() {
         new IsRegisteredUserAsyncTask(this, businessApi, selectedAccountName).execute();
     }
-    protected void registerUser(View v) throws NoSuchAlgorithmException {
+    public void registerUser(View v) throws NoSuchAlgorithmException {
         progressDialog.show();
         new RegisterUserAsyncTask(this, businessApi, v, isGoogleAuthentication).execute();
     }

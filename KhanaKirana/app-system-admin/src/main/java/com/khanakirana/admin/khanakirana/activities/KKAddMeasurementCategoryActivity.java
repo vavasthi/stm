@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 
-import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 
 import java.util.logging.Level;
@@ -22,7 +21,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKAddMeasurementCategoryActivity extends Activity {
+public class KKAddMeasurementCategoryActivity extends KhanaKiranaAdminAbstractActivity {
 
     private Logger logger = Logger.getLogger(KKAddMeasurementCategoryActivity.class.getName());
 
@@ -81,7 +80,7 @@ public class KKAddMeasurementCategoryActivity extends Activity {
         dialog.dismiss();
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), measurementCategory, fractional).execute();
+        new com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), measurementCategory, fractional).execute();
         progressDialog.dismiss();
         finish();
     }

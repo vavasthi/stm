@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KhanaKirana Administrator</string>
+    <string name="app_name">KK Admin</string>
 
     <string name="kk_master_item_list">Master Item List</string>
     <string name="kk_list_items">List Items</string>
@@ -53,4 +53,6 @@
     <string name="kk_item_category_operation_failed">Item Category Operation Failed</string>
     <string name="kk_businessname_hint">Business Name</string>
     <string name="kk_address_hint">Address</string>
+    <string name="kk_not_valid_admin_user">Not a valid admin user</string>
+    <string name="business_user_approval_failed">Business User Approval Failed</string>
 </resources>

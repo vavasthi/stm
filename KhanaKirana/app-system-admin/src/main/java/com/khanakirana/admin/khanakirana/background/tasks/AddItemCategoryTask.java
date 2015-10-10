@@ -2,6 +2,7 @@ package com.khanakirana.admin.khanakirana.background.tasks;
 
 import com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
 import java.util.logging.Logger;

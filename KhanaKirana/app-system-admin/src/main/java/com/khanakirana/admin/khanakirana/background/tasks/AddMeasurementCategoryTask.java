@@ -7,6 +7,7 @@ import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddMeasurementCategoryActivity;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
 import java.util.logging.Logger;

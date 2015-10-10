@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementUnitTask;
 import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
@@ -120,7 +119,7 @@ public class KKAddMeasurementUnitActivity extends KKMeasurementCategoryReceiving
         ProgressDialog progressDialog = new ProgressDialog(this);
         dialog.dismiss();
         progressDialog.show();
-        new AddMeasurementUnitTask(this, KhanaKiranaMainActivity.getEndpoints(), name, acronym, measurementCategory, primaryUnit, factor).execute();
+        new AddMeasurementUnitTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), name, acronym, measurementCategory, primaryUnit, factor).execute();
         progressDialog.dismiss();
         finish();
     }

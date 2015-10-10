@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.adapters.CustomItemCategoryAdapter;
 import com.khanakirana.admin.khanakirana.background.tasks.AddItemCategoryTask;
@@ -32,7 +31,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKManageItemCategoryActivity extends Activity {
+public class KKManageItemCategoryActivity extends KhanaKiranaAdminAbstractActivity {
 
     private Logger logger = Logger.getLogger(KKManageItemCategoryActivity.class.getName());
     Map<Long, List<ItemCategory> > itemCategoryMap;
@@ -59,7 +58,7 @@ public class KKManageItemCategoryActivity extends Activity {
         });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new GetItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
+        new GetItemCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints()).execute();
 
     }
 
@@ -96,7 +95,7 @@ public class KKManageItemCategoryActivity extends Activity {
         String description = ((TextView)dialog.findViewById(R.id.item_category_description)).getText().toString();
         dialog.dismiss();
         progressDialog.show();
-        new AddItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints(), currentParent, name, description).execute();
+        new AddItemCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), currentParent, name, description).execute();
     }
 
     public void setItemCategories(List<ItemCategory> itemCategories) {

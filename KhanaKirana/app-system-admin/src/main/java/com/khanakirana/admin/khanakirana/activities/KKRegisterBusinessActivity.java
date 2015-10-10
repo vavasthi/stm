@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 
 
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKRegisterBusinessActivity extends Activity {
+public class KKRegisterBusinessActivity extends KhanaKiranaAdminAbstractActivity {
 
 
     @Override
@@ -28,8 +27,8 @@ public class KKRegisterBusinessActivity extends Activity {
     }
     void populateView() {
 
-        setEditText(R.id.email, KhanaKiranaMainActivity.getSelectedAccountName());
-        setEditText(R.id.mobile, KhanaKiranaMainActivity.getDetectedPhoneNumber());
+        setEditText(R.id.email, KhanaKiranaMainAdminActivity.getSelectedAccountName());
+        setEditText(R.id.mobile, KhanaKiranaMainAdminActivity.getDetectedPhoneNumber());
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -29,4 +29,12 @@ public enum AccountType {
         }
         throw new IllegalArgumentException();
     }
+    public static AccountType createFromValues(int type) {
+        for (AccountType at : AccountType.values()) {
+            if (at.type == type) {
+                return at;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
 }

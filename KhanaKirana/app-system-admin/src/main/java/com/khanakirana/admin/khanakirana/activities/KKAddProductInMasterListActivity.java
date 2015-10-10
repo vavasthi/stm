@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.khanakirana.admin.khanakirana.IntentIntegrator;
 import com.khanakirana.admin.khanakirana.IntentResult;
 import com.khanakirana.admin.khanakirana.KKAndroidConstants;
-import com.khanakirana.admin.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AddMasterItemTask;
 import com.khanakirana.admin.khanakirana.utils.KKImageUtils;
@@ -147,12 +146,12 @@ public class KKAddProductInMasterListActivity extends KKMeasurementCategoryRecei
         dialog.dismiss();
         progressDialog.show();
         new AddMasterItemTask(this,
-                KhanaKiranaMainActivity.getEndpoints(),
+                KhanaKiranaMainAdminActivity.getEndpoints(),
                 itemTitle,
                 itemDescription,
                 barCode,
                 "image/png",
-                KhanaKiranaMainActivity.getSelectedAccountName(),
+                KhanaKiranaMainAdminActivity.getSelectedAccountName(),
                 measurementCategory,
                 imageBytes).execute();
     }

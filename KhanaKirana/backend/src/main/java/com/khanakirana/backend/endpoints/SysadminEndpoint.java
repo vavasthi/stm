@@ -11,11 +11,15 @@ import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.users.User;
 import com.khanakirana.backend.OfyService;
+import com.khanakirana.backend.entity.Actionable;
+import com.khanakirana.backend.entity.BusinessAccount;
 import com.khanakirana.backend.entity.ItemCategory;
 import com.khanakirana.backend.entity.MasterItem;
 import com.khanakirana.backend.entity.MeasurementCategory;
 import com.khanakirana.backend.entity.MeasurementUnit;
+import com.khanakirana.backend.entity.NotApprovedBusinessAccount;
 import com.khanakirana.backend.entity.SysadminAccount;
 import com.khanakirana.backend.entity.UserAccount;
 import com.khanakirana.backend.exceptions.InvalidUserAccountException;
@@ -23,7 +27,9 @@ import com.khanakirana.backend.exceptions.MeasurementCategoryAlreadyExists;
 import com.khanakirana.backend.exceptions.MeasurementCategoryDoesntExist;
 import com.khanakirana.backend.exceptions.MeasurementPrimaryUnitException;
 import com.khanakirana.backend.jsonresource.UploadURL;
+import com.khanakirana.common.KKActionTypes;
 import com.khanakirana.common.KKConstants;
+import com.khanakirana.common.KKStringCodes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,15 +94,73 @@ public class SysadminEndpoint {
         OfyService.ofy().save().entity(account).now();
         return account;
     }
+    @ApiMethod(name = "getActionables")
+    public List<Actionable> getActionables(User user) {
+
+        List<Actionable> actionables = new ArrayList<>();
+        // First find pending for approval business users.
+        List<BusinessAccount> accounts = OfyService.ofy().load().type(BusinessAccount.class).filter("locked",true).list();
+        logger.log(Level.INFO, "Total business accounts pending for approval " + accounts.size());
+        for (BusinessAccount ba : accounts) {
+            String details = ba.getName() + "\n" + ba.getAddress() + "\n" + ba.getRegion().getCity() + " " + ba.getRegion().getState();
+            Actionable actionable = new Actionable(KKActionTypes.APPROVE_BUSINESS_USER,
+                    KKStringCodes.APPROVE_BUSINESS_USER_TITLE,
+                    KKStringCodes.APPROVE_BUSINESS_USER_ACTION_TITLE,
+                    KKStringCodes.APPROVE_BUSINESS_USER_DESCRIPTION,
+                    ba.getId(),
+                    details,
+                    false);
+            logger.log(Level.INFO, "Adding business account approval actionable " + ba.getId());
+            actionables.add(actionable);
+        }
+        return actionables;
+    }
+
+    /**
+     * A simple endpoint method that takes a name and says Hi back
+     */
+    @ApiMethod(name = "approveBusiness")
+    public BusinessAccount approveBusiness(@Named("id") Long id,
+                                           @Named("approve") Boolean approve,
+                                            User user) throws InvalidUserAccountException {
+
+        try {
+
+            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).id(id).now();
+            if (account != null) {
+                if (approve) {
+                    account.setLocked(Boolean.FALSE);
+                    logger.log(Level.INFO, "Business Account approved." + account.toString());
+                    OfyService.ofy().save().entity(account).now();
+                    return account;
+                }
+                else {
+                    NotApprovedBusinessAccount naba = new NotApprovedBusinessAccount(account);
+                    OfyService.ofy().save().entity(naba).now();
+                    OfyService.ofy().delete().entity(account).now();
+                    logger.log(Level.INFO, "Business Account deleted." + account.toString());
+                }
+            }
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Exception thrown by the load.", e);
+        }
+        return null;
+    }
 
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public SysadminAccount isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
+    public SysadminAccount isRegisteredUser(@Named("email") String email,
+                                   User user) throws InvalidUserAccountException {
 
         try {
 
+            if (OfyService.ofy().load().type(SysadminAccount.class).list().size() == 0) {
+                SysadminAccount admin = new SysadminAccount("Vinay Avasthi", "Somewhere someplace", "vinay@avasthi.com", "+919845614175", "NOTSET", "Bangalore", "Karnataka", 0.0, 0.0, true);
+                OfyService.ofy().save().entity(admin).now();
+                return admin;
+            }
             SysadminAccount account = OfyService.ofy().load().type(SysadminAccount.class).filter("email", email).first().now();
             if (account == null) {
 
