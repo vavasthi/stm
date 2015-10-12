@@ -20,6 +20,10 @@ public class KKConstants {
 
     public static final String BLOB_CLOUD_KEY = "X-KhanaKirana-Blob-Cloud-key";
 
+    public static final String LATITUDE_TO_CENTER_ON = "kk-latitude-to-center-on";
+    public static final String LONGITUDE_TO_CENTER_ON = "kk-longitude-to-center-on";
+
+
 
 
 }

@@ -19,6 +19,7 @@ import com.khanakirana.admin.khanakirana.KKAndroidConstants;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.common.KKConstants;
 
 import java.util.Calendar;
 import java.util.logging.Logger;
@@ -112,6 +113,14 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
                 break;
             case R.id.add_item_category:
                 startActivityForResult(new Intent(this, com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity.class), KKAndroidConstants.ADD_ITEM_CATEGORY_REQUEST);
+                break;
+            case R.id.kk_set_business_polygon:
+                Intent intent = new Intent(this, com.khanakirana.admin.khanakirana.activities.KKMapPolygonSelectionActivity.class);
+                Bundle b = new Bundle();
+                b.putDouble(KKConstants.LATITUDE_TO_CENTER_ON, 12.9719400);
+                b.putDouble(KKConstants.LONGITUDE_TO_CENTER_ON, 77.5936900);
+                intent.putExtras(b);
+                startActivityForResult(intent, KKAndroidConstants.MAP_POLYGON_FOR_BUSINESS);
                 break;
         }
         return super.onOptionsItemSelected(item);
