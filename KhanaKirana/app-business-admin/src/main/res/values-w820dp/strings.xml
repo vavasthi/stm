@@ -54,5 +54,6 @@
     <string name="kk_address_hint">Address</string>
     <string name="kk_business_user_not_approved">Business User is not approved.\\nPlease wait for approval.</string>
     <string name="kk_registration_failed_message">User registration failed.\\nPlease try again.</string>
+    <string name="update_location">Update Location</string>
 
 </resources>

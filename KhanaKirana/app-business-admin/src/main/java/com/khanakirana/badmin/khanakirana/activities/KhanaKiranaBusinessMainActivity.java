@@ -1,12 +1,12 @@
 package com.khanakirana.badmin.khanakirana.activities;
 
 import android.accounts.AccountManager;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -15,30 +15,40 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.common.AccountPicker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.badmin.khanakirana.KKAndroidConstants;
 import com.khanakirana.badmin.khanakirana.R;
 import com.khanakirana.badmin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.RegisterUserAsyncTask;
+import com.khanakirana.badmin.khanakirana.background.tasks.UpdateBusinessLocationAsyncTask;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
-public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstractActivity {
+public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstractActivity
+        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     //    private static GoogleAccountCredential gac;
     private BusinessApi businessApi;
     private Logger logger = Logger.getLogger(KhanaKiranaBusinessMainActivity.class.getName());
+    private GoogleApiClient googleApiClient;
+    private Location lastLocation;
+    private LocationRequest locationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
-        updateRegistrationLocation();
+        initializeLocationService();
         progressDialog = new ProgressDialog(this);
-        businessApi = getEndpoints();
+        businessApi = getEndpoints(this);
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
         if (isGoogleAuthentication) {
@@ -85,6 +95,17 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
         //noinspection SimplifiableIfStatement
         switch(id) {
             case R.id.action_settings:
+                return true;
+            case R.id.action_set_business_location:
+                if (lastLocation != null) {
+
+                    new UpdateBusinessLocationAsyncTask(this, businessApi, selectedAccountName, lastLocation.getLatitude(), lastLocation.getLongitude()).execute();
+                    AlertDialog ad = new AlertDialog.Builder(this).setTitle("Location Alert").setMessage("Location is " + lastLocation.getLatitude() + "," + lastLocation.getLongitude()).show();
+                }
+                else {
+
+                    AlertDialog ad = new AlertDialog.Builder(this).setTitle("Location Alert").setMessage("Location is not available").show();
+                }
                 return true;
             case R.id.reset:
                 settings.edit().clear().commit();
@@ -142,56 +163,48 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
         }
     }
 
-    private void updateRegistrationLocation() {
-
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location;
-        try {
-
-            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (location != null) {
-
-                registrationLocation = location;
-            } else if (location != null && (Calendar.getInstance().getTimeInMillis() - location.getTime()) > 2 * 60 * 1000) {
-
-                Criteria criteria = new Criteria();
-                criteria.setAccuracy(Criteria.ACCURACY_FINE);
-                criteria.setAltitudeRequired(false);
-                criteria.setBearingRequired(false);
-                criteria.setCostAllowed(true);
-                criteria.setPowerRequirement(Criteria.POWER_LOW);
-                locationManager.requestSingleUpdate(criteria, new LocationListener() {
-                    @Override
-                    public void onLocationChanged(Location location) {
-                        registrationLocation = location;
-                        try {
-
-                            locationManager.removeUpdates(this);
-                        }
-                        catch(SecurityException ex) {
-
-                        }
-                    }
-
-                    @Override
-                    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                    }
-
-                    @Override
-                    public void onProviderEnabled(String provider) {
-
-                    }
-
-                    @Override
-                    public void onProviderDisabled(String provider) {
-
-                    }
-                }, null);
-            }
-        } catch(SecurityException e) {
-
-        }
+    protected synchronized void initializeLocationService() {
+        googleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();
+        googleApiClient.connect();
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+    @Override
+    public void onConnected(Bundle bundle) {
+        lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+        LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
     }
 
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        lastLocation = location;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (googleApiClient.isConnected()) {
+
+            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
+        }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (googleApiClient.isConnected() ) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+        }
+    }
 }

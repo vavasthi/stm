@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -20,6 +22,7 @@ import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.BusinessAccountResult;
 import com.khanakirana.badmin.khanakirana.KKAndroidConstants;
 import com.khanakirana.badmin.khanakirana.R;
+import com.khanakirana.common.KKConstants;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
@@ -40,7 +43,7 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
     protected static final String PREF_IS_REGISTERED = "KKBusinessIsRegistered";
     protected static final String PREF_IS_ACCOUNT_CHOSEN = "KKBusinessIsAccountChosen";
     protected static final String PREF_ACCOUNT_PASSWORD = "KKBusinessPreferredAccountPassword";
-    protected static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
+    protected static final String AUDIENCE = "server:client_id:" + KKConstants.WEB_CLIENT_ID;
     static String selectedAccountName = null;
     protected static Boolean isGoogleAuthentication = null;
     protected static String password = null;
@@ -154,15 +157,16 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
 //        gac.setSelectedAccountName(selectedAccountName);
     }
 
-    public static BusinessApi getEndpoints() {
+    public static BusinessApi getEndpoints(Activity activity) {
 
         // Create API handler
-        HttpRequestInitializer requestInitializer = getRequestInitializer();
+        HttpRequestInitializer requestInitializer = getRequestInitializer(activity);
         BusinessApi.Builder builder = new BusinessApi.Builder(
                 AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(),
                 requestInitializer)
                 .setRootUrl(KKAndroidConstants.ROOT_URL)
+                .setApplicationName(activity.getApplicationInfo().name)
                 .setGoogleClientRequestInitializer(
                         new GoogleClientRequestInitializer() {
                             @Override
@@ -183,10 +187,13 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
      * application is configured to require users to be signed in or not.
      * @return an appropriate HttpRequestInitializer.
      */
-    public static HttpRequestInitializer getRequestInitializer() {
-        return null;
+    public  static HttpRequestInitializer getRequestInitializer(Activity activity) {
+
+        GoogleAccountCredential gac = GoogleAccountCredential.usingAudience(activity, AUDIENCE);
+        gac.setSelectedAccountName(selectedAccountName);
+        return gac;
 /*        if (KKAndroidConstants.SIGN_IN_REQUIRED) {
-//            return SignInActivity.getCredential();
+            return SignInActivity.getCredential();
             return new HttpRequestInitializer() {
                 @Override
                 public void initialize(final HttpRequest arg0) {
@@ -256,5 +263,4 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
             }
         });
     }
-
 }

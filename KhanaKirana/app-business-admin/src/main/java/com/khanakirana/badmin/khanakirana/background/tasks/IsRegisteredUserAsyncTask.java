@@ -32,7 +32,7 @@ public class IsRegisteredUserAsyncTask extends AsyncTask<Void, Void, BusinessAcc
 
         try {
             logger.log(Level.INFO, "Checking if the user is registered." + selectedAccountName);
-            BusinessAccountResult registeredUser = businessApi.isRegisteredUser(selectedAccountName).execute();
+            BusinessAccountResult registeredUser = businessApi.isRegisteredUser().execute();
             if (registeredUser != null) {
                 logger.info("Registered user is :" + registeredUser.toString() );
                 return registeredUser;

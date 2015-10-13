@@ -6,11 +6,14 @@
 
 package com.khanakirana.backend.endpoints;
 
+import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.response.ForbiddenException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.oauth.OAuthRequestException;
 import com.khanakirana.backend.OfyService;
 import com.khanakirana.backend.entity.BusinessAccountResult;
 import com.khanakirana.backend.entity.ItemCategory;
@@ -42,8 +45,8 @@ import javax.inject.Named;
         name = "businessApi",
         version = "v1",
         scopes = {KKConstants.EMAIL_SCOPE},
-        audiences = {KKConstants.ANDROID_CLIENT_ID},
-        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.ANDROID_CLIENT_ID},
+        audiences = {KKConstants.ANDROID_AUDIENCE},
+        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.BUSINESS_ADMIN_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
                 ownerDomain = "backend.khanakirana.com",
                 ownerName = "backend.khanakirana.com",
@@ -58,11 +61,15 @@ public class BusinessEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public BusinessAccountResult isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
+    public BusinessAccountResult isRegisteredUser(User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
+
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
 
         try {
 
-            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", email).first().now();
+            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
             if (account == null) {
 
                 return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
@@ -88,7 +95,12 @@ public class BusinessEndpoint {
                                         @Named("state") String state,
                                         @Named("latitude") Double latitude,
                                         @Named("longitude") Double longitude,
-                                        @Named("googleUser") Boolean googleUser) {
+                                        @Named("googleUser") Boolean googleUser,
+                                          User user) throws ForbiddenException {
+
+        if (!user.getEmail().equalsIgnoreCase(email)) {
+            throw new ForbiddenException(email + " has not authenticated.");
+        }
 
         BusinessAccount account = new BusinessAccount(name, address, email.toLowerCase(), mobile, password, city, state, longitude, latitude, googleUser);
         if (googleUser) {
@@ -96,6 +108,34 @@ public class BusinessEndpoint {
         }
         OfyService.ofy().save().entity(account).now();
         return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
+    }
+
+    @ApiMethod(name = "updateLocation")
+    public BusinessAccountResult updateLocation(@Named("latitude") Double latitude,
+                                                @Named("longitude") Double longitude,
+                                                User user) throws ForbiddenException, OAuthRequestException {
+
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
+
+
+        try {
+            String email = user.getEmail().toLowerCase();
+            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", email).first().now();
+            logger.log(Level.INFO, "User Account retrieved." + account.toString());
+            if (account == null) {
+
+                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
+            }
+            account.setLatitude(latitude);
+            account.setLongitude(longitude);
+            OfyService.ofy().save().entity(account).now();
+            return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Exception thrown by the load.", e);
+        }
+        return new BusinessAccountResult(null, ServerInteractionReturnStatus.FATAL_ERROR);
     }
 
     @ApiMethod(name = "authenticate")

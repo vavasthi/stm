@@ -5,8 +5,10 @@ package com.khanakirana.common;
  */
 public class KKConstants {
 
-    public static final String WEB_CLIENT_ID = "279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
-    public static final String ANDROID_CLIENT_ID = "279496868246-aphhdmvl508k2bjvprjmm2jsvhr0iq9q.apps.googleusercontent.com";
+    public static final String WEB_CLIENT_ID = "279496868246-qops46el59lfnj9jto74nro8f7kl0hbu.apps.googleusercontent.com";
+
+    public static final String BUSINESS_ADMIN_ANDROID_CLIENT_ID = "279496868246-9p5f2b5m8bm06e6n75r6r5bhec68k0bp.apps.googleusercontent.com";
+    public static final String ANDROID_CLIENT_ID = "279496868246-9p5f2b5m8bm06e6n75r6r5bhec68k0bp.apps.googleusercontent.com";
     public static final String ANDROID_AUDIENCE = WEB_CLIENT_ID;
 
     public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";

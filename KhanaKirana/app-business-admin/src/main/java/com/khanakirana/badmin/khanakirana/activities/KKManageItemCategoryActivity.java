@@ -56,7 +56,7 @@ public class KKManageItemCategoryActivity extends KhanaKiranaBusinessAbstractAct
         });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new GetItemCategoryTask(this, KhanaKiranaBusinessMainActivity.getEndpoints()).execute();
+        new GetItemCategoryTask(this, KhanaKiranaBusinessMainActivity.getEndpoints(this)).execute();
 
     }
 

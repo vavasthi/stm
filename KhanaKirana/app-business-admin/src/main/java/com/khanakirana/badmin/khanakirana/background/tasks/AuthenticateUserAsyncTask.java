@@ -42,7 +42,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, BusinessAcc
         try {
             if (isGoogleAccount) {
 
-                BusinessAccountResult registeredUser = businessApiService.isRegisteredUser(selectedAccountName).execute();
+                BusinessAccountResult registeredUser = KhanaKiranaBusinessMainActivity.getEndpoints(context).isRegisteredUser().execute();
                 System.out.println("Registered user is :" + registeredUser.toString());
                 if (registeredUser != null) {
                     return registeredUser;
@@ -50,7 +50,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, BusinessAcc
                     return null;
                 }
             } else {
-                BusinessAccountResult registeredUser = businessApiService.authenticate(selectedAccountName, password, isGoogleAccount).execute();
+                BusinessAccountResult registeredUser = KhanaKiranaBusinessMainActivity.getEndpoints(context).authenticate(selectedAccountName, password, isGoogleAccount).execute();
                 if (registeredUser != null) {
                     return registeredUser;
                 }

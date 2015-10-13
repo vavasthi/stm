@@ -25,7 +25,7 @@ android {
         /**
          * Web client ID from Google Cloud console.
          */
-        buildConfigField "String", "WEB_CLIENT_ID", "\"279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com\""
+        buildConfigField "String", "WEB_CLIENT_ID", "\"279496868246-qops46el59lfnj9jto74nro8f7kl0hbu.apps.googleusercontent.com\""
         /**
          * Dummy location used in the emulator when developing.
          */
