@@ -146,12 +146,10 @@ public class KKAddProductInMasterListActivity extends KKMeasurementCategoryRecei
         dialog.dismiss();
         progressDialog.show();
         new AddMasterItemTask(this,
-                KhanaKiranaMainAdminActivity.getEndpoints(),
                 itemTitle,
                 itemDescription,
                 barCode,
                 "image/png",
-                KhanaKiranaMainAdminActivity.getSelectedAccountName(),
                 measurementCategory,
                 imageBytes).execute();
     }

@@ -12,18 +12,12 @@ import android.widget.EditText;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.admin.khanakirana.KKAndroidConstants;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.adapters.KKRecyclerViewMainScreenAdapter;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.admin.khanakirana.utils.ObjectWithStatus;
-import com.khanakirana.backend.businessApi.BusinessApi;
-import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.Actionable;
+import com.khanakirana.common.KKActionTypes;
 import com.khanakirana.common.KKStringCodes;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
@@ -47,8 +41,6 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
     protected static final String PREF_IS_REGISTERED = "KKAdminIsRegistered";
     protected static final String PREF_IS_ACCOUNT_CHOSEN = "KKAdminIsAccountChosen";
     protected static final String PREF_ACCOUNT_PASSWORD = "KKAdminPreferredAccountPassword";
-    protected static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
-    static String selectedAccountName = null;
     protected static Boolean isGoogleAuthentication = null;
     protected static String password = null;
     protected static Boolean isAuthenticated = null;
@@ -79,10 +71,9 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
             actionables = new ArrayList<>();
             Actionable actionable = new Actionable();
             actionable.setDone(Boolean.TRUE);
+            actionable.setActionType(KKActionTypes.NOTHING_TO_DO);
             actionable.setTitle(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_TITLE);
-            actionable.setActionTitle(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_ACTION_TITLE);
             actionable.setDescription(KKStringCodes.ACTIONABLE_NOTHING_TO_DO_DESCRIPTION);;
-            actionable.setDetails(getResources().getString(R.string.kk_actionable_nothing_to_do));
             actionables.add(actionable);
         }
         rv.setAdapter(new KKRecyclerViewMainScreenAdapter(this, actionables.toArray(new Actionable[actionables.size()])));
@@ -112,10 +103,10 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
 
             setContentView(R.layout.registration_google_user);
             final View v = findViewById(R.id.registration_google_user_view);
-            if (selectedAccountName != null) {
+            if (EndpointManager.getAccountName() != null) {
 
                 EditText email = (EditText) (v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
+                email.setText(EndpointManager.getAccountName());
             }
             if (detectedPhoneNumber != null) {
 
@@ -126,10 +117,10 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
 
             setContentView(R.layout.registration_nongoogle_user);
             final View v = findViewById(R.id.registration_nongoogle_user_view);
-            if (selectedAccountName != null) {
+            if (EndpointManager.getAccountName() != null) {
 
                 EditText email = (EditText) (v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
+                email.setText(EndpointManager.getAccountName());
             }
             if (detectedPhoneNumber != null) {
 
@@ -137,10 +128,6 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
                 mobile.setText(detectedPhoneNumber);
             }
         }
-    }
-
-    public static String getSelectedAccountName() {
-        return selectedAccountName;
     }
 
     public static String getDetectedPhoneNumber() {
@@ -163,7 +150,7 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
             isGoogleAuthenticationDefault = true;
         }
         settings = getSharedPreferences(AUTH_PREF, 0);
-        selectedAccountName = settings.getString(PREF_ACCOUNT_NAME, null);
+        EndpointManager.setAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
         isGoogleAuthentication = settings.getBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthenticationDefault);
         isAuthenticated = settings.getBoolean(PREF_IS_AUTHENTICATED, Boolean.FALSE);
         isRegistered = settings.getBoolean(PREF_IS_REGISTERED, Boolean.FALSE);
@@ -175,64 +162,13 @@ abstract class KhanaKiranaAdminAbstractActivity extends Activity {
     protected void saveSharedPreferences() {
 
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PREF_ACCOUNT_NAME, selectedAccountName);
+        editor.putString(PREF_ACCOUNT_NAME, EndpointManager.getAccountName());
         editor.putBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthentication);
         editor.putBoolean(PREF_IS_AUTHENTICATED, isAuthenticated);
         editor.putBoolean(PREF_IS_ACCOUNT_CHOSEN, isAccountChosen);
         editor.putBoolean(PREF_IS_REGISTERED, isRegistered);
         editor.putString(PREF_ACCOUNT_PASSWORD, password);
         editor.commit();
-//        gac.setSelectedAccountName(selectedAccountName);
-    }
-
-    public static SysadminApi getEndpoints() {
-
-        // Create API handler
-        HttpRequestInitializer requestInitializer = getRequestInitializer();
-        SysadminApi.Builder builder = new SysadminApi.Builder(
-                AndroidHttp.newCompatibleTransport(),
-                new AndroidJsonFactory(),
-                requestInitializer)
-                .setRootUrl(KKAndroidConstants.ROOT_URL)
-                .setGoogleClientRequestInitializer(
-                        new GoogleClientRequestInitializer() {
-                            @Override
-                            public void initialize(
-                                    final AbstractGoogleClientRequest<?>
-                                            abstractGoogleClientRequest)
-                                    throws IOException {
-                                abstractGoogleClientRequest
-                                        .setDisableGZipContent(true);
-                            }
-                        }
-                );
-
-        return builder.build();
-    }
-
-    /**
-     * Returns appropriate HttpRequestInitializer depending whether the
-     * application is configured to require users to be signed in or not.
-     *
-     * @return an appropriate HttpRequestInitializer.
-     */
-    public static HttpRequestInitializer getRequestInitializer() {
-        return null;
-/*        if (KKAndroidConstants.SIGN_IN_REQUIRED) {
-//            return SignInActivity.getCredential();
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-
-        } else {
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-        }*/
     }
 
 

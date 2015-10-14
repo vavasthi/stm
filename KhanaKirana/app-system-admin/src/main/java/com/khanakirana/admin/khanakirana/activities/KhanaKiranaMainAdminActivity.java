@@ -3,7 +3,6 @@ package com.khanakirana.admin.khanakirana.activities;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -18,7 +17,7 @@ import com.google.api.client.http.HttpRequestInitializer;
 import com.khanakirana.admin.khanakirana.KKAndroidConstants;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.background.tasks.AuthenticateUserAsyncTask;
-import com.khanakirana.backend.sysadminApi.SysadminApi;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.common.KKConstants;
 
 import java.util.Calendar;
@@ -35,7 +34,6 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
     private static final String PREF_ACCOUNT_PASSWORD = "KKPreferredAccountPassword";
     private static final String AUDIENCE = "server:client_id:279496868246-7lvjvi7tsoi4dt88bfsmagt9j04ar32u.apps.googleusercontent.com";
     //    private static GoogleAccountCredential gac;
-    private SysadminApi sysadminApi;
 
     private Logger logger = Logger.getLogger(KhanaKiranaMainAdminActivity.class.getName());
 
@@ -44,41 +42,15 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
         updateRegistrationLocation();
-        sysadminApi = getEndpoints();
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
         if (isAccountChosen) {
-            new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
+            new AuthenticateUserAsyncTask(this).execute();
         }
         else if (!isAccountChosen) {
             chooseAccount();
         }
     }
-
-
-        /**
-         * Returns appropriate HttpRequestInitializer depending whether the
-         * application is configured to require users to be signed in or not.
-         * @return an appropriate HttpRequestInitializer.
-         */
-        public static HttpRequestInitializer getRequestInitializer() {
-            return null;
-/*        if (KKAndroidConstants.SIGN_IN_REQUIRED) {
-//            return SignInActivity.getCredential();
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-
-        } else {
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-        }*/
-        }
 
 
     @Override
@@ -135,7 +107,7 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
     }
     private void obtainCredentials() {
         setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
-        if (selectedAccountName != null) {
+        if (EndpointManager.getAccountName() != null) {
             splashRegistrationScreen();
         }
         else {
@@ -147,7 +119,7 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
     private void setSelectedAccountName(String accountName) {
 
         isAccountChosen = true;
-        selectedAccountName = accountName;
+        EndpointManager.setAccountName(accountName);
         saveSharedPreferences();
     }
 
@@ -161,7 +133,7 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
                         setSelectedAccountName(accountName);
                         isGoogleAuthentication = Boolean.TRUE;
                         // User is selected, we can splash registration screen now.
-                        new AuthenticateUserAsyncTask(this, sysadminApi, selectedAccountName, Boolean.TRUE, null).execute();
+                        new AuthenticateUserAsyncTask(this).execute();
                     }
                 }
                 break;
@@ -220,9 +192,6 @@ public class KhanaKiranaMainAdminActivity extends KhanaKiranaAdminAbstractActivi
         }
     }
 
-    public static String getSelectedAccountName() {
-        return selectedAccountName;
-    }
     public static String getDetectedPhoneNumber() {
 
         if (detectedPhoneNumber == null) {

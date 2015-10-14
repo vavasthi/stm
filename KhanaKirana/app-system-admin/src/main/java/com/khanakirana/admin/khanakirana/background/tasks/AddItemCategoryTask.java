@@ -1,6 +1,7 @@
 package com.khanakirana.admin.khanakirana.background.tasks;
 
 import com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
@@ -19,11 +20,10 @@ public class AddItemCategoryTask extends AbstractItemCategoryTask {
 
 
     public AddItemCategoryTask(KKManageItemCategoryActivity context,
-                               SysadminApi sysadminApi,
                                Long parentId,
                                String name,
                                String description) {
-        super(context, sysadminApi);
+        super(context);
         this.parentId = parentId;
         this.name = name;
         this.description = description;
@@ -35,11 +35,11 @@ public class AddItemCategoryTask extends AbstractItemCategoryTask {
         try {
             if (parentId == null || parentId.equals(0L)) {
 
-                this.itemCategoryList = sysadminApi.createItemCategory(name, description).execute().getItems();
+                this.itemCategoryList = EndpointManager.getEndpoints(context).createItemCategory(name, description).execute().getItems();
             }
             else {
 
-                this.itemCategoryList = sysadminApi.createChildItemCategory(parentId, name, description).execute().getItems();
+                this.itemCategoryList = EndpointManager.getEndpoints(context).createChildItemCategory(parentId, name, description).execute().getItems();
             }
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {

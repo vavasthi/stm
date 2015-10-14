@@ -161,20 +161,31 @@ public class BusinessEndpoint {
     }
 
     @ApiMethod(name = "supportedRegions")
-    public List<UserAccountRegion> supportedRegions() {
+    public List<UserAccountRegion> supportedRegions(User user) throws OAuthRequestException {
+
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         List<UserAccountRegion> regions = OfyService.ofy().load().type(UserAccountRegion.class).list();
         return regions;
     }
 
     @ApiMethod(name = "listMeasurementCategories")
-    public List<MeasurementCategory> lisMeasurementCategories() throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
+    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException {
 
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         return OfyService.ofy().load().type(MeasurementCategory.class).list();
     }
 
     @ApiMethod(name = "getUnitsForCategory")
-    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryDoesntExist {
+    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
+                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException {
 
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
         List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
@@ -182,75 +193,21 @@ public class BusinessEndpoint {
         return lmu;
     }
 
-    @ApiMethod(name = "addMeasurementCategory")
-    public MeasurementCategory addMeasurementCategory(@Named("name") String name, @Named("fractional") Boolean fractional) throws MeasurementCategoryAlreadyExists {
-
-        name = name.toUpperCase();
-        MeasurementCategory measurementCategory = null;
-        try {
-            measurementCategory = EndpointUtility.getMeasurementCategory(name);
-            throw new MeasurementCategoryAlreadyExists();
-
-        } catch (MeasurementCategoryDoesntExist e) {
-        }
-
-        measurementCategory = new MeasurementCategory(name, fractional);
-        OfyService.ofy().save().entity(measurementCategory).now();
-        return measurementCategory;
-    }
-
-    @ApiMethod(name = "addItemInMasterList")
-    public MasterItem addItemInMasterList(@Named("name") String name,
-                                          @Named("description") String description,
-                                          @Named("upc") String upc,
-                                          @Named("imageType") String imageType,
-                                          @Named("imageCloudKey") String imageCloudKey,
-                                          @Named("userEmailId") String userEmailId,
-                                          @Named("measurementCategory") String measurementCategory) throws MeasurementCategoryAlreadyExists, MeasurementCategoryDoesntExist, InvalidUserAccountException {
-
-        MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
-        UserAccount userAccount = EndpointUtility.getUserAccount(userEmailId);
-        MasterItem mi = new MasterItem(name, description, upc, imageType, imageCloudKey, userAccount.getEmail(), mc.getId());
-        OfyService.ofy().save().entity(mi).now();
-        return mi;
-    }
-
     @ApiMethod(name = "getUploadURL")
-    public UploadURL getUploadURL() {
+    public UploadURL getUploadURL(User user) throws OAuthRequestException {
 
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         return new UploadURL(blobstoreService.createUploadUrl(KKConstants.MASTER_ITEM_IMAGE_UPLOAD_URL));
     }
-    @ApiMethod(name = "createChildItemCategory")
-    public List<ItemCategory> createChildItemCategory(@Named("parentId") Long parentId,
-                                                @Named("name") String name,
-                                                 @Named("description") String description) {
-
-        ItemCategory pic = OfyService.ofy().load().type(ItemCategory.class).id(parentId).now();
-        ItemCategory ic;
-        if (pic == null) {
-
-            ic = new ItemCategory(0L, true, name, description);
-        }
-        else {
-
-            ic = new ItemCategory(pic.getId(), false, name, description);
-        }
-        OfyService.ofy().save().entity(ic).now();
-        return getItemCategories();
-    }
-
-    @ApiMethod(name = "createItemCategory")
-    public List<ItemCategory> createItemCategory(@Named("name") String name,
-                                           @Named("description") String description) {
-        ItemCategory ic = new ItemCategory(0L, true, name, description);
-        OfyService.ofy().save().entity(ic).now();
-        return getItemCategories();
-    }
-
     @ApiMethod(name = "getItemCategories")
-    public List<ItemCategory> getItemCategories() {
+    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException {
 
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
         if (itemCategories == null || itemCategories.size() == 0) {
             return new ArrayList<ItemCategory>();

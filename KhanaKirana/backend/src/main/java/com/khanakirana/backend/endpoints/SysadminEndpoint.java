@@ -13,6 +13,7 @@ import com.google.api.server.spi.response.ForbiddenException;
 import com.google.api.server.spi.response.NotFoundException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.khanakirana.backend.OfyService;
 import com.khanakirana.backend.entity.Actionable;
@@ -47,8 +48,8 @@ import javax.inject.Named;
         name = "sysadminApi",
         version = "v1",
         scopes = {KKConstants.EMAIL_SCOPE},
-        audiences = {KKConstants.ANDROID_CLIENT_ID},
-        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.ANDROID_CLIENT_ID},
+        audiences = {KKConstants.ANDROID_AUDIENCE},
+        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.SYSTEM_ADMIN_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
                 ownerDomain = "backend.khanakirana.com",
                 ownerName = "backend.khanakirana.com",
@@ -63,7 +64,7 @@ public class SysadminEndpoint {
     public SysadminAccount authenticate(@Named("email") String email,
                                         @Named("password") String password,
                                         @Named("googleUser") Boolean googleUser,
-                                        User user) throws ForbiddenException {
+                                        User user) throws ForbiddenException, OAuthRequestException {
         authorizeApi(user);
         try {
             email = email.toLowerCase();
@@ -101,23 +102,20 @@ public class SysadminEndpoint {
     }
 
     @ApiMethod(name = "getActionables")
-    public List<Actionable> getActionables(User user) throws ForbiddenException {
+    public List<Actionable> getActionables(User user) throws ForbiddenException, OAuthRequestException {
 
         authorizeApi(user);
         List<Actionable> actionables = new ArrayList<>();
         // First find pending for approval business users.
         List<BusinessAccount> accounts = OfyService.ofy().load().type(BusinessAccount.class).filter("locked", true).list();
         logger.log(Level.INFO, "Total business accounts pending for approval " + accounts.size());
-        for (BusinessAccount ba : accounts) {
-            String details = ba.getName() + "\n" + ba.getAddress() + "\n" + ba.getRegion().getCity() + " " + ba.getRegion().getState();
+        if (accounts.size() > 0) {
+
             Actionable actionable = new Actionable(KKActionTypes.APPROVE_BUSINESS_USER,
                     KKStringCodes.APPROVE_BUSINESS_USER_TITLE,
-                    KKStringCodes.APPROVE_BUSINESS_USER_ACTION_TITLE,
                     KKStringCodes.APPROVE_BUSINESS_USER_DESCRIPTION,
-                    ba.getId(),
-                    details,
+                    accounts.size(),
                     false);
-            logger.log(Level.INFO, "Adding business account approval actionable " + ba.getId());
             actionables.add(actionable);
         }
         return actionables;
@@ -129,7 +127,7 @@ public class SysadminEndpoint {
     @ApiMethod(name = "approveBusiness")
     public BusinessAccount approveBusiness(@Named("id") Long id,
                                            @Named("approve") Boolean approve,
-                                           User user) throws InvalidUserAccountException, ForbiddenException {
+                                           User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
 
         authorizeApi(user);
         try {
@@ -158,9 +156,9 @@ public class SysadminEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public SysadminAccount isRegisteredUser(@Named("email") String email,
-                                            User user) throws InvalidUserAccountException {
+    public SysadminAccount isRegisteredUser(User user) throws InvalidUserAccountException, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         try {
 
             if (OfyService.ofy().load().type(SysadminAccount.class).list().size() == 0) {
@@ -168,7 +166,7 @@ public class SysadminEndpoint {
                 OfyService.ofy().save().entity(admin).now();
                 return admin;
             }
-            SysadminAccount account = OfyService.ofy().load().type(SysadminAccount.class).filter("email", email).first().now();
+            SysadminAccount account = OfyService.ofy().load().type(SysadminAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
             if (account == null) {
 
                 throw new InvalidUserAccountException();
@@ -186,8 +184,10 @@ public class SysadminEndpoint {
                                               @Named("acronym") String acronym,
                                               @Named("measurementCategory") String measurementCategory,
                                               @Named("primaryUnit") Boolean primaryUnit,
-                                              @Named("factor") Double factor) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
+                                              @Named("factor") Double factor,
+                                              User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         name = name.toUpperCase();
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
@@ -209,14 +209,17 @@ public class SysadminEndpoint {
     }
 
     @ApiMethod(name = "listMeasurementCategories")
-    public List<MeasurementCategory> lisMeasurementCategories() throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
+    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         return OfyService.ofy().load().type(MeasurementCategory.class).list();
     }
 
     @ApiMethod(name = "getUnitsForCategory")
-    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryDoesntExist {
+    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
+                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
         List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
@@ -224,29 +227,12 @@ public class SysadminEndpoint {
         return lmu;
     }
 
-    private MeasurementCategory getMeasurementCategory(String name) throws MeasurementCategoryDoesntExist {
-
-        name = name.toUpperCase();
-        MeasurementCategory measurementCategory = OfyService.ofy().load().type(MeasurementCategory.class).filter("name", name).first().now();
-        if (measurementCategory == null) {
-            throw new MeasurementCategoryDoesntExist();
-        }
-        return measurementCategory;
-    }
-
-    private UserAccount getUserAccount(String email) throws MeasurementCategoryDoesntExist, InvalidUserAccountException {
-
-        email = email.toLowerCase();
-        UserAccount userAccount = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
-        if (userAccount == null) {
-            throw new InvalidUserAccountException();
-        }
-        return userAccount;
-    }
-
     @ApiMethod(name = "addMeasurementCategory")
-    public MeasurementCategory addMeasurementCategory(@Named("name") String name, @Named("fractional") Boolean fractional) throws MeasurementCategoryAlreadyExists {
+    public MeasurementCategory addMeasurementCategory(@Named("name") String name,
+                                                      @Named("fractional") Boolean fractional,
+                                                      User user) throws MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         name = name.toUpperCase();
         MeasurementCategory measurementCategory = null;
         try {
@@ -267,19 +253,21 @@ public class SysadminEndpoint {
                                           @Named("upc") String upc,
                                           @Named("imageType") String imageType,
                                           @Named("imageCloudKey") String imageCloudKey,
-                                          @Named("userEmailId") String userEmailId,
-                                          @Named("measurementCategory") String measurementCategory) throws MeasurementCategoryAlreadyExists, MeasurementCategoryDoesntExist, InvalidUserAccountException {
+                                          @Named("measurementCategory") String measurementCategory,
+                                          User user) throws MeasurementCategoryAlreadyExists, MeasurementCategoryDoesntExist, InvalidUserAccountException, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
-        UserAccount userAccount = getUserAccount(userEmailId);
+        UserAccount userAccount = getUserAccount(user.getEmail().toLowerCase());
         MasterItem mi = new MasterItem(name, description, upc, imageType, imageCloudKey, userAccount.getEmail(), mc.getId());
         OfyService.ofy().save().entity(mi).now();
         return mi;
     }
 
     @ApiMethod(name = "getUploadURL")
-    public UploadURL getUploadURL() {
+    public UploadURL getUploadURL(User user) throws OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         return new UploadURL(blobstoreService.createUploadUrl(KKConstants.MASTER_ITEM_IMAGE_UPLOAD_URL));
     }
@@ -287,8 +275,10 @@ public class SysadminEndpoint {
     @ApiMethod(name = "createChildItemCategory")
     public List<ItemCategory> createChildItemCategory(@Named("parentId") Long parentId,
                                                       @Named("name") String name,
-                                                      @Named("description") String description) {
+                                                      @Named("description") String description,
+                                                      User user) throws OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         ItemCategory pic = OfyService.ofy().load().type(ItemCategory.class).id(parentId).now();
         ItemCategory ic;
         if (pic == null) {
@@ -304,21 +294,48 @@ public class SysadminEndpoint {
 
     @ApiMethod(name = "createItemCategory")
     public List<ItemCategory> createItemCategory(@Named("name") String name,
-                                                 @Named("description") String description) {
+                                                 @Named("description") String description,
+                                                 User user) throws OAuthRequestException, ForbiddenException {
+        authorizeApi(user);
         ItemCategory ic = new ItemCategory(0L, true, name, description);
         OfyService.ofy().save().entity(ic).now();
         return getItemCategories();
     }
 
     @ApiMethod(name = "getItemCategories")
-    public List<ItemCategory> getItemCategories() {
+    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException, ForbiddenException {
+
+        authorizeApi(user);
+        return getItemCategories();
+    }
+    private List<ItemCategory> getItemCategories() {
 
         List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
         if (itemCategories == null || itemCategories.size() == 0) {
-            return new ArrayList<ItemCategory>();
+            return new ArrayList<>();
         }
         return itemCategories;
     }
+    private MeasurementCategory getMeasurementCategory(String name) throws MeasurementCategoryDoesntExist {
+
+        name = name.toUpperCase();
+        MeasurementCategory measurementCategory = OfyService.ofy().load().type(MeasurementCategory.class).filter("name", name).first().now();
+        if (measurementCategory == null) {
+            throw new MeasurementCategoryDoesntExist();
+        }
+        return measurementCategory;
+    }
+
+    private UserAccount getUserAccount(String email) throws MeasurementCategoryDoesntExist, InvalidUserAccountException {
+
+        email = email.toLowerCase();
+        UserAccount userAccount = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
+        if (userAccount == null) {
+            throw new InvalidUserAccountException();
+        }
+        return userAccount;
+    }
+
 
     private MeasurementUnit getMeasurementUnit(MeasurementCategory measurementCategory, String name) {
 
@@ -327,7 +344,10 @@ public class SysadminEndpoint {
         return measurementUnit;
     }
 
-    private void authorizeApi(User user) throws ForbiddenException {
+    private void authorizeApi(User user) throws ForbiddenException, OAuthRequestException {
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
         List<SysadminAccount> accounts = OfyService.ofy().load().type(SysadminAccount.class).filter("email", user.getEmail().toLowerCase()).list();
         if (accounts.size() == 0) {
             throw new ForbiddenException("User " + user.getUserId() + " is not authorized for admin activities.");

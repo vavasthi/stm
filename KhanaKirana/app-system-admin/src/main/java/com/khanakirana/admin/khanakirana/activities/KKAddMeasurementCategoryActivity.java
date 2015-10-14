@@ -80,7 +80,7 @@ public class KKAddMeasurementCategoryActivity extends KhanaKiranaAdminAbstractAc
         dialog.dismiss();
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), measurementCategory, fractional).execute();
+        new com.khanakirana.admin.khanakirana.background.tasks.AddMeasurementCategoryTask(this, measurementCategory, fractional).execute();
         progressDialog.dismiss();
         finish();
     }

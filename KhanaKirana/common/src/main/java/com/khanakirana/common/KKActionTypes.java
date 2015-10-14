@@ -5,5 +5,6 @@ package com.khanakirana.common;
  */
 public class KKActionTypes {
 
+    public final static int NOTHING_TO_DO = 0x00;
     public final static int APPROVE_BUSINESS_USER = 0x01;
 }

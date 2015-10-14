@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.khanakirana.admin.khanakirana.KKAndroidConstants;
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddProductInMasterListActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.MasterItem;
 import com.khanakirana.common.ServerInteractionReturnStatus;
@@ -28,12 +29,10 @@ import java.util.logging.Logger;
 public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKAddProductInMasterListActivity context;
-    private final SysadminApi sysadminApi;
     private final String title;
     private final String description;
     private final String upc;
     private final String imageType;
-    private final String userEmailId;
     private final String measurementCategory;
     private final byte[] content;
 
@@ -43,16 +42,13 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AddMasterItemTask(KKAddProductInMasterListActivity context,
-                             SysadminApi sysadminApi,
                              String title,
                              String description,
                              String upc,
                              String imageType,
-                             String userEmailId,
                              String measurementCategory,
                              byte[] content) {
         this.context = context;
-        this.sysadminApi = sysadminApi;
         this.title = title;
         this.description = description;
         if (upc == null || upc.trim().equals("")) {
@@ -62,7 +58,6 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
             this.upc = upc;
         }
         this.imageType = imageType;
-        this.userEmailId = userEmailId;
         this.measurementCategory = measurementCategory;
         this.content = content;
     }
@@ -71,7 +66,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try{
-            String uploadURL = sysadminApi.getUploadURL().execute().getUrl();
+            String uploadURL = EndpointManager.getEndpoints(context).getUploadURL().execute().getUrl();
             OkHttpClient httpClient = new OkHttpClient();
             String filename = UUID.randomUUID().toString() + ".png";
             RequestBody body = new MultipartBuilder(IMAGE_PART_NAME)
@@ -82,7 +77,7 @@ public class AddMasterItemTask extends AsyncTask<Void, Void, Integer> {
             Response response = httpClient.newCall(request).execute();
             logger.info("Upload request/response is " + request.toString() + "\n" + response.toString());
             String cloudKey = response.header(KKAndroidConstants.BLOB_CLOUD_KEY);
-            MasterItem mi = sysadminApi.addItemInMasterList(title, description, upc, imageType, cloudKey, userEmailId, measurementCategory).execute();
+            MasterItem mi = EndpointManager.getEndpoints(context).addItemInMasterList(title, description, upc, imageType, cloudKey, measurementCategory).execute();
             if (!response.isSuccessful()) {
 
                 return ServerInteractionReturnStatus.FATAL_ERROR;

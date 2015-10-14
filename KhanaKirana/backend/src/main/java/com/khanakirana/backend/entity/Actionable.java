@@ -8,15 +8,14 @@ import com.googlecode.objectify.annotation.Entity;
 @Entity
 public class Actionable {
 
-    public Actionable(int actionType, Integer title, Integer actionTitle, Integer description, Long id, String details, Boolean done) {
+    public Actionable(int actionType, Integer title, Integer description, Integer count, Boolean done) {
         this.actionType = actionType;
         this.title = title;
-        this.actionTitle = actionTitle;
         this.description = description;
-        this.id = id;
-        this.details = details;
+        this.count = count;
         this.done = done;
     }
+
 
     public Actionable() {
     }
@@ -37,14 +36,6 @@ public class Actionable {
         this.title = title;
     }
 
-    public Integer getActionTitle() {
-        return actionTitle;
-    }
-
-    public void setActionTitle(Integer actionTitle) {
-        this.actionTitle = actionTitle;
-    }
-
     public Integer getDescription() {
         return description;
     }
@@ -61,38 +52,17 @@ public class Actionable {
         this.done = done;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    @Override
-    public String toString() {
-        return "Actionable{" +
-                "actionType=" + actionType +
-                ", title='" + title + '\'' +
-                ", actionTitle='" + actionTitle + '\'' +
-                ", description='" + description + '\'' +
-                ", done=" + done +
-                '}';
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     private int actionType;
     private Integer title;
-    private Integer actionTitle;
     private Integer description;
-    private Long id;
-    private String details;
+    private Integer count;
     private Boolean done;
 }

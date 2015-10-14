@@ -33,33 +33,10 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
 
         final Activity context;
         private Actionable actionable;
-        private ProgressBar pb;
         public ViewHolder(final Activity context, View itemView) {
 
             super(itemView);
             this.context = context;
-            pb = (ProgressBar)(itemView.findViewById(R.id.progressBar));
-            pb.setVisibility(View.INVISIBLE);
-            ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
-            button_ok.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pb.setVisibility(View.VISIBLE);
-                    new ApproveBusinessUserTask(context, ViewHolder.this, KhanaKiranaMainAdminActivity.getEndpoints(), Boolean.TRUE).execute();
-
-
-                }
-            });
-            ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
-            button_cancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pb.setVisibility(View.VISIBLE);
-                    new ApproveBusinessUserTask(context, ViewHolder.this, KhanaKiranaMainAdminActivity.getEndpoints(), Boolean.FALSE).execute();
-
-                }
-            });
-            setButtonVisibility();
         }
         public void setActionable(Actionable actionable) {
             this.actionable = actionable;
@@ -69,18 +46,6 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
         }
         public void setActionableStatus(Boolean status) {
             actionable.setDone(status);
-            pb.setVisibility(View.INVISIBLE);
-            setButtonVisibility();
-        }
-        private void setButtonVisibility() {
-            ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
-            if (actionable != null && actionable.getDone()) {
-                button_ok.setVisibility(View.INVISIBLE);
-            }
-            ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
-            if (actionable != null && actionable.getDone()) {
-                button_cancel.setVisibility(View.INVISIBLE);
-            }
         }
 
     }
@@ -96,11 +61,9 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.setActionable(actionables[position]);
-        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_title)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getTitle()]);
-        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_action)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getActionTitle()]);
-        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_details)).setText(actionables[position].getDetails());
-        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_description)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getDescription()]);
-        holder.setButtonVisibility();
+        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_count)).setText(String.valueOf(actionables[position].getCount()));
+        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_action)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getTitle()]);
+        ((TextView)holder.itemView.findViewById(R.id.kk_sysadmin_main_details)).setText(context.getResources().getStringArray(R.array.server_shared_strings)[actionables[position].getDescription()]);
     }
 
     @Override
@@ -109,3 +72,42 @@ public class KKRecyclerViewMainScreenAdapter extends RecyclerView.Adapter<KKRecy
     }
 
 }
+
+/*
+            ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
+            button_ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pb.setVisibility(View.VISIBLE);
+                    new ApproveBusinessUserTask(context, ViewHolder.this, Boolean.TRUE).execute();
+
+
+                }
+            });
+            ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
+            button_cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pb.setVisibility(View.VISIBLE);
+                    new ApproveBusinessUserTask(context, ViewHolder.this, Boolean.FALSE).execute();
+
+                }
+            });
+            setButtonVisibility();
+        private void setButtonVisibility() {
+            ImageButton button_ok = (ImageButton)(itemView.findViewById(R.id.actionable_button_yes));
+            if (actionable != null && actionable.getDone()) {
+                button_ok.setVisibility(View.INVISIBLE);
+            }
+            ImageButton button_cancel = (ImageButton)(itemView.findViewById(R.id.actionable_button_no));
+            if (actionable != null && actionable.getDone()) {
+                button_cancel.setVisibility(View.INVISIBLE);
+            }
+        }
+            pb = (ProgressBar)(itemView.findViewById(R.id.progressBar));
+            pb.setVisibility(View.INVISIBLE);
+                        private ProgressBar pb;
+            pb.setVisibility(View.INVISIBLE);
+
+
+ */

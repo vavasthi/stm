@@ -3,6 +3,7 @@ package com.khanakirana.admin.khanakirana.background.tasks;
 import android.os.AsyncTask;
 
 import com.khanakirana.admin.khanakirana.activities.KhanaKiranaMainAdminActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.admin.khanakirana.utils.ObjectWithStatus;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.Actionable;
@@ -19,32 +20,21 @@ import java.util.logging.Logger;
 public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, ObjectWithStatus<List<Actionable> > > {
 
     private final KhanaKiranaMainAdminActivity context;
-    private final SysadminApi sysadminApi;
-    private final String selectedAccountName;
-    private final String password;
-    private final Boolean isGoogleAccount;
 
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
 
-    public AuthenticateUserAsyncTask(KhanaKiranaMainAdminActivity context,
-                                     SysadminApi sysadminApi,
-                                     String selectedAccountName,
-                                     Boolean isGoogleAccount, String password) {
+    public AuthenticateUserAsyncTask(KhanaKiranaMainAdminActivity context) {
         this.context = context;
-        this.sysadminApi = sysadminApi;
-        this.selectedAccountName = selectedAccountName;
-        this.isGoogleAccount = isGoogleAccount;
-        this.password = password;
     }
 
     @Override
     protected ObjectWithStatus<List<Actionable> > doInBackground(Void... params) {
 
         try {
-            SysadminAccount registeredUser = sysadminApi.isRegisteredUser(selectedAccountName).execute();
+            SysadminAccount registeredUser = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
             if (registeredUser != null) {
-                List<Actionable> actionables = sysadminApi.getActionables().execute().getItems();
+                List<Actionable> actionables = EndpointManager.getEndpoints(context).getActionables().execute().getItems();
                 ObjectWithStatus<List<Actionable> > returnValue = new ObjectWithStatus<>(actionables, ServerInteractionReturnStatus.SUCCESS);
                 return returnValue;
             }

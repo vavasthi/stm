@@ -1,6 +1,7 @@
 package com.khanakirana.admin.khanakirana.background.tasks;
 
 import com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
@@ -16,16 +17,15 @@ public class GetItemCategoryTask extends AbstractItemCategoryTask {
     private Logger logger = Logger.getLogger(GetItemCategoryTask.class.getName());
 
 
-    public GetItemCategoryTask(KKManageItemCategoryActivity context,
-                               SysadminApi sysadminApi) {
-        super(context, sysadminApi);
+    public GetItemCategoryTask(KKManageItemCategoryActivity context) {
+        super(context);
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            this.itemCategoryList= sysadminApi.getItemCategories().execute().getItems();
+            this.itemCategoryList= EndpointManager.getEndpoints(context).getItemCategories().execute().getItems();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

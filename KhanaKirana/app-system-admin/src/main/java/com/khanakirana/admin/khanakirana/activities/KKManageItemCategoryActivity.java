@@ -58,7 +58,7 @@ public class KKManageItemCategoryActivity extends KhanaKiranaAdminAbstractActivi
         });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new GetItemCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints()).execute();
+        new GetItemCategoryTask(this).execute();
 
     }
 
@@ -95,7 +95,7 @@ public class KKManageItemCategoryActivity extends KhanaKiranaAdminAbstractActivi
         String description = ((TextView)dialog.findViewById(R.id.item_category_description)).getText().toString();
         dialog.dismiss();
         progressDialog.show();
-        new AddItemCategoryTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), currentParent, name, description).execute();
+        new AddItemCategoryTask(this, currentParent, name, description).execute();
     }
 
     public void setItemCategories(List<ItemCategory> itemCategories) {

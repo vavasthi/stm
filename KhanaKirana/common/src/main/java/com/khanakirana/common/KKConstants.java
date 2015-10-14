@@ -10,6 +10,7 @@ public class KKConstants {
     public static final String BUSINESS_ADMIN_ANDROID_CLIENT_ID = "279496868246-9p5f2b5m8bm06e6n75r6r5bhec68k0bp.apps.googleusercontent.com";
     public static final String ANDROID_CLIENT_ID = "279496868246-9p5f2b5m8bm06e6n75r6r5bhec68k0bp.apps.googleusercontent.com";
     public static final String ANDROID_AUDIENCE = WEB_CLIENT_ID;
+    public static final String SYSTEM_ADMIN_ANDROID_CLIENT_ID = "279496868246-vga2i0dmrn465685an8ldapch0p009l3.apps.googleusercontent.com";
 
     public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
 

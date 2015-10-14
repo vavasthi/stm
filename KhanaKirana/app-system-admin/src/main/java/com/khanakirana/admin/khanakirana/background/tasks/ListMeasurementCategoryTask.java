@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 import com.khanakirana.common.ServerInteractionReturnStatus;
@@ -19,23 +20,20 @@ import java.util.logging.Logger;
 public class ListMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKMeasurementCategoryReceivingActivity context;
-    private final SysadminApi sysadminApi;
     private List<MeasurementCategory> categories;
 
     private Logger logger = Logger.getLogger(ListMeasurementCategoryTask.class.getName());
 
 
-    public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context,
-                                       SysadminApi sysadminApi) {
+    public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context) {
         this.context = context;
-        this.sysadminApi = sysadminApi;
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            categories = sysadminApi.listMeasurementCategories().execute().getItems();
+            categories = EndpointManager.getEndpoints(context).listMeasurementCategories().execute().getItems();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

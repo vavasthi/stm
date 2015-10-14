@@ -18,16 +18,13 @@ import java.util.logging.Logger;
 abstract class AbstractItemCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     final KKManageItemCategoryActivity context;
-    final SysadminApi sysadminApi;
     List<ItemCategory> itemCategoryList;
 
     private Logger logger = Logger.getLogger(AbstractItemCategoryTask.class.getName());
 
 
-    public AbstractItemCategoryTask(KKManageItemCategoryActivity context,
-                                    SysadminApi sysadminApi) {
+    public AbstractItemCategoryTask(KKManageItemCategoryActivity context) {
         this.context = context;
-        this.sysadminApi = sysadminApi;
     }
 
     protected void onPostExecute (Integer result) {

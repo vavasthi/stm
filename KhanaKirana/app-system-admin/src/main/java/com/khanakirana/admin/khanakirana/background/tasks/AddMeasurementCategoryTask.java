@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.khanakirana.admin.khanakirana.R;
 import com.khanakirana.admin.khanakirana.activities.KKAddMeasurementCategoryActivity;
+import com.khanakirana.admin.khanakirana.utils.EndpointManager;
 import com.khanakirana.backend.sysadminApi.SysadminApi;
 import com.khanakirana.backend.sysadminApi.model.MeasurementCategory;
 import com.khanakirana.common.ServerInteractionReturnStatus;
@@ -18,7 +19,6 @@ import java.util.logging.Logger;
 public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKAddMeasurementCategoryActivity context;
-    private final SysadminApi sysadminApi;
     private final String measurementCategory;
     private final Boolean fractional;
 
@@ -26,11 +26,9 @@ public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
 
     public AddMeasurementCategoryTask(KKAddMeasurementCategoryActivity context,
-                                      SysadminApi sysadminApi,
                                       String measurementCategory,
                                       Boolean fractional) {
         this.context = context;
-        this.sysadminApi = sysadminApi;
         this.measurementCategory = measurementCategory;
         this.fractional = fractional;
     }
@@ -39,7 +37,7 @@ public class AddMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try {
-            MeasurementCategory mc = sysadminApi.addMeasurementCategory(measurementCategory, fractional).execute();
+            MeasurementCategory mc = EndpointManager.getEndpoints(context).addMeasurementCategory(measurementCategory, fractional).execute();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

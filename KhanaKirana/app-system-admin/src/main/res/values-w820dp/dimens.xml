@@ -5,4 +5,5 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="kk_registration_popup_text_size">24dp</dimen>
     <dimen name="kk_text_small">12dp</dimen>
+    <dimen name="kk_very_large_text">32dp</dimen>
 </resources>

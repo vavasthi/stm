@@ -119,7 +119,7 @@ public class KKAddMeasurementUnitActivity extends KKMeasurementCategoryReceiving
         ProgressDialog progressDialog = new ProgressDialog(this);
         dialog.dismiss();
         progressDialog.show();
-        new AddMeasurementUnitTask(this, KhanaKiranaMainAdminActivity.getEndpoints(), name, acronym, measurementCategory, primaryUnit, factor).execute();
+        new AddMeasurementUnitTask(this, name, acronym, measurementCategory, primaryUnit, factor).execute();
         progressDialog.dismiss();
         finish();
     }
