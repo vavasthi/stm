@@ -22,6 +22,7 @@ import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.BusinessAccountResult;
 import com.khanakirana.badmin.khanakirana.KKAndroidConstants;
 import com.khanakirana.badmin.khanakirana.R;
+import com.khanakirana.badmin.khanakirana.utils.EndpointManager;
 import com.khanakirana.common.KKConstants;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
@@ -44,7 +45,6 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
     protected static final String PREF_IS_ACCOUNT_CHOSEN = "KKBusinessIsAccountChosen";
     protected static final String PREF_ACCOUNT_PASSWORD = "KKBusinessPreferredAccountPassword";
     protected static final String AUDIENCE = "server:client_id:" + KKConstants.WEB_CLIENT_ID;
-    static String selectedAccountName = null;
     protected static Boolean isGoogleAuthentication = null;
     protected static String password = null;
     protected static Boolean isAuthenticated = null;
@@ -87,10 +87,10 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
 
             setContentView(R.layout.registration_google_user);
             final View v = findViewById(R.id.registration_google_user_view);
-            if (selectedAccountName != null) {
+            if (EndpointManager.getAccountName() != null) {
 
                 EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
+                email.setText(EndpointManager.getAccountName());
             }
             if (detectedPhoneNumber != null) {
 
@@ -102,10 +102,10 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
 
             setContentView(R.layout.registration_nongoogle_user);
             final View v = findViewById(R.id.registration_nongoogle_user_view);
-            if (selectedAccountName != null) {
+            if (EndpointManager.getAccountName() != null) {
 
                 EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(selectedAccountName);
+                email.setText(EndpointManager.getAccountName());
             }
             if (detectedPhoneNumber != null) {
 
@@ -115,9 +115,6 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
         }
     }
 
-    public static String getSelectedAccountName() {
-        return selectedAccountName;
-    }
     public static String getDetectedPhoneNumber() {
 
         if (detectedPhoneNumber == null) {
@@ -136,7 +133,7 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
             isGoogleAuthenticationDefault = true;
         }
         settings = getSharedPreferences(AUTH_PREF, 0);
-        selectedAccountName = settings.getString(PREF_ACCOUNT_NAME, null);
+        EndpointManager.setAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
         isGoogleAuthentication = settings.getBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthenticationDefault);
         isAuthenticated = settings.getBoolean(PREF_IS_AUTHENTICATED, Boolean.FALSE);
         isRegistered = settings.getBoolean(PREF_IS_REGISTERED, Boolean.FALSE);
@@ -147,7 +144,7 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
     protected void saveSharedPreferences() {
 
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PREF_ACCOUNT_NAME, selectedAccountName);
+        editor.putString(PREF_ACCOUNT_NAME, EndpointManager.getAccountName());
         editor.putBoolean(PREF_IS_GOOGLE_ACCOUNT, isGoogleAuthentication);
         editor.putBoolean(PREF_IS_AUTHENTICATED, isAuthenticated);
         editor.putBoolean(PREF_IS_ACCOUNT_CHOSEN, isAccountChosen);
@@ -156,60 +153,6 @@ abstract class KhanaKiranaBusinessAbstractActivity extends Activity {
         editor.commit();
 //        gac.setSelectedAccountName(selectedAccountName);
     }
-
-    public static BusinessApi getEndpoints(Activity activity) {
-
-        // Create API handler
-        HttpRequestInitializer requestInitializer = getRequestInitializer(activity);
-        BusinessApi.Builder builder = new BusinessApi.Builder(
-                AndroidHttp.newCompatibleTransport(),
-                new AndroidJsonFactory(),
-                requestInitializer)
-                .setRootUrl(KKAndroidConstants.ROOT_URL)
-                .setApplicationName(activity.getApplicationInfo().name)
-                .setGoogleClientRequestInitializer(
-                        new GoogleClientRequestInitializer() {
-                            @Override
-                            public void initialize(
-                                    final AbstractGoogleClientRequest<?>
-                                            abstractGoogleClientRequest)
-                                    throws IOException {
-                                abstractGoogleClientRequest
-                                        .setDisableGZipContent(true);
-                            }
-                        }
-                );
-
-        return builder.build();
-    }
-    /**
-     * Returns appropriate HttpRequestInitializer depending whether the
-     * application is configured to require users to be signed in or not.
-     * @return an appropriate HttpRequestInitializer.
-     */
-    public  static HttpRequestInitializer getRequestInitializer(Activity activity) {
-
-        GoogleAccountCredential gac = GoogleAccountCredential.usingAudience(activity, AUDIENCE);
-        gac.setSelectedAccountName(selectedAccountName);
-        return gac;
-/*        if (KKAndroidConstants.SIGN_IN_REQUIRED) {
-            return SignInActivity.getCredential();
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-
-        } else {
-            return new HttpRequestInitializer() {
-                @Override
-                public void initialize(final HttpRequest arg0) {
-                }
-            };
-        }*/
-    }
-
-
 
     public void splashAppropriateViewForAccount(final BusinessAccountResult bar) {
         runOnUiThread(new Runnable() {

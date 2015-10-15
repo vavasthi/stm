@@ -24,12 +24,6 @@
         android:label="@string/app_name"
         android:name="android.support.multidex.MultiDexApplication"
         android:theme="@android:style/Theme.Holo.Light" >
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAhpLAyEWYQBvioMJ2nAspVB6nO5NnAIVI"/>
-
-
         <activity
             android:name=".activities.KhanaKiranaMainAdminActivity"
             android:label="@string/app_name" >
@@ -45,6 +39,9 @@
         <activity android:name="com.khanakirana.admin.khanakirana.activities.KKManageItemCategoryActivity" android:label="@string/item_category_activity_label" android:configChanges="keyboardHidden|orientation"/>
         <activity android:name="com.khanakirana.admin.khanakirana.activities.KKMapPolygonSelectionActivity" android:label="@string/kk_set_business_polygon" android:configChanges="keyboardHidden|orientation"/>
 
-     </application>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAhpLAyEWYQBvioMJ2nAspVB6nO5NnAIVI"/>
+    </application>
 
 </manifest>

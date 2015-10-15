@@ -9,6 +9,10 @@ package com.khanakirana.backend.endpoints;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.response.ForbiddenException;
+import com.google.appengine.api.oauth.OAuthRequestException;
+import com.google.appengine.api.users.User;
+import com.khanakirana.backend.entity.SysadminAccount;
 import com.khanakirana.common.KKConstants;
 import com.khanakirana.backend.OfyService;
 import com.khanakirana.backend.entity.ItemCategory;
@@ -35,8 +39,8 @@ import javax.inject.Named;
         name = "customerApi",
         version = "v1",
         scopes = {KKConstants.EMAIL_SCOPE},
-        audiences = {KKConstants.ANDROID_CLIENT_ID},
-        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.ANDROID_CLIENT_ID},
+        audiences = {KKConstants.ANDROID_AUDIENCE},
+        clientIds = {KKConstants.WEB_CLIENT_ID, KKConstants.CUSTOMER_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
                 ownerDomain = "backend.khanakirana.com",
                 ownerName = "backend.khanakirana.com",
@@ -53,19 +57,16 @@ public class CustomerEndpoint {
     @ApiMethod(name = "register")
     public UserAccount register(@Named("name") String name,
                                         @Named("address") String address,
-                                        @Named("email") String email,
                                         @Named("mobile") String mobile,
-                                        @Named("password") String password,
                                         @Named("city") String city,
                                         @Named("state") String state,
                                         @Named("latitude") Double latitude,
                                         @Named("longitude") Double longitude,
-                                        @Named("googleUser") Boolean googleUser) {
-
-        UserAccount account = new UserAccount(name, address, email.toLowerCase(), mobile, password, city, state, longitude, latitude, googleUser);
-        if (googleUser) {
-            account.setPassword(null);
+                                User user) throws ForbiddenException {
+        if (user == null) {
+            throw new ForbiddenException("user is null.");
         }
+        UserAccount account = new UserAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
         OfyService.ofy().save().entity(account).now();
         return account;
     }
@@ -100,11 +101,12 @@ public class CustomerEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public UserAccount isRegisteredUser(@Named("email") String email) throws InvalidUserAccountException {
+    public UserAccount isRegisteredUser(User user) throws InvalidUserAccountException, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         try {
 
-            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
+            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
             if (account == null) {
 
                 throw new InvalidUserAccountException();
@@ -118,14 +120,17 @@ public class CustomerEndpoint {
     }
 
     @ApiMethod(name = "listMeasurementCategories")
-    public List<MeasurementCategory> lisMeasurementCategories() throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists {
+    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         return OfyService.ofy().load().type(MeasurementCategory.class).list();
     }
 
     @ApiMethod(name = "getUnitsForCategory")
-    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory) throws MeasurementCategoryDoesntExist {
+    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
+                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
         List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
@@ -134,12 +139,23 @@ public class CustomerEndpoint {
     }
 
     @ApiMethod(name = "getItemCategories")
-    public List<ItemCategory> getItemCategories() {
+    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException, ForbiddenException {
 
+        authorizeApi(user);
         List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
         if (itemCategories == null || itemCategories.size() == 0) {
             return new ArrayList<ItemCategory>();
         }
         return itemCategories;
+    }
+    private void authorizeApi(User user) throws ForbiddenException, OAuthRequestException {
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
+        List<UserAccount> accounts = OfyService.ofy().load().type(UserAccount.class).filter("email", user.getEmail().toLowerCase()).list();
+        if (accounts.size() == 0) {
+            throw new ForbiddenException("User " + user.getUserId() + " is not authorized for customer activities.");
+        }
+
     }
 }

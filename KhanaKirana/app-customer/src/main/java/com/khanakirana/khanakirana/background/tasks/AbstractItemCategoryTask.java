@@ -17,16 +17,13 @@ import java.util.logging.Logger;
 abstract class AbstractItemCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     final KKManageItemCategoryActivity context;
-    final CustomerApi customerApi;
     List<ItemCategory> itemCategoryList;
 
     private Logger logger = Logger.getLogger(AbstractItemCategoryTask.class.getName());
 
 
-    public AbstractItemCategoryTask(KKManageItemCategoryActivity context,
-                               CustomerApi customerApi) {
+    public AbstractItemCategoryTask(KKManageItemCategoryActivity context) {
         this.context = context;
-        this.customerApi = customerApi;
     }
 
     protected void onPostExecute (Integer result) {

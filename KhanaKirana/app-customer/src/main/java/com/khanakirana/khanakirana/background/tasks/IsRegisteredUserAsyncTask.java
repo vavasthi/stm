@@ -4,7 +4,8 @@ import android.os.AsyncTask;
 
 import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.backend.customerApi.model.UserAccount;
-import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
+import com.khanakirana.khanakirana.activities.KhanaKiranaMainActivity;
+import com.khanakirana.khanakirana.utils.EndpointManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,23 +16,19 @@ import java.util.logging.Logger;
 public class IsRegisteredUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final CustomerApi customerApi;
-    private final String selectedAccountName;
 
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
-    public IsRegisteredUserAsyncTask(KhanaKiranaMainActivity context, CustomerApi customerApi, String selectedAccountName) {
+    public IsRegisteredUserAsyncTask(KhanaKiranaMainActivity context) {
         this.context = context;
-        this.customerApi = customerApi;
-        this.selectedAccountName = selectedAccountName;
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            logger.log(Level.INFO, "Checking if the user is registered." + selectedAccountName);
-            UserAccount registeredUser = customerApi.isRegisteredUser(selectedAccountName).execute();
+            logger.log(Level.INFO, "Checking if the user is registered." + EndpointManager.getAccountName());
+            UserAccount registeredUser = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
             if (registeredUser != null) {
                 logger.info("Registered user is :" + registeredUser.toString() );
                 return ServerInteractionReturnStatus.ALREADY_REGISTERED;

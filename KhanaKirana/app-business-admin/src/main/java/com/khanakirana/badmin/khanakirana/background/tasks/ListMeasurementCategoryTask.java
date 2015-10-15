@@ -7,6 +7,7 @@ import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.MeasurementCategory;
 import com.khanakirana.badmin.khanakirana.R;
 import com.khanakirana.badmin.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
+import com.khanakirana.badmin.khanakirana.utils.EndpointManager;
 import com.khanakirana.common.ServerInteractionReturnStatus;
 
 import java.io.IOException;
@@ -19,23 +20,20 @@ import java.util.logging.Logger;
 public class ListMeasurementCategoryTask extends AsyncTask<Void, Void, Integer> {
 
     private final KKMeasurementCategoryReceivingActivity context;
-    private final BusinessApi businessApi;
     private List<MeasurementCategory> categories;
 
     private Logger logger = Logger.getLogger(ListMeasurementCategoryTask.class.getName());
 
 
-    public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context,
-                                       BusinessApi businessApi) {
+    public ListMeasurementCategoryTask(KKMeasurementCategoryReceivingActivity context) {
         this.context = context;
-        this.businessApi = businessApi;
     }
 
     @Override
     protected Integer doInBackground(Void... params) {
 
         try {
-            categories = businessApi.listMeasurementCategories().execute().getItems();
+            categories = EndpointManager.getEndpoints(context).listMeasurementCategories().execute().getItems();
             return ServerInteractionReturnStatus.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

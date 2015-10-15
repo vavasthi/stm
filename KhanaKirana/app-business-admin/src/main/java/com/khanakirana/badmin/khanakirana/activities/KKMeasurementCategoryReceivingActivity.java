@@ -24,7 +24,7 @@ public abstract class KKMeasurementCategoryReceivingActivity  extends KhanaKiran
         createPopup();
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new ListMeasurementCategoryTask(this, KhanaKiranaBusinessMainActivity.getEndpoints(this)).execute();
+        new ListMeasurementCategoryTask(this).execute();
 
 //        setContentView(R.layout.adding_items_master_list);
     }

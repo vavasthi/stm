@@ -27,6 +27,7 @@ import com.khanakirana.badmin.khanakirana.background.tasks.AuthenticateUserAsync
 import com.khanakirana.badmin.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.RegisterUserAsyncTask;
 import com.khanakirana.badmin.khanakirana.background.tasks.UpdateBusinessLocationAsyncTask;
+import com.khanakirana.badmin.khanakirana.utils.EndpointManager;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
@@ -48,12 +49,10 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
         loadSharedPreferences();
         initializeLocationService();
         progressDialog = new ProgressDialog(this);
-        businessApi = getEndpoints(this);
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
-        if (isGoogleAuthentication) {
             if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, businessApi, selectedAccountName, Boolean.TRUE, null).execute();
+                new AuthenticateUserAsyncTask(this).execute();
             }
             else if (isAccountChosen) {
                 registerIfRequired();
@@ -61,19 +60,6 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
             else {
                 chooseAccount();
             }
-        }
-        else {
-            if (isAuthenticated) {
-
-                new AuthenticateUserAsyncTask(this, businessApi, selectedAccountName, Boolean.FALSE, password).execute();
-            }
-            else if (isRegistered) {
-                splashReauthenticateScreen();
-            }
-            else {
-                splashRegistrationScreen();
-            }
-        }
     }
 
 
@@ -99,7 +85,7 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
             case R.id.action_set_business_location:
                 if (lastLocation != null) {
 
-                    new UpdateBusinessLocationAsyncTask(this, businessApi, selectedAccountName, lastLocation.getLatitude(), lastLocation.getLongitude()).execute();
+                    new UpdateBusinessLocationAsyncTask(this, lastLocation.getLatitude(), lastLocation.getLongitude()).execute();
                     AlertDialog ad = new AlertDialog.Builder(this).setTitle("Location Alert").setMessage("Location is " + lastLocation.getLatitude() + "," + lastLocation.getLongitude()).show();
                 }
                 else {
@@ -123,7 +109,7 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
     }
     private void obtainCredentials() {
         setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
-        if (selectedAccountName != null) {
+        if (EndpointManager.getAccountName()!= null) {
             splashRegistrationScreen();
         }
         else {
@@ -132,17 +118,17 @@ public class KhanaKiranaBusinessMainActivity extends KhanaKiranaBusinessAbstract
         }
     }
     private void registerIfRequired() {
-        new IsRegisteredUserAsyncTask(this, businessApi, selectedAccountName).execute();
+        new IsRegisteredUserAsyncTask(this).execute();
     }
     public void registerUser(View v) throws NoSuchAlgorithmException {
         progressDialog.show();
-        new RegisterUserAsyncTask(this, businessApi, v, isGoogleAuthentication).execute();
+        new RegisterUserAsyncTask(this, v).execute();
     }
 
     private void setSelectedAccountName(String accountName) {
 
         isAccountChosen = true;
-        selectedAccountName = accountName;
+        EndpointManager.setAccountName(accountName);
         saveSharedPreferences();
     }
 

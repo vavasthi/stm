@@ -12,9 +12,9 @@ public class UserAccount extends AbstractUser {
     public UserAccount() {
     }
 
-    public UserAccount(String name, String address, String email, String mobile, String password, String city, String state, Double latitude, Double longitude,Boolean googleUser) {
+    public UserAccount(String name, String address, String email, String mobile, String city, String state, Double latitude, Double longitude) {
 
-        super(name, address, city, state, email, mobile, password, latitude, longitude, googleUser, AccountType.CUSTOMER, Boolean.FALSE);
+        super(name, address, city, state, email, mobile, latitude, longitude, Boolean.TRUE, AccountType.CUSTOMER, Boolean.FALSE);
     }
 
 }

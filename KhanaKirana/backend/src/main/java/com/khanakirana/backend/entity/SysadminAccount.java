@@ -12,8 +12,8 @@ public class SysadminAccount extends AbstractUser {
     public SysadminAccount() {
     }
 
-    public SysadminAccount(String name, String address, String email, String mobile, String password, String city, String state, Double latitude, Double longitude, Boolean googleUser) {
+    public SysadminAccount(String name, String address, String email, String mobile, String city, String state, Double latitude, Double longitude) {
 
-        super(name, address, city, state, email, mobile, password, latitude, longitude, googleUser, AccountType.SYSADMIN, Boolean.TRUE);
+        super(name, address, city, state, email, mobile, latitude, longitude, Boolean.TRUE, AccountType.SYSADMIN, Boolean.TRUE);
     }
 }

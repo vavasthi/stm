@@ -13,9 +13,9 @@ public class BusinessAccount extends AbstractUser {
 
     public BusinessAccount() {
     }
-    public BusinessAccount(String name, String address, String email, String mobile, String password, String city, String state, Double latitude, Double longitude, Boolean googleUser) {
+    public BusinessAccount(String name, String address, String email, String mobile, String city, String state, Double latitude, Double longitude) {
 
-        super(name, address, city, state, email, mobile, password, latitude, longitude, googleUser, AccountType.BUSINESS, Boolean.TRUE);
+        super(name, address, city, state, email, mobile, latitude, longitude, Boolean.TRUE, AccountType.BUSINESS, Boolean.TRUE);
     }
 
 }

@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.khanakirana.backend.customerApi.model.ItemCategory;
-import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.adapters.CustomItemCategoryAdapter;
 import com.khanakirana.khanakirana.background.tasks.GetItemCategoryTask;
@@ -57,7 +56,7 @@ public class KKManageItemCategoryActivity extends Activity {
         });
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new GetItemCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
+        new GetItemCategoryTask(this).execute();
 
     }
 

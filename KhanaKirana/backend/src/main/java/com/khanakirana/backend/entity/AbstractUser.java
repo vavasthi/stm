@@ -15,12 +15,13 @@ import com.khanakirana.backend.utils.AccountType;
 public class AbstractUser {
     enum ACCOUNT_TYPE {
         CUSTOMER,
-        BUSINESs
+        BUSINESS,
+        SYSADMIN
     }
     public AbstractUser() {
 
     }
-    protected AbstractUser(String name, String address, String city, String state, String email, String mobile, String password, Double latitude, Double longitude, Boolean googleUser, AccountType accountType, Boolean locked) {
+    protected AbstractUser(String name, String address, String city, String state, String email, String mobile, Double latitude, Double longitude, Boolean googleUser, AccountType accountType, Boolean locked) {
 
         this.name = name;
         this.address = address;
@@ -36,7 +37,6 @@ public class AbstractUser {
         this.region = region;
         this.email = email;
         this.mobile = mobile;
-        this.password = password;
         this.latitude = latitude;
         this.longitude = longitude;
         this.googleUser = googleUser;
@@ -92,14 +92,6 @@ public class AbstractUser {
         this.mobile = mobile;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Double getLatitude() {
         return latitude;
     }
@@ -149,7 +141,6 @@ public class AbstractUser {
                 ", region=" + region +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", password='" + password + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", googleUser=" + googleUser +
@@ -167,7 +158,6 @@ public class AbstractUser {
     private String email;
     @Index
     private String mobile;
-    private String password;
     private Double latitude;
     private Double longitude;
     @Index

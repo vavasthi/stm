@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.khanakirana.backend.customerApi.model.MeasurementCategory;
-import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.background.tasks.ListMeasurementCategoryTask;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public abstract class KKMeasurementCategoryReceivingActivity  extends Activity {
         createPopup();
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        new ListMeasurementCategoryTask(this, KhanaKiranaMainActivity.getEndpoints()).execute();
+        new ListMeasurementCategoryTask(this).execute();
 
 //        setContentView(R.layout.adding_items_master_list);
     }

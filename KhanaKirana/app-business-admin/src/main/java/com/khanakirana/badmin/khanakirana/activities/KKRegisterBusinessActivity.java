@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.khanakirana.badmin.khanakirana.R;
+import com.khanakirana.badmin.khanakirana.utils.EndpointManager;
 
 
 /**
@@ -27,7 +28,7 @@ public class KKRegisterBusinessActivity extends KhanaKiranaBusinessAbstractActiv
     }
     void populateView() {
 
-        setEditText(R.id.email, KhanaKiranaBusinessMainActivity.getSelectedAccountName());
+        setEditText(R.id.email, EndpointManager.getAccountName());
         setEditText(R.id.mobile, KhanaKiranaBusinessMainActivity.getDetectedPhoneNumber());
     }
 

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.khanakirana.backend.businessApi.BusinessApi;
 import com.khanakirana.backend.businessApi.model.BusinessAccountResult;
 import com.khanakirana.badmin.khanakirana.activities.KhanaKiranaBusinessMainActivity;
+import com.khanakirana.badmin.khanakirana.utils.EndpointManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,17 +16,13 @@ import java.util.logging.Logger;
 public class UpdateBusinessLocationAsyncTask extends AsyncTask<Void, Void, BusinessAccountResult> {
 
     private final KhanaKiranaBusinessMainActivity context;
-    private final BusinessApi businessApi;
-    private final String selectedAccountName;
     private final Double latitude;
     private final Double longitude;
 
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
-    public UpdateBusinessLocationAsyncTask(KhanaKiranaBusinessMainActivity context, BusinessApi businessApi, String selectedAccountName, Double latitude, Double longitude) {
+    public UpdateBusinessLocationAsyncTask(KhanaKiranaBusinessMainActivity context, Double latitude, Double longitude) {
         this.context = context;
-        this.businessApi = businessApi;
-        this.selectedAccountName = selectedAccountName;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -34,8 +31,7 @@ public class UpdateBusinessLocationAsyncTask extends AsyncTask<Void, Void, Busin
     protected BusinessAccountResult doInBackground(Void... params) {
 
         try {
-            logger.log(Level.INFO, "Checking if the user is registered." + selectedAccountName);
-            BusinessAccountResult registeredUser = businessApi.updateLocation(latitude, longitude).execute();
+            BusinessAccountResult registeredUser = EndpointManager.getEndpoints(context).updateLocation(latitude, longitude).execute();
             if (registeredUser != null) {
                 logger.info("Registered user is :" + registeredUser.toString() );
                 return registeredUser;

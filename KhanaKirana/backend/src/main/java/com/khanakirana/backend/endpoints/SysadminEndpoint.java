@@ -86,17 +86,12 @@ public class SysadminEndpoint {
                                     @Named("address") String address,
                                     @Named("email") String email,
                                     @Named("mobile") String mobile,
-                                    @Named("password") String password,
                                     @Named("city") String city,
                                     @Named("state") String state,
                                     @Named("latitude") Double latitude,
-                                    @Named("longitude") Double longitude,
-                                    @Named("googleUser") Boolean googleUser) {
+                                    @Named("longitude") Double longitude) {
 
-        SysadminAccount account = new SysadminAccount(name, address, email.toLowerCase(), mobile, password, city, state, longitude, latitude, googleUser);
-        if (googleUser) {
-            account.setPassword(null);
-        }
+        SysadminAccount account = new SysadminAccount(name, address, email.toLowerCase(), mobile, city, state, longitude, latitude);
         OfyService.ofy().save().entity(account).now();
         return account;
     }
@@ -162,7 +157,7 @@ public class SysadminEndpoint {
         try {
 
             if (OfyService.ofy().load().type(SysadminAccount.class).list().size() == 0) {
-                SysadminAccount admin = new SysadminAccount("Vinay Avasthi", "Somewhere someplace", "vinay@avasthi.com", "+919845614175", "NOTSET", "Bangalore", "Karnataka", 0.0, 0.0, true);
+                SysadminAccount admin = new SysadminAccount("Vinay Avasthi", "Somewhere someplace", "vinay@avasthi.com", "+919845614175", "Bangalore", "Karnataka", 0.0, 0.0);
                 OfyService.ofy().save().entity(admin).now();
                 return admin;
             }

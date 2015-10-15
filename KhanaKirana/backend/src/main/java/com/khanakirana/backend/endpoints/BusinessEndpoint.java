@@ -6,14 +6,15 @@
 
 package com.khanakirana.backend.endpoints;
 
-import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.ForbiddenException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.oauth.OAuthRequestException;
+import com.google.appengine.api.users.User;
 import com.khanakirana.backend.OfyService;
 import com.khanakirana.backend.entity.BusinessAccountResult;
 import com.khanakirana.backend.entity.ItemCategory;
@@ -21,6 +22,7 @@ import com.khanakirana.backend.entity.MasterItem;
 import com.khanakirana.backend.entity.MeasurementCategory;
 import com.khanakirana.backend.entity.MeasurementUnit;
 import com.khanakirana.backend.entity.BusinessAccount;
+import com.khanakirana.backend.entity.SysadminAccount;
 import com.khanakirana.backend.entity.UserAccount;
 import com.khanakirana.backend.entity.UserAccountRegion;
 import com.khanakirana.backend.exceptions.InvalidUserAccountException;
@@ -63,23 +65,8 @@ public class BusinessEndpoint {
     @ApiMethod(name = "isRegisteredUser")
     public BusinessAccountResult isRegisteredUser(User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
 
-        try {
-
-            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
-            if (account == null) {
-
-                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
-            }
-            logger.log(Level.INFO, "User Account retrieved." + account.toString());
-            return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception thrown by the load.", e);
-        }
-        return new BusinessAccountResult(null, ServerInteractionReturnStatus.INVALID_USER);
+        return new BusinessAccountResult(authorizeApi(user), ServerInteractionReturnStatus.SUCCESS);
     }
 
     /**
@@ -88,46 +75,40 @@ public class BusinessEndpoint {
     @ApiMethod(name = "register")
     public BusinessAccountResult register(@Named("name") String name,
                                         @Named("address") String address,
-                                        @Named("email") String email,
                                         @Named("mobile") String mobile,
-                                        @Named("password") String password,
                                         @Named("city") String city,
                                         @Named("state") String state,
                                         @Named("latitude") Double latitude,
                                         @Named("longitude") Double longitude,
-                                        @Named("googleUser") Boolean googleUser,
-                                          User user) throws ForbiddenException {
+                                          User user) throws ForbiddenException, OAuthRequestException {
 
-        if (!user.getEmail().equalsIgnoreCase(email)) {
-            throw new ForbiddenException(email + " has not authenticated.");
+        if (user == null) {
+            throw new ForbiddenException("user is null.");
+        }
+        try {
+
+            BusinessAccount account = authorizeApi(user);
+            throw new ConflictException(user.getEmail() + " already exists.");
+        }
+        catch(Exception ex) {
+
         }
 
-        BusinessAccount account = new BusinessAccount(name, address, email.toLowerCase(), mobile, password, city, state, longitude, latitude, googleUser);
-        if (googleUser) {
-            account.setPassword(null);
-        }
+        BusinessAccount account = new BusinessAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
         OfyService.ofy().save().entity(account).now();
         return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
     }
 
     @ApiMethod(name = "updateLocation")
     public BusinessAccountResult updateLocation(@Named("latitude") Double latitude,
-                                                @Named("longitude") Double longitude,
-                                                User user) throws ForbiddenException, OAuthRequestException {
+                                             @Named("longitude") Double longitude,
+                                             User user) throws ForbiddenException, OAuthRequestException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
+        BusinessAccount account = authorizeApi(user);
+        if (account == null) {
+            throw new ForbiddenException(user.getEmail() + " is an invalid user.");
         }
-
-
         try {
-            String email = user.getEmail().toLowerCase();
-            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", email).first().now();
-            logger.log(Level.INFO, "User Account retrieved." + account.toString());
-            if (account == null) {
-
-                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
-            }
             account.setLatitude(latitude);
             account.setLongitude(longitude);
             OfyService.ofy().save().entity(account).now();
@@ -138,54 +119,26 @@ public class BusinessEndpoint {
         return new BusinessAccountResult(null, ServerInteractionReturnStatus.FATAL_ERROR);
     }
 
-    @ApiMethod(name = "authenticate")
-    public BusinessAccountResult authenticate(@Named("email") String email,
-                                    @Named("password") String password,
-                                    @Named("googleUser") Boolean googleUser) {
-        try {
-            email = email.toLowerCase();
-            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", email).first().now();
-            logger.log(Level.INFO, "User Account retrieved." + account.toString());
-            if (account == null) {
-
-                return new BusinessAccountResult(account, ServerInteractionReturnStatus.INVALID_USER);
-            } else if (!googleUser && !password.equalsIgnoreCase(password)) {
-
-                return new BusinessAccountResult(account, ServerInteractionReturnStatus.AUTHENTICATION_FAILED);
-            }
-            return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception thrown by the load.", e);
-        }
-        return new BusinessAccountResult(null, ServerInteractionReturnStatus.FATAL_ERROR);
-    }
-
     @ApiMethod(name = "supportedRegions")
-    public List<UserAccountRegion> supportedRegions(User user) throws OAuthRequestException {
+    public List<UserAccountRegion> supportedRegions(User user) throws OAuthRequestException, ForbiddenException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
+        authorizeApi(user);
         List<UserAccountRegion> regions = OfyService.ofy().load().type(UserAccountRegion.class).list();
         return regions;
     }
 
     @ApiMethod(name = "listMeasurementCategories")
-    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException {
+    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
+        authorizeApi(user);
         return OfyService.ofy().load().type(MeasurementCategory.class).list();
     }
 
     @ApiMethod(name = "getUnitsForCategory")
     public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
-                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException {
+                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException, ForbiddenException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
+        authorizeApi(user);
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
         List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
@@ -194,24 +147,31 @@ public class BusinessEndpoint {
     }
 
     @ApiMethod(name = "getUploadURL")
-    public UploadURL getUploadURL(User user) throws OAuthRequestException {
+    public UploadURL getUploadURL(User user) throws OAuthRequestException, ForbiddenException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
+        authorizeApi(user);
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         return new UploadURL(blobstoreService.createUploadUrl(KKConstants.MASTER_ITEM_IMAGE_UPLOAD_URL));
     }
     @ApiMethod(name = "getItemCategories")
-    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException {
+    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException, ForbiddenException {
 
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
+        authorizeApi(user);
         List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
         if (itemCategories == null || itemCategories.size() == 0) {
             return new ArrayList<ItemCategory>();
         }
         return itemCategories;
+    }
+    private BusinessAccount authorizeApi(com.google.appengine.api.users.User user) throws ForbiddenException, OAuthRequestException {
+        if (user == null) {
+            throw new OAuthRequestException("User is null");
+        }
+        BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
+        if (account == null) {
+
+            throw new ForbiddenException("User " + user.getUserId() + " is not authorized for admin activities.");
+        }
+        return account;
     }
 }

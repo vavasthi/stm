@@ -8,8 +8,9 @@ import android.widget.EditText;
 import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.backend.customerApi.model.UserAccount;
 import com.khanakirana.khanakirana.KKHashing;
-import com.khanakirana.khanakirana.KhanaKiranaMainActivity;
+import com.khanakirana.khanakirana.activities.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.R;
+import com.khanakirana.khanakirana.utils.EndpointManager;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
@@ -21,38 +22,24 @@ import java.util.logging.Logger;
 public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
     private final KhanaKiranaMainActivity context;
-    private final CustomerApi customerApi;
     private final String fullname;
     private final String address;
-    private final String email;
     private final String mobile;
     private final String password;
     private final String city;
     private final String state;
     private final Double latitude;
     private final Double longitude;
-    private final Boolean isGoogleAccount;
 
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
     public RegisterUserAsyncTask(KhanaKiranaMainActivity context,
-                                 CustomerApi customerApi,
-                                 View v,
-                                 Boolean isGoogleAccount) throws NoSuchAlgorithmException {
+                                 View v) throws NoSuchAlgorithmException {
         this.context = context;
-        this.customerApi = customerApi;
         this.fullname = getValueFromWidget(R.id.fullname);
         this.address = getValueFromWidget(R.id.address);
-        this.email = getValueFromWidget(R.id.email);
         this.mobile = getValueFromWidget(R.id.mobile);
-        this.isGoogleAccount = isGoogleAccount;
-        if (!isGoogleAccount) {
-
-            this.password = KKHashing.hashPassword(getValueFromWidget(R.id.password));
-        }
-        else {
-            this.password = "PasswordIgnored";
-        }
+        this.password = "PasswordIgnored";
         this.city = getValueFromWidget(R.id.city);
         this.state = getValueFromWidget(R.id.state);
         if (((CheckBox)context.findViewById(R.id.chooseLocation)).isChecked() && context.getRegistrationLocation() != null) {
@@ -76,23 +63,12 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try {
-            if (isGoogleAccount) {
-
-                UserAccount registeredUser = customerApi.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.TRUE).execute();
+                UserAccount registeredUser = EndpointManager.getEndpoints(context).register(fullname, address, mobile, city, state, latitude, longitude).execute();
                 if (registeredUser != null) {
                     return ServerInteractionReturnStatus.AUTHORIZED;
                 } else {
                     return ServerInteractionReturnStatus.REGISTRATION_FAILED;
                 }
-            } else {
-                UserAccount registeredUser = customerApi.register(fullname, address, email, mobile, password, city, state, latitude, longitude, Boolean.FALSE).execute();
-                if (registeredUser != null) {
-                    return ServerInteractionReturnStatus.AUTHORIZED;
-                }
-                else {
-                    return ServerInteractionReturnStatus.REGISTRATION_FAILED;
-                }
-            }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Remote call register failed", e);
         }
