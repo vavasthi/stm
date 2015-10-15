@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.backend.customerApi.model.UserAccount;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 import com.khanakirana.khanakirana.activities.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.utils.EndpointManager;
 
@@ -31,19 +32,19 @@ public class IsRegisteredUserAsyncTask extends AsyncTask<Void, Void, Integer> {
             UserAccount registeredUser = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
             if (registeredUser != null) {
                 logger.info("Registered user is :" + registeredUser.toString() );
-                return ServerInteractionReturnStatus.ALREADY_REGISTERED;
+                return ServerInteractionReturnStatus.SUCCESS;
             }
             else {
-                return ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED;
+                return ServerInteractionReturnStatus.AUTHENTICATION_FAILED;
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Failure in remote call" + e.getCause().getMessage(), e);
         }
-        return ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED;
+        return ServerInteractionReturnStatus.AUTHENTICATION_FAILED;
     }
     protected void onPostExecute (Integer result) {
 
-        if (result == ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED) {
+        if (result == ServerInteractionReturnStatus.AUTHENTICATION_FAILED) {
             context.splashRegistrationScreen();
         }
         else {

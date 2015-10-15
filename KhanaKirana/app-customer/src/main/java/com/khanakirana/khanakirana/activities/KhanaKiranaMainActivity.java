@@ -5,40 +5,44 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.backend.customerApi.CustomerApi;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.khanakirana.khanakirana.KKAndroidConstants;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.background.tasks.AuthenticateUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.IsRegisteredUserAsyncTask;
 import com.khanakirana.khanakirana.background.tasks.RegisterUserAsyncTask;
 import com.khanakirana.khanakirana.utils.EndpointManager;
+import com.khanakirana.khanakirana.utils.KKLocationManager;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
 import java.util.logging.Logger;
 
-public class KhanaKiranaMainActivity extends Activity {
+public class KhanaKiranaMainActivity extends FragmentActivity {
 
     private static final String AUTH_PREF = "KKAuthenticationPreferences";
     private static final String PREF_ACCOUNT_NAME = "KKPreferredAccountName";
@@ -57,7 +61,6 @@ public class KhanaKiranaMainActivity extends Activity {
     //    private static GoogleAccountCredential gac;
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
-    Location registrationLocation;
 
     private Logger logger = Logger.getLogger(KhanaKiranaMainActivity.class.getName());
 
@@ -65,31 +68,17 @@ public class KhanaKiranaMainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadSharedPreferences();
-        updateRegistrationLocation();
+        KKLocationManager.initialize(this, getResources().getConfiguration().locale);
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
-        if (isGoogleAuthentication) {
-            if (isRegistered) {
-                new AuthenticateUserAsyncTask(this, Boolean.TRUE, null).execute();
-            }
-            else if (isAccountChosen) {
-                registerIfRequired();
-            }
-            else {
-                chooseAccount();
-            }
+        if (isRegistered) {
+            new AuthenticateUserAsyncTask(this, Boolean.TRUE, null).execute();
+        }
+        else if (isAccountChosen) {
+            registerIfRequired();
         }
         else {
-            if (isAuthenticated) {
-
-                new AuthenticateUserAsyncTask(this, Boolean.FALSE, password).execute();
-            }
-            else if (isRegistered) {
-                reauthorizeUserScreen();
-            }
-            else {
-                splashRegistrationScreen();
-            }
+            chooseAccount();
         }
     }
 
@@ -151,7 +140,7 @@ public class KhanaKiranaMainActivity extends Activity {
 
         String[] accountTypes = new String[]{"com.google"};
         Intent  intent = AccountPicker.newChooseAccountIntent(null, null, accountTypes, false, null, null, null, null);
-            // Play services exist but not account not chosen yet..
+        // Play services exist but not account not chosen yet..
         startActivityForResult(intent, KKAndroidConstants.REQUEST_ACCOUNT_PICKER);
     }
     private void obtainCredentials() {
@@ -191,62 +180,56 @@ public class KhanaKiranaMainActivity extends Activity {
     }
     public void splashRegistrationScreen() {
 
-        if (isGoogleAuthentication) {
+        setContentView(R.layout.registration_google_user);
+        final View v = findViewById(R.id.registration_google_user_view);
+        final KhanaKiranaMainActivity context = this;
 
-            setContentView(R.layout.registration_google_user);
-            final View v = findViewById(R.id.registration_google_user_view);
-            final KhanaKiranaMainActivity context = this;
-            if (EndpointManager.getAccountName() != null) {
+        if (EndpointManager.getAccountName() != null) {
 
-                EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(EndpointManager.getAccountName());
-            }
-            if (detectedPhoneNumber != null) {
-
-                EditText mobile = (EditText)(v.findViewById(R.id.mobile));
-                mobile.setText(detectedPhoneNumber);
-            }
-            final Button button = (Button)findViewById(R.id.register);
-            button.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    try {
-                        context.registerUser(v);
-                    } catch (NoSuchAlgorithmException e) {
-                        registrationFailedScreen();
-                    }
-                }
-            });
+            EditText email = (EditText)(v.findViewById(R.id.email));
+            email.setText(EndpointManager.getAccountName());
         }
-        else {
+        if (detectedPhoneNumber != null) {
 
-            setContentView(R.layout.registration_nongoogle_user);
-            final View v = findViewById(R.id.registration_nongoogle_user_view);
-            if (EndpointManager.getAccountName() != null) {
-
-                EditText email = (EditText)(v.findViewById(R.id.email));
-                email.setText(EndpointManager.getAccountName());
-            }
-            if (detectedPhoneNumber != null) {
-
-                EditText mobile = (EditText)(v.findViewById(R.id.mobile));
-                mobile.setText(detectedPhoneNumber);
-            }
-            final KhanaKiranaMainActivity context = this;
-            final Button button = (Button)findViewById(R.id.register);
-            button.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    try {
-                        context.registerUser(v);
-                    } catch (NoSuchAlgorithmException e) {
-                        registrationFailedScreen();
-                    }
-                }
-            });
+            EditText mobile = (EditText)(v.findViewById(R.id.mobile));
+            mobile.setText(detectedPhoneNumber);
         }
+        final Button button = (Button)findViewById(R.id.register);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    context.registerUser(v);
+                } catch (NoSuchAlgorithmException e) {
+                    registrationFailedScreen();
+                }
+            }
+        });
+        if (KKLocationManager.getInstance().getLastAddress() != null) {
+            ((TextView)findViewById(R.id.detected_city)).setText(KKLocationManager.getInstance().getLastAddress().getLocality());
+            ((TextView)findViewById(R.id.detected_state)).setText(KKLocationManager.getInstance().getLastAddress().getAdminArea());
+        }
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.kk_user_location_on_map);
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                float zoomLevel = (googleMap.getMaxZoomLevel() - googleMap.getMinZoomLevel()) * 0.60F;
+                googleMap.setMyLocationEnabled(Boolean.TRUE);
+                MarkerOptions mo = new MarkerOptions();
+                Location ll = KKLocationManager.getInstance().getLastLocation();
+                if (ll != null) {
+
+                    LatLng latLng = new LatLng(ll.getLatitude(), ll.getLongitude());
+                    mo.position(latLng).title(getResources().getString(R.string.kk_you_are_here));
+                    googleMap.addMarker(mo);
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.fromLatLngZoom(latLng, zoomLevel)));
+                }
+                UiSettings uis = googleMap.getUiSettings();
+                uis.setCompassEnabled(Boolean.TRUE);
+                uis.setZoomControlsEnabled(Boolean.TRUE);
+            }
+        });
     }
 
     @Override
@@ -266,58 +249,6 @@ public class KhanaKiranaMainActivity extends Activity {
         }
     }
 
-    private void updateRegistrationLocation() {
-
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location;
-        try {
-
-            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (location != null) {
-
-                registrationLocation = location;
-            } else if (location != null && (Calendar.getInstance().getTimeInMillis() - location.getTime()) > 2 * 60 * 1000) {
-
-                Criteria criteria = new Criteria();
-                criteria.setAccuracy(Criteria.ACCURACY_FINE);
-                criteria.setAltitudeRequired(false);
-                criteria.setBearingRequired(false);
-                criteria.setCostAllowed(true);
-                criteria.setPowerRequirement(Criteria.POWER_LOW);
-                locationManager.requestSingleUpdate(criteria, new LocationListener() {
-                    @Override
-                    public void onLocationChanged(Location location) {
-                        registrationLocation = location;
-                        try {
-
-                            locationManager.removeUpdates(this);
-                        }
-                        catch(SecurityException ex) {
-
-                        }
-                    }
-
-                    @Override
-                    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                    }
-
-                    @Override
-                    public void onProviderEnabled(String provider) {
-
-                    }
-
-                    @Override
-                    public void onProviderDisabled(String provider) {
-
-                    }
-                }, null);
-            }
-        } catch(SecurityException e) {
-
-        }
-    }
-
     public static String getDetectedPhoneNumber() {
 
         if (detectedPhoneNumber == null) {
@@ -325,7 +256,14 @@ public class KhanaKiranaMainActivity extends Activity {
         }
         return detectedPhoneNumber;
     }
-    public Location getRegistrationLocation() {
-        return registrationLocation;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        KKLocationManager.getInstance().pause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        KKLocationManager.getInstance().resume();
     }
 }

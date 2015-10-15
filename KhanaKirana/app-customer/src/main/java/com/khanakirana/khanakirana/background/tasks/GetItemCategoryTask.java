@@ -1,6 +1,7 @@
 package com.khanakirana.khanakirana.background.tasks;
 
 import com.khanakirana.backend.customerApi.CustomerApi;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 import com.khanakirana.khanakirana.activities.KKManageItemCategoryActivity;
 import com.khanakirana.khanakirana.utils.EndpointManager;
 

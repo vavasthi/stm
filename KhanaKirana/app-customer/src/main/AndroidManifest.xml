@@ -32,7 +32,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.khanakirana.khanakirana.activities.KKManageItemCategoryActivity" android:label="@string/item_category_activity_label" android:configChanges="keyboardHidden|orientation"/>
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAhpLAyEWYQBvioMJ2nAspVB6nO5NnAIVI"/>
      </application>
 
 </manifest>

@@ -52,5 +52,6 @@
     <string name="kk_item_category_operation_failed">Item Category Operation Failed</string>
     <string name="kk_businessname_hint">Business Name</string>
     <string name="kk_address_hint">Address</string>
+    <string name="kk_you_are_here">You are here</string>
 
 </resources>

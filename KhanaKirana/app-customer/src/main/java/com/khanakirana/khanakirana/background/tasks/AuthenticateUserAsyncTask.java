@@ -2,8 +2,8 @@ package com.khanakirana.khanakirana.background.tasks;
 
 import android.os.AsyncTask;
 
-import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.backend.customerApi.model.UserAccount;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 import com.khanakirana.khanakirana.activities.KhanaKiranaMainActivity;
 import com.khanakirana.khanakirana.utils.EndpointManager;
 
@@ -33,37 +33,25 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
 
         try {
-            if (isGoogleAccount) {
-
-                UserAccount registeredUser = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
-                System.out.println("Registered user is :" + registeredUser.toString());
-                if (registeredUser != null) {
-                    return ServerInteractionReturnStatus.AUTHORIZED;
-                } else {
-                    return ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED;
-                }
+            UserAccount registeredUser = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
+            System.out.println("Registered user is :" + registeredUser.toString());
+            if (registeredUser != null) {
+                return ServerInteractionReturnStatus.SUCCESS;
             } else {
-                UserAccount registeredUser = EndpointManager.getEndpoints(context).authenticate(EndpointManager.getAccountName(), password, isGoogleAccount).execute();
-                if (registeredUser != null) {
-                    logger.info(registeredUser.toPrettyString());
-                    return ServerInteractionReturnStatus.AUTHORIZED;
-                }
-                else {
-                    return ServerInteractionReturnStatus.INVALID_USER;
-                }
+                return ServerInteractionReturnStatus.AUTHENTICATION_FAILED;
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Failure in remote call ", e);
+            return ServerInteractionReturnStatus.AUTHENTICATION_FAILED;
         }
-        return ServerInteractionReturnStatus.FATAL_ERROR;
     }
     protected void onPostExecute (Integer result) {
 
         switch (result) {
-            case ServerInteractionReturnStatus.AUTHENTICATED_BUT_NOT_REGISTERED:
+            case ServerInteractionReturnStatus.AUTHENTICATION_FAILED:
                 context.splashRegistrationScreen();
                 break;
-            case ServerInteractionReturnStatus.AUTHORIZED:
+            case ServerInteractionReturnStatus.SUCCESS:
                 context.splashMainScreen();
                 break;
             case ServerInteractionReturnStatus.INVALID_USER:

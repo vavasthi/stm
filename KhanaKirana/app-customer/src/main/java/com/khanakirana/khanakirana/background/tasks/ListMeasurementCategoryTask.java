@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.khanakirana.backend.customerApi.CustomerApi;
 import com.khanakirana.backend.customerApi.model.MeasurementCategory;
+import com.khanakirana.common.ServerInteractionReturnStatus;
 import com.khanakirana.khanakirana.R;
 import com.khanakirana.khanakirana.activities.KKMeasurementCategoryReceivingActivity;
 import com.khanakirana.khanakirana.utils.EndpointManager;
