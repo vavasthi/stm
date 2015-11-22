@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:columnCount="2"
+    android:layout_height="match_parent">
+    <ImageView android:id="@+id/item_categ_icon"
+        android:src="@drawable/ic_vegbasket"
+        android:layout_width="50dp"
+        android:layout_row="0"
+        android:layout_rowSpan="2"> </ImageView>
+    <TextView android:id="@+id/item_categ_title"
+        android:text="Title"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:textColor="@color/kk_app_foreground"
+        android:textSize="@dimen/kk_registration_popup_text_size"
+        android:layout_width="wrap_content"> </TextView>
+        <TextView android:id="@+id/item_categ_description"
+            android:text="description"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:textColor="@color/kk_app_foreground"
+            android:layout_width="wrap_content"> </TextView>
+</GridLayout>
