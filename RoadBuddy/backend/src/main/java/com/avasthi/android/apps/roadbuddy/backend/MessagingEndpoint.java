@@ -6,20 +6,14 @@
 
 package com.avasthi.android.apps.roadbuddy.backend;
 
-import com.google.android.gcm.server.Constants;
-import com.google.android.gcm.server.Message;
-import com.google.android.gcm.server.Result;
-import com.google.android.gcm.server.Sender;
+import com.avasthi.roadbuddy.common.RBConstants;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiNamespace;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
-
-import static com.avasthi.android.apps.roadbuddy.backend.OfyService.ofy;
 
 /**
  * An endpoint to send messages to devices registered with the backend
@@ -31,7 +25,18 @@ import static com.avasthi.android.apps.roadbuddy.backend.OfyService.ofy;
  * authentication! If this app is deployed, anyone can access this endpoint! If
  * you'd like to add authentication, take a look at the documentation.
  */
-@Api(name = "messaging", version = "v1", namespace = @ApiNamespace(ownerDomain = "backend.roadbuddy.apps.android.avasthi.com", ownerName = "backend.roadbuddy.apps.android.avasthi.com", packagePath = ""))
+@Api(
+        name = "gcmSenderEndpoint",
+        version = "v1",
+        scopes = {RBConstants.EMAIL_SCOPE},
+        audiences = {RBConstants.ANDROID_AUDIENCE},
+        clientIds = {RBConstants.WEB_CLIENT_ID, RBConstants.ANDROID_CLIENT_ID},
+        namespace = @ApiNamespace(
+                ownerDomain = RBConstants.OWNER_DOMAIN,
+                ownerName = RBConstants.OWNER_DOMAIN,
+                packagePath = ""
+        )
+)
 public class MessagingEndpoint {
     private static final Logger log = Logger.getLogger(MessagingEndpoint.class.getName());
 
@@ -53,7 +58,7 @@ public class MessagingEndpoint {
         // crop longer messages
         if (message.length() > 1000) {
             message = message.substring(0, 1000) + "[...]";
-        }
+        }/*
         Sender sender = new Sender(API_KEY);
         Message msg = new Message.Builder().addData("message", message).build();
         List<RegistrationRecord> records = ofy().load().type(RegistrationRecord.class).limit(10).list();
@@ -78,6 +83,6 @@ public class MessagingEndpoint {
                     log.warning("Error when sending message : " + error);
                 }
             }
-        }
+        }*/
     }
 }
