@@ -55,4 +55,14 @@
     <string name="business_user_approval_failed">Business User Approval Failed</string>
     <string name="kk_actionable_nothing_to_do">There is nothing to do.</string>
     <string name="kk_set_business_polygon">Set Business Area</string>
+    <string name="rb_hello">Hello</string>
+    <string name="rb_facebook_integration">Facebook Integration</string>
+    <string name="rb_facebook_integration_label">Facebook Integration</string>
+    <string name="facebook_app_id">1509759676018221</string>
+    <string name="rb_facebook_group_number">Facebook Group Id</string>
+    <string name="rc_groups">Groups</string>
+    <string name="facebook_group_not_selected">Select Facebook Group</string>
+    <string name="facebook_group_not_selected_description">Please select an appropriate facebook group to link with this group.</string>
+    <string name="ok">OK</string>
+    <string name="rc_force_facebook_login">Force Facebook Login</string>
 </resources>

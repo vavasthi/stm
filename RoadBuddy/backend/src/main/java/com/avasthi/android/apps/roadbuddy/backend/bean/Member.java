@@ -12,7 +12,7 @@ public class Member {
     public Member() {
     }
 
-    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude) {
+    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude, String facebookUserId) {
         this.name = name;
         this.email = email;
         this.mobile = mobile;
@@ -20,6 +20,7 @@ public class Member {
         this.detectedCity = detectedCity;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.facebookUserId = facebookUserId;
     }
 
     public Long getId() {
@@ -86,6 +87,14 @@ public class Member {
         this.longitude = longitude;
     }
 
+    public String getFacebookUserId() {
+        return facebookUserId;
+    }
+
+    public void setFacebookUserId(String facebookUserId) {
+        this.facebookUserId = facebookUserId;
+    }
+
     @Id
     private Long id;
     @Index
@@ -100,4 +109,6 @@ public class Member {
     private Long detectedCity;
     private Double latitude;
     private Double longitude;
+    @Index
+    private String facebookUserId;
 }

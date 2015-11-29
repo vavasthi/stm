@@ -27,7 +27,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:name="android.support.multidex.MultiDexApplication"
-        android:theme="@android:style/Theme.Holo.Light" >
+        android:theme="@style/Theme.RCTheme" >
         <activity
             android:name=".activities.RoadCompanionMainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -38,10 +38,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.RCGroupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.RCUnusedFacebookGroupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAQR4Oo4jN2O-BO-9BuT7Z_oEEh7lPFiFI" />
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value = "@string/facebook_app_id"/>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1509759676018221"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+
     </application>
 
 </manifest>

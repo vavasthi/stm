@@ -4,13 +4,13 @@ import android.location.Address;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.roadcompanion.R;
-import com.avasthi.roadcompanion.activities.RoadCompanionAbstractActivity;
+import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
+import com.avasthi.roadcompanion.utils.FacebookReadInterface;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 
 import java.security.NoSuchAlgorithmException;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
 
-    private final RoadCompanionAbstractActivity context;
+    private final RoadCompanionMainBaseActivity context;
     private final String name;
     private final String mobile;
     private final String city;
@@ -34,7 +34,7 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
 
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
-    public RegisterUserAsyncTask(RoadCompanionAbstractActivity context,
+    public RegisterUserAsyncTask(RoadCompanionMainBaseActivity context,
                                  View v) throws NoSuchAlgorithmException {
         this.context = context;
         this.name = getValueFromWidget(R.id.fullname);
@@ -59,7 +59,16 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
     protected Member doInBackground(Void... params) {
 
         try {
-            Member registeredUser = EndpointManager.getEndpoints(context).register(name, mobile, city, state, detectedCity, detectedState, latitude, longitude).execute();
+            Member registeredUser = EndpointManager.getEndpoints(context).register(name,
+                    mobile,
+                    city,
+                    state,
+                    detectedCity,
+                    detectedState,
+                    latitude,
+                    longitude,
+                    FacebookReadInterface.getInstance().getFacebookProfile().getId()
+            ).execute();
             if (registeredUser != null) {
                 return registeredUser;
             } else {
@@ -72,6 +81,6 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
     }
     protected void onPostExecute (Member member) {
 
-        context.splashMainScreen();
+        context.splashMainScreen(member);
     }
 }

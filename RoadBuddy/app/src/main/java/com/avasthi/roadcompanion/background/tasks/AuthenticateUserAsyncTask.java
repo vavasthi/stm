@@ -8,10 +8,9 @@ import android.os.AsyncTask;
 
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
-import com.avasthi.roadcompanion.activities.RoadCompanionAbstractActivity;
+import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,12 +19,12 @@ import java.util.logging.Logger;
  */
 public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Member > {
 
-    private final RoadCompanionAbstractActivity context;
+    private final RoadCompanionMainBaseActivity context;
 
     private Logger logger = Logger.getLogger(AuthenticateUserAsyncTask.class.getName());
 
 
-    public AuthenticateUserAsyncTask(RoadCompanionAbstractActivity context) {
+    public AuthenticateUserAsyncTask(RoadCompanionMainBaseActivity context) {
         this.context = context;
     }
 
@@ -46,6 +45,9 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, Member > {
             // The user is not registered. Splash registration screen.
             context.splashRegistrationScreen();
         }
-        context.splashMainScreen();
+        else {
+
+            context.splashMainScreen(member);
+        }
     }
 }

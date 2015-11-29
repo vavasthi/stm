@@ -2,6 +2,7 @@ package com.avasthi.android.apps.roadbuddy.backend.endpoints;
 
 import com.avasthi.android.apps.roadbuddy.backend.OfyService;
 import com.avasthi.android.apps.roadbuddy.backend.bean.City;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Member;
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.InvalidMemberException;
 import com.avasthi.roadbuddy.common.RBConstants;
@@ -13,6 +14,7 @@ import com.google.api.server.spi.response.ForbiddenException;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
@@ -56,6 +58,7 @@ public class RoadMeasurementBeanEndpoint {
                            @Named("detectedState") String detectedState,
                            @Named("latitude") Double latitude,
                            @Named("logitude") Double longitude,
+                           @Named("facebookUserId") String facebookUserId,
                            User user) throws ForbiddenException, OAuthRequestException {
         if (user == null) {
             throw new ForbiddenException("user is null.");
@@ -69,7 +72,8 @@ public class RoadMeasurementBeanEndpoint {
         }
         City c = getCity(city, state);
         City dc = getCity(detectedCity, detectedState);
-        Member member = new Member(name, user.getEmail().toLowerCase(), mobile, c.getId(), dc.getId(), latitude, longitude);
+        Member member = new Member(name, user.getEmail().toLowerCase(), mobile, c.getId(), dc.getId(), latitude, longitude, facebookUserId);
+
         OfyService.ofy().save().entity(member).now();
         return member;
     }

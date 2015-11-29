@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rb_hello">Hello</string>
+    <string name="rb_facebook_integration">Facebook Integration</string>
+    <string name="rb_facebook_group_number">Facebook Group Id</string>
+    <string name="rc_groups">Groups</string>
+    <string name="rc_force_facebook_login">Force Facebook Login</string>
+</resources>

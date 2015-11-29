@@ -1,0 +1,7 @@
+{
+  "menu" : [
+    {"title" : "Owned Groups", "description" : "These groups are owned by me.", "activity" : ""},
+    {"title" : "My Groups", "description" : "I am member of these groups.", "activity" : ""},
+    {"title" : "Unused Facebook Groups", "description" : "My facebook groups that I am not using through RoadBuddy.", "activity":"com.avasthi.roadcompanion.activities.RCUnusedFacebookGroupActivity"}
+  ]
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:id="@+id/road_buddy_main_view"
+    android:background="@drawable/application_background">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/registration_google_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/greeting_user_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/rb_hello"
+                android:textSize="@dimen/kk_registration_popup_text_size"
+                android:textColorHint="@color/kk_app_foreground_hint"
+                android:textColor="@color/kk_app_foreground" />
+            <TextView
+                android:id="@+id/groupinfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/kk_registration_popup_text_size"
+                android:textColorHint="@color/kk_app_foreground_hint"
+                android:textColor="@color/kk_app_foreground" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

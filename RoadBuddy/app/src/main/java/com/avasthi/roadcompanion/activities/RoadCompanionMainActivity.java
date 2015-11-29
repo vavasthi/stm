@@ -5,10 +5,7 @@ import android.accounts.AccountManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
@@ -16,18 +13,38 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.avasthi.roadcompanion.Constants;
+import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.background.tasks.AuthenticateUserAsyncTask;
 import com.avasthi.roadcompanion.background.tasks.RegisterUserAsyncTask;
+import com.avasthi.roadcompanion.data.GroupMenu;
+import com.avasthi.roadcompanion.data.GroupMenuItem;
 import com.avasthi.roadcompanion.utils.EndpointManager;
+import com.avasthi.roadcompanion.utils.FacebookPublishInterface;
+import com.avasthi.roadcompanion.utils.FacebookReadInterface;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.common.AccountPicker;
+import com.google.common.base.Strings;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.lang.reflect.Field;
 import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Logger;
 
-public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
+public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
 
 
     private Logger logger = Logger.getLogger(RoadCompanionMainActivity.class.getName());
@@ -41,6 +58,12 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
         RCLocationManager.initialize(this, Locale.ENGLISH);
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
         detectedPhoneNumber = telephonyManager.getLine1Number();
+        FacebookReadInterface.initialize(this);
+        FacebookPublishInterface.initialize(this);
+    }
+
+    public void continueAuthentication() {
+
         if (isAccountChosen) {
             new AuthenticateUserAsyncTask(this).execute();
         }
@@ -49,15 +72,14 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_khana_kirana_main, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
- /*   @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -66,9 +88,13 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
 
         //noinspection SimplifiableIfStatement
         switch(id) {
-            case R.id.action_settings:
+            case R.id.groups:
+                startActivityForResult(new Intent(this, RCGroupActivity.class), Constants.GROUP_ACTIVITY);
                 return true;
-            case R.id.reset:
+            case R.id.force_facebook_login:
+                FacebookReadInterface.getInstance().forceRelogin();
+                return true;
+/*            case R.id.reset:
                 settings.edit().clear().commit();
                 break;
             case R.id.add_item:
@@ -90,10 +116,10 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
                 b.putDouble(KKConstants.LONGITUDE_TO_CENTER_ON, 77.5936900);
                 intent.putExtras(b);
                 startActivityForResult(intent, KKAndroidConstants.MAP_POLYGON_FOR_BUSINESS);
-                break;
+                break;*/
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     private void chooseAccount() {
 
@@ -122,6 +148,11 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (FacebookReadInterface.isInitialied()) {
+
+            FacebookReadInterface.getInstance().processActivityResult(requestCode, resultCode, data);
+        }
         switch (requestCode) {
             case Constants.REQUEST_ACCOUNT_PICKER :
                 if (resultCode == RESULT_OK && data != null && data.getExtras() != null) {
@@ -133,6 +164,8 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
                     }
                 }
                 break;
+            case Constants.GROUP_ACTIVITY:
+                break;
         }
     }
 
@@ -143,9 +176,28 @@ public class RoadCompanionMainActivity extends RoadCompanionAbstractActivity  {
         }
         return detectedPhoneNumber;
     }
+
     public void registerUser(View v) throws NoSuchAlgorithmException {
-        showProgressDialog();
+        showProgressDialog(this);
         new RegisterUserAsyncTask(this, v).execute();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FacebookReadInterface.fini();
+    }
 }

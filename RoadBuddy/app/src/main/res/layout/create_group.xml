@@ -3,18 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="false"
-    android:id="@+id/registration_google_user_view"
+    android:id="@+id/create_group_view"
     android:background="@drawable/application_background">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/registration_google_layout"
+        android:id="@+id/create_group_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:nestedScrollingEnabled="true"
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/fullname"
+            android:id="@+id/groupname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -25,54 +25,23 @@
             android:textColor="@color/kk_app_foreground" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/groupdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
             android:textSize="@dimen/kk_registration_popup_text_size"
             android:hint="@string/kk_email_hint"
             android:textColorHint="@color/kk_app_foreground_hint"
             android:textColor="@color/kk_app_foreground" />
 
-        <EditText
-            android:id="@+id/mobile"
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone"
-            android:textSize="@dimen/kk_registration_popup_text_size"
-            android:hint="@string/kk_mobile_hint"
+            android:id="@+id/fb_group_id"
+            android:layout_gravity="center_horizontal"
             android:textColorHint="@color/kk_app_foreground_hint"
             android:textColor="@color/kk_app_foreground" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/kk_registration_popup_text_size"
-                android:hint="@string/kk_city_hint"
-                android:layout_weight="0.5"
-                android:inputType="textCapWords"
-                android:textColorHint="@color/kk_app_foreground_hint"
-                android:textColor="@color/kk_app_foreground" />
-
-            <EditText
-                android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/kk_registration_popup_text_size"
-                android:hint="@string/kk_state_hint"
-                android:layout_weight="0.5"
-                android:inputType="textCapWords"
-                android:textColorHint="@color/kk_app_foreground_hint"
-                android:textColor="@color/kk_app_foreground" />
-        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,14 +60,14 @@
                 android:textColor="@color/kk_app_foreground" />
 
             <Button
-                android:id="@+id/register"
+                android:id="@+id/create_group_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textSize="@dimen/kk_registration_popup_text_size"
                 android:text="@string/kk_register_button"
                 android:layout_alignParentRight="true"
-                android:onClick="registerUser"
+                android:onClick="createGroup"
                 android:textColorHint="@color/kk_app_foreground_hint"
                 android:textColor="@color/kk_app_foreground" />
 
