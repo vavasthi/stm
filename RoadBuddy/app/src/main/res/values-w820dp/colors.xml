@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kk_app_background">#4F6228</color>
+    <color name="kk_app_foreground">#FFFFFF</color>
+    <color name="kk_app_foreground_hint">#EEEEEE</color>
+</resources>

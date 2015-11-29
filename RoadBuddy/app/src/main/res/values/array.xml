@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="server_shared_strings">
+        <item>Business Approval</item>
+        <item>Some businesses are pending for approval. Please swipe right.</item>
+        <item>Nothing To Do</item>
+        <item>If there is something to be taken care of urgently, you will see it listed here.</item>
+    </string-array>
+
+</resources>
