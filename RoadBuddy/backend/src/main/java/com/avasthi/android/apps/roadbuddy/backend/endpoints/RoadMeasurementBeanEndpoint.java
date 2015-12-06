@@ -165,7 +165,7 @@ public class RoadMeasurementBeanEndpoint {
             logger.info("Total number of groups :"  + listGroups.size());
             return listGroups;
         } catch (Exception ex) {
-
+            logger.log(Level.INFO, "Error in creating list.", ex);
         }
         return null;
     }
