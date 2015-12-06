@@ -65,4 +65,11 @@
     <string name="facebook_group_not_selected_description">Please select an appropriate facebook group to link with this group.</string>
     <string name="ok">OK</string>
     <string name="rc_force_facebook_login">Force Facebook Login</string>
+    <string name="rc_login_to_facebook_message">Please login into your facebook account to enable the application. Click the button below.</string>
+    <string name="exiting_facebook_login_not_available">Can\'t continue without facebook. Exiting.</string>
+    <string name="rc_add_group">Add</string>
+    <string name="rc_group_description">Description</string>
+    <string name="adding_group">Adding Group</string>
+    <string name="administrator">Administrator</string>
+    <string name="member">Member</string>
 </resources>

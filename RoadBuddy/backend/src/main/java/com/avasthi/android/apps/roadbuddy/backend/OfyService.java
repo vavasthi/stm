@@ -1,6 +1,9 @@
 package com.avasthi.android.apps.roadbuddy.backend;
 
 import com.avasthi.android.apps.roadbuddy.backend.bean.City;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Event;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
+import com.avasthi.android.apps.roadbuddy.backend.bean.GroupMembership;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Member;
 import com.avasthi.android.apps.roadbuddy.backend.bean.RoadMeasurementBean;
 import com.googlecode.objectify.Objectify;
@@ -16,6 +19,9 @@ public class OfyService {
     static {
         ObjectifyService.register(Member.class);
         ObjectifyService.register(City.class);
+        ObjectifyService.register(Group.class);
+        ObjectifyService.register(GroupMembership.class);
+        ObjectifyService.register(Event.class);
     }
 
     public static Objectify ofy() {

@@ -61,5 +61,9 @@
     <string name="rb_facebook_group_number">Facebook Group Id</string>
     <string name="rc_groups">Groups</string>
     <string name="rc_force_facebook_login">Force Facebook Login</string>
+    <string name="rc_login_to_facebook_message">Please login into your facebook account to enable the application. Click the button below.</string>
+    <string name="rc_add_group">Add</string>
+    <string name="rc_group_description">Description</string>
+    <string name="adding_group">Adding Group</string>
 
 </resources>

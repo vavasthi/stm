@@ -4,15 +4,19 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+import java.util.Date;
+
 /**
  * Created by vavasthi on 22/11/15.
  */
 @Entity
-public class Member {
+public class Member extends AbstractEntity {
     public Member() {
+        super();
     }
 
-    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude, String facebookUserId) {
+    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude) {
+        super();
         this.name = name;
         this.email = email;
         this.mobile = mobile;
@@ -20,15 +24,6 @@ public class Member {
         this.detectedCity = detectedCity;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.facebookUserId = facebookUserId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -87,16 +82,6 @@ public class Member {
         this.longitude = longitude;
     }
 
-    public String getFacebookUserId() {
-        return facebookUserId;
-    }
-
-    public void setFacebookUserId(String facebookUserId) {
-        this.facebookUserId = facebookUserId;
-    }
-
-    @Id
-    private Long id;
     @Index
     private String name;
     @Index
@@ -109,6 +94,4 @@ public class Member {
     private Long detectedCity;
     private Double latitude;
     private Double longitude;
-    @Index
-    private String facebookUserId;
 }

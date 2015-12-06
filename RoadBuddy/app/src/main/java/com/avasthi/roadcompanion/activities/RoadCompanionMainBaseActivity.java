@@ -4,6 +4,8 @@ package com.avasthi.roadcompanion.activities;
  * Created by vavasthi on 22/11/15.
  */
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -74,14 +76,15 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
         EditText state = (EditText) (v.findViewById(R.id.state));
         city.setText(RCLocationManager.getInstance().getLastAddress().getLocality());
         state.setText(RCLocationManager.getInstance().getLastAddress().getAdminArea());
-        final Button cancel = (Button)(v.findViewById(R.id.cancel));
-        final Button register = (Button)(v.findViewById(R.id.register));
+        final Button cancel = (Button) (v.findViewById(R.id.cancel));
+        final Button register = (Button) (v.findViewById(R.id.register));
     }
 
     public void facebookInitializationComplete() {
 
         isFacebookIntegrated = Boolean.TRUE;
     }
+
     public static String getDetectedPhoneNumber() {
 
         if (detectedPhoneNumber == null) {
@@ -115,18 +118,37 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
         editor.putBoolean(FACEBOOK_INTEGRATED, isFacebookIntegrated);
         editor.commit();
     }
+
     protected boolean isFacebookIntegrated() {
         return isFacebookIntegrated;
     }
+
     public void setFacebookIntegrated() {
         isFacebookIntegrated = true;
     }
+
     public static boolean isLoggedIn() {
         if (isLoggedIn != null && isLoggedIn == true) {
             return true;
         }
         return false;
     }
+
+    private void showAlertAndExit(int reason) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage(getResources().getString(reason));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        RoadCompanionMainBaseActivity.this.finish();
+                        dialog.dismiss();
+                        System.exit(0);
+                    }
+                });
+        alertDialog.show();
+    }
+
     public void splashMainScreen(Member currentMember) {
 
         this.currentMember = currentMember;
@@ -134,9 +156,11 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
         hideProgressDialog();
         setContentView(R.layout.road_buddy_main);
         final View v = findViewById(R.id.road_buddy_main_view);
-        TextView greeting = (TextView)(v.findViewById(R.id.greeting));
+        TextView greeting = (TextView) (v.findViewById(R.id.greeting));
         greeting.setText("Hello " + currentMember.getName() + "!");
         saveSharedPreferences();
 
     }
+
+    abstract public void continueAuthentication();
 }

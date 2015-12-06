@@ -10,7 +10,6 @@ import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Membe
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
-import com.avasthi.roadcompanion.utils.FacebookReadInterface;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 
 import java.security.NoSuchAlgorithmException;
@@ -66,8 +65,7 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
                     detectedCity,
                     detectedState,
                     latitude,
-                    longitude,
-                    FacebookReadInterface.getInstance().getFacebookProfile().getId()
+                    longitude
             ).execute();
             if (registeredUser != null) {
                 return registeredUser;

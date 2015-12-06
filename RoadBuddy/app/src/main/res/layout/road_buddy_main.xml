@@ -35,6 +35,5 @@
                 android:textColorHint="@color/kk_app_foreground_hint"
                 android:textColor="@color/kk_app_foreground" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

@@ -8,8 +8,9 @@ import com.googlecode.objectify.annotation.Index;
  * Created by vavasthi on 26/11/15.
  */
 @Entity
-public class GroupMembership {
+public class GroupMembership extends AbstractEntity{
     public GroupMembership(Long memberId, Long groupId) {
+        super();
         this.groupId = groupId;
         this.memberId = memberId;
     }
@@ -22,14 +23,6 @@ public class GroupMembership {
         this.groupId = groupId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getMemberId() {
         return memberId;
     }
@@ -38,8 +31,6 @@ public class GroupMembership {
         this.memberId = memberId;
     }
 
-    @Id
-    private Long id;
     @Index
     private Long memberId;
     @Index

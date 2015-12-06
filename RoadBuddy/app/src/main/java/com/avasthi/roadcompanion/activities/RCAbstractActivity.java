@@ -2,11 +2,10 @@ package com.avasthi.roadcompanion.activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.avasthi.roadcompanion.R;
-import com.avasthi.roadcompanion.data.GroupMenuItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,21 +44,7 @@ abstract public class RCAbstractActivity extends AppCompatActivity {
     public void splashCreateGroupScreen() {
 
         hideProgressDialog();
-        setContentView(R.layout.create_group);
-    }
-    public List<GroupMenuItem> loadGroupMenuResources(int menuResource) throws IOException, JSONException {
-
-        InputStream jsonStream = getResources().openRawResource(menuResource);
-        JSONObject jsonObject = new JSONObject(convertStreamToString(jsonStream));
-        JSONArray menu = jsonObject.getJSONArray("menu");
-        List<GroupMenuItem> menuItems = new ArrayList<>();
-        for (int i = 0; i < menu.length(); i++) {
-
-            JSONObject jsonItem = menu.getJSONObject(i);
-            GroupMenuItem item = new GroupMenuItem(jsonItem.getString("title"), jsonItem.getString("description"), jsonItem.getString("activity"));
-            menuItems.add(item);
-        }
-        return menuItems;
+        setContentView(R.layout.add_group);
     }
     public String convertStreamToString(InputStream is) throws IOException {
         //

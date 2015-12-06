@@ -8,21 +8,15 @@ import com.googlecode.objectify.annotation.Index;
  * Created by vavasthi on 22/11/15.
  */
 @Entity
-public class City {
+public class City extends AbstractEntity {
     public City() {
+        super();
     }
 
     public City(String city, String state) {
+        super();
         this.city = city;
         this.state = state;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getCity() {
@@ -41,8 +35,6 @@ public class City {
         this.state = state;
     }
 
-    @Id
-    private Long id;
     @Index
     private String city;
     @Index
