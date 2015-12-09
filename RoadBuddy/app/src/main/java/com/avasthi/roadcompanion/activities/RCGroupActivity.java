@@ -96,6 +96,7 @@ public class RCGroupActivity extends RCAbstractActivity {
 
             String name = ((EditText) popup.findViewById(R.id.groupname)).getText().toString();
             String description = ((EditText) popup.findViewById(R.id.groupdescription)).getText().toString();
+            popup.dismiss();
             showProgressDialog(this);
             new RCAddGroupTask(this, name, description).execute();
         }

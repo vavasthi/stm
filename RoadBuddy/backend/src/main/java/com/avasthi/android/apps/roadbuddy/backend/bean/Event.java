@@ -10,10 +10,8 @@ import java.util.Date;
  * Created by vavasthi on 22/11/15.
  */
 @Entity
-public class Event {
+public class Event extends AbstractEntity{
 
-    @Id
-    private Long id;
     private String description;
     @Index
     private Date startDate;

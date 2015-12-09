@@ -6,6 +6,7 @@ import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserG
 import com.avasthi.roadcompanion.activities.RCGroupActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,9 @@ public class RCListGroupTask extends AsyncTask<Void, Void, List<UserGroup> > {
             List<UserGroup> groups =  EndpointManager.getEndpoints(context).listGroups().execute().getItems();
             if (groups != null) {
               return groups;
+            }
+            else {
+                return new ArrayList<UserGroup>();
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Remote call register failed", e);

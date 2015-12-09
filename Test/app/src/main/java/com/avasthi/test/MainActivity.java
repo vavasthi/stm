@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookInterface.initialize(this);
+//        FacebookInterface.initialize(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -81,7 +81,6 @@ public class MainActivity extends Activity implements SensorEventListener {
         nx = (TextView)findViewById(R.id.gx);
         ny = (TextView)findViewById(R.id.gy);
         nz = (TextView)findViewById(R.id.gz);
-        name = (TextView)findViewById(R.id.name);
         registerListeners();
 
     }
@@ -107,6 +106,9 @@ public class MainActivity extends Activity implements SensorEventListener {
                 samplingPeriodMicroSeconds);
         sensorManager.registerListener(this,
                 sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR),
+                samplingPeriodMicroSeconds);
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR),
                 samplingPeriodMicroSeconds);
     }
 
@@ -144,6 +146,15 @@ public class MainActivity extends Activity implements SensorEventListener {
                 z.setText(String.valueOf(v[2]));
             case Sensor.TYPE_GYROSCOPE:
                 lastGyro = v;
+                if (lastMagnetic != null && lastAccelerometer != null) {
+
+                    float[] r = new float[9];
+                    float[] i = new float[9];
+                    if (SensorManager.getRotationMatrix(r, i, lastAccelerometer, lastMagnetic)) {
+
+                        v = SensorManager.getOrientation(r, v);
+                    }
+                }
                 gx.setText(String.valueOf(v[0]));
                 gy.setText(String.valueOf(v[1]));
                 gz.setText(String.valueOf(v[2]));
@@ -152,16 +163,17 @@ public class MainActivity extends Activity implements SensorEventListener {
             case Sensor.TYPE_ROTATION_VECTOR:
                 lastRotationMatrix = v;
                 float[] rotationMatrixFromVector = new float[9];
-                float[] rotationMatrix = new float[9];
-                SensorManager.getRotationMatrixFromVector(rotationMatrixFromVector, event.values);
-                SensorManager.remapCoordinateSystem(rotationMatrixFromVector, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
-                SensorManager.getOrientation(rotationMatrix, lastOrientation);
-                nx.setText(String.valueOf((float)Math.toDegrees(lastOrientation[0])));
-                nx.setText(String.valueOf((float)Math.toDegrees(lastOrientation[1])));
-                nx.setText(String.valueOf((float)Math.toDegrees(lastOrientation[2])));
-                if (FacebookInterface.getInstance().getFacebookProfile() != null) {
-                    name.setText(FacebookInterface.getInstance().getFacebookProfile().getName());
+                float[] r = new float[9];
+                float[] i = new float[9];
+                if (SensorManager.getRotationMatrix(r, i, lastAccelerometer, lastMagnetic)) {
+
+                    v = SensorManager.getOrientation(r, v);
                 }
+                SensorManager.getRotationMatrixFromVector(r, event.values);
+                lastOrientation = SensorManager.getOrientation(r, lastOrientation);
+                nx.setText(String.valueOf((float)Math.toDegrees(lastOrientation[0])));
+                ny.setText(String.valueOf((float)Math.toDegrees(lastOrientation[1])));
+                nz.setText(String.valueOf((float)Math.toDegrees(lastOrientation[2])));
         }
     }
 
@@ -186,25 +198,10 @@ public class MainActivity extends Activity implements SensorEventListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FacebookInterface.getInstance().fini();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        FacebookInterface.getInstance().processActivityResult(requestCode, resultCode, data);
-    }
-    public void createEvent(View v) {
-        new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
-                "/689459634442585/events",
-                null,
-                HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(GraphResponse response) {
-                        name.setText(response.getRawResponse());
-                    }
-                }
-        ).executeAsync();
     }
 }

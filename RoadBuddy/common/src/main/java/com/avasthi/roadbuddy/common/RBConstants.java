@@ -23,4 +23,12 @@ public class RBConstants {
 
     public static final String OWNER_DOMAIN = "backend.roadbuddy.apps.android.avasthi.com";
     public static final String OWNER_NAME = "backend.roadbuddy.apps.android.avasthi.com";
+
+    public static final String AMENITIES_GROUP = "ROAD_COMPANION_AMENITIES";
+    public static final String TOLLS_GROUP = "ROAD_COMPANION_TOLLS";
+    public static final String CHECKPOSTS_GROUP = "ROAD_COMPANION_CHECKPOSTS";
+
+    public static final Double AMENITIES_RADIUS = 1.0;
+    public static final Double TOLLS_RADIUS = 2.0;
+    public static final Double CHECKPOSTS_RADIUS = 1.0;
 }

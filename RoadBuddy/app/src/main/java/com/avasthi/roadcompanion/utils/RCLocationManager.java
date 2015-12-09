@@ -1,6 +1,7 @@
 package com.avasthi.roadcompanion.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -26,11 +27,11 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     private Location lastLocation;
     private LocationRequest locationRequest;
     private Address lastAddress;
-    private Activity context;
+    private Context context;
 
     private static RCLocationManager INSTANCE;
 
-    public static synchronized  void initialize(Activity context, Locale locale) {
+    public static synchronized  void initialize(Context context, Locale locale) {
         INSTANCE = new RCLocationManager(context, locale);
         INSTANCE.initializeLocationService();
     }
@@ -38,7 +39,7 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     public static RCLocationManager getInstance() {
         return INSTANCE;
     }
-    private RCLocationManager(Activity context, Locale locale) {
+    private RCLocationManager(Context context, Locale locale) {
         this.context = context;
         this.locale = locale;
     }
@@ -70,6 +71,9 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
+        if (lastLocation.hasSpeed() && lastLocation.getSpeed() < 2.0) {
+            RCSensorManager.getInstance().adjustVerticalDirection();
+        }
         updateLastAddress();
     }
     public Location getLastLocation() {

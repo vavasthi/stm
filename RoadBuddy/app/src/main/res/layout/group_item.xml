@@ -37,12 +37,11 @@
                 android:textColor="@color/kk_app_foreground"
                 android:layout_below="@+id/name"/>
             <TextView
-                android:id="@+id/activity"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:id="@+id/role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Description"
-                android:enabled="false"
+                android:text="Role"
                 android:textColor="@color/kk_app_foreground"
                 android:layout_below="@+id/description"/>
         </RelativeLayout>
