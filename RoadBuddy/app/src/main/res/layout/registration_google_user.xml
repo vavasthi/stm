@@ -73,6 +73,28 @@
                 android:textColorHint="@color/kk_app_foreground_hint"
                 android:textColor="@color/kk_app_foreground" />
         </LinearLayout>
+        <EditText
+            android:id="@+id/vehicle_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords"
+            android:textSize="@dimen/kk_registration_popup_text_size"
+            android:hint="@string/rc_vehicle_brand"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textColor="@color/kk_app_foreground" />
+
+        <EditText
+            android:id="@+id/vehicle_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapCharacters"
+            android:textSize="@dimen/kk_registration_popup_text_size"
+            android:hint="@string/rb_vehicle_registration"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textColor="@color/kk_app_foreground" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

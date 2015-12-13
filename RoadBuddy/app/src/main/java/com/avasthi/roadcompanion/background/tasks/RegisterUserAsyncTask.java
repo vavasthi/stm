@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 14/9/15.
  */
-public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
+public class RegisterUserAsyncTask extends AsyncTask<Void, Void, MemberAndVehicles> {
 
     private final RoadCompanionMainBaseActivity context;
     private final String name;
@@ -30,6 +31,8 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
     private final String detectedState;
     private final Double latitude;
     private final Double longitude;
+    private String vehicleBrand;
+    private String vehicleRegistration;
 
     private Logger logger = Logger.getLogger(RegisterUserAsyncTask.class.getName());
 
@@ -46,6 +49,8 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
         Location lastLocation = RCLocationManager.getInstance().getLastLocation();
         this.latitude = lastLocation.getLatitude();
         this.longitude = lastLocation.getLongitude();
+        this.vehicleBrand = getValueFromWidget(R.id.vehicle_brand);
+        this.vehicleRegistration = getValueFromWidget(R.id.vehicle_registration);
     }
 
     private String getValueFromWidget(int id) {
@@ -55,20 +60,22 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
     }
 
     @Override
-    protected Member doInBackground(Void... params) {
+    protected MemberAndVehicles doInBackground(Void... params) {
 
         try {
-            Member registeredUser = EndpointManager.getEndpoints(context).register(name,
+            MemberAndVehicles memberAndVehicles = EndpointManager.getEndpoints(context).register(name,
                     mobile,
                     city,
                     state,
                     detectedCity,
                     detectedState,
                     latitude,
-                    longitude
+                    longitude,
+                    vehicleBrand,
+                    vehicleRegistration
             ).execute();
-            if (registeredUser != null) {
-                return registeredUser;
+            if (memberAndVehicles != null) {
+                return memberAndVehicles;
             } else {
                 return null;
             }
@@ -77,8 +84,8 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, Member> {
         }
         return null;
     }
-    protected void onPostExecute (Member member) {
+    protected void onPostExecute (MemberAndVehicles memberAndVehicles) {
 
-        context.splashMainScreen(member);
+        context.splashMainScreen(memberAndVehicles);
     }
 }

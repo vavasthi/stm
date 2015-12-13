@@ -4,17 +4,27 @@ package com.avasthi.roadcompanion.activities;
  * Created by vavasthi on 22/11/15.
  */
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.support.v7.widget.RecyclerView;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.R;
+import com.avasthi.roadcompanion.adapters.RCGroupListAdapter;
+import com.avasthi.roadcompanion.adapters.RCVehicleListAdapter;
+import com.avasthi.roadcompanion.service.RCDataCollectorService;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.google.android.gms.common.ConnectionResult;
@@ -41,7 +51,8 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
     protected static Boolean isAccountChosen = null;
     protected static Boolean isFacebookIntegrated = null;
     protected static SharedPreferences settings;
-    protected Member currentMember;
+    protected MemberAndVehicles currentMemberAndVehicles;
+    protected int selectedVehiclePosition = -1;
 
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
@@ -149,17 +160,68 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
         alertDialog.show();
     }
 
-    public void splashMainScreen(Member currentMember) {
+    public void splashMainScreen(MemberAndVehicles currentMemberAndVehicles) {
 
-        this.currentMember = currentMember;
+        this.currentMemberAndVehicles = currentMemberAndVehicles;
         isLoggedIn = true;
         hideProgressDialog();
         setContentView(R.layout.road_buddy_main);
         final View v = findViewById(R.id.road_buddy_main_view);
         TextView greeting = (TextView) (v.findViewById(R.id.greeting));
-        greeting.setText("Hello " + currentMember.getName() + "!");
+        greeting.setText("Hello " + currentMemberAndVehicles.getMember().getName() + "!");
         saveSharedPreferences();
+        final ListView listView = (ListView)v.findViewById(R.id.vehicle_list_view);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                selectedVehiclePosition = position;
+            }
+        });
+        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedVehiclePosition = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        listView.setAdapter(new RCVehicleListAdapter(this, currentMemberAndVehicles.getVehicles()));
+        ((BaseAdapter)listView.getAdapter()).notifyDataSetChanged();
+        if (selectedVehiclePosition != -1) {
+            listView.setSelection(selectedVehiclePosition);
+        }
+        hideProgressDialog();
+        setMainScreenActionResource();
+
+    }
+    protected void setMainScreenActionResource() {
+
+        setMainScreenActionResource(isServiceRunning(RCDataCollectorService.class));
+    }
+    protected void setMainScreenActionResource(boolean serviceRunning) {
+
+        Button b = (Button)findViewById(R.id.action_drive);
+        if (serviceRunning) {
+
+            b.setText(R.string.stop_drive);
+        }
+        else {
+            b.setText(R.string.start_drive);
+        }
+    }
+    public boolean isServiceRunning(Class<?> serviceClass) {
+
+        ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo rsi : am.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(rsi.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     abstract public void continueAuthentication();

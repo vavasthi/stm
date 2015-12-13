@@ -2,6 +2,8 @@ package com.avasthi.roadcompanion.activities;
 
 
 import android.accounts.AccountManager;
+import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +12,17 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
-import com.avasthi.roadcompanion.Constants;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Vehicle;
+import com.avasthi.roadcompanion.background.tasks.RCAddGroupTask;
+import com.avasthi.roadcompanion.utils.Constants;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.background.tasks.AuthenticateUserAsyncTask;
 import com.avasthi.roadcompanion.background.tasks.RegisterUserAsyncTask;
+import com.avasthi.roadcompanion.service.RCDataCollectorService;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.facebook.appevents.AppEventsLogger;
@@ -29,6 +37,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
 
     private Logger logger = Logger.getLogger(RoadCompanionMainActivity.class.getName());
     ProgressDialog progressDialog;
+    Boolean serviceRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,18 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         }
     }
 
+    private void startCollectionService() {
+        startService(new Intent(RoadCompanionMainActivity.this, RCDataCollectorService.class));
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+        serviceRunning = true;
+    }
+    private void stopCollectionService() {
+        stopService(new Intent(RoadCompanionMainActivity.this, RCDataCollectorService.class));
+        serviceRunning = false;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -154,5 +175,25 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         //FacebookReadInterface.fini();
+    }
+    public void mainScreenAction(View v) {
+
+        boolean serviceRunning = isServiceRunning(RCDataCollectorService.class);
+        if (serviceRunning) {
+            stopCollectionService();
+        }
+        else {
+            ListView lv = (ListView)findViewById(R.id.vehicle_list_view);
+            if (selectedVehiclePosition == -1) {
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.select_a_vehicle)
+                        .setMessage(R.string.select_a_vehicle_msg)
+                        .show();
+                return;
+            }
+            Vehicle vehicle =  currentMemberAndVehicles.getVehicles().get(selectedVehiclePosition);
+            startCollectionService();
+        }
+        setMainScreenActionResource(!serviceRunning);
     }
 }

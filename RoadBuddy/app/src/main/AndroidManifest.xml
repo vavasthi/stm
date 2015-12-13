@@ -32,6 +32,8 @@
         android:name="android.support.multidex.MultiDexApplication"
         android:theme="@style/Theme.RCTheme" >
 
+        <service android:name=".service.RCDataCollectorService"/>
+
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"

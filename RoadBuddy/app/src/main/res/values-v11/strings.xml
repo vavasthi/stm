@@ -9,4 +9,9 @@
     <string name="rc_add_group">Add</string>
     <string name="rc_group_description">Description</string>
     <string name="adding_group">Adding Group</string>
+    <string name="notification_service_running">Background data collecter is running.</string>
+    <string name="rc_vehicle_brand">Vehicle Brand</string>
+    <string name="rb_vehicle_registration">Vehicle Registration</string>
+    <string name="select_a_vehicle">Select a Vehicle</string>
+    <string name="select_a_vehicle_msg">Please select a vehicle</string>
 </resources>

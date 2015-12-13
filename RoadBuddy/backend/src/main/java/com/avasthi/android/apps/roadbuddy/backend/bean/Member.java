@@ -15,7 +15,7 @@ public class Member extends AbstractEntity {
         super();
     }
 
-    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude) {
+    public Member(String name, String email, String mobile, long city, long detectedCity, Double latitude, Double longitude, Long primaryVehicleId) {
         super();
         this.name = name;
         this.email = email;
@@ -24,6 +24,7 @@ public class Member extends AbstractEntity {
         this.detectedCity = detectedCity;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.primaryVehicleId = primaryVehicleId;
     }
 
     public String getName() {
@@ -82,6 +83,14 @@ public class Member extends AbstractEntity {
         this.longitude = longitude;
     }
 
+    public Long getPrimaryVehicleId() {
+        return primaryVehicleId;
+    }
+
+    public void setPrimaryVehicleId(Long primaryVehicleId) {
+        this.primaryVehicleId = primaryVehicleId;
+    }
+
     @Index
     private String name;
     @Index
@@ -94,4 +103,5 @@ public class Member extends AbstractEntity {
     private Long detectedCity;
     private Double latitude;
     private Double longitude;
+    private Long primaryVehicleId;
 }

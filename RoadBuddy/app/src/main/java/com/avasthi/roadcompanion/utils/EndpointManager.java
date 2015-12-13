@@ -1,10 +1,10 @@
 package com.avasthi.roadcompanion.utils;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.RoadMeasurementApi;
 import com.avasthi.roadbuddy.common.RBConstants;
-import com.avasthi.roadcompanion.Constants;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -23,10 +23,10 @@ public class EndpointManager {
 
     protected static final String AUDIENCE = "server:client_id:" + RBConstants.WEB_CLIENT_ID;
 
-    public static RoadMeasurementApi getEndpoints(Activity activity) {
+    public static RoadMeasurementApi getEndpoints(Context context) {
 
         // Create API handler
-        HttpRequestInitializer requestInitializer = getRequestInitializer(activity);
+        HttpRequestInitializer requestInitializer = getRequestInitializer(context);
         RoadMeasurementApi.Builder builder = new RoadMeasurementApi.Builder(
                 AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(),
@@ -54,9 +54,9 @@ public class EndpointManager {
      *
      * @return an appropriate HttpRequestInitializer.
      */
-    public  static HttpRequestInitializer getRequestInitializer(Activity activity) {
+    public  static HttpRequestInitializer getRequestInitializer(Context context) {
 
-        GoogleAccountCredential gac = GoogleAccountCredential.usingAudience(activity, AUDIENCE);
+        GoogleAccountCredential gac = GoogleAccountCredential.usingAudience(context, AUDIENCE);
         gac.setSelectedAccountName(accountName);
         return gac;
     }

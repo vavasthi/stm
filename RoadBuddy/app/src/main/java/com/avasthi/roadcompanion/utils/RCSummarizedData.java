@@ -1,36 +1,37 @@
-package com.avasthi.android.apps.roadbuddy.backend.bean;
-
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Index;
+package com.avasthi.roadcompanion.utils;
 
 import java.util.Date;
 
 /**
- * Created by vavasthi on 9/12/15.
+ * Created by vavasthi on 13/12/15.
  */
-@Entity
-public class SensorData extends AbstractEntity {
-    public SensorData() {
-    }
-
-    public SensorData(Long userId, Date timestamp, Float verticalAccelerometerMean, Float verticalAccelerometerSD, Double latitude, Double longitude, Float accuracy, Float bearing, Float speed) {
-        this.userId = userId;
+public class RCSummarizedData {
+    public RCSummarizedData(Long id, Date timestamp, Float accuracy, Float bearing, Double latitude, Double longitude, Float speed, Float verticalAccelerometerMean, Float verticalAccelerometerSD) {
+        this.id = id;
+        this.timestamp = timestamp;
         this.accuracy = accuracy;
         this.bearing = bearing;
         this.latitude = latitude;
         this.longitude = longitude;
         this.speed = speed;
-        this.timestamp = timestamp;
         this.verticalAccelerometerMean = verticalAccelerometerMean;
         this.verticalAccelerometerSD = verticalAccelerometerSD;
     }
 
-    public Long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Float getAccuracy() {
@@ -73,14 +74,6 @@ public class SensorData extends AbstractEntity {
         this.speed = speed;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public Float getVerticalAccelerometerMean() {
         return verticalAccelerometerMean;
     }
@@ -97,15 +90,11 @@ public class SensorData extends AbstractEntity {
         this.verticalAccelerometerSD = verticalAccelerometerSD;
     }
 
-    @Index
-    private Long userId;
-    @Index
-    private Date timestamp;
-    private Float verticalAccelerometerMean;
+    long id;
+    Date timestamp;
     private Float verticalAccelerometerSD;
-    @Index
+    private Float verticalAccelerometerMean;
     private Double latitude;
-    @Index
     private Double longitude;
     private Float speed;
     private Float accuracy;

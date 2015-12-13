@@ -1,5 +1,6 @@
 package com.avasthi.roadcompanion.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -10,6 +11,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 
+import com.avasthi.roadcompanion.background.tasks.UploadSensorDataTask;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -34,7 +36,7 @@ public class RCSensorManager implements SensorEventListener {
     private float[] lastGyro;
     private float[] lastRotationMatrix;
     private float[] lastOrientation;
-    private int verticalValue;
+    private int verticalValue = -1;
 
     public static synchronized  void initialize(Context context) {
         INSTANCE = new RCSensorManager(context);
@@ -47,6 +49,10 @@ public class RCSensorManager implements SensorEventListener {
     private RCSensorManager(Context context) {
         sensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
         this.context = context;
+    }
+    public void fini() {
+        sensorManager.unregisterListener(this);
+        INSTANCE = null;
     }
     private synchronized void initializeLocationService() {
         int samplingPeriodMicroSeconds = 1000 * 1000 / 10;
@@ -74,6 +80,16 @@ public class RCSensorManager implements SensorEventListener {
         switch(event.sensor.getType()) {
             case Sensor.TYPE_ACCELEROMETER:
                 lastAccelerometer = v;
+                if (verticalValue == -1) {
+                    adjustVerticalDirection();
+                }
+                if (RCLocationManager.getInstance().getLastLocation() != null) {
+
+                    RCSummarizedData data = RCDataManager.INSTANCE.addData(RCLocationManager.getInstance().getLastLocation(), v[verticalValue]);
+                    if (data != null) {
+                        new UploadSensorDataTask(context, data).execute();
+                    }
+                }
                 break;
             case Sensor.TYPE_GYROSCOPE:
                 lastGyro = v;
@@ -85,11 +101,12 @@ public class RCSensorManager implements SensorEventListener {
                 lastRotationMatrix = v;
                 float[] r = new float[9];
                 float[] i = new float[9];
-                if (SensorManager.getRotationMatrix(r, i, lastAccelerometer, lastMagnetic)) {
+                lastOrientation = new float[3];
+                if (lastAccelerometer != null && lastMagnetic != null && lastOrientation != null && SensorManager.getRotationMatrix(r, i, lastAccelerometer, lastMagnetic)) {
 
                     v = SensorManager.getOrientation(r, v);
                     SensorManager.getRotationMatrixFromVector(r, event.values);
-                    lastOrientation = SensorManager.getOrientation(r, lastOrientation);
+                    SensorManager.getOrientation(r, lastOrientation);
                 }
                 break;
         }

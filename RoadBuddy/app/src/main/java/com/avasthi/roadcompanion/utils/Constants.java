@@ -1,5 +1,7 @@
-package com.avasthi.roadcompanion;
+package com.avasthi.roadcompanion.utils;
 
+
+import com.avasthi.roadcompanion.BuildConfig;
 
 /**
  * Created by vavasthi on 26/3/15.

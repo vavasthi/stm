@@ -1,10 +1,13 @@
 package com.avasthi.android.apps.roadbuddy.backend.bean;
 
+import com.googlecode.objectify.annotation.Entity;
+
 import java.util.Date;
 
 /**
  * Created by vavasthi on 9/12/15.
  */
+@Entity
 public class Toll extends Establishment {
     public Toll() {
 

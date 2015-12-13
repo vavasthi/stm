@@ -4,6 +4,7 @@ import com.avasthi.android.apps.roadbuddy.backend.OfyService;
 import com.avasthi.android.apps.roadbuddy.backend.fence.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.fence.FenceUtils;
 import com.avasthi.roadbuddy.common.RBConstants;
+import com.googlecode.objectify.annotation.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by vavasthi on 9/12/15.
  */
+@Entity
 public class PointsOfInterest {
     public PointsOfInterest(List<Amenity> amenityList, List<Toll> tollList, List<Checkpost> checkpostList) {
         this.amenityList = amenityList;

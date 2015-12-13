@@ -36,6 +36,11 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
         INSTANCE.initializeLocationService();
     }
 
+    public synchronized void fini() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
+        googleApiClient.disconnect();
+        INSTANCE = null;
+    }
     public static RCLocationManager getInstance() {
         return INSTANCE;
     }
@@ -71,7 +76,7 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
-        if (lastLocation.hasSpeed() && lastLocation.getSpeed() < 2.0) {
+        if (lastLocation.hasSpeed() && lastLocation.getSpeed() < 5.0) {
             RCSensorManager.getInstance().adjustVerticalDirection();
         }
         updateLastAddress();
