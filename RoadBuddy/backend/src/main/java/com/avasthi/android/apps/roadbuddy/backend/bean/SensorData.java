@@ -13,8 +13,18 @@ public class SensorData extends AbstractEntity {
     public SensorData() {
     }
 
-    public SensorData(Long userId, Date timestamp, Float verticalAccelerometerMean, Float verticalAccelerometerSD, Double latitude, Double longitude, Float accuracy, Float bearing, Float speed) {
+    public SensorData(Long userId,
+                      Long driveId,
+                      Date timestamp,
+                      Float verticalAccelerometerMean,
+                      Float verticalAccelerometerSD,
+                      Double latitude,
+                      Double longitude,
+                      Float accuracy,
+                      Float bearing,
+                      Float speed) {
         this.userId = userId;
+        this.driveId = driveId;
         this.accuracy = accuracy;
         this.bearing = bearing;
         this.latitude = latitude;
@@ -31,6 +41,14 @@ public class SensorData extends AbstractEntity {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getDriveId() {
+        return driveId;
+    }
+
+    public void setDriveId(Long driveId) {
+        this.driveId = driveId;
     }
 
     public Float getAccuracy() {
@@ -99,6 +117,8 @@ public class SensorData extends AbstractEntity {
 
     @Index
     private Long userId;
+    @Index
+    private Long driveId;
     @Index
     private Date timestamp;
     private Float verticalAccelerometerMean;

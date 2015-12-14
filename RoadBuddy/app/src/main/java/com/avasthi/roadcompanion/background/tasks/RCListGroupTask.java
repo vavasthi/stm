@@ -28,7 +28,7 @@ public class RCListGroupTask extends AsyncTask<Void, Void, List<UserGroup> > {
     protected List<UserGroup> doInBackground(Void... params) {
 
         try {
-            List<UserGroup> groups =  EndpointManager.getEndpoints(context).listGroups().execute().getItems();
+            List<UserGroup> groups =  EndpointManager.getRoadMeasurementEndpoint(context).listGroups().execute().getItems();
             if (groups != null) {
               return groups;
             }

@@ -6,7 +6,6 @@ import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserG
 import com.avasthi.roadcompanion.activities.RCGroupActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +31,7 @@ public class RCAddGroupTask extends AsyncTask<Void, Void, List<UserGroup> > {
     protected List<UserGroup> doInBackground(Void... params) {
 
         try {
-            List<UserGroup> groups =  EndpointManager.getEndpoints(context).createGroup(name, description).execute().getItems();
+            List<UserGroup> groups =  EndpointManager.getRoadMeasurementEndpoint(context).createGroup(name, description).execute().getItems();
             if (groups != null) {
               return groups;
             }

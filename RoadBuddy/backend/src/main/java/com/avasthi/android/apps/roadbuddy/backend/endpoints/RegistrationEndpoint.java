@@ -34,7 +34,7 @@ import static com.avasthi.android.apps.roadbuddy.backend.OfyService.ofy;
  * authentication! If this app is deployed, anyone can access this endpoint! If
  * you'd like to add authentication, take a look at the documentation.
  */
-@Api(name = "registerGcmEndpoint", version = "v1", scopes = {RBConstants.EMAIL_SCOPE},
+@Api(name = "registerGoogleCloudMessagingApi", version = "v1", scopes = {RBConstants.EMAIL_SCOPE},
         audiences = {RBConstants.ANDROID_AUDIENCE},
         clientIds = {RBConstants.WEB_CLIENT_ID, RBConstants.ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(

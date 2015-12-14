@@ -6,10 +6,11 @@ package com.avasthi.roadcompanion.activities;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.widget.RecyclerView;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,10 +20,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.R;
-import com.avasthi.roadcompanion.adapters.RCGroupListAdapter;
 import com.avasthi.roadcompanion.adapters.RCVehicleListAdapter;
 import com.avasthi.roadcompanion.service.RCDataCollectorService;
 import com.avasthi.roadcompanion.utils.EndpointManager;
@@ -53,6 +52,7 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
     protected static SharedPreferences settings;
     protected MemberAndVehicles currentMemberAndVehicles;
     protected int selectedVehiclePosition = -1;
+    protected Boolean dataCollectionServiceRunning = false;
 
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
@@ -195,9 +195,28 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
             listView.setSelection(selectedVehiclePosition);
         }
         hideProgressDialog();
+        if (currentMemberAndVehicles != null &&
+                currentMemberAndVehicles.getDrive() != null &&
+                !currentMemberAndVehicles.getDrive().getDone()) {
+            startCollectionService();
+        }
         setMainScreenActionResource();
 
     }
+    protected  void startCollectionService() {
+
+        startService(new Intent(this, RCDataCollectorService.class));
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        dataCollectionServiceRunning = true;
+    }
+    protected  void stopCollectionService() {
+        stopService(new Intent(this, RCDataCollectorService.class));
+        dataCollectionServiceRunning = false;
+    }
+
     protected void setMainScreenActionResource() {
 
         setMainScreenActionResource(isServiceRunning(RCDataCollectorService.class));

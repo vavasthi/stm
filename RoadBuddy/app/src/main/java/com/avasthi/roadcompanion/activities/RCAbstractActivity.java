@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
 import com.avasthi.roadcompanion.R;
 
 import org.json.JSONArray;
@@ -71,5 +72,8 @@ abstract public class RCAbstractActivity extends AppCompatActivity {
         } else {
             return "";
         }
+    }
+    public void performDriveStatusUpdate(Drive drive) {
+
     }
 }

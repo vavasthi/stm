@@ -7,6 +7,7 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.AmenityStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Checkpost;
 import com.avasthi.android.apps.roadbuddy.backend.bean.CheckpostStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.City;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Establishment;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Event;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
@@ -47,6 +48,7 @@ public class OfyService {
         ObjectifyService.register(CheckpostStop.class);
         ObjectifyService.register(Vehicle.class);
         ObjectifyService.register(VehicleOwnership.class);
+        ObjectifyService.register(Drive.class);
     }
 
     public static Objectify ofy() {

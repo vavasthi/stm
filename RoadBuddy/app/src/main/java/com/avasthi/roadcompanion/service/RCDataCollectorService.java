@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
@@ -53,14 +54,21 @@ public class RCDataCollectorService extends Service {
 
     private void showNotification() {
 
-        Notification notification = new Notification.Builder(this)
+        Notification.Builder builder = new Notification.Builder(this)
                 .setContentTitle(getResources().getString(R.string.notification_service_running))
                 .setContentText(getResources().getString(R.string.notification_service_running))
-                .setSmallIcon(R.drawable.ic_launcher)
-                .build();
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, RoadCompanionMainActivity.class), 0);
-        notificationManager.notify(R.string.notification_service_running, notification);
-
+                .setSmallIcon(R.drawable.ic_launcher);
+        Intent resultIntent = new Intent(this, RoadCompanionMainActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(RoadCompanionMainActivity.class);
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        builder.setContentIntent(resultPendingIntent);
+        notificationManager.notify(R.string.notification_service_running, builder.build());
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

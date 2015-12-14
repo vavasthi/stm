@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.EditText;
 
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
@@ -63,7 +62,7 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, MemberAndVehicl
     protected MemberAndVehicles doInBackground(Void... params) {
 
         try {
-            MemberAndVehicles memberAndVehicles = EndpointManager.getEndpoints(context).register(name,
+            MemberAndVehicles memberAndVehicles = EndpointManager.getRoadMeasurementEndpoint(context).register(name,
                     mobile,
                     city,
                     state,

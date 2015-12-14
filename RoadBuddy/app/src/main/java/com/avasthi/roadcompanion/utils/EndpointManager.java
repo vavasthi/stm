@@ -3,6 +3,7 @@ package com.avasthi.roadcompanion.utils;
 import android.app.Activity;
 import android.content.Context;
 
+import com.avasthi.android.apps.roadbuddy.backend.registerGoogleCloudMessagingApi.RegisterGoogleCloudMessagingApi;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.RoadMeasurementApi;
 import com.avasthi.roadbuddy.common.RBConstants;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -23,11 +24,36 @@ public class EndpointManager {
 
     protected static final String AUDIENCE = "server:client_id:" + RBConstants.WEB_CLIENT_ID;
 
-    public static RoadMeasurementApi getEndpoints(Context context) {
+    public static RoadMeasurementApi getRoadMeasurementEndpoint(Context context) {
 
         // Create API handler
         HttpRequestInitializer requestInitializer = getRequestInitializer(context);
         RoadMeasurementApi.Builder builder = new RoadMeasurementApi.Builder(
+                AndroidHttp.newCompatibleTransport(),
+                new AndroidJsonFactory(),
+                requestInitializer)
+                .setRootUrl(Constants.ROOT_URL)
+                .setGoogleClientRequestInitializer(
+                        new GoogleClientRequestInitializer() {
+                            @Override
+                            public void initialize(
+                                    final AbstractGoogleClientRequest<?>
+                                            abstractGoogleClientRequest)
+                                    throws IOException {
+                                abstractGoogleClientRequest
+                                        .setDisableGZipContent(true);
+                            }
+                        }
+                );
+
+        return builder.build();
+    }
+
+    public static RegisterGoogleCloudMessagingApi getGoogleCloudMessagingEndpoint(Context context) {
+
+        // Create API handler
+        HttpRequestInitializer requestInitializer = getRequestInitializer(context);
+        RegisterGoogleCloudMessagingApi.Builder builder = new RegisterGoogleCloudMessagingApi.Builder(
                 AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(),
                 requestInitializer)

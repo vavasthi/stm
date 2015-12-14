@@ -16,8 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Vehicle;
+import com.avasthi.roadcompanion.background.tasks.GoogleCloudMessagingRegistrationAsyncTask;
 import com.avasthi.roadcompanion.background.tasks.RCAddGroupTask;
+import com.avasthi.roadcompanion.background.tasks.RCDriveStatusTask;
 import com.avasthi.roadcompanion.utils.Constants;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.background.tasks.AuthenticateUserAsyncTask;
@@ -37,7 +40,6 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
 
     private Logger logger = Logger.getLogger(RoadCompanionMainActivity.class.getName());
     ProgressDialog progressDialog;
-    Boolean serviceRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         detectedPhoneNumber = telephonyManager.getLine1Number();
         // FacebookReadInterface.initialize(this);
         // FacebookPublishInterface.initialize(this);
-        continueAuthentication();
+        new GoogleCloudMessagingRegistrationAsyncTask(this).execute();
     }
 
     public void continueAuthentication() {
@@ -62,18 +64,6 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         }
     }
 
-    private void startCollectionService() {
-        startService(new Intent(RoadCompanionMainActivity.this, RCDataCollectorService.class));
-        Intent startMain = new Intent(Intent.ACTION_MAIN);
-        startMain.addCategory(Intent.CATEGORY_HOME);
-        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(startMain);
-        serviceRunning = true;
-    }
-    private void stopCollectionService() {
-        stopService(new Intent(RoadCompanionMainActivity.this, RCDataCollectorService.class));
-        serviceRunning = false;
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -181,6 +171,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         boolean serviceRunning = isServiceRunning(RCDataCollectorService.class);
         if (serviceRunning) {
             stopCollectionService();
+            new RCDriveStatusTask(this, Boolean.FALSE).execute(); // Stop a drive
         }
         else {
             ListView lv = (ListView)findViewById(R.id.vehicle_list_view);
@@ -193,7 +184,17 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
             }
             Vehicle vehicle =  currentMemberAndVehicles.getVehicles().get(selectedVehiclePosition);
             startCollectionService();
+            new RCDriveStatusTask(this, Boolean.TRUE).execute(); // Start a drive
         }
         setMainScreenActionResource(!serviceRunning);
+    }
+    public void performDriveStatusUpdate(Drive drive) {
+
+        boolean serviceRunning = isServiceRunning(RCDataCollectorService.class);
+        if (serviceRunning && drive.getDone()) {
+            // Service and drive is still running.
+        }
+        else if (!serviceRunning && !drive.getDone()) {
+        }
     }
 }

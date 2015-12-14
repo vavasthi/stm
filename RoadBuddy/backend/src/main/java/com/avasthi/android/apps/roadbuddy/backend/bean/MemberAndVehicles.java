@@ -11,9 +11,10 @@ public class MemberAndVehicles {
         super();
     }
 
-    public MemberAndVehicles(Member member, Vehicle[] vehicles) {
+    public MemberAndVehicles(Member member, Vehicle[] vehicles, Drive drive) {
         this.member = member;
         this.vehicles = vehicles;
+        this.drive = drive;
     }
 
     public Member getMember() {
@@ -32,6 +33,15 @@ public class MemberAndVehicles {
         this.vehicles = vehicles;
     }
 
+    public Drive getDrive() {
+        return drive;
+    }
+
+    public void setDrive(Drive drive) {
+        this.drive = drive;
+    }
+
     private Member member;
     private Vehicle[] vehicles;
+    private Drive drive;
 }

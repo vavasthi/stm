@@ -7,7 +7,6 @@ package com.avasthi.roadcompanion.background.tasks;
 import android.os.AsyncTask;
 
 
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
@@ -33,7 +32,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, MemberAndVe
     protected MemberAndVehicles doInBackground(Void... params) {
 
         try {
-            MemberAndVehicles memberAndVehicles = EndpointManager.getEndpoints(context).isRegisteredUser().execute();
+            MemberAndVehicles memberAndVehicles = EndpointManager.getRoadMeasurementEndpoint(context).isRegisteredUser().execute();
             return memberAndVehicles;
         } catch (Exception e) {
             logger.log(Level.WARNING, "Failure in remote call ", e);

@@ -16,17 +16,18 @@ import java.util.List;
 public class RCDataManager {
     public final static RCDataManager INSTANCE = new RCDataManager();
     private List<RCSensorData> dataList = new ArrayList<>();
-    private int minutes = -1;
+    private int seconds = -1;
 
     public RCSummarizedData addData(float accuracy, float bearing, double latitude, double longitude, float speed, float verticalAccelerometer) {
-        if (minutes == -1) {
-            minutes = Calendar.getInstance().get(Calendar.MINUTE);
+        if (seconds == -1) {
+            seconds = Calendar.getInstance().get(Calendar.SECOND) / 10;
         }
+        int oldSeconds = seconds;
         List<RCSensorData> oldList = null;
-        if (minutes != Calendar.getInstance().get(Calendar.MINUTE)) {
+        if (seconds != Calendar.getInstance().get(Calendar.SECOND) / 10) {
             oldList = dataList;
             dataList = new ArrayList<>();
-            minutes = Calendar.getInstance().get(Calendar.MINUTE);
+            seconds = Calendar.getInstance().get(Calendar.SECOND) / 10;
         }
         dataList.add(new RCSensorData(accuracy, bearing, latitude, longitude, speed, verticalAccelerometer));
         if (oldList == null || oldList.size() == 0) {
@@ -46,7 +47,7 @@ public class RCDataManager {
                     Calendar c = Calendar.getInstance();
                     c.setTime(rcsd.getTimestamp());
                     c.set(Calendar.MILLISECOND, 0);
-                    c.set(Calendar.SECOND,0);
+                    c.set(Calendar.SECOND,oldSeconds * 10);
                     timestamp = c.getTime();
                 }
                 rAccuracy[i] = rcsd.getAccuracy();

@@ -6,6 +6,7 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.AmenityStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Checkpost;
 import com.avasthi.android.apps.roadbuddy.backend.bean.CheckpostStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.City;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
 import com.avasthi.android.apps.roadbuddy.backend.bean.GroupMembership;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Member;
@@ -16,8 +17,10 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.Toll;
 import com.avasthi.android.apps.roadbuddy.backend.bean.TollStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.UserGroup;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Vehicle;
+import com.avasthi.android.apps.roadbuddy.backend.exceptions.AlreadyOngoingDrive;
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.GroupRetrievalFailed;
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.InvalidMemberException;
+import com.avasthi.android.apps.roadbuddy.backend.exceptions.NoOngoingDrive;
 import com.avasthi.android.apps.roadbuddy.backend.fence.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.fence.FenceUtils;
 import com.avasthi.roadbuddy.common.RBConstants;
@@ -28,12 +31,10 @@ import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.ForbiddenException;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
-import com.googlecode.objectify.annotation.Index;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
@@ -70,16 +71,16 @@ public class RoadMeasurementBeanEndpoint {
      */
     @ApiMethod(name = "register")
     public MemberAndVehicles register(@Named("name") String name,
-                           @Named("mobile") String mobile,
-                           @Named("city") String city,
-                           @Named("state") String state,
-                           @Named("detectedCity") String detectedCity,
-                           @Named("detectedState") String detectedState,
-                           @Named("latitude") Double latitude,
-                           @Named("logitude") Double longitude,
-                           @Named("vehicleBrand") String vehicleBrand,
-                           @Named("vehicleRegistration") String vehicleRegistration,
-                           User user) throws ForbiddenException, OAuthRequestException {
+                                      @Named("mobile") String mobile,
+                                      @Named("city") String city,
+                                      @Named("state") String state,
+                                      @Named("detectedCity") String detectedCity,
+                                      @Named("detectedState") String detectedState,
+                                      @Named("latitude") Double latitude,
+                                      @Named("logitude") Double longitude,
+                                      @Named("vehicleBrand") String vehicleBrand,
+                                      @Named("vehicleRegistration") String vehicleRegistration,
+                                      User user) throws ForbiddenException, OAuthRequestException {
         if (user == null) {
             throw new ForbiddenException("user is null.");
         }
@@ -100,7 +101,7 @@ public class RoadMeasurementBeanEndpoint {
         OfyService.ofy().save().entity(v).now();
         Vehicle[] vehicles = new Vehicle[1];
         vehicles[0] = v;
-        return new MemberAndVehicles(member, vehicles);
+        return new MemberAndVehicles(member, vehicles, null);
     }
 
     /**
@@ -108,49 +109,37 @@ public class RoadMeasurementBeanEndpoint {
      */
     @ApiMethod(name = "createGroup")
     public List<UserGroup> createGroup(@Named("name") String name,
-                              @Named("description") String description,
-                           User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+                                       @Named("description") String description,
+                                       User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         if (user == null) {
             throw new ForbiddenException("user is null.");
         }
-        try {
-
-            MemberAndVehicles memberAndVehicles = authorizeApi(user);
-            Member member = memberAndVehicles.getMember();
-            Group group = new Group(name, description, member.getId());
-            OfyService.ofy().save().entity(group).now();
-            GroupMembership gm = new GroupMembership(member.getId(), group.getId());
-            OfyService.ofy().save().entity(gm).now();
-            return getGroupsForUser(member);
-        } catch (Exception ex) {
-            logger.log(Level.INFO, "Group query returned error.", ex);
-
-        }
-        return null;
+        MemberAndVehicles memberAndVehicles = authorizeApi(user);
+        Member member = memberAndVehicles.getMember();
+        Group group = new Group(name, description, member.getId());
+        OfyService.ofy().save().entity(group).now();
+        GroupMembership gm = new GroupMembership(member.getId(), group.getId());
+        OfyService.ofy().save().entity(gm).now();
+        return getGroupsForUser(member);
     }
 
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "listGroups")
-    public List<UserGroup> listGroups(User user) throws ForbiddenException, OAuthRequestException {
+    public List<UserGroup> listGroups(User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         if (user == null) {
             throw new ForbiddenException("user is null.");
         }
-        try {
-
-            MemberAndVehicles memberAndVehicles = authorizeApi(user);
-            return getGroupsForUser(memberAndVehicles.getMember());
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+        MemberAndVehicles memberAndVehicles = authorizeApi(user);
+        return getGroupsForUser(memberAndVehicles.getMember());
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "addSensorData")
     public SensorData addSensorData(@Named("timestamp") Date timestamp,
+                                    @Named("driveId") Long driveId,
                                     @Named("verticalAccelerometerMean") Float verticalAccelerometerMean,
                                     @Named("verticalAccelerometerSD") Float verticalAccelerometerSD,
                                     @Named("accuracy") Float accuracy,
@@ -158,18 +147,13 @@ public class RoadMeasurementBeanEndpoint {
                                     @Named("latitude") Double latitude,
                                     @Named("longitude") Double longitude,
                                     @Named("speed") Float speed,
-                                    User user) throws ForbiddenException, OAuthRequestException {
-        try {
+                                    User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
 
-            MemberAndVehicles memberAndVehicles = authorizeApi(user);
-            Member member = memberAndVehicles.getMember();
-            SensorData sd = new SensorData(member.getId(), timestamp, verticalAccelerometerMean, verticalAccelerometerSD, latitude, longitude, accuracy, bearing, speed);
-            OfyService.ofy().save().entity(sd).now();
-            return sd;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+        MemberAndVehicles memberAndVehicles = authorizeApi(user);
+        Member member = memberAndVehicles.getMember();
+        SensorData sd = new SensorData(member.getId(), driveId, timestamp, verticalAccelerometerMean, verticalAccelerometerSD, latitude, longitude, accuracy, bearing, speed);
+        OfyService.ofy().save().entity(sd).now();
+        return sd;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -185,18 +169,12 @@ public class RoadMeasurementBeanEndpoint {
                               @Named("city") String city,
                               @Named("sate") String state,
                               @Named("country") String country,
-                              User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            Amenity amenity = new Amenity(member.getId(), timestamp, name, latitude, longitude, hasRestaurant, hasRestrooms, hasPetrolStation, state, city, country);
-            OfyService.ofy().save().entity(amenity).now();
-            FenceUtils.createFence(amenity.getId(), name, RBConstants.AMENITIES_GROUP, true, latitude, longitude, RBConstants.AMENITIES_RADIUS);
-            return amenity;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+                              User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+        Member member = authorizeApi(user).getMember();
+        Amenity amenity = new Amenity(member.getId(), timestamp, name, latitude, longitude, hasRestaurant, hasRestrooms, hasPetrolStation, state, city, country);
+        OfyService.ofy().save().entity(amenity).now();
+        FenceUtils.createFence(amenity.getId(), name, RBConstants.AMENITIES_GROUP, true, latitude, longitude, RBConstants.AMENITIES_RADIUS);
+        return amenity;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -209,18 +187,12 @@ public class RoadMeasurementBeanEndpoint {
                         @Named("city") String city,
                         @Named("sate") String state,
                         @Named("country") String country,
-                        User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            Toll toll = new Toll(member.getId(), timestamp, latitude, longitude, amount, city, state, country);
-            OfyService.ofy().save().entity(toll).now();
-            FenceUtils.createFence(toll.getId(), city + "-" + state, RBConstants.TOLLS_GROUP, true, latitude, longitude, RBConstants.TOLLS_RADIUS);
-            return toll;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+                        User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+        Member member = authorizeApi(user).getMember();
+        Toll toll = new Toll(member.getId(), timestamp, latitude, longitude, amount, city, state, country);
+        OfyService.ofy().save().entity(toll).now();
+        FenceUtils.createFence(toll.getId(), city + "-" + state, RBConstants.TOLLS_GROUP, true, latitude, longitude, RBConstants.TOLLS_RADIUS);
+        return toll;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -232,18 +204,12 @@ public class RoadMeasurementBeanEndpoint {
                                   @Named("city") String city,
                                   @Named("sate") String state,
                                   @Named("country") String country,
-                                  User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            Checkpost checkpost = new Checkpost(member.getId(), timestamp, latitude, longitude, city, state, country);
-            OfyService.ofy().save().entity(checkpost).now();
-            FenceUtils.createFence(checkpost.getId(), city + "-" + state, RBConstants.CHECKPOSTS_GROUP, true, latitude, longitude, RBConstants.CHECKPOSTS_RADIUS);
-            return checkpost;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+                                  User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+        Member member = authorizeApi(user).getMember();
+        Checkpost checkpost = new Checkpost(member.getId(), timestamp, latitude, longitude, city, state, country);
+        OfyService.ofy().save().entity(checkpost).now();
+        FenceUtils.createFence(checkpost.getId(), city + "-" + state, RBConstants.CHECKPOSTS_GROUP, true, latitude, longitude, RBConstants.CHECKPOSTS_RADIUS);
+        return checkpost;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -255,17 +221,11 @@ public class RoadMeasurementBeanEndpoint {
                                        @Named("restroomRating") Integer restroomRating,
                                        @Named("petrolStationRating") Integer petrolStationRating,
                                        @Named("creditCardAccepted") Boolean creditCardAccepted,
-                                       User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            AmenityStop amenityStop = new AmenityStop(member.getId(), establishmentId, timestamp, restaurantRating, restroomRating, petrolStationRating, creditCardAccepted);
-            OfyService.ofy().save().entity(amenityStop).now();
-            return amenityStop;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+                                       User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+        Member member = authorizeApi(user).getMember();
+        AmenityStop amenityStop = new AmenityStop(member.getId(), establishmentId, timestamp, restaurantRating, restroomRating, petrolStationRating, creditCardAccepted);
+        OfyService.ofy().save().entity(amenityStop).now();
+        return amenityStop;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -275,36 +235,25 @@ public class RoadMeasurementBeanEndpoint {
                                 @Named("timestamp") Date timestamp,
                                 @Named("amount") Float amount,
                                 @Named("fasTagLane") Boolean fasTagLane,
-                                User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            TollStop tollStop = new TollStop(member.getId(), establishmentId, timestamp, amount, fasTagLane);
-            OfyService.ofy().save().entity(tollStop).now();
-            return tollStop;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+                                User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+        Member member = authorizeApi(user).getMember();
+        TollStop tollStop = new TollStop(member.getId(), establishmentId, timestamp, amount, fasTagLane);
+        OfyService.ofy().save().entity(tollStop).now();
+        return tollStop;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "addCheckpostStop")
     public CheckpostStop addCheckpostStop(@Named("establishmentId") Long establishmentId,
-                                @Named("timestamp") Date timestamp,
-                                @Named("speedCameras") Boolean speedCameras,
-                                User user) throws ForbiddenException, OAuthRequestException {
-        try {
+                                          @Named("timestamp") Date timestamp,
+                                          @Named("speedCameras") Boolean speedCameras,
+                                          User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
 
-            Member member = authorizeApi(user).getMember();
-            CheckpostStop checkpostStop = new CheckpostStop(member.getId(), establishmentId, timestamp, speedCameras);
-            OfyService.ofy().save().entity(checkpostStop).now();
-            return checkpostStop;
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
-        }
-        return null;
+        Member member = authorizeApi(user).getMember();
+        CheckpostStop checkpostStop = new CheckpostStop(member.getId(), establishmentId, timestamp, speedCameras);
+        OfyService.ofy().save().entity(checkpostStop).now();
+        return checkpostStop;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -318,17 +267,48 @@ public class RoadMeasurementBeanEndpoint {
                                              @Named("speed") Float speed,
                                              @Named("accuracy") Float accuracy,
                                              @Named("bearing") Float bearing,
-                                             User user) throws ForbiddenException, OAuthRequestException {
-        try {
-
-            Member member = authorizeApi(user).getMember();
-            SensorData sensorData = new SensorData(member.getId(), timestamp, verticalAccelerometerMean, verticalAccelerometerSD, latitude, longitude, speed, accuracy, bearing);
-            OfyService.ofy().save().entity(sensorData).now();
-            return populatePointOfInterests(latitude, longitude);
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception raised.", ex);
+                                             User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, NoOngoingDrive {
+        Member member = authorizeApi(user).getMember();
+        Drive drive = getOngoingDrive(member);
+        if (drive == null) {
+            throw new NoOngoingDrive(member.getEmail());
         }
-        return null;
+        SensorData sensorData = new SensorData(member.getId(), drive.getId(), timestamp, verticalAccelerometerMean, verticalAccelerometerSD, latitude, longitude, speed, accuracy, bearing);
+        OfyService.ofy().save().entity(sensorData).now();
+        return populatePointOfInterests(latitude, longitude);
+    }
+    /**
+     * A simple endpoint method that takes a name and says Hi back
+     */
+    @ApiMethod(name = "startDrive")
+    public Drive startDrive(@Named("timestamp") Date timestamp,
+                            @Named("groupId") Long groupId,
+                            @Named("eventId") Long eventId,
+                            User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, AlreadyOngoingDrive {
+
+        Member member = authorizeApi(user).getMember();
+        if (getOngoingDrive(member) != null) {
+            throw new AlreadyOngoingDrive(member.getEmail());
+        }
+        Drive drive = new Drive(eventId, groupId, member.getId());
+        OfyService.ofy().save().entity(drive).now();
+        return drive;
+    }
+    /**
+     * A simple endpoint method that takes a name and says Hi back
+     */
+    @ApiMethod(name = "finishDrive")
+    public Drive finishDrive(User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, NoOngoingDrive {
+
+        Member member = authorizeApi(user).getMember();
+        Drive drive = getOngoingDrive(member);
+        if (drive == null) {
+            throw new NoOngoingDrive(member.getEmail());
+        }
+        drive.setDone(Boolean.TRUE);
+        drive.setCompletedAt(new Date());;
+        OfyService.ofy().save().entity(drive).now();
+        return drive;
     }
     private PointsOfInterest populatePointOfInterests(Double latitude, Double longitude) {
 
@@ -369,7 +349,8 @@ public class RoadMeasurementBeanEndpoint {
         }
         List<Vehicle> list = OfyService.ofy().load().type(Vehicle.class).filter("ownerId", member.getId()).list();
         Vehicle[] vehicles = list.toArray(new Vehicle[list.size()]);
-        return new MemberAndVehicles(member, vehicles);
+        Drive drive = getOngoingDrive(member);
+        return new MemberAndVehicles(member, vehicles, drive);
     }
     private City getCity(String city, String state) {
 
@@ -380,6 +361,10 @@ public class RoadMeasurementBeanEndpoint {
             OfyService.ofy().save().entity(c).now();
         }
         return c;
+    }
+    private Drive getOngoingDrive(Member member) {
+
+        return OfyService.ofy().load().type(Drive.class).filter("memberId", member.getId()).filter("done", Boolean.FALSE).first().now();
     }
 
     private List<UserGroup> getGroupsForUser(Member member) throws ForbiddenException, OAuthRequestException {

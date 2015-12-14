@@ -1,25 +1,16 @@
 package com.avasthi.roadcompanion.background.tasks;
 
-import android.app.Activity;
 import android.content.Context;
-import android.location.Address;
-import android.location.Location;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.EditText;
 
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
-import com.avasthi.roadcompanion.R;
-import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
-import com.avasthi.roadcompanion.utils.RCDataManager;
 import com.avasthi.roadcompanion.utils.RCDatabaseManager;
-import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.avasthi.roadcompanion.utils.RCSummarizedData;
 import com.google.api.client.util.DateTime;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +20,7 @@ import java.util.logging.Logger;
 public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest> {
 
     private final Context context;
-    RCSummarizedData data;
+    private final RCSummarizedData data;
 
     private Logger logger = Logger.getLogger(UploadSensorDataTask.class.getName());
 
@@ -42,7 +33,7 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
     protected PointsOfInterest doInBackground(Void... params) {
 
         try {
-            PointsOfInterest poi = EndpointManager.getEndpoints(context)
+            PointsOfInterest poi = EndpointManager.getRoadMeasurementEndpoint(context)
                     .updateSensorData(new DateTime(data.getTimestamp()),
                             data.getVerticalAccelerometerMean(),
                             data.getVerticalAccelerometerSD(),
