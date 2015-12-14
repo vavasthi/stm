@@ -13,7 +13,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.avasthi.roadcompanion.R;
+import com.avasthi.roadcompanion.activities.RCTollActivity;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainActivity;
+import com.avasthi.roadcompanion.utils.Constants;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.avasthi.roadcompanion.utils.RCSensorManager;
 
@@ -50,6 +52,7 @@ public class RCDataCollectorService extends Service {
         notificationIntent = new Intent(this, RoadCompanionMainActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         showNotification();
+        showVehicleStoppedNotification();
     }
 
     private void showNotification() {
@@ -68,6 +71,28 @@ public class RCDataCollectorService extends Service {
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
         builder.setContentIntent(resultPendingIntent);
+        notificationManager.notify(R.string.notification_service_running, builder.build());
+    }
+    private void showVehicleStoppedNotification() {
+
+        Notification.Builder builder = new Notification.Builder(this)
+                .setContentTitle(getResources().getString(R.string.vehicle_stopped_title))
+                .setContentText(getResources().getString(R.string.vehicle_stopped_text))
+                .setSmallIcon(R.drawable.ic_launcher);
+        Intent resultIntent = new Intent(this, RCTollActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(RoadCompanionMainActivity.class);
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        builder.setContentIntent(resultPendingIntent);
+        Intent tollIntent = new Intent();
+        tollIntent.setAction(Constants.TOLL_ACTION_FROM_SERVICE);
+        PendingIntent tollPendingIntent = PendingIntent.getBroadcast(this, 0, tollIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.addAction(R.drawable.ic_launcher, "Toll", tollPendingIntent);
         notificationManager.notify(R.string.notification_service_running, builder.build());
     }
     @Override

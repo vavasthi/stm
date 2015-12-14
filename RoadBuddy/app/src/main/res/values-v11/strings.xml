@@ -15,4 +15,7 @@
     <string name="select_a_vehicle">Select a Vehicle</string>
     <string name="select_a_vehicle_msg">Please select a vehicle</string>
     <string name="go_to_application">App</string>
+    <string name="vehicle_stopped_title">Vehicle is stopped.</string>
+    <string name="vehicle_stopped_text">Vehicle is stopped during a drive. Please choose the reason.</string>
+    <string name="paid">Paid</string>
 </resources>

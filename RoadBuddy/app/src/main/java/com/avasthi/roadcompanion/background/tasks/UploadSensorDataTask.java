@@ -8,6 +8,7 @@ import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Membe
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.avasthi.roadcompanion.utils.RCDatabaseManager;
+import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.avasthi.roadcompanion.utils.RCSummarizedData;
 import com.google.api.client.util.DateTime;
 
@@ -54,7 +55,7 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
         }
         return null;
     }
-    protected void onPostExecute (Member member) {
-
+    protected void onPostExecute (PointsOfInterest poi) {
+        RCLocationManager.getInstance().updatePointsOfInterest(poi);
     }
 }

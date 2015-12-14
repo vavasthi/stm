@@ -46,6 +46,13 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".receivers.ServicePendingIntentBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.avasthi.roadcompanion.TOLL_ACTION_FROM_SERVICE"/>
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".service.RCGcmListenerService"
             android:exported="false" >
@@ -73,6 +80,11 @@
         </activity>
         <activity
             android:name=".activities.RCGroupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.RCTollActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name" >
         </activity>

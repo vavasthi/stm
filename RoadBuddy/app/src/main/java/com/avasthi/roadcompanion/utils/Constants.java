@@ -13,4 +13,6 @@ public class Constants {
     public static final int CUSTOM_ACTIVITY_START = 10000;
     public static final int GROUP_ACTIVITY = CUSTOM_ACTIVITY_START + 1;
 
+    public static final String TOLL_ACTION_FROM_SERVICE = "com.avasthi.roadcompanion.TOLL_ACTION_FROM_SERVICE";
+
 }

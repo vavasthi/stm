@@ -7,6 +7,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -28,6 +29,9 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     private LocationRequest locationRequest;
     private Address lastAddress;
     private Context context;
+    private PointsOfInterest pointsOfInterest = null;
+
+    protected Boolean vehicleMoving = false;
 
     private static RCLocationManager INSTANCE;
 
@@ -76,8 +80,12 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
-        if (lastLocation.hasSpeed() && lastLocation.getSpeed() < 5.0) {
+        if (vehicleMoving && lastLocation.hasSpeed() && lastLocation.getSpeed() < 5.0) {
             RCSensorManager.getInstance().adjustVerticalDirection();
+            // Show alert
+        }
+        else if (!vehicleMoving && lastLocation.hasSpeed() && lastLocation.getSpeed() > 5.0) {
+            vehicleMoving = true;
         }
         updateLastAddress();
     }
@@ -112,5 +120,12 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
             e.printStackTrace();
         }
 
+    }
+
+    public void updatePointsOfInterest(PointsOfInterest poi) {
+        this.pointsOfInterest = poi;
+    }
+    public PointsOfInterest getPointsOfInterest() {
+        return this.pointsOfInterest;
     }
 }
