@@ -38,10 +38,25 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="90"
+            android:layout_weight="50"
             android:inputType="numberDecimal"
             android:textSize="24dp"
             android:id="@+id/actual_amount"
+            android:textColor="@color/kk_app_foreground"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rc_FasTagLane"
+            android:textSize="16dp"
+            android:layout_weight="30"
+            android:id="@+id/fasTagLane_text"
+            android:textColor="@color/kk_app_foreground"/>
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:textSize="24dp"
+            android:id="@+id/fasTagLane"
             android:textColor="@color/kk_app_foreground"/>
     </LinearLayout>
     <LinearLayout

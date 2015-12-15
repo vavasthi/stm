@@ -8,15 +8,18 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Toll;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserGroup;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.adapters.RCGroupListAdapter;
 import com.avasthi.roadcompanion.adapters.RCTollListAdapter;
 import com.avasthi.roadcompanion.background.tasks.RCAddGroupTask;
+import com.avasthi.roadcompanion.background.tasks.RCAddTollStopTask;
 import com.avasthi.roadcompanion.background.tasks.RCListGroupTask;
 import com.avasthi.roadcompanion.background.tasks.RCListNearbyTollsTask;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
@@ -29,7 +32,7 @@ import java.util.List;
 public class RCTollActivity extends RCAbstractActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private RCTollListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private List<UserGroup> listOfGroups;
     private Dialog popup;
@@ -52,7 +55,7 @@ public class RCTollActivity extends RCAbstractActivity {
                 pointsOfInterest.getTollList() != null &&
                 pointsOfInterest.getTollList().size() > 0) {
 
-            adapter = new RCTollListAdapter(pointsOfInterest.getTollList());
+            adapter = new RCTollListAdapter(pointsOfInterest.getTollList(), this);
             recyclerView.setAdapter(adapter);
         }
         hideProgressDialog();
@@ -60,20 +63,24 @@ public class RCTollActivity extends RCAbstractActivity {
 
 
     public void enterPaidToll(View v) {
-        if (popup != null && popup.isShowing()) {
 
-            String name = ((EditText) popup.findViewById(R.id.groupname)).getText().toString();
-            String description = ((EditText) popup.findViewById(R.id.groupdescription)).getText().toString();
-            popup.dismiss();
-            showProgressDialog(this);
-            //new RCAddGroupTask(this, name, description).execute();
+        float amount = Float.parseFloat(((EditText)findViewById(R.id.actual_amount)).getText().toString());
+        boolean fasTagLane = ((CheckBox)findViewById(R.id.fasTagLane)).isChecked();
+        if (adapter != null && adapter.getPosition() != -1) {
+            Toll toll = adapter.getSelectedToll();
+            new RCAddTollStopTask(this, toll, fasTagLane, amount).execute();
         }
+        else {
 
+            new RCAddTollStopTask(this, fasTagLane, amount).execute();
+        }
     }
 
-//    public void splashListGroupsScreen(List<UserGroup> groupsList) {
-
-  //      listOfGroups = groupsList;
-    //    populateListView();
-    //}
+    public void updateActivityUI() {
+        if (adapter.getPosition() != -1) {
+            Toll toll = adapter.getSelectedToll();
+            CheckBox fasTagLane = (CheckBox) findViewById(R.id.fasTagLane);
+            fasTagLane.setChecked(toll.getFasTagLane());
+        }
+    }
 }

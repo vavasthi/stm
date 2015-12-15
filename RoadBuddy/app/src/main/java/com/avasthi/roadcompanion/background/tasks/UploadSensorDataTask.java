@@ -56,6 +56,9 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
         return null;
     }
     protected void onPostExecute (PointsOfInterest poi) {
-        RCLocationManager.getInstance().updatePointsOfInterest(poi);
+        if (RCLocationManager.getInstance() != null) {
+
+            RCLocationManager.getInstance().updatePointsOfInterest(poi);
+        }
     }
 }

@@ -12,10 +12,9 @@ public class TollStop extends AbstractStop {
     public TollStop() {
 
     }
-    public TollStop(Long userId, Long establishmentId, Date timestamp, Float amount, Boolean fastTagLane) {
+    public TollStop(Long userId, Long establishmentId, Date timestamp, Float amount) {
         super(userId, establishmentId, timestamp);
         this.amount = amount;
-        this.fastTagLane = fastTagLane;
     }
 
     public Float getAmount() {
@@ -26,14 +25,5 @@ public class TollStop extends AbstractStop {
         this.amount = amount;
     }
 
-    public Boolean getFastTagLane() {
-        return fastTagLane;
-    }
-
-    public void setFastTagLane(Boolean fastTagLane) {
-        this.fastTagLane = fastTagLane;
-    }
-
     private Float amount;
-    private Boolean fastTagLane;
 }

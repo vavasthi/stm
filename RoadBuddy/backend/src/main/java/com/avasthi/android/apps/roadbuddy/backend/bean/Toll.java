@@ -12,9 +12,10 @@ public class Toll extends Establishment {
     public Toll() {
 
     }
-    public Toll(Long userId, Date timestamp, Double latitude, Double longitude, Float amount, String city, String state, String country) {
+    public Toll(Long userId, Date timestamp, Boolean fasTagLane, Double latitude, Double longitude, Float amount, String city, String state, String country) {
         super(userId, timestamp, latitude, longitude, city, state, country);
         this.amount = amount;
+        this.fasTagLane = fasTagLane;
     }
 
     public Float getAmount() {
@@ -25,5 +26,15 @@ public class Toll extends Establishment {
         this.amount = amount;
     }
 
+    public Boolean getFasTagLane() {
+        return fasTagLane;
+    }
+
+    public void setFasTagLane(Boolean fasTagLane) {
+        this.fasTagLane = fasTagLane;
+    }
+
+    private Boolean fasTagLane;
     private Float amount;
+
 }

@@ -181,6 +181,7 @@ public class RoadMeasurementBeanEndpoint {
      */
     @ApiMethod(name = "addToll")
     public Toll addToll(@Named("timestamp") Date timestamp,
+                        @Named("fasTagLane") Boolean fasTagLane,
                         @Named("latitude") Double latitude,
                         @Named("longitude") Double longitude,
                         @Named("amount") Float amount,
@@ -189,8 +190,10 @@ public class RoadMeasurementBeanEndpoint {
                         @Named("country") String country,
                         User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         Member member = authorizeApi(user).getMember();
-        Toll toll = new Toll(member.getId(), timestamp, latitude, longitude, amount, city, state, country);
+        Toll toll = new Toll(member.getId(), timestamp, fasTagLane, latitude, longitude, amount, city, state, country);
         OfyService.ofy().save().entity(toll).now();
+        TollStop tollStop = new TollStop(member.getId(), toll.getId(), timestamp, amount);
+        OfyService.ofy().save().entity(tollStop).now();
         FenceUtils.createFence(toll.getId(), city + "-" + state, RBConstants.TOLLS_GROUP, true, latitude, longitude, RBConstants.TOLLS_RADIUS);
         return toll;
     }
@@ -231,15 +234,19 @@ public class RoadMeasurementBeanEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "addTollStop")
-    public TollStop addTollStop(@Named("establishmentId") Long establishmentId,
-                                @Named("timestamp") Date timestamp,
-                                @Named("amount") Float amount,
-                                @Named("fasTagLane") Boolean fasTagLane,
-                                User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+    public Toll addTollStop(@Named("establishmentId") Long establishmentId,
+                            @Named("timestamp") Date timestamp,
+                            @Named("fasTagLane") Boolean fasTagLane,
+                            @Named("amount") Float amount,
+                            User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         Member member = authorizeApi(user).getMember();
-        TollStop tollStop = new TollStop(member.getId(), establishmentId, timestamp, amount, fasTagLane);
+        Toll toll = OfyService.ofy().load().type(Toll.class).id(establishmentId).now();
+        if (fasTagLane != toll.getFasTagLane()) {
+            toll.setFasTagLane(fasTagLane);
+        }
+        TollStop tollStop = new TollStop(member.getId(), toll.getId(), timestamp, amount);
         OfyService.ofy().save().entity(tollStop).now();
-        return tollStop;
+        return toll;
     }
     /**
      * A simple endpoint method that takes a name and says Hi back

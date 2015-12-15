@@ -1,5 +1,6 @@
 package com.avasthi.roadcompanion.adapters;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Toll;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserGroup;
 import com.avasthi.roadcompanion.R;
+import com.avasthi.roadcompanion.activities.RCTollActivity;
 
 import java.util.List;
 
@@ -18,10 +20,13 @@ import java.util.List;
  */
 public class RCTollListAdapter extends RecyclerView.Adapter<RCTollListAdapter.DataObjectHolder> {
 
-    Toll[] tolls;
+    RCTollActivity activity;
+    private final Toll[] tolls;
+    private int position = -1;
 
-    public RCTollListAdapter(List<Toll> dataset) {
+    public RCTollListAdapter(List<Toll> dataset, RCTollActivity activity) {
         this.tolls = dataset.toArray(new Toll[dataset.size()]);
+        this.activity = activity;
     }
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,6 +42,8 @@ public class RCTollListAdapter extends RecyclerView.Adapter<RCTollListAdapter.Da
         holder.state.setText(tolls[position].getState());
         holder.country.setText(tolls[position].getCountry());
         holder.amount.setText(tolls[position].getAmount().toString());
+        this.position = position;
+        activity.updateActivityUI();
     }
 
     @Override
@@ -44,12 +51,20 @@ public class RCTollListAdapter extends RecyclerView.Adapter<RCTollListAdapter.Da
         return tolls.length;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public Toll getSelectedToll() {
+        return tolls[position];
+    }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView city;
-        TextView state;
-        TextView country;
-        TextView amount;
+        private final TextView city;
+        private final TextView state;
+        private final TextView country;
+        private final TextView amount;
+        private int position;
 
         public DataObjectHolder(View item) {
             super(item);
@@ -62,8 +77,9 @@ public class RCTollListAdapter extends RecyclerView.Adapter<RCTollListAdapter.Da
 
         @Override
         public void onClick(View v) {
-
+            position = getAdapterPosition();
         }
+
     }
 
 }

@@ -206,10 +206,6 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
     protected  void startCollectionService() {
 
         startService(new Intent(this, RCDataCollectorService.class));
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
         dataCollectionServiceRunning = true;
     }
     protected  void stopCollectionService() {

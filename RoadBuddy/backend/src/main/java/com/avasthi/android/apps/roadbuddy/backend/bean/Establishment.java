@@ -15,6 +15,7 @@ public class Establishment extends AbstractEntity {
 
     public Establishment(Long userId, Date timestamp, Double latitude, Double longitude, String city, String state, String country) {
         super();
+        this.timestamp = timestamp;
         this.userId = userId;
         this.city = city;
         this.state = state;

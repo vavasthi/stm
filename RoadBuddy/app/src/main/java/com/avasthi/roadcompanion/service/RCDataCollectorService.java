@@ -93,6 +93,7 @@ public class RCDataCollectorService extends Service {
         tollIntent.setAction(Constants.TOLL_ACTION_FROM_SERVICE);
         PendingIntent tollPendingIntent = PendingIntent.getBroadcast(this, 0, tollIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.addAction(R.drawable.ic_launcher, "Toll", tollPendingIntent);
+        builder.setStyle(new Notification.BigTextStyle().bigText(getResources().getString(R.string.vehicle_stopped_text)));
         notificationManager.notify(R.string.notification_service_running, builder.build());
     }
     @Override
