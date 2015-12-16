@@ -8,13 +8,19 @@ import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 
 import com.avasthi.roadcompanion.R;
+import com.avasthi.roadcompanion.activities.RCFuelActivity;
+import com.avasthi.roadcompanion.activities.RCRestaurantActivity;
+import com.avasthi.roadcompanion.activities.RCRestroomActivity;
 import com.avasthi.roadcompanion.activities.RCTollActivity;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainActivity;
+import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.Constants;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.avasthi.roadcompanion.utils.RCSensorManager;
@@ -78,23 +84,29 @@ public class RCDataCollectorService extends Service {
         Notification.Builder builder = new Notification.Builder(this)
                 .setContentTitle(getResources().getString(R.string.vehicle_stopped_title))
                 .setContentText(getResources().getString(R.string.vehicle_stopped_text))
-                .setSmallIcon(R.drawable.ic_launcher);
-        Intent resultIntent = new Intent(this, RCTollActivity.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(RoadCompanionMainActivity.class);
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        builder.setContentIntent(resultPendingIntent);
-        Intent tollIntent = new Intent();
-        tollIntent.setAction(Constants.TOLL_ACTION_FROM_SERVICE);
-        PendingIntent tollPendingIntent = PendingIntent.getBroadcast(this, 0, tollIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.addAction(R.drawable.ic_launcher, "Toll", tollPendingIntent);
+                .setSmallIcon(R.mipmap.toll)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.toll));
         builder.setStyle(new Notification.BigTextStyle().bigText(getResources().getString(R.string.vehicle_stopped_text)));
-        notificationManager.notify(R.string.notification_service_running, builder.build());
+        builder.setPriority(Notification.PRIORITY_MAX);
+        addAction(builder, RCRestaurantActivity.class, R.string.restaurant, R.mipmap.restaurant, Constants.RESTAURANT_ACTION_FROM_SERVICE);
+        addAction(builder, RCRestroomActivity.class, R.string.restroom, R.mipmap.restroom, Constants.RESTROOM_ACTION_FROM_SERVICE);
+        addAction(builder, RCFuelActivity.class, R.string.fuel, R.mipmap.fuel, Constants.FUEL_ACTION_FROM_SERVICE);
+
+        Intent resultIntent = new Intent(getApplicationContext(), RCTollActivity.class);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setFullScreenIntent(resultPendingIntent, true);
+        builder.setContentIntent(resultPendingIntent);
+
+        notificationManager.notify(R.string.vehicle_stopped_title, builder.build());
+    }
+    private void addAction(Notification.Builder builder, Class<?> cls, int label, int drawable, String actionConstant) {
+
+        Intent intent = new Intent(this, cls);
+        intent.setAction(actionConstant);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.addAction(new Notification.Action.Builder(drawable, getResources().getString(label), pendingIntent).build());
+
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

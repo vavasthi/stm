@@ -35,6 +35,7 @@ import com.google.appengine.api.users.User;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
@@ -319,31 +320,38 @@ public class RoadMeasurementBeanEndpoint {
     }
     private PointsOfInterest populatePointOfInterests(Double latitude, Double longitude) {
 
-        List<Amenity> amenityList = new ArrayList<>();
-        {
+        try {
 
-            List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.AMENITIES_GROUP, latitude, longitude);
-            for (Fence f : fenceList) {
-                amenityList.add(OfyService.ofy().load().type(Amenity.class).id(f.getPlaceId()).now());
-            }
-        }
-        List<Toll> tollList = new ArrayList<>();
-        {
+            List<Amenity> amenityList = new ArrayList<>();
+            {
 
-            List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.TOLLS_GROUP, latitude, longitude);
-            for (Fence f : fenceList) {
-                tollList.add(OfyService.ofy().load().type(Toll.class).id(f.getPlaceId()).now());
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.AMENITIES_GROUP, latitude, longitude);
+                for (Fence f : fenceList) {
+                    amenityList.add(OfyService.ofy().load().type(Amenity.class).id(f.getPlaceId()).now());
+                }
             }
-        }
-        List<Checkpost> checkpostList = new ArrayList<>();
-        {
+            List<Toll> tollList = new ArrayList<>();
+            {
 
-            List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.CHECKPOSTS_GROUP, latitude, longitude);
-            for (Fence f : fenceList) {
-                checkpostList.add(OfyService.ofy().load().type(Checkpost.class).id(f.getPlaceId()).now());
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.TOLLS_GROUP, latitude, longitude);
+                for (Fence f : fenceList) {
+                    tollList.add(OfyService.ofy().load().type(Toll.class).id(f.getPlaceId()).now());
+                }
             }
+            List<Checkpost> checkpostList = new ArrayList<>();
+            {
+
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.CHECKPOSTS_GROUP, latitude, longitude);
+                for (Fence f : fenceList) {
+                    checkpostList.add(OfyService.ofy().load().type(Checkpost.class).id(f.getPlaceId()).now());
+                }
+            }
+            return new PointsOfInterest(amenityList, tollList, checkpostList);
         }
-        return new PointsOfInterest(amenityList, tollList, checkpostList);
+        catch(Exception ex) {
+            logger.log(Level.SEVERE, "Illegal argument exception.", ex);
+            throw new RuntimeException(ex);
+        }
     }
     private MemberAndVehicles authorizeApi(com.google.appengine.api.users.User user) throws InvalidMemberException, OAuthRequestException {
         if (user == null) {

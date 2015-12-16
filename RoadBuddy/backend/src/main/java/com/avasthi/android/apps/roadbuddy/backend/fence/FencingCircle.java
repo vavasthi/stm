@@ -2,10 +2,12 @@ package com.avasthi.android.apps.roadbuddy.backend.fence;
 
 import com.vividsolutions.jts.geom.Geometry;
 
+import java.io.Serializable;
+
 /**
  * Created by vavasthi on 9/12/15.
  */
-public class FencingCircle {
+public class FencingCircle implements Serializable {
     public FencingCircle() {
     }
 

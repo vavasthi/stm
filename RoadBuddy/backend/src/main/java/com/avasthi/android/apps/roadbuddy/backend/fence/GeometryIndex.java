@@ -23,13 +23,14 @@ import com.vividsolutions.jts.index.strtree.STRtree;
 
 import java.io.IOException;
 import java.util.List;
-
+import java.util.logging.Logger;
 
 
 /**
  * Created by vavasthi on 12/10/15.
  */
 public class GeometryIndex {
+    private static final Logger logger = Logger.getLogger(GeometryIndex.class.getName());
     //Create the index and store it in Memcache.
     public static int buildIndex(String group) throws IOException {
         //Get all fences of group from DataStore.
@@ -61,6 +62,8 @@ public class GeometryIndex {
             //Write the index to Memcache.
             MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
             //Last param is expiration date. Set to null to keep it in Memcache forever.
+            logger.info("Index size is " + index.size() + "|" + index.toString());
+            syncCache.delete(group);
             syncCache.put(group, index, null);
         }
         return fencesFromStore.size();
