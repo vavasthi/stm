@@ -9,8 +9,7 @@ package com.avasthi.android.apps.roadbuddy.backend.endpoints;
    https://github.com/GoogleCloudPlatform/gradle-appengine-templates/tree/master/HelloEndpoints
 */
 
-import com.avasthi.android.apps.roadbuddy.backend.fence.Fence;
-import com.avasthi.android.apps.roadbuddy.backend.fence.FenceUtils;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.fence.FencingCircle;
 import com.avasthi.android.apps.roadbuddy.backend.fence.GeometryIndex;
 import com.avasthi.roadbuddy.common.RBConstants;
@@ -24,17 +23,11 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Text;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
-import com.google.gson.Gson;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.LineString;
-import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.index.strtree.STRtree;
 
 import java.io.IOException;
@@ -43,41 +36,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
-
-import com.google.api.server.spi.config.Api;
-import com.google.api.server.spi.config.ApiMethod;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.FetchOptions;
-import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.Filter;
-import com.google.appengine.api.datastore.Query.FilterOperator;
-import com.google.appengine.api.datastore.Query.FilterPredicate;
-import com.google.appengine.api.datastore.Text;
-import com.google.appengine.api.memcache.MemcacheService;
-import com.google.appengine.api.memcache.MemcacheServiceFactory;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.Gson;
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygon;
-import com.vividsolutions.jts.index.strtree.STRtree;
-import com.vividsolutions.jts.geom.LinearRing;
-import com.vividsolutions.jts.geom.LineString;
-
-import javax.inject.Named;
-
-import com.google.api.server.spi.config.ApiNamespace;
-
-import java.util.logging.Logger;
 
 /**
  * An endpoint class we are exposing

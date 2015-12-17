@@ -10,6 +10,7 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.City;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Establishment;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Event;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
 import com.avasthi.android.apps.roadbuddy.backend.bean.GroupMembership;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Member;
@@ -49,6 +50,7 @@ public class OfyService {
         ObjectifyService.register(Vehicle.class);
         ObjectifyService.register(VehicleOwnership.class);
         ObjectifyService.register(Drive.class);
+        ObjectifyService.register(Fence.class);
     }
 
     public static Objectify ofy() {

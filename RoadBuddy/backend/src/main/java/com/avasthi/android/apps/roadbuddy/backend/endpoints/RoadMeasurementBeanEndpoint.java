@@ -21,7 +21,7 @@ import com.avasthi.android.apps.roadbuddy.backend.exceptions.AlreadyOngoingDrive
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.GroupRetrievalFailed;
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.InvalidMemberException;
 import com.avasthi.android.apps.roadbuddy.backend.exceptions.NoOngoingDrive;
-import com.avasthi.android.apps.roadbuddy.backend.fence.Fence;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.fence.FenceUtils;
 import com.avasthi.roadbuddy.common.RBConstants;
 import com.google.api.server.spi.config.Api;
@@ -325,25 +325,34 @@ public class RoadMeasurementBeanEndpoint {
             List<Amenity> amenityList = new ArrayList<>();
             {
 
-                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.AMENITIES_GROUP, latitude, longitude);
-                for (Fence f : fenceList) {
-                    amenityList.add(OfyService.ofy().load().type(Amenity.class).id(f.getPlaceId()).now());
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.AMENITIES_GROUP, longitude, latitude);
+                if (fenceList != null) {
+
+                    for (Fence f : fenceList) {
+                        amenityList.add(OfyService.ofy().load().type(Amenity.class).id(f.getPlaceId()).now());
+                    }
                 }
             }
             List<Toll> tollList = new ArrayList<>();
             {
 
-                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.TOLLS_GROUP, latitude, longitude);
-                for (Fence f : fenceList) {
-                    tollList.add(OfyService.ofy().load().type(Toll.class).id(f.getPlaceId()).now());
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.TOLLS_GROUP, longitude, latitude);
+                if (fenceList != null) {
+
+                    for (Fence f : fenceList) {
+                        tollList.add(OfyService.ofy().load().type(Toll.class).id(f.getPlaceId()).now());
+                    }
                 }
             }
             List<Checkpost> checkpostList = new ArrayList<>();
             {
 
-                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.CHECKPOSTS_GROUP, latitude, longitude);
-                for (Fence f : fenceList) {
-                    checkpostList.add(OfyService.ofy().load().type(Checkpost.class).id(f.getPlaceId()).now());
+                List<Fence> fenceList = FenceUtils.queryPoint(RBConstants.CHECKPOSTS_GROUP, longitude, latitude);
+                if (fenceList != null) {
+
+                    for (Fence f : fenceList) {
+                        checkpostList.add(OfyService.ofy().load().type(Checkpost.class).id(f.getPlaceId()).now());
+                    }
                 }
             }
             return new PointsOfInterest(amenityList, tollList, checkpostList);

@@ -37,7 +37,6 @@ public class RCTollActivity extends RCAbstractActivity {
     private RecyclerView.LayoutManager layoutManager;
     private List<UserGroup> listOfGroups;
     private Dialog popup;
-    private PointsOfInterest pointsOfInterest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +46,17 @@ public class RCTollActivity extends RCAbstractActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        pointsOfInterest = RCLocationManager.getInstance().getPointsOfInterest();
+        populateListView();
     }
 
     public void populateListView() {
 
-        if (pointsOfInterest != null &&
-                pointsOfInterest.getTollList() != null &&
-                pointsOfInterest.getTollList().size() > 0) {
+        if (RCLocationManager.getInstance() != null &&
+                RCLocationManager.getInstance().getPointsOfInterest() != null &&
+                RCLocationManager.getInstance().getPointsOfInterest().getTollList() != null &&
+                RCLocationManager.getInstance().getPointsOfInterest().getTollList().size() > 0) {
 
-            adapter = new RCTollListAdapter(pointsOfInterest.getTollList(), this);
+            adapter = new RCTollListAdapter(RCLocationManager.getInstance().getPointsOfInterest().getTollList(), this);
             recyclerView.setAdapter(adapter);
         }
         hideProgressDialog();

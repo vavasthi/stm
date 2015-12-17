@@ -1,12 +1,7 @@
 package com.avasthi.android.apps.roadbuddy.backend.bean;
 
-import com.avasthi.android.apps.roadbuddy.backend.OfyService;
-import com.avasthi.android.apps.roadbuddy.backend.fence.Fence;
-import com.avasthi.android.apps.roadbuddy.backend.fence.FenceUtils;
-import com.avasthi.roadbuddy.common.RBConstants;
 import com.googlecode.objectify.annotation.Entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

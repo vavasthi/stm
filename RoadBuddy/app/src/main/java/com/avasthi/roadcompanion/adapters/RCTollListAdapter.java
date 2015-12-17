@@ -30,7 +30,7 @@ public class RCTollListAdapter extends RecyclerView.Adapter<RCTollListAdapter.Da
     }
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.toll_item, parent, false);
         DataObjectHolder holder = new DataObjectHolder(v);
         return holder;
     }
