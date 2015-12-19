@@ -1,6 +1,7 @@
 package com.avasthi.android.apps.roadbuddy.backend.bean;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * Created by vavasthi on 19/12/15.
@@ -91,6 +92,7 @@ public class DriveParameters extends AbstractEntity {
         this.numberOfSpeedCameras = numberOfSpeedCameras;
     }
 
+    @Index
     private Long driveId;
     private Integer numberOfTollStops;
     private Float tollAmount;

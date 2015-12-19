@@ -3,14 +3,10 @@ package com.avasthi.roadcompanion.activities;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.roadcompanion.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.avasthi.roadcompanion.utils.RCLocationManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +15,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vavasthi on 26/11/15.
@@ -73,7 +67,8 @@ abstract public class RCAbstractActivity extends AppCompatActivity {
             return "";
         }
     }
-    public void performDriveStatusUpdate(Drive drive) {
-
+    public void performDriveStatusUpdate(PointsOfInterest pointsOfInterest) {
+        hideProgressDialog();
+        RCLocationManager.getInstance().setPointsOfInterest(pointsOfInterest);
     }
 }

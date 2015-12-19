@@ -2,24 +2,24 @@ package com.avasthi.roadcompanion.activities;
 
 
 import android.accounts.AccountManager;
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Vehicle;
 import com.avasthi.roadcompanion.background.tasks.GoogleCloudMessagingRegistrationAsyncTask;
-import com.avasthi.roadcompanion.background.tasks.RCAddGroupTask;
 import com.avasthi.roadcompanion.background.tasks.RCDriveStatusTask;
 import com.avasthi.roadcompanion.utils.Constants;
 import com.avasthi.roadcompanion.R;
@@ -28,6 +28,7 @@ import com.avasthi.roadcompanion.background.tasks.RegisterUserAsyncTask;
 import com.avasthi.roadcompanion.service.RCDataCollectorService;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.avasthi.roadcompanion.utils.RCLocationManager;
+import com.avasthi.roadcompanion.utils.RCSensorManager;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.common.AccountPicker;
 
@@ -51,7 +52,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         detectedPhoneNumber = telephonyManager.getLine1Number();
         // FacebookReadInterface.initialize(this);
         // FacebookPublishInterface.initialize(this);
-        new GoogleCloudMessagingRegistrationAsyncTask(this).execute();
+        continueAuthentication();
     }
 
     public void continueAuthentication() {
@@ -100,7 +101,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
             splashRegistrationScreen();
         }
         else {
-            // Play services exist but not account not chosen yet..
+            // Play services exist but no account not chosen yet..
             chooseAccount();
         }
     }
@@ -164,12 +165,14 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        teardownDataCollectorService();
         //FacebookReadInterface.fini();
     }
     public void mainScreenAction(View v) {
 
         boolean serviceRunning = isServiceRunning(RCDataCollectorService.class);
         if (serviceRunning) {
+            showProgressDialog(this);
             stopCollectionService();
             new RCDriveStatusTask(this, Boolean.FALSE).execute(); // Stop a drive
         }
@@ -182,19 +185,20 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
                         .show();
                 return;
             }
-            Vehicle vehicle =  currentMemberAndVehicles.getVehicles().get(selectedVehiclePosition);
+            showProgressDialog(this);
+            Vehicle vehicle =  RCLocationManager.getInstance().getCurrentMemberAndVehicles().getVehicles().get(selectedVehiclePosition);
             startCollectionService();
             new RCDriveStatusTask(this, Boolean.TRUE).execute(); // Start a drive
         }
         setMainScreenActionResource(!serviceRunning);
     }
-    public void performDriveStatusUpdate(Drive drive) {
-
+    public void performDriveStatusUpdate(PointsOfInterest pointsOfInterest) {
+        super.performDriveStatusUpdate(pointsOfInterest);
         boolean serviceRunning = isServiceRunning(RCDataCollectorService.class);
-        if (serviceRunning && drive.getDone()) {
+        if (serviceRunning && pointsOfInterest.getCurrentDrive() != null && !pointsOfInterest.getCurrentDrive().getDone()) {
             // Service and drive is still running.
         }
-        else if (!serviceRunning && !drive.getDone()) {
-        }
+        hideProgressDialog();
+
     }
 }

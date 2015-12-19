@@ -38,7 +38,7 @@ public class RCDataCollectorService extends Service {
     private RCDataCollectorServiceBinder binder = new RCDataCollectorServiceBinder();
 
     public class RCDataCollectorServiceBinder extends Binder {
-        RCDataCollectorService getService() {
+        public RCDataCollectorService getService() {
             return RCDataCollectorService.this;
         }
     }
@@ -52,13 +52,11 @@ public class RCDataCollectorService extends Service {
     public void onCreate() {
         super.onCreate();
         Context context = getApplicationContext();
-        RCLocationManager.initialize(context, Locale.getDefault());
-        RCSensorManager.initialize(context);
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationIntent = new Intent(this, RoadCompanionMainActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        RCSensorManager.initialize(this);
         showNotification();
-        showVehicleStoppedNotification();
     }
 
     private void showNotification() {
@@ -79,7 +77,7 @@ public class RCDataCollectorService extends Service {
         builder.setContentIntent(resultPendingIntent);
         notificationManager.notify(R.string.notification_service_running, builder.build());
     }
-    private void showVehicleStoppedNotification() {
+    public void showVehicleStoppedNotification() {
 
         Notification.Builder builder = new Notification.Builder(this)
                 .setContentTitle(getResources().getString(R.string.vehicle_stopped_title))
@@ -97,7 +95,6 @@ public class RCDataCollectorService extends Service {
         PendingIntent resultPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setFullScreenIntent(resultPendingIntent, true);
         builder.setContentIntent(resultPendingIntent);
-
         notificationManager.notify(R.string.vehicle_stopped_title, builder.build());
     }
     private void addAction(Notification.Builder builder, Class<?> cls, int label, int drawable, String actionConstant) {
@@ -116,8 +113,10 @@ public class RCDataCollectorService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RCLocationManager.getInstance().fini();
         RCSensorManager.getInstance().fini();
     }
 
+    public void cancelVehicleStoppedNotification() {
+        notificationManager.cancel(R.string.vehicle_stopped_title);
+    }
 }

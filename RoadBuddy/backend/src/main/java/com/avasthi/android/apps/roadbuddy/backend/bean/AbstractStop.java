@@ -1,6 +1,7 @@
 package com.avasthi.android.apps.roadbuddy.backend.bean;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 import java.util.Date;
 
@@ -52,8 +53,12 @@ public class AbstractStop extends AbstractEntity {
         this.driveId = driveId;
     }
 
+    @Index
     private Date timestamp;
+    @Index
     private Long userId;
+    @Index
     private Long driveId;
+    @Index
     private Long establishmentId;
 }

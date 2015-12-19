@@ -6,11 +6,13 @@ package com.avasthi.roadcompanion.activities;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,12 +52,32 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
     protected static Boolean isAccountChosen = null;
     protected static Boolean isFacebookIntegrated = null;
     protected static SharedPreferences settings;
-    protected MemberAndVehicles currentMemberAndVehicles;
     protected int selectedVehiclePosition = -1;
     protected Boolean dataCollectionServiceRunning = false;
 
     static String detectedPhoneNumber;
     static TelephonyManager telephonyManager;
+    private RCDataCollectorService dataCollectorService;
+    private boolean dataCollectorServiceBound = false;
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // This is called when the connection with the service has been
+            // established, giving us the service object we can use to
+            // interact with the service.  Because we have bound to a explicit
+            // service that we know is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            dataCollectorService = ((RCDataCollectorService.RCDataCollectorServiceBinder)service).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName className) {
+            // This is called when the connection with the service has been
+            // unexpectedly disconnected -- that is, its process crashed.
+            // Because it is running in our same process, we should never
+            // see this happen.
+            dataCollectorService = null;
+        }
+    };
 
     public void splashReauthenticateScreen() {
 
@@ -160,15 +182,15 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
         alertDialog.show();
     }
 
-    public void splashMainScreen(MemberAndVehicles currentMemberAndVehicles) {
+    public void splashMainScreen() {
 
-        this.currentMemberAndVehicles = currentMemberAndVehicles;
         isLoggedIn = true;
         hideProgressDialog();
         setContentView(R.layout.road_buddy_main);
         final View v = findViewById(R.id.road_buddy_main_view);
         TextView greeting = (TextView) (v.findViewById(R.id.greeting));
-        greeting.setText("Hello " + currentMemberAndVehicles.getMember().getName() + "!");
+        MemberAndVehicles memberAndVehicles = RCLocationManager.getInstance().getCurrentMemberAndVehicles();
+        greeting.setText("Hello " + memberAndVehicles.getMember().getName() + "!");
         saveSharedPreferences();
         final ListView listView = (ListView)v.findViewById(R.id.vehicle_list_view);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -189,15 +211,15 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
 
             }
         });
-        listView.setAdapter(new RCVehicleListAdapter(this, currentMemberAndVehicles.getVehicles()));
+        listView.setAdapter(new RCVehicleListAdapter(this, memberAndVehicles.getVehicles()));
         ((BaseAdapter)listView.getAdapter()).notifyDataSetChanged();
         if (selectedVehiclePosition != -1) {
             listView.setSelection(selectedVehiclePosition);
         }
         hideProgressDialog();
-        if (currentMemberAndVehicles != null &&
-                currentMemberAndVehicles.getDrive() != null &&
-                !currentMemberAndVehicles.getDrive().getDone()) {
+        if (memberAndVehicles != null &&
+                memberAndVehicles.getDrive() != null &&
+                !memberAndVehicles.getDrive().getDone()) {
             startCollectionService();
         }
         setMainScreenActionResource();
@@ -206,10 +228,12 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
     protected  void startCollectionService() {
 
         startService(new Intent(this, RCDataCollectorService.class));
+        setupDataCollectorService();
         dataCollectionServiceRunning = true;
     }
     protected  void stopCollectionService() {
         stopService(new Intent(this, RCDataCollectorService.class));
+        teardownDataCollectorService();
         dataCollectionServiceRunning = false;
     }
 
@@ -237,6 +261,28 @@ abstract public class RoadCompanionMainBaseActivity extends RCAbstractActivity {
             }
         }
         return false;
+    }
+    private void  setupDataCollectorService() {
+
+        bindService(new Intent(this, RCDataCollectorService.class), mConnection, Context.BIND_AUTO_CREATE);
+        dataCollectorServiceBound = true;
+    }
+    public void  teardownDataCollectorService() {
+
+        if (dataCollectorServiceBound) {
+            if (dataCollectorService != null) {
+                unbindService(mConnection);
+                dataCollectorServiceBound = false;
+            }
+        }
+    }
+
+    public RCDataCollectorService getDataCollectorService() {
+        return dataCollectorService;
+    }
+
+    public void setDataCollectorService(RCDataCollectorService dataCollectorService) {
+        this.dataCollectorService = dataCollectorService;
     }
 
     abstract public void continueAuthentication();

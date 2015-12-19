@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.avasthi.android.apps.roadbuddy.backend.registerGoogleCloudMessagingApi.RegisterGoogleCloudMessagingApi;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainActivity;
+import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -19,12 +20,12 @@ import java.util.logging.Logger;
 public class GoogleCloudMessagingRegistrationAsyncTask extends AsyncTask<Context, Void, String> {
     private RegisterGoogleCloudMessagingApi regService;
     private GoogleCloudMessaging gcm;
-    private RoadCompanionMainActivity context;
+    private RoadCompanionMainBaseActivity context;
 
     // TODO: change to your own sender ID to Google Developers Console project number, as per instructions above
     private static final String SENDER_ID = "772008650875";
 
-    public GoogleCloudMessagingRegistrationAsyncTask(RoadCompanionMainActivity context) {
+    public GoogleCloudMessagingRegistrationAsyncTask(RoadCompanionMainBaseActivity context) {
         this.context = context;
         regService = EndpointManager.getGoogleCloudMessagingEndpoint(context);
     }
@@ -55,7 +56,7 @@ public class GoogleCloudMessagingRegistrationAsyncTask extends AsyncTask<Context
 
     @Override
     protected void onPostExecute(String msg) {
-        context.continueAuthentication();
+        context.splashMainScreen();
         Logger.getLogger("REGISTRATION").log(Level.INFO, msg);
     }
 }

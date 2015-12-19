@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserGroup;
 import com.avasthi.roadcompanion.activities.RCAbstractActivity;
 import com.avasthi.roadcompanion.activities.RCGroupActivity;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 14/9/15.
  */
-public class RCDriveStatusTask extends AsyncTask<Void, Void, Drive > {
+public class RCDriveStatusTask extends AsyncTask<Void, Void, PointsOfInterest > {
 
     private final RCAbstractActivity context;
     private final Long groupId;
@@ -49,13 +50,13 @@ public class RCDriveStatusTask extends AsyncTask<Void, Void, Drive > {
     }
 
     @Override
-    protected Drive doInBackground(Void... params) {
+    protected PointsOfInterest doInBackground(Void... params) {
 
         try {
-            Drive drive;
+            PointsOfInterest pointsOfInterest;
             if (start) {
 
-                drive = EndpointManager.getRoadMeasurementEndpoint(context).startDrive(new DateTime(new Date()),
+                pointsOfInterest = EndpointManager.getRoadMeasurementEndpoint(context).startDrive(new DateTime(new Date()),
                         groupId,
                         eventId,
                         RCLocationManager.getInstance().getLastLocation().getLatitude(),
@@ -63,18 +64,19 @@ public class RCDriveStatusTask extends AsyncTask<Void, Void, Drive > {
                         .execute();
             }
             else {
-                drive = EndpointManager.getRoadMeasurementEndpoint(context).finishDrive().execute();
+                pointsOfInterest = EndpointManager.getRoadMeasurementEndpoint(context).finishDrive(RCLocationManager.getInstance().getLastLocation().getLatitude(),
+                        RCLocationManager.getInstance().getLastLocation().getLongitude()).execute();
             }
-            if (drive != null) {
-              return drive;
+            if (pointsOfInterest != null) {
+              return pointsOfInterest;
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Remote call register failed", e);
         }
         return null;
     }
-    protected void onPostExecute (Drive drive) {
+    protected void onPostExecute (PointsOfInterest pointsOfInterest) {
 
-        context.performDriveStatusUpdate(drive);
+        context.performDriveStatusUpdate(pointsOfInterest);
     }
 }

@@ -1,11 +1,8 @@
 package com.avasthi.roadcompanion.background.tasks;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.AsyncTask;
 
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
-import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Member;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.roadcompanion.utils.EndpointManager;
 import com.avasthi.roadcompanion.utils.RCDatabaseManager;
@@ -35,12 +32,10 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
     protected PointsOfInterest doInBackground(Void... params) {
 
         try {
-            Double lastLatitude = RCLocationManager.getInstance().getPointsOfInterest().getCurrentDrive().getLastLatitude();
-            Double lastLongitude = RCLocationManager.getInstance().getPointsOfInterest().getCurrentDrive().getLastLongitude();
-            float[] distance = new float[3];
-            Location.distanceBetween(lastLatitude, lastLongitude, data.getLatitude(), data.getLongitude(), distance);
             PointsOfInterest poi = EndpointManager.getRoadMeasurementEndpoint(context)
                     .updateSensorData(new DateTime(data.getTimestamp()),
+                            data.getMemberId(),
+                            data.getDriveId(),
                             data.getVerticalAccelerometerMean(),
                             data.getVerticalAccelerometerSD(),
                             data.getLatitude(),
@@ -48,7 +43,7 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
                             data.getSpeed(),
                             data.getAccuracy(),
                             data.getBearing(),
-                            distance[0]).execute();
+                            data.getDistance()).execute();
             if (poi != null) {
                 return poi;
             } else {
@@ -64,7 +59,7 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
     protected void onPostExecute (PointsOfInterest poi) {
         if (RCLocationManager.getInstance() != null) {
 
-            RCLocationManager.getInstance().updatePointsOfInterest(poi);
+            RCLocationManager.getInstance().setPointsOfInterest(poi);
         }
     }
 }

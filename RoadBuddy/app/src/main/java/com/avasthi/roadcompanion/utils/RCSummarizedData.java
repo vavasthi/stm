@@ -6,9 +6,22 @@ import java.util.Date;
  * Created by vavasthi on 13/12/15.
  */
 public class RCSummarizedData {
-    public RCSummarizedData(Long id, Date timestamp, Float accuracy, Float bearing, Double latitude, Double longitude, Float speed, Float verticalAccelerometerMean, Float verticalAccelerometerSD) {
+    public RCSummarizedData(Long id,
+                            Date timestamp,
+                            Long memberId,
+                            Long driveId,
+                            Float accuracy,
+                            Float bearing,
+                            Double latitude,
+                            Double longitude,
+                            Float speed,
+                            Float verticalAccelerometerMean,
+                            Float verticalAccelerometerSD,
+                            Float distance) {
         this.id = id;
         this.timestamp = timestamp;
+        this.memberId = memberId;
+        this.driveId = driveId;
         this.accuracy = accuracy;
         this.bearing = bearing;
         this.latitude = latitude;
@@ -16,6 +29,7 @@ public class RCSummarizedData {
         this.speed = speed;
         this.verticalAccelerometerMean = verticalAccelerometerMean;
         this.verticalAccelerometerSD = verticalAccelerometerSD;
+        this.distance = distance;
     }
 
     public long getId() {
@@ -90,8 +104,34 @@ public class RCSummarizedData {
         this.verticalAccelerometerSD = verticalAccelerometerSD;
     }
 
-    long id;
-    Date timestamp;
+    public Long getDriveId() {
+        return driveId;
+    }
+
+    public void setDriveId(Long driveId) {
+        this.driveId = driveId;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public Float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Float distance) {
+        this.distance = distance;
+    }
+
+    private long id;
+    private Date timestamp;
+    private Long memberId;
+    private Long driveId;
     private Float verticalAccelerometerSD;
     private Float verticalAccelerometerMean;
     private Double latitude;
@@ -99,4 +139,5 @@ public class RCSummarizedData {
     private Float speed;
     private Float accuracy;
     private Float bearing;
+    private Float distance;
 }

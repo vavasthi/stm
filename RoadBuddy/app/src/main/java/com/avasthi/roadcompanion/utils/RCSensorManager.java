@@ -83,11 +83,16 @@ public class RCSensorManager implements SensorEventListener {
                 if (verticalValue == -1) {
                     adjustVerticalDirection();
                 }
-                if (RCLocationManager.getInstance().getLastLocation() != null) {
+                if (RCLocationManager.getInstance().getPointsOfInterest() != null &&
+                        RCLocationManager.getInstance().getPointsOfInterest().getCurrentDrive() != null &&
+                        RCLocationManager.getInstance().getLastLocation() != null) {
 
-                    RCSummarizedData data = RCDataManager.INSTANCE.addData(RCLocationManager.getInstance().getLastLocation(), v[verticalValue]);
-                    if (data != null) {
-                        new UploadSensorDataTask(context, data).execute();
+                    if (RCLocationManager.getInstance().getVehicleMoving()) {
+
+                        RCSummarizedData data = RCDataManager.INSTANCE.addData(RCLocationManager.getInstance().getLastLocation(), v[verticalValue]);
+                        if (data != null) {
+                            new UploadSensorDataTask(context, data).execute();
+                        }
                     }
                 }
                 break;

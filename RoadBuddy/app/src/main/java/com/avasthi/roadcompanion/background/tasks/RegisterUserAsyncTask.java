@@ -84,7 +84,6 @@ public class RegisterUserAsyncTask extends AsyncTask<Void, Void, MemberAndVehicl
         return null;
     }
     protected void onPostExecute (MemberAndVehicles memberAndVehicles) {
-
-        context.splashMainScreen(memberAndVehicles);
+        RCLocationManager.getInstance().setCurrentMemberAndVehicles(memberAndVehicles);
     }
 }

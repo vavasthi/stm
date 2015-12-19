@@ -292,6 +292,8 @@ public class RoadMeasurementBeanEndpoint {
      */
     @ApiMethod(name = "updateSensorData")
     public PointsOfInterest updateSensorData(@Named("timestamp") Date timestamp,
+                                             @Named("memberId") Long memberId,
+                                             @Named("driveId") Long driveId,
                                              @Named("verticalAccelerometerMean") Float verticalAccelerometerMean,
                                              @Named("verticalAccelerometerSD") Float verticalAccelerometerSD,
                                              @Named("latitude") Double latitude,
@@ -318,7 +320,7 @@ public class RoadMeasurementBeanEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "startDrive")
-    public Drive startDrive(@Named("timestamp") Date timestamp,
+    public PointsOfInterest startDrive(@Named("timestamp") Date timestamp,
                             @Named("groupId") Long groupId,
                             @Named("eventId") Long eventId,
                             @Named("latitude") Double latitude,
@@ -331,25 +333,33 @@ public class RoadMeasurementBeanEndpoint {
         }
         Drive drive = new Drive(eventId, groupId, member.getId(), latitude, longitude);
         OfyService.ofy().save().entity(drive).now();
-        return drive;
+        return populatePointOfInterests(member, latitude, longitude);
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "finishDrive")
-    public Drive finishDrive(User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, NoOngoingDrive {
+    public PointsOfInterest finishDrive(@Named("latitude") Double latitude,
+                             @Named("longitude") Double longitude,
+                             User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, NoOngoingDrive {
 
         Member member = authorizeApi(user).getMember();
         Drive drive = getOngoingDrive(member);
         if (drive == null) {
             throw new NoOngoingDrive(member.getEmail());
         }
+        DriveParameters driveParameters = getCurrentDriveParameters(drive);
         drive.setDone(Boolean.TRUE);
         drive.setCompletedAt(new Date());;
+        OfyService.ofy().save().entity(driveParameters).now();
         OfyService.ofy().save().entity(drive).now();
-        return drive;
+        return populatePointOfInterests(member, latitude, longitude, drive);
     }
     private PointsOfInterest populatePointOfInterests(Member member, Double latitude, Double longitude) {
+
+        return populatePointOfInterests(member, latitude, longitude, getOngoingDrive(member));
+    }
+    private PointsOfInterest populatePointOfInterests(Member member, Double latitude, Double longitude, Drive drive) {
 
         try {
 
@@ -386,7 +396,6 @@ public class RoadMeasurementBeanEndpoint {
                     }
                 }
             }
-            Drive drive = getOngoingDrive(member);
             return new PointsOfInterest(drive, amenityList, tollList, checkpostList);
         }
         catch(Exception ex) {
@@ -443,7 +452,7 @@ public class RoadMeasurementBeanEndpoint {
         int speedCameras = 0;
         Float fineAmount = 0.0F;
         {
-            List<AmenityStop> list = OfyService.ofy().load().type(AmenityStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            List<AmenityStop> list = OfyService.ofy().load().type(AmenityStop.class).filter("driveId", drive.getId()).list();
             for (AmenityStop as : list) {
                 if (as.getFoodAmount() > 0.0F) {
                     ++amenityStopCount;
@@ -457,7 +466,7 @@ public class RoadMeasurementBeanEndpoint {
             }
         }
         {
-            List<TollStop> list = OfyService.ofy().load().type(TollStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            List<TollStop> list = OfyService.ofy().load().type(TollStop.class).filter("driveId", drive.getId()).list();
             for (TollStop ts : list) {
                 if (ts.getAmount() > 0.0F) {
                     ++amenityStopCount;
@@ -466,7 +475,7 @@ public class RoadMeasurementBeanEndpoint {
             }
         }
         {
-            List<CheckpostStop> list = OfyService.ofy().load().type(CheckpostStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            List<CheckpostStop> list = OfyService.ofy().load().type(CheckpostStop.class).filter("driveId", drive.getId()).list();
             for (CheckpostStop cs : list) {
                 if (cs.getFineAmount() > 0.0F) {
                     fineAmount += cs.getFineAmount();

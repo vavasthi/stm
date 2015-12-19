@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.MemberAndVehicles;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
+import com.avasthi.roadcompanion.utils.RCLocationManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,10 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, MemberAndVe
 
         try {
             MemberAndVehicles memberAndVehicles = EndpointManager.getRoadMeasurementEndpoint(context).isRegisteredUser().execute();
+            if (memberAndVehicles != null) {
+
+                RCLocationManager.getInstance().setCurrentMemberAndVehicles(memberAndVehicles);
+            }
             return memberAndVehicles;
         } catch (Exception e) {
             logger.log(Level.WARNING, "Failure in remote call ", e);
@@ -47,7 +52,7 @@ public class AuthenticateUserAsyncTask extends AsyncTask<Void, Void, MemberAndVe
         }
         else {
 
-            context.splashMainScreen(memberAndVehicles);
+            new GoogleCloudMessagingRegistrationAsyncTask(context).execute();
         }
     }
 }
