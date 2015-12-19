@@ -12,9 +12,10 @@ public class CheckpostStop extends AbstractStop {
     public CheckpostStop() {
 
     }
-    public CheckpostStop(Long userId, Long establishmentId, Date timestamp, Boolean speedCameras) {
-        super(userId, establishmentId, timestamp);
+    public CheckpostStop(Long userId, Long driveId, Long establishmentId, Date timestamp, Boolean speedCameras, Float fineAmount) {
+        super(userId, driveId, establishmentId, timestamp);
         this.speedCameras = speedCameras;
+        this.fineAmount = fineAmount;
     }
 
     public Boolean getSpeedCameras() {
@@ -25,5 +26,14 @@ public class CheckpostStop extends AbstractStop {
         this.speedCameras = speedCameras;
     }
 
+    public Float getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setFineAmount(Float fineAmount) {
+        this.fineAmount = fineAmount;
+    }
+
     private Boolean speedCameras;
+    private Float fineAmount;
 }

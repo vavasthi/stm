@@ -1,6 +1,7 @@
 package com.avasthi.roadcompanion.background.tasks;
 
 import android.content.Context;
+import android.location.Location;
 import android.os.AsyncTask;
 
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Drive;
@@ -34,6 +35,10 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
     protected PointsOfInterest doInBackground(Void... params) {
 
         try {
+            Double lastLatitude = RCLocationManager.getInstance().getPointsOfInterest().getCurrentDrive().getLastLatitude();
+            Double lastLongitude = RCLocationManager.getInstance().getPointsOfInterest().getCurrentDrive().getLastLongitude();
+            float[] distance = new float[3];
+            Location.distanceBetween(lastLatitude, lastLongitude, data.getLatitude(), data.getLongitude(), distance);
             PointsOfInterest poi = EndpointManager.getRoadMeasurementEndpoint(context)
                     .updateSensorData(new DateTime(data.getTimestamp()),
                             data.getVerticalAccelerometerMean(),
@@ -42,7 +47,8 @@ public class UploadSensorDataTask extends AsyncTask<Void, Void, PointsOfInterest
                             data.getLongitude(),
                             data.getSpeed(),
                             data.getAccuracy(),
-                            data.getBearing()).execute();
+                            data.getBearing(),
+                            distance[0]).execute();
             if (poi != null) {
                 return poi;
             } else {

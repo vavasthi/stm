@@ -13,12 +13,26 @@ public class Amenity extends Establishment {
     public Amenity() {
 
     }
-    public Amenity(Long userId, Date timestamp, String name, Double latitude, Double longitude, Boolean hasRestaurant, Boolean hasRestrooms, Boolean hasPetrolStation, String city, String state, String country) {
+    public Amenity(Long userId,
+                   Date timestamp,
+                   String name,
+                   Double latitude,
+                   Double longitude,
+                   Boolean hasRestaurant,
+                   Boolean restaurantCreditCardAccepted,
+                   Boolean hasRestrooms,
+                   Boolean hasPetrolStation,
+                   Boolean fuelCreditCardAccepted,
+                   String city,
+                   String state,
+                   String country) {
         super(userId, timestamp, latitude, longitude, city, state, country);
         this.name = name;
         this.hasRestaurant = hasRestaurant;
+        this.restaurantCreditCardAccepted = restaurantCreditCardAccepted;
         this.hasRestrooms = hasRestrooms;
         this.hasPetrolStation = hasPetrolStation;
+        this.fuelCreditCardAccepted = fuelCreditCardAccepted;
 
     }
     public Boolean getHasRestaurant() {
@@ -53,8 +67,26 @@ public class Amenity extends Establishment {
         this.name = name;
     }
 
+    public Boolean getFuelCreditCardAccepted() {
+        return fuelCreditCardAccepted;
+    }
+
+    public void setFuelCreditCardAccepted(Boolean fuelCreditCardAccepted) {
+        this.fuelCreditCardAccepted = fuelCreditCardAccepted;
+    }
+
+    public Boolean getRestaurantCreditCardAccepted() {
+        return restaurantCreditCardAccepted;
+    }
+
+    public void setRestaurantCreditCardAccepted(Boolean restaurantCreditCardAccepted) {
+        this.restaurantCreditCardAccepted = restaurantCreditCardAccepted;
+    }
+
     private String name;
     private Boolean hasRestaurant;
+    Boolean restaurantCreditCardAccepted;
     private Boolean hasRestrooms;
     private Boolean hasPetrolStation;
+    Boolean fuelCreditCardAccepted;
 }

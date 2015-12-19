@@ -13,8 +13,9 @@ public class AbstractStop extends AbstractEntity {
     public AbstractStop() {
 
     }
-    public AbstractStop(Long userId, Long establishmentId, Date timestamp) {
+    public AbstractStop(Long userId, Long driveId, Long establishmentId, Date timestamp) {
         this.userId = userId;
+        this.driveId = driveId;
         this.establishmentId = establishmentId;
         this.timestamp = timestamp;
     }
@@ -43,7 +44,16 @@ public class AbstractStop extends AbstractEntity {
         this.userId = userId;
     }
 
+    public Long getDriveId() {
+        return driveId;
+    }
+
+    public void setDriveId(Long driveId) {
+        this.driveId = driveId;
+    }
+
     private Date timestamp;
     private Long userId;
+    private Long driveId;
     private Long establishmentId;
 }

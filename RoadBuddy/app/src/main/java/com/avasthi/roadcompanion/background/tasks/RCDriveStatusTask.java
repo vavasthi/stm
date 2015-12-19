@@ -8,6 +8,7 @@ import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserG
 import com.avasthi.roadcompanion.activities.RCAbstractActivity;
 import com.avasthi.roadcompanion.activities.RCGroupActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
+import com.avasthi.roadcompanion.utils.RCLocationManager;
 import com.google.api.client.util.DateTime;
 
 import java.util.Date;
@@ -54,7 +55,12 @@ public class RCDriveStatusTask extends AsyncTask<Void, Void, Drive > {
             Drive drive;
             if (start) {
 
-                drive = EndpointManager.getRoadMeasurementEndpoint(context).startDrive(new DateTime(new Date()), groupId, eventId).execute();
+                drive = EndpointManager.getRoadMeasurementEndpoint(context).startDrive(new DateTime(new Date()),
+                        groupId,
+                        eventId,
+                        RCLocationManager.getInstance().getLastLocation().getLatitude(),
+                        RCLocationManager.getInstance().getLastLocation().getLongitude())
+                        .execute();
             }
             else {
                 drive = EndpointManager.getRoadMeasurementEndpoint(context).finishDrive().execute();

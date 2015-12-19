@@ -7,6 +7,7 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.Checkpost;
 import com.avasthi.android.apps.roadbuddy.backend.bean.CheckpostStop;
 import com.avasthi.android.apps.roadbuddy.backend.bean.City;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Drive;
+import com.avasthi.android.apps.roadbuddy.backend.bean.DriveParameters;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
 import com.avasthi.android.apps.roadbuddy.backend.bean.GroupMembership;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Member;
@@ -165,15 +166,26 @@ public class RoadMeasurementBeanEndpoint {
                               @Named("latitude") Double latitude,
                               @Named("longitude") Double longitude,
                               @Named("hasRestaurant") Boolean hasRestaurant,
+                              @Named("restaurantCreditCardAccepted") Boolean restaurantCreditCardAccepted,
+                              @Named("foodAmount") Float foodAmount,
+                              @Named("restaurantRating") Integer restaurantRating,
                               @Named("hasRestrooms") Boolean hasRestrooms,
+                              @Named("restroomRating") Integer restroomRating,
                               @Named("hasPetroStation") Boolean hasPetrolStation,
+                              @Named("fuelCreditCardAccepted") Boolean fuelCreditCardAccepted,
+                              @Named("petrolStationRating") Integer petrolStationRating,
+                              @Named("fuelAmount") Float fuelAmount,
+                              @Named("fuelQuantity") Float fuelQuantity,
                               @Named("city") String city,
                               @Named("sate") String state,
                               @Named("country") String country,
                               User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
+
         Member member = authorizeApi(user).getMember();
-        Amenity amenity = new Amenity(member.getId(), timestamp, name, latitude, longitude, hasRestaurant, hasRestrooms, hasPetrolStation, state, city, country);
+        Amenity amenity = new Amenity(member.getId(), timestamp, name, latitude, longitude, hasRestaurant, restaurantCreditCardAccepted, hasRestrooms, hasPetrolStation, fuelCreditCardAccepted, state, city, country);
         OfyService.ofy().save().entity(amenity).now();
+        Drive drive = getOngoingDrive(member);
+        AmenityStop amenityStop = new AmenityStop(member.getId(), drive.getId(), amenity.getId(), timestamp, restaurantRating, foodAmount, restroomRating, petrolStationRating, fuelAmount, fuelQuantity);
         FenceUtils.createFence(amenity.getId(), name, RBConstants.AMENITIES_GROUP, true, latitude, longitude, RBConstants.AMENITIES_RADIUS);
         return amenity;
     }
@@ -193,7 +205,8 @@ public class RoadMeasurementBeanEndpoint {
         Member member = authorizeApi(user).getMember();
         Toll toll = new Toll(member.getId(), timestamp, fasTagLane, latitude, longitude, amount, city, state, country);
         OfyService.ofy().save().entity(toll).now();
-        TollStop tollStop = new TollStop(member.getId(), toll.getId(), timestamp, amount);
+        Drive drive = getOngoingDrive(member);
+        TollStop tollStop = new TollStop(member.getId(), drive.getId(), toll.getId(), timestamp, amount);
         OfyService.ofy().save().entity(tollStop).now();
         FenceUtils.createFence(toll.getId(), city + "-" + state, RBConstants.TOLLS_GROUP, true, latitude, longitude, RBConstants.TOLLS_RADIUS);
         return toll;
@@ -208,9 +221,14 @@ public class RoadMeasurementBeanEndpoint {
                                   @Named("city") String city,
                                   @Named("sate") String state,
                                   @Named("country") String country,
+                                  @Named("speedCameras") Boolean speedCameras,
+                                  @Named("fineAmount") Float fineAmount,
                                   User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         Member member = authorizeApi(user).getMember();
         Checkpost checkpost = new Checkpost(member.getId(), timestamp, latitude, longitude, city, state, country);
+        OfyService.ofy().save().entity(checkpost).now();
+        Drive drive = getOngoingDrive(member);
+        CheckpostStop checkpostStop = new CheckpostStop(member.getId(), drive.getId(), checkpost.getId(), timestamp, speedCameras, fineAmount);
         OfyService.ofy().save().entity(checkpost).now();
         FenceUtils.createFence(checkpost.getId(), city + "-" + state, RBConstants.CHECKPOSTS_GROUP, true, latitude, longitude, RBConstants.CHECKPOSTS_RADIUS);
         return checkpost;
@@ -222,12 +240,15 @@ public class RoadMeasurementBeanEndpoint {
     public AmenityStop addAmenityVisit(@Named("establishmentId") Long establishmentId,
                                        @Named("timestamp") Date timestamp,
                                        @Named("restaurantRating") Integer restaurantRating,
+                                       @Named("foodAmount") Float foodAmount,
                                        @Named("restroomRating") Integer restroomRating,
                                        @Named("petrolStationRating") Integer petrolStationRating,
-                                       @Named("creditCardAccepted") Boolean creditCardAccepted,
+                                       @Named("fuelAmount") Float fuelAmount,
+                                       @Named("fuelQuantity") Float fuelQuantity,
                                        User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
         Member member = authorizeApi(user).getMember();
-        AmenityStop amenityStop = new AmenityStop(member.getId(), establishmentId, timestamp, restaurantRating, restroomRating, petrolStationRating, creditCardAccepted);
+        Drive drive = getOngoingDrive(member);
+        AmenityStop amenityStop = new AmenityStop(member.getId(), drive.getId(), establishmentId, timestamp, restaurantRating, foodAmount, restroomRating, petrolStationRating, fuelAmount, fuelQuantity);
         OfyService.ofy().save().entity(amenityStop).now();
         return amenityStop;
     }
@@ -245,7 +266,8 @@ public class RoadMeasurementBeanEndpoint {
         if (fasTagLane != toll.getFasTagLane()) {
             toll.setFasTagLane(fasTagLane);
         }
-        TollStop tollStop = new TollStop(member.getId(), toll.getId(), timestamp, amount);
+        Drive drive = getOngoingDrive(member);
+        TollStop tollStop = new TollStop(member.getId(), drive.getId(), toll.getId(), timestamp, amount);
         OfyService.ofy().save().entity(tollStop).now();
         return toll;
     }
@@ -256,10 +278,12 @@ public class RoadMeasurementBeanEndpoint {
     public CheckpostStop addCheckpostStop(@Named("establishmentId") Long establishmentId,
                                           @Named("timestamp") Date timestamp,
                                           @Named("speedCameras") Boolean speedCameras,
+                                          @Named("fineAmount") Float fineAmount,
                                           User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException {
 
         Member member = authorizeApi(user).getMember();
-        CheckpostStop checkpostStop = new CheckpostStop(member.getId(), establishmentId, timestamp, speedCameras);
+        Drive drive = getOngoingDrive(member);
+        CheckpostStop checkpostStop = new CheckpostStop(member.getId(), drive.getId(), establishmentId, timestamp, speedCameras, fineAmount);
         OfyService.ofy().save().entity(checkpostStop).now();
         return checkpostStop;
     }
@@ -275,15 +299,20 @@ public class RoadMeasurementBeanEndpoint {
                                              @Named("speed") Float speed,
                                              @Named("accuracy") Float accuracy,
                                              @Named("bearing") Float bearing,
+                                             @Named("distance") Float distance,
                                              User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, NoOngoingDrive {
         Member member = authorizeApi(user).getMember();
         Drive drive = getOngoingDrive(member);
+        drive.setLastLatitude(latitude);
+        drive.setLastLongitude(longitude);
+        drive.setDistanceCovered(drive.getDistanceCovered() + distance);
         if (drive == null) {
             throw new NoOngoingDrive(member.getEmail());
         }
         SensorData sensorData = new SensorData(member.getId(), drive.getId(), timestamp, verticalAccelerometerMean, verticalAccelerometerSD, latitude, longitude, speed, accuracy, bearing);
         OfyService.ofy().save().entity(sensorData).now();
-        return populatePointOfInterests(latitude, longitude);
+        OfyService.ofy().save().entity(drive).now();
+        return populatePointOfInterests(member, latitude, longitude);
     }
     /**
      * A simple endpoint method that takes a name and says Hi back
@@ -292,13 +321,15 @@ public class RoadMeasurementBeanEndpoint {
     public Drive startDrive(@Named("timestamp") Date timestamp,
                             @Named("groupId") Long groupId,
                             @Named("eventId") Long eventId,
+                            @Named("latitude") Double latitude,
+                            @Named("longitude") Double longitude,
                             User user) throws ForbiddenException, OAuthRequestException, InvalidMemberException, AlreadyOngoingDrive {
 
         Member member = authorizeApi(user).getMember();
         if (getOngoingDrive(member) != null) {
             throw new AlreadyOngoingDrive(member.getEmail());
         }
-        Drive drive = new Drive(eventId, groupId, member.getId());
+        Drive drive = new Drive(eventId, groupId, member.getId(), latitude, longitude);
         OfyService.ofy().save().entity(drive).now();
         return drive;
     }
@@ -318,7 +349,7 @@ public class RoadMeasurementBeanEndpoint {
         OfyService.ofy().save().entity(drive).now();
         return drive;
     }
-    private PointsOfInterest populatePointOfInterests(Double latitude, Double longitude) {
+    private PointsOfInterest populatePointOfInterests(Member member, Double latitude, Double longitude) {
 
         try {
 
@@ -355,7 +386,8 @@ public class RoadMeasurementBeanEndpoint {
                     }
                 }
             }
-            return new PointsOfInterest(amenityList, tollList, checkpostList);
+            Drive drive = getOngoingDrive(member);
+            return new PointsOfInterest(drive, amenityList, tollList, checkpostList);
         }
         catch(Exception ex) {
             logger.log(Level.SEVERE, "Illegal argument exception.", ex);
@@ -389,6 +421,62 @@ public class RoadMeasurementBeanEndpoint {
     private Drive getOngoingDrive(Member member) {
 
         return OfyService.ofy().load().type(Drive.class).filter("memberId", member.getId()).filter("done", Boolean.FALSE).first().now();
+    }
+
+    private DriveParameters getCurrentDriveParameters(Member member) {
+
+
+        Drive drive = getOngoingDrive(member);
+        return getCurrentDriveParameters(drive);
+    }
+    private DriveParameters getCurrentDriveParameters(Drive drive) {
+
+
+        int fuelStopCount = 0;
+        Float fuelAmount = 0.0F;
+        Float fuelQuantity = 0.0F;
+        int amenityStopCount = 0;
+        Float foodAmount = 0.0F;
+        int tollStopCount = 0;
+        Float tollAmount = 0.0F;
+        int numberOfCheckposts = 0;
+        int speedCameras = 0;
+        Float fineAmount = 0.0F;
+        {
+            List<AmenityStop> list = OfyService.ofy().load().type(AmenityStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            for (AmenityStop as : list) {
+                if (as.getFoodAmount() > 0.0F) {
+                    ++amenityStopCount;
+                    amenityStopCount += as.getFoodAmount();
+                }
+                if (as.getFuelAmount() > 0.0F) {
+                    ++fuelStopCount;
+                    fuelAmount += as.getFuelAmount();
+                    fuelQuantity += as.getFuelQuantity();
+                }
+            }
+        }
+        {
+            List<TollStop> list = OfyService.ofy().load().type(TollStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            for (TollStop ts : list) {
+                if (ts.getAmount() > 0.0F) {
+                    ++amenityStopCount;
+                    tollAmount += ts.getAmount();
+                }
+            }
+        }
+        {
+            List<CheckpostStop> list = OfyService.ofy().load().type(CheckpostStop.class).filter("driveId", drive.getId()).order("timestamp").list();
+            for (CheckpostStop cs : list) {
+                if (cs.getFineAmount() > 0.0F) {
+                    fineAmount += cs.getFineAmount();
+                }
+                if (cs.getSpeedCameras()) {
+                    ++speedCameras;
+                }
+            }
+        }
+        return  new DriveParameters(drive.getId(), foodAmount, fuelAmount, amenityStopCount, numberOfCheckposts, speedCameras, fineAmount, tollStopCount, tollAmount);
     }
 
     private List<UserGroup> getGroupsForUser(Member member) throws ForbiddenException, OAuthRequestException {

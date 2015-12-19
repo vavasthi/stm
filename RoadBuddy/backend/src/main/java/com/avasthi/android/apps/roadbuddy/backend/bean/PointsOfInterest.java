@@ -9,7 +9,8 @@ import java.util.List;
  */
 @Entity
 public class PointsOfInterest {
-    public PointsOfInterest(List<Amenity> amenityList, List<Toll> tollList, List<Checkpost> checkpostList) {
+    public PointsOfInterest(Drive currentDrive, List<Amenity> amenityList, List<Toll> tollList, List<Checkpost> checkpostList) {
+        this.currentDrive = currentDrive;
         this.amenityList = amenityList;
         this.checkpostList = checkpostList;
         this.tollList = tollList;
@@ -42,6 +43,15 @@ public class PointsOfInterest {
         this.tollList = tollList;
     }
 
+    public Drive getCurrentDrive() {
+        return currentDrive;
+    }
+
+    public void setCurrentDrive(Drive currentDrive) {
+        this.currentDrive = currentDrive;
+    }
+
+    private Drive currentDrive;
     private List<Amenity> amenityList;
     private List<Toll> tollList;
     private List<Checkpost> checkpostList;

@@ -12,8 +12,8 @@ public class TollStop extends AbstractStop {
     public TollStop() {
 
     }
-    public TollStop(Long userId, Long establishmentId, Date timestamp, Float amount) {
-        super(userId, establishmentId, timestamp);
+    public TollStop(Long userId, Long driveId, Long establishmentId, Date timestamp, Float amount) {
+        super(userId, driveId, establishmentId, timestamp);
         this.amount = amount;
     }
 
