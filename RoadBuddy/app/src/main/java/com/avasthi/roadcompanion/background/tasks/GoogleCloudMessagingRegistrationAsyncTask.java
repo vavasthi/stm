@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.avasthi.android.apps.roadbuddy.backend.registerGoogleCloudMessagingApi.RegisterGoogleCloudMessagingApi;
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.RoadMeasurementApi;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainActivity;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainBaseActivity;
 import com.avasthi.roadcompanion.utils.EndpointManager;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * Created by vavasthi on 14/12/15.
  */
 public class GoogleCloudMessagingRegistrationAsyncTask extends AsyncTask<Context, Void, String> {
-    private RegisterGoogleCloudMessagingApi regService;
+    private RoadMeasurementApi regService;
     private GoogleCloudMessaging gcm;
     private RoadCompanionMainBaseActivity context;
 
@@ -27,7 +27,7 @@ public class GoogleCloudMessagingRegistrationAsyncTask extends AsyncTask<Context
 
     public GoogleCloudMessagingRegistrationAsyncTask(RoadCompanionMainBaseActivity context) {
         this.context = context;
-        regService = EndpointManager.getGoogleCloudMessagingEndpoint(context);
+        regService = EndpointManager.getRoadMeasurementEndpoint(context);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class GoogleCloudMessagingRegistrationAsyncTask extends AsyncTask<Context
             // so it can use GCM/HTTP or CCS to send messages to your app.
             // The request to your server should be authenticated if your app
             // is using accounts.
-            regService.register(regId).execute();
+            regService.registerDevice(regId).execute();
 
         } catch (IOException ex) {
             ex.printStackTrace();

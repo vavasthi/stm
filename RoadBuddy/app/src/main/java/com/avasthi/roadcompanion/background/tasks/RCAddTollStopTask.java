@@ -1,7 +1,9 @@
 package com.avasthi.roadcompanion.background.tasks;
 
+import android.graphics.Point;
 import android.os.AsyncTask;
 
+import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.PointsOfInterest;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.Toll;
 import com.avasthi.android.apps.roadbuddy.backend.roadMeasurementApi.model.UserGroup;
 import com.avasthi.roadcompanion.activities.RCGroupActivity;
@@ -18,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created by vavasthi on 14/9/15.
  */
-public class RCAddTollStopTask extends AsyncTask<Void, Void, Toll > {
+public class RCAddTollStopTask extends AsyncTask<Void, Void, PointsOfInterest> {
 
     private final RCTollActivity context;
     private Boolean onlyTollStop;
@@ -42,9 +44,9 @@ public class RCAddTollStopTask extends AsyncTask<Void, Void, Toll > {
     }
 
     @Override
-    protected Toll doInBackground(Void... params) {
+    protected PointsOfInterest doInBackground(Void... params) {
 
-        Toll returnedToll = null;
+        PointsOfInterest returnedToll = null;
         try {
             if (onlyTollStop) {
 
@@ -69,7 +71,8 @@ public class RCAddTollStopTask extends AsyncTask<Void, Void, Toll > {
         }
         return returnedToll;
     }
-    protected void onPostExecute (Toll toll) {
+    protected void onPostExecute (PointsOfInterest pointsOfInterest) {
+        RCLocationManager.getInstance().setPointsOfInterest(pointsOfInterest);
         context.finish();
     }
 }

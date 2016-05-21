@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="50" passed="50">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="13240" started-at="2016-05-21T14:23:37Z" finished-at="2016-05-21T14:23:50Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="13240" started-at="2016-05-21T14:23:37Z" finished-at="2016-05-21T14:23:50Z">
+      <class name="com.sanjnan.server.test.TestEncryption">
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5068" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4051" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4560" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5195" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5610" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="9819" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6372" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6499" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6651" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4178" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5737" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6245" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5991" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5484" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5355" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4687" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4814" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4306" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="3921" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4432" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6116" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6776" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="3794" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="4939" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="5861" started-at="2016-05-21T19:53:37Z" finished-at="2016-05-21T19:53:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6153" started-at="2016-05-21T19:53:41Z" finished-at="2016-05-21T19:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6153" started-at="2016-05-21T19:53:41Z" finished-at="2016-05-21T19:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6152" started-at="2016-05-21T19:53:41Z" finished-at="2016-05-21T19:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6150" started-at="2016-05-21T19:53:41Z" finished-at="2016-05-21T19:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6149" started-at="2016-05-21T19:53:41Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6147" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6146" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6144" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6143" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6141" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6140" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6139" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6105" started-at="2016-05-21T19:53:42Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6101" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6100" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6100" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6098" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6097" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6095" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6093" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6093" started-at="2016-05-21T19:53:43Z" finished-at="2016-05-21T19:53:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6092" started-at="2016-05-21T19:53:44Z" finished-at="2016-05-21T19:53:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6068" started-at="2016-05-21T19:53:44Z" finished-at="2016-05-21T19:53:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="6321" started-at="2016-05-21T19:53:44Z" finished-at="2016-05-21T19:53:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+        <test-method status="PASS" signature="testEncryption()[pri:0, instance:com.sanjnan.server.test.TestEncryption@1f7030a6]" name="testEncryption" duration-ms="3407" started-at="2016-05-21T19:53:47Z" finished-at="2016-05-21T19:53:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEncryption -->
+      </class> <!-- com.sanjnan.server.test.TestEncryption -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

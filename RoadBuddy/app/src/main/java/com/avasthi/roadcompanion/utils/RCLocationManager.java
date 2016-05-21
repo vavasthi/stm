@@ -78,8 +78,8 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
         googleApiClient = new GoogleApiClient.Builder(context).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();
         googleApiClient.connect();
         locationRequest = new LocationRequest();
-        locationRequest.setInterval(10000);
-        locationRequest.setFastestInterval(5000);
+        locationRequest.setInterval(1000);
+        locationRequest.setFastestInterval(1000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
     @Override
@@ -117,6 +117,7 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
 
         }
         lastLocation = location;
+        final float speedForUIUpdate = speed;
         context.runOnUiThread(new Runnable() {
 
                 @Override
@@ -125,21 +126,27 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
                     TextView tv = (TextView)context.findViewById(R.id.speed);
                     if (tv != null) {
 
-                        tv.setText(String.valueOf(lastLocation.getSpeed()));
+                        tv.setText(String.valueOf(speedForUIUpdate));
                     }
                 }
             });
-        if (vehicleMoving && speed < 5.0) {
-            RCSensorManager.getInstance().adjustVerticalDirection();
+        if (vehicleMoving && speed < 1.0) {
+            if (RCSensorManager.getInstance() != null) {
+
+                RCSensorManager.getInstance().adjustVerticalDirection();
+            }
             vehicleMoving = false;
             if (context.getDataCollectorService()!= null) {
                 context.getDataCollectorService().showVehicleStoppedNotification();
             }
             // Show alert
         }
-        else if (!vehicleMoving && speed > 5.0) {
+        else if (!vehicleMoving && speed > 3.0) {
             vehicleMoving = true;
-            context.getDataCollectorService().cancelVehicleStoppedNotification();
+            if (context.getDataCollectorService() != null) {
+
+                context.getDataCollectorService().cancelVehicleStoppedNotification();
+            }
         }
         updateLastAddress();
     }
@@ -164,14 +171,17 @@ public class RCLocationManager implements GoogleApiClient.ConnectionCallbacks, G
     }
     private void updateLastAddress() {
 
-        Geocoder geocoder = new Geocoder(context, locale);
-        try {
-            List<Address> la = geocoder.getFromLocation(lastLocation.getLatitude(), lastLocation.getLongitude(), 5);
-            if (la.size() > 0) {
-                lastAddress = la.get(0);
+        if (lastLocation != null) {
+
+            Geocoder geocoder = new Geocoder(context, locale);
+            try {
+                List<Address> la = geocoder.getFromLocation(lastLocation.getLatitude(), lastLocation.getLongitude(), 5);
+                if (la.size() > 0) {
+                    lastAddress = la.get(0);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

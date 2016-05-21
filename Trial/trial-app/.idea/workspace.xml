@@ -2,13 +2,176 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdcc5e7c-0747-41fd-835b-89c56dc3931e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_3_03.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ObjectFactoryKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ResultsDefinition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trial-app.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/androidTest/java/com/avasthi/myapplication/ApplicationTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/test/java/com/avasthi/myapplication/ExampleUnitTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/Family.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/FamilyMemberAndPointsOfInterest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/java/com/avasthi/myapplication/MapsActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddAmenityStopTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCFamilyMapActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCGetFamilyDriveTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/layout/activity_maps.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/layout/amenity_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/values/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/creditcard_checkbox_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/creditcard_checked.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/layout/dummy_layout_popup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/layout/family_map_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/fuel_checkbox_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/fuel_checked.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/debug/res/values/google_maps_api.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/release/res/values/google_maps_api.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/gradle.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/gradle.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/gradlew.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/gradlew" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/proguard-rules.pro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/layout/rc_amenity_popup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/restaurant_checkbox_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/restaurant_checked.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/restroom_checkbox_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable/restroom_checked.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/runConfigurations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/settings.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MyApplication/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCFuelActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCRestroomActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCFuelListAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCRestroomListAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/layout/rc_restaurant_popup.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/client-libs/gcmSenderEndpoint-v1-java.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/client-libs/registerGoogleCloudMessagingApi-v1-java.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequestInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointScopes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApi.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequestInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiScopes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/CollectionResponseRegistrationRecord.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/RegistrationRecord.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/AmenityStop.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/CheckpostStop.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/proguard-google-api-client.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/readme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequestInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointScopes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/proguard-google-api-client.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/readme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApi.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequestInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiScopes.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/CollectionResponseRegistrationRecord.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/RegistrationRecord.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/AmenityStop.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/CheckpostStop.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/MessagingEndpoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RegistrationEndpoint.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCRestaurantActivity.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCAmenityActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCRestaurantListAdapter.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCAmenityListAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-hdpi/fuel.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-hdpi/fuel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-hdpi/restaurant.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-hdpi/restaurant.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-hdpi/restroom.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-hdpi/restroom.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-hdpi/toll.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-hdpi/toll.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-mdpi/fuel.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-mdpi/fuel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-mdpi/restaurant.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-mdpi/restaurant.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-mdpi/restroom.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-mdpi/restroom.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-mdpi/toll.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-mdpi/toll.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xhdpi/fuel.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xhdpi/fuel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xhdpi/restaurant.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xhdpi/restroom.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xhdpi/restroom.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xhdpi/toll.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xhdpi/toll.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxhdpi/fuel.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxhdpi/fuel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxhdpi/restaurant.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxhdpi/restroom.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxhdpi/restroom.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxhdpi/toll.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxhdpi/toll.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/fuel.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxxhdpi/fuel.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxxhdpi/restaurant.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/restroom.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxxhdpi/restroom.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/toll.png" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/drawable-xxxhdpi/toll.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/classes/main/com/avasthi/android/apps/roadbuddy/backend/OfyService.class" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/classes/main/com/avasthi/android/apps/roadbuddy/backend/OfyService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/app-release.apk" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/app-release.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/libs/backend-android-endpoints.jar" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/libs/backend-android-endpoints.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/client-libs/roadMeasurementApi-v1-java.zip" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/client-libs/roadMeasurementApi-v1-java.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/Constants.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/EndpointManager.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/EndpointManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/GoogleCloudMessagingRegistrationAsyncTask.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/GoogleCloudMessagingRegistrationAsyncTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/OfyService.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/OfyService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/common/src/main/java/com/avasthi/roadbuddy/common/RBConstants.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/common/src/main/java/com/avasthi/roadbuddy/common/RBConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddTollStopTask.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddTollStopTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCDataCollectorService.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCDataCollectorService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCGcmListenerService.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCGcmListenerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/RCLocationManager.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/RCLocationManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCTollActivity.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCTollActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RegisterUserAsyncTask.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RegisterUserAsyncTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/RegistrationRecord.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/RegistrationRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RoadCompanionMainActivity.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RoadCompanionMainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RoadMeasurementBeanEndpoint.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RoadMeasurementBeanEndpoint.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/app.iml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/backend.iml" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/backend.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/build.gradle" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/menu/main_menu.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/menu/main_menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values-v11/strings.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values-v11/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values-w820dp/strings.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/app/src/main/res/values-w820dp/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/../../RoadBuddy/backend/src/main/webapp/WEB-INF/web.xml" />
     </list>
     <ignored path="trial-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,28 +250,10 @@
       <file leaf-file-name="ResultsDefinition.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ResultsDefinition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4510135">
+            <state vertical-scroll-proportion="0.2575251">
               <caret line="182" column="66" selection-start-line="182" selection-start-column="66" selection-end-line="182" selection-end-column="66" />
               <folding>
                 <element signature="e#2781#2792#0" expanded="true" />
-                <element signature="e#3102#3103#0" expanded="true" />
-                <element signature="e#3146#3147#0" expanded="true" />
-                <element signature="e#3208#3209#0" expanded="true" />
-                <element signature="e#3266#3267#0" expanded="true" />
-                <element signature="e#3303#3304#0" expanded="true" />
-                <element signature="e#3340#3341#0" expanded="true" />
-                <element signature="e#3388#3389#0" expanded="true" />
-                <element signature="e#3432#3433#0" expanded="true" />
-                <element signature="e#3470#3471#0" expanded="true" />
-                <element signature="e#3508#3509#0" expanded="true" />
-                <element signature="e#3558#3559#0" expanded="true" />
-                <element signature="e#3604#3605#0" expanded="true" />
-                <element signature="e#4685#4686#0" expanded="true" />
-                <element signature="e#4731#4732#0" expanded="true" />
-                <element signature="e#4768#4769#0" expanded="true" />
-                <element signature="e#4805#4806#0" expanded="true" />
-                <element signature="e#4853#4854#0" expanded="true" />
-                <element signature="e#4897#4898#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,7 +307,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3641" />
+    <option name="x" value="1833" />
     <option name="y" value="80" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
@@ -190,7 +335,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,8 +398,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,6 +406,7 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/hubble/hubble-server" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -555,6 +701,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
@@ -604,42 +756,43 @@
       <option name="number" value="Default" />
       <updated>1450197106594</updated>
       <workItem from="1450197116132" duration="4448000" />
+      <workItem from="1452269839799" duration="60000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4448000" />
+    <option name="totallyTimeSpent" value="4508000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3641" y="80" width="1400" height="1000" extended-state="0" />
-    <editor active="true" />
+    <frame x="1833" y="80" width="1400" height="1000" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -680,11 +833,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/DomParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2427#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#716#744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ObjectFactoryKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding>
+            <element signature="e#252#253#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/Definition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ResultsDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="182" column="66" selection-start-line="182" selection-start-column="66" selection-end-line="182" selection-end-column="66" />
+          <folding>
+            <element signature="e#2781#2792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///usr/lib/jvm/default-java/jre/lib/rt.jar!/org/w3c/dom/Document.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12040134">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,28 +934,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/avasthi/trial/app/ResultsDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4510135">
+        <state vertical-scroll-proportion="0.2575251">
           <caret line="182" column="66" selection-start-line="182" selection-start-column="66" selection-end-line="182" selection-end-column="66" />
           <folding>
             <element signature="e#2781#2792#0" expanded="true" />
-            <element signature="e#3102#3103#0" expanded="true" />
-            <element signature="e#3146#3147#0" expanded="true" />
-            <element signature="e#3208#3209#0" expanded="true" />
-            <element signature="e#3266#3267#0" expanded="true" />
-            <element signature="e#3303#3304#0" expanded="true" />
-            <element signature="e#3340#3341#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3432#3433#0" expanded="true" />
-            <element signature="e#3470#3471#0" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3604#3605#0" expanded="true" />
-            <element signature="e#4685#4686#0" expanded="true" />
-            <element signature="e#4731#4732#0" expanded="true" />
-            <element signature="e#4768#4769#0" expanded="true" />
-            <element signature="e#4805#4806#0" expanded="true" />
-            <element signature="e#4853#4854#0" expanded="true" />
-            <element signature="e#4897#4898#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -49,7 +49,7 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
         loadSharedPreferences();
         RCLocationManager.initialize(this, Locale.ENGLISH);
         telephonyManager = (TelephonyManager)(this.getSystemService(Context.TELEPHONY_SERVICE));
-        detectedPhoneNumber = telephonyManager.getLine1Number();
+        detectedPhoneNumber = "";
         // FacebookReadInterface.initialize(this);
         // FacebookPublishInterface.initialize(this);
         continueAuthentication();
@@ -84,8 +84,40 @@ public class RoadCompanionMainActivity extends RoadCompanionMainBaseActivity {
             case R.id.groups:
                 startActivityForResult(new Intent(this, RCGroupActivity.class), Constants.GROUP_ACTIVITY);
                 return true;
+            case R.id.force_stop_notification:
+                if (getDataCollectorService() != null) {
+
+                    getDataCollectorService().showVehicleStoppedNotification();
+                }
+                else {
+
+                    new AlertDialog.Builder(this)
+                            .setTitle(R.string.no_ongoing_drive)
+                            .setMessage(R.string.no_drive_is_going_on)
+                            .show();
+                }
+                return true;
+            case R.id.find_family:
+                startActivityForResult(new Intent(this, RCFamilyMapActivity.class), Constants.FAMILY_ACTIVITY);
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem mi = menu.findItem(R.id.force_stop_notification);
+        if (mi != null) {
+            if (getDataCollectorService() == null) {
+
+                mi.setVisible(Boolean.FALSE);
+            }
+            else {
+
+                mi.setVisible(Boolean.TRUE);
+            }
+        }
+        return true;
     }
 
     private void chooseAccount() {

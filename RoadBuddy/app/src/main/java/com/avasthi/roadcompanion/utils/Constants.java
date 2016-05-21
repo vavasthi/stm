@@ -12,10 +12,12 @@ public class Constants {
     public static final int REQUEST_ACCOUNT_PICKER = 2;
     public static final int CUSTOM_ACTIVITY_START = 10000;
     public static final int GROUP_ACTIVITY = CUSTOM_ACTIVITY_START + 1;
+    public static final int FAMILY_ACTIVITY = CUSTOM_ACTIVITY_START + 2;
 
     public static final String TOLL_ACTION_FROM_SERVICE = "com.avasthi.roadcompanion.TOLL_ACTION_FROM_SERVICE";
     public static final String RESTAURANT_ACTION_FROM_SERVICE = "com.avasthi.roadcompanion.RESTAURANT_ACTION_FROM_SERVICE";
     public static final String RESTROOM_ACTION_FROM_SERVICE = "com.avasthi.roadcompanion.RESTROOM_ACTION_FROM_SERVICE";
     public static final String FUEL_ACTION_FROM_SERVICE = "com.avasthi.roadcompanion.FUEL_ACTION_FROM_SERVICE";
 
+    public static final String MAP_UPDATE_EVENT_NAME = "com.avasthi.roadcompanion.MAP_UPDATE_EVENT_NAME";
 }

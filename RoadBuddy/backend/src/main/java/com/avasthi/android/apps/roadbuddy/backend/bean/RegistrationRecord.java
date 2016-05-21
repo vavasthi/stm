@@ -9,14 +9,19 @@ import com.googlecode.objectify.annotation.Index;
 
 /** The Objectify object model for device registrations we are persisting */
 @Entity
-public class RegistrationRecord {
+public class RegistrationRecord extends AbstractEntity{
+    public RegistrationRecord(Long memberId, String regId) {
+        this.memberId = memberId;
+        this.regId = regId;
+    }
 
-    @Id
-    Long id;
+    public Long getMemberId() {
+        return memberId;
+    }
 
-    @Index
-    private String regId;
-    // you can add more fields...
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
 
     public RegistrationRecord() {}
 
@@ -27,4 +32,10 @@ public class RegistrationRecord {
     public void setRegId(String regId) {
         this.regId = regId;
     }
+
+    @Index
+    private String regId;
+    @Index
+    private Long memberId;
+    // you can add more fields...
 }

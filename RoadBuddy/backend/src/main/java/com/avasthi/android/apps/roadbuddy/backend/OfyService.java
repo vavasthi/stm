@@ -11,6 +11,7 @@ import com.avasthi.android.apps.roadbuddy.backend.bean.Drive;
 import com.avasthi.android.apps.roadbuddy.backend.bean.DriveParameters;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Establishment;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Event;
+import com.avasthi.android.apps.roadbuddy.backend.bean.Family;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Fence;
 import com.avasthi.android.apps.roadbuddy.backend.bean.Group;
 import com.avasthi.android.apps.roadbuddy.backend.bean.GroupMembership;
@@ -53,6 +54,8 @@ public class OfyService {
         ObjectifyService.register(Drive.class);
         ObjectifyService.register(DriveParameters.class);
         ObjectifyService.register(Fence.class);
+        ObjectifyService.register(Family.class);
+
     }
 
     public static Objectify ofy() {

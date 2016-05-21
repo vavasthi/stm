@@ -31,4 +31,8 @@ public class RBConstants {
     public static final Double AMENITIES_RADIUS = 1.0;
     public static final Double TOLLS_RADIUS = 2.0;
     public static final Double CHECKPOSTS_RADIUS = 1.0;
+
+    public static final String UPDATE_FAMILY_LOCATION = "UPDATE_FAMILY_LOCATION";
+    public static final String FAMILY_MEMBER_DRIVE_STARTED = "FAMILY_MEMBER_DRIVE_STARTED";
+    public static final String FAMILY_MEMBER_DRIVE_STOPPED = "FAMILY_MEMBER_DRIVE_STOPPED";
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2016 (c) Hubble Connected (HKT) Ltd. - All Rights Reserved
+  ~
+  ~ Proprietary and confidential.
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited.
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>h2o-Service</artifactId>
+    <groupId>com.hubbleconnected.server</groupId>
+    <version>${com.hubbleconnected.server.version}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hubbleconnected.server.config</groupId>
+  <artifactId>service</artifactId>
+  <version>${com.hubbleconnected.server.version}</version>
+</project>
+

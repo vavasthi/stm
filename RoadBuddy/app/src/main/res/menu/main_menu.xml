@@ -5,4 +5,12 @@
         android:orderInCategory="100" app:showAsAction="collapseActionView"
         android:title="@string/rc_groups"
         android:textColor="@color/kk_app_foreground" />
+    <item android:id="@+id/force_stop_notification" android:name="@string/rc_force_stop_notification"
+        android:orderInCategory="100" app:showAsAction="collapseActionView"
+        android:title="@string/rc_force_stop_notification"
+        android:textColor="@color/kk_app_foreground" />
+    <item android:id="@+id/find_family" android:name="@string/rc_find_family"
+        android:orderInCategory="100" app:showAsAction="collapseActionView"
+        android:title="@string/rc_find_family"
+        android:textColor="@color/kk_app_foreground" />
 </menu>

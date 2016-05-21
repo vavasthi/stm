@@ -90,4 +90,12 @@
     <string name="restaurant">Restaurant</string>
     <string name="restroom">Restroom</string>
     <string name="submit">Submit</string>
+    <string name="rc_enter_toll">Enter Toll</string>
+    <string name="rc_amenity_details">Amenity Details</string>
+    <string name="rc_force_stop_notification">Force Stop Notification</string>
+    <string name="rc_amenity_name">Name</string>
+    <string name="no_ongoing_drive">No Ongoing Drive</string>
+    <string name="no_drive_is_going_on">No drive is going on</string>
+    <string name="rc_find_family">Find Family</string>
+    <string name="ameneties">Amenities</string>
 </resources>

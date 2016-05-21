@@ -11,15 +11,18 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.avasthi.roadbuddy.common.RBConstants;
 import com.avasthi.roadcompanion.R;
 import com.avasthi.roadcompanion.activities.RoadCompanionMainActivity;
+import com.avasthi.roadcompanion.utils.Constants;
 import com.google.android.gms.gcm.GcmListenerService;
 
 public class RCGcmListenerService extends GcmListenerService {
 
-    private static final String TAG = "MyGcmListenerService";
+    private static final String TAG = "RCGcmListenerService";
 
     /**
      * Called when message is received.
@@ -37,7 +40,13 @@ public class RCGcmListenerService extends GcmListenerService {
 
         if (from.startsWith("/topics/")) {
             // message received from some topic.
-        } else {
+        }
+        else if (message.equals(RBConstants.UPDATE_FAMILY_LOCATION)) {
+            Intent intent = new Intent(Constants.MAP_UPDATE_EVENT_NAME);
+            intent.putExtra(Constants.MAP_UPDATE_EVENT_NAME, message);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        }
+        else {
             // normal downstream message.
         }
 

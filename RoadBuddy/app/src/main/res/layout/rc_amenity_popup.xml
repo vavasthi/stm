@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/amenity_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/application_background"
+    android:orientation="vertical"
+    android:textColor="@color/kk_app_foreground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_restaurants_view"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/kk_app_foreground" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/amenity_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:hint="@string/rc_amenity_name"
+            android:inputType="textCapWords"
+            android:textColor="@color/kk_app_foreground"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textSize="@dimen/kk_registration_popup_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/has_restaurant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:clickable="true"
+            android:button="@drawable/restaurant_checkbox_selector"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/has_restaurant_cc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:button="@drawable/creditcard_checkbox_selector"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="24dp" />
+
+        <RatingBar
+            android:id="@+id/restaurant_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:isIndicator="false"
+            android:stepSize="1.0"
+            android:textColor="@color/kk_app_foreground" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="\u20B9"
+            android:textSize="24dp"
+            android:layout_weight="10"
+            android:id="@+id/food_rupee_symbol"
+            android:textColor="@color/kk_app_foreground"/>
+        <EditText
+            android:id="@+id/food_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:inputType="numberDecimal"
+            android:hint="0.0"
+            android:textColor="@color/kk_app_foreground"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textSize="@dimen/kk_registration_popup_text_size" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/has_fuel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:button="@drawable/fuel_checkbox_selector"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="24dp" />
+
+        <CheckBox
+            android:id="@+id/has_fuel_cc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:button="@drawable/creditcard_checkbox_selector"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="12dp" />
+
+        <RatingBar
+            android:id="@+id/fuel_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:isIndicator="false"
+            android:stepSize="1.0"
+            android:textColor="@color/kk_app_foreground" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="\u20B9"
+            android:textSize="24dp"
+            android:layout_weight="10"
+            android:id="@+id/rupee_fuel"
+            android:textColor="@color/kk_app_foreground"/>
+
+        <EditText
+            android:id="@+id/fuel_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:inputType="numberDecimal"
+            android:hint="0.0"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="@dimen/kk_registration_popup_text_size" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="l"
+            android:textSize="24dp"
+            android:layout_weight="10"
+            android:id="@+id/ltrs"
+            android:textColor="@color/kk_app_foreground"/>
+        <EditText
+            android:id="@+id/fuel_quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:hint="0.0"
+            android:inputType="numberDecimal"
+            android:textColor="@color/kk_app_foreground"
+            android:textColorHint="@color/kk_app_foreground_hint"
+            android:textSize="@dimen/kk_registration_popup_text_size" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/has_restroom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:button="@drawable/restroom_checkbox_selector"
+            android:textColor="@color/kk_app_foreground"
+            android:textSize="24dp" />
+
+        <RatingBar
+            android:id="@+id/restroom_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:stepSize="1.0"
+            android:isIndicator="false"
+            style="?android:attr/ratingBarStyleSmall"
+            android:textColor="@color/kk_app_foreground" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_row="2"
+            android:layout_weight="1"
+            android:onClick="enterAmenityDetail"
+            android:text="@string/submit" />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
