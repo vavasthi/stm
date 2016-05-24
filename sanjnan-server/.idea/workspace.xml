@@ -2,368 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="104b4820-cf2b-438c-9847-75239371ae39" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/gradle/wrapper/gradle-wrapper.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../KhanaKirana/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/runConfigurations.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/proguard-rules.pro" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/androidTest/java/com/avasthi/myapplication/ApplicationTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/debug/res/values/google_maps_api.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/java/com/avasthi/myapplication/MapsActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/layout/activity_maps.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/colors.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/release/res/values/google_maps_api.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/app/src/test/java/com/avasthi/myapplication/ExampleUnitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/gradle.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MyApplication/settings.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCFamilyMapActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddAmenityStopTask.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCGetFamilyDriveTask.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/creditcard_checkbox_selector.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/creditcard_checked.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/fuel_checkbox_selector.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/fuel_checked.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/restaurant_checkbox_selector.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/restaurant_checked.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/restroom_checkbox_selector.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable/restroom_checked.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/layout/amenity_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/layout/dummy_layout_popup.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/layout/family_map_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/layout/rc_amenity_popup.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/Family.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/FamilyMemberAndPointsOfInterest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ant_ant_1_6_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__classworlds_classworlds_1_1_alpha_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_48.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_joda_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_json_provider_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_6_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_btf_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_jackson_coreutils_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_patch_1_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_schema_core_1_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_schema_validator_2_2_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_msg_simple_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_uri_template_0_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_19_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_libphonenumber_libphonenumber_6_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_json_path_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_json_schema_validator_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_rest_assured_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_rest_assured_common_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_xml_path_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javassist_javassist_3_12_1_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mailapi_1_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_0_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_9_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_38.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_dbcp2_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_core_3_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_jaxrs_3_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_transports_http_3_1_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_manager_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_profile_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_repository_metadata_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0_beta_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_logging_juli_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_0_33.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ws_xmlschema_xmlschema_core_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atteo_evo_inflector_1_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_beanshell_bsh_2_0b4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ccil_cowan_tagsoup_tagsoup_1_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_json_2_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_xml_2_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_container_default_1_0_alpha_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_4_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_client_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_deploy_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_http_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_io_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_rewrite_9_3_9_v20160517.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_security_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_server_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_servlet_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_util_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_webapp_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_xml_9_2_16_v20160414.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_4_0_5_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_4_3_11_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_4_3_11_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_2_4_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jadira_usertype_usertype_core_5_0_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jadira_usertype_usertype_spi_5_0_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_annotations_1_2_0_Beta1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfrog_jade_plugins_common_jade_plugin_common_1_3_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfrog_maven_annomojo_maven_plugin_anno_1_4_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mozilla_rhino_1_7R4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_0_9_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_maven_0_9_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_rest_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_3_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_11_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_9_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_6_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_core_2_4_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_webmvc_2_4_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_19_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_oauth_spring_security_oauth2_2_0_9_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_4_0_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_4_0_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_4_0_4_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_2_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_6_9_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_7_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xpp3_xpp3_1_1_3_4_RC8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xstream_xstream_1_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCFuelActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCRestroomActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCFuelListAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCRestroomListAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/layout/rc_restaurant_popup.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/client-libs/gcmSenderEndpoint-v1-java.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/client-libs/registerGoogleCloudMessagingApi-v1-java.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpoint.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequestInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointScopes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApi.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequestInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiScopes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/CollectionResponseRegistrationRecord.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/RegistrationRecord.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/AmenityStop.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/CheckpostStop.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/proguard-google-api-client.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/readme.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpoint.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointRequestInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/gcmSenderEndpoint-v1-java.zip-unzipped/gcmSenderEndpoint/src/main/java/com/avasthi/android/apps/roadbuddy/backend/gcmSenderEndpoint/GcmSenderEndpointScopes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/proguard-google-api-client.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/readme.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApi.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiRequestInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/RegisterGoogleCloudMessagingApiScopes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/CollectionResponseRegistrationRecord.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/registerGoogleCloudMessagingApi-v1-java.zip-unzipped/registerGoogleCloudMessagingApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/registerGoogleCloudMessagingApi/model/RegistrationRecord.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/AmenityStop.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/CheckpostStop.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/MessagingEndpoint.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RegistrationEndpoint.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCRestaurantActivity.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCAmenityActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCRestaurantListAdapter.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/adapters/RCAmenityListAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-hdpi/fuel.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-hdpi/fuel.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-hdpi/restaurant.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-hdpi/restaurant.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-hdpi/restroom.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-hdpi/restroom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-hdpi/toll.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-hdpi/toll.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-mdpi/fuel.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-mdpi/fuel.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-mdpi/restaurant.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-mdpi/restaurant.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-mdpi/restroom.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-mdpi/restroom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-mdpi/toll.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-mdpi/toll.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xhdpi/fuel.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xhdpi/fuel.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xhdpi/restaurant.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xhdpi/restroom.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xhdpi/restroom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xhdpi/toll.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xhdpi/toll.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxhdpi/fuel.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxhdpi/fuel.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxhdpi/restaurant.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxhdpi/restroom.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxhdpi/restroom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxhdpi/toll.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxhdpi/toll.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/fuel.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxxhdpi/fuel.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/restaurant.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxxhdpi/restaurant.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/restroom.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxxhdpi/restroom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/mipmap-xxxhdpi/toll.png" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/drawable-xxxhdpi/toll.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/app-release.apk" afterPath="$PROJECT_DIR$/../RoadBuddy/app/app-release.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/classes/main/com/avasthi/android/apps/roadbuddy/backend/OfyService.class" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/classes/main/com/avasthi/android/apps/roadbuddy/backend/OfyService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/client-libs/roadMeasurementApi-v1-java.zip" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/client-libs/roadMeasurementApi-v1-java.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/libs/backend-android-endpoints.jar" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/libs/backend-android-endpoints.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../KhanaKirana/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../KhanaKirana/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../KhanaKirana/app-business-admin/app-business-admin.iml" afterPath="$PROJECT_DIR$/../KhanaKirana/app-business-admin/app-business-admin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../KhanaKirana/app-customer/app-customer.iml" afterPath="$PROJECT_DIR$/../KhanaKirana/app-customer/app-customer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../KhanaKirana/app-system-admin/app-system-admin.iml" afterPath="$PROJECT_DIR$/../KhanaKirana/app-system-admin/app-system-admin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/app.iml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/build.gradle" afterPath="$PROJECT_DIR$/../RoadBuddy/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCTollActivity.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RCTollActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RoadCompanionMainActivity.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/activities/RoadCompanionMainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/GoogleCloudMessagingRegistrationAsyncTask.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/GoogleCloudMessagingRegistrationAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddTollStopTask.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RCAddTollStopTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RegisterUserAsyncTask.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/background/tasks/RegisterUserAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCDataCollectorService.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCDataCollectorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCGcmListenerService.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/service/RCGcmListenerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/Constants.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/EndpointManager.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/EndpointManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/RCLocationManager.java" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/java/com/avasthi/roadcompanion/utils/RCLocationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/menu/main_menu.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/menu/main_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values-v11/strings.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values-v11/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values-w820dp/strings.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values-w820dp/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/generated-source/endpoints/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiRequestInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/RoadMeasurementApiScopes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Amenity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Checkpost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Drive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/MemberAndVehicles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/PointsOfInterest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/SensorData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Toll.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/UserGroupCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/build/tmp/appengineEndpointsExpandClientLibs/roadMeasurementApi-v1-java.zip-unzipped/roadMeasurementApi/src/main/java/com/avasthi/android/apps/roadbuddy/backend/roadMeasurementApi/model/Vehicle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/OfyService.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/OfyService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/RegistrationRecord.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/bean/RegistrationRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RoadMeasurementBeanEndpoint.java" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/java/com/avasthi/android/apps/roadbuddy/backend/endpoints/RoadMeasurementBeanEndpoint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/../RoadBuddy/backend/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/build.gradle" afterPath="$PROJECT_DIR$/../RoadBuddy/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/common/src/main/java/com/avasthi/roadbuddy/common/RBConstants.java" afterPath="$PROJECT_DIR$/../RoadBuddy/common/src/main/java/com/avasthi/roadbuddy/common/RBConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RoadBuddy/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/../RoadBuddy/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Test/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../Test/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Test/app/app.iml" afterPath="$PROJECT_DIR$/../Test/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Test/build.gradle" afterPath="$PROJECT_DIR$/../Test/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Trial/trial-app/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Trial/trial-app/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_0_0_GA.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanEmbeddedJettyCustomizer.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanEmbeddedJettyCustomizer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanLauncher.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanLauncher.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SwaggerConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SwaggerConfiguration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SwaggerSpringConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SwaggerSpringConfiguration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/caching/AbstractCacheService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/caching/AbstractCacheService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/caching/AccountCacheService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/caching/AccountCacheService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/caching/DeviceCacheService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/caching/DeviceCacheService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/caching/DeviceRegistrationTempAuthTokenCacheService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/caching/DeviceRegistrationTempAuthTokenCacheService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/caching/TenantCacheService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/caching/TenantCacheService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/AccountMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/AccountMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/ComputeRegionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/ComputeRegionMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/DeviceMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/DeviceMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/DeviceRegistrationTempAuthTokenMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/DeviceRegistrationTempAuthTokenMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/RoleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/RoleMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/SessionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/SessionMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/TenantMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/TenantMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/config/mapper/annotations/LoggedInUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/mapper/annotations/LoggedInUser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/AccountDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AccountDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/AdminDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AdminDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/ComputeRegionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/ComputeRegionDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/DeviceDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/DeviceRegistrationTempAuthTokenDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceRegistrationTempAuthTokenDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/RoleDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/RoleDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/SessionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/SessionDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/TenantDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/TenantDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/AccountEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/AccountEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/AuthenticationEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/AuthenticationEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/BaseEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/BaseEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/ComputeRegionEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/ComputeRegionEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/DeviceEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/DeviceEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/SetupEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/SetupEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/endpoints/v6/TenantEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/v6/TenantEndpoint.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/AccountEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/AccountEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/AdminEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/AdminEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/BaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/BaseEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/ComputeRegionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/ComputeRegionEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/DeviceEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/DeviceEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/DeviceRegistrationTempAuthTokenEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/DeviceRegistrationTempAuthTokenEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/RoleEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/RoleEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/SessionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/SessionEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/SessionOwnerEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/SessionOwnerEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/entity/TenantEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/TenantEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/Account.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/Account.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/Base.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/Base.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/ComputeRegion.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/ComputeRegion.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/Device.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/Device.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/DeviceAuthentication.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/DeviceAuthentication.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/DeviceRegistrationTempAuthToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/DeviceRegistrationTempAuthToken.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanAuthenticationToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanAuthenticationToken.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanTokenResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanTokenResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanUsernameAndTokenResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUsernameAndTokenResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/Session.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/Session.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/Tenant.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/Tenant.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/TestDate.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/TestDate.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/SanjnanAuditorAware.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/SanjnanAuditorAware.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/SanjnanSecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/SanjnanSecurityConfiguration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/filters/SanjnanAuthenticationFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationSuccessHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/filters/SanjnanAuthenticationSuccessHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanAuditingDateTimeProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/provider/SanjnanAuditingDateTimeProvider.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanTokenAuthenticationProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/provider/SanjnanTokenAuthenticationProvider.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanUsernamePasswordAuthenticationProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/provider/SanjnanUsernamePasswordAuthenticationProvider.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/token/SanjnanPrincipal.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/token/SanjnanPrincipal.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/token/SanjnanTokenPrincipal.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/security/token/SanjnanTokenPrincipal.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/serializers/H2ODateTimeDeserializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/serializers/H2ODateTimeDeserializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/serializers/H2ODateTimeSerializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/serializers/H2ODateTimeSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/AccountService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/AccountService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/ComputeRegionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/ComputeRegionService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/DateTimeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/DateTimeService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/DeviceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/DeviceService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/H2OTokenService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/H2OTokenService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/SetupService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/SetupService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/TenantService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/service/TenantService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/util/H2OUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/sanjnan/server/util/H2OUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sanjnan-server.iml" afterPath="$PROJECT_DIR$/sanjnan-server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServer.java" afterPath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServerAuthenticateWorkflow.java" afterPath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServerAuthenticateWorkflow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServerRESTWorkflow.java" afterPath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/ITTestIdentityServerRESTWorkflow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/TestCaseBase.java" afterPath="$PROJECT_DIR$/src/test/java/com/sanjnan/server/test/TestCaseBase.java" />
     </list>
     <ignored path="h2o-identity-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -386,48 +106,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SanjnanAuditingDateTimeProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanAuditingDateTimeProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SanjnanUsernamePasswordAuthenticationProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanUsernamePasswordAuthenticationProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SanjnanTokenAuthenticationProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanTokenAuthenticationProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SanjnanEmbeddedJettyCustomizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanEmbeddedJettyCustomizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SanjnanRole.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanRole.java">
+      <file leaf-file-name="AccountEntity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/AccountEntity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
@@ -436,51 +116,91 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SanjnanUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUser.java">
+      <file leaf-file-name="AccountDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AccountDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state vertical-scroll-proportion="-9.444445">
+              <caret line="47" column="62" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SanjnanUserEncryptionBucketKey.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUserEncryptionBucketKey.java">
+      <file leaf-file-name="AdminDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AdminDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state vertical-scroll-proportion="-3.8888888">
+              <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SanjnanAuthenticationFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationFilter.java">
+      <file leaf-file-name="ComputeRegionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/ComputeRegionDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SanjnanAuthenticationSuccessHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationSuccessHandler.java">
+      <file leaf-file-name="DeviceDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+            <state vertical-scroll-proportion="-3.8888888">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="DeviceRegistrationTempAuthTokenDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceRegistrationTempAuthTokenDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5744681">
-              <caret line="333" column="17" selection-start-line="333" selection-start-column="17" selection-end-line="333" selection-end-column="17" />
+            <state vertical-scroll-proportion="-4.7222223">
+              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoleDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/RoleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.0555556">
+              <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/SessionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.8888888">
+              <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TenantDao.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/TenantDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.36144578">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SanjnanLauncher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanLauncher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -527,7 +247,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUserEncryptionBucketKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/identity/security/filters/SanjnanAuthenticationFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/identity/security/filters/SanjnanAuthenticationSuccessHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SwaggerSpringConfiguration.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AccountDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AdminDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceRegistrationTempAuthTokenDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/RoleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/SessionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanLauncher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/TenantDao.java" />
       </list>
     </option>
   </component>
@@ -549,7 +278,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3600" />
+    <option name="x" value="1690" />
     <option name="y" value="57" />
     <option name="width" value="1910" />
     <option name="height" value="1000" />
@@ -579,7 +308,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -588,746 +318,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="token" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="provider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pojos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="caching" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="strings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pojos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exception" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="h2o-identity-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanjnan-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1338,7 +331,12 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.46375144" />
   </component>
-  <component name="RunManager" selected="Spring Boot.H2OIdentityManagerLauncher">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sanjnan.server" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SanjnanLauncher">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -1505,6 +503,40 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
+      <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
+      <module name="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
       <option name="BCName" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
@@ -1578,6 +610,37 @@
       <setting name="passParentEnv" value="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JRubyCucumberRunConfigurationType" factoryName="JRuby Cucumber">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-Dforce.jruby.jit=true -Djruby.debug.fullTrace=true" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1768,8 +831,16 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <configuration default="false" name="SanjnanLauncher" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sanjnan.server.SanjnanLauncher" />
+      <module name="sanjnan-server" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.H2OIdentityManagerLauncher" />
+      <item index="1" class="java.lang.String" itemvalue="Spring Boot.SanjnanLauncher" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1784,45 +855,46 @@
       <updated>1463818130473</updated>
       <workItem from="1463818133731" duration="5871000" />
       <workItem from="1463855317392" duration="77000" />
+      <workItem from="1464067240913" duration="848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5948000" />
+    <option name="totallyTimeSpent" value="6796000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3600" y="57" width="1910" height="1000" extended-state="0" />
-    <editor active="false" />
+    <frame x="1690" y="57" width="1910" height="1000" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1846,34 +918,34 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanAuditingDateTimeProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanRole.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanUsernamePasswordAuthenticationProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanTokenAuthenticationProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanUserEncryptionBucketKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanEmbeddedJettyCustomizer.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1902,22 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationSuccessHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1926,33 +982,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/dao/TenantDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sanjnan-server.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="132" column="65" selection-start-line="132" selection-start-column="65" selection-end-line="132" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/service/H2OTokenService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1979,21 +1012,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/utils/SanjnanIntPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/utils/SanjnanPasswordEncryptionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.032258">
           <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding>
-            <element signature="e#0#8954#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#8954#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2054,94 +1079,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanAuthenticationToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanUsernameAndTokenResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/pojos/SanjnanTokenResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/SanjnanAuditorAware.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/SanjnanSecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/token/SanjnanPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/token/SanjnanTokenPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanAuditingDateTimeProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanUsernamePasswordAuthenticationProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/provider/SanjnanTokenAuthenticationProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/SanjnanEmbeddedJettyCustomizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/pojos/SanjnanRole.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2166,26 +1103,122 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/utils/SanjnanIntPair.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/sanjnan/security/filters/SanjnanAuthenticationSuccessHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanEmbeddedJettyCustomizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/SwaggerConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/SwaggerSpringConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5744681">
-          <caret line="333" column="17" selection-start-line="333" selection-start-column="17" selection-end-line="333" selection-end-column="17" />
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/entity/AccountEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AccountDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.444445">
+          <caret line="47" column="62" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/AdminDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8888888">
+          <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/ComputeRegionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8888888">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/DeviceRegistrationTempAuthTokenDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.7222223">
+          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/RoleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0555556">
+          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/SessionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8888888">
+          <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/SanjnanLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanjnan/server/dao/TenantDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36144578">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>

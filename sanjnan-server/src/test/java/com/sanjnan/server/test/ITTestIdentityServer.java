@@ -8,8 +8,8 @@
 
 package com.sanjnan.server.test;
 
-import com.sanjnan.server.sanjnan.pojos.ComputeRegion;
-import com.sanjnan.server.sanjnan.pojos.SanjnanTokenResponse;
+import com.sanjnan.server.pojos.ComputeRegion;
+import com.sanjnan.server.pojos.SanjnanTokenResponse;
 import com.sanjnan.server.pojos.constants.H2OConstants;
 import com.jayway.restassured.response.Response;
 import org.eclipse.jetty.http.HttpStatus;

@@ -36,7 +36,7 @@
     <org.apache.commons.vesion>3.4</org.apache.commons.vesion>
     <guava.version>19.0</guava.version>
     <testng.version>6.9.10</testng.version>
-    <validation.version>1.0.0.GA</validation.version>
+    <validation.version>1.1.0.Final</validation.version>
     <reflections.version>0.9.8</reflections.version>
     <commons-codec.version>1.10</commons-codec.version>
     <springfox.version>2.4.0</springfox.version>
@@ -113,7 +113,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>com.sanjnan.server.sanjnan.SanjnanLauncher</mainClass>
+          <mainClass>com.sanjnan.server.SanjnanLauncher</mainClass>
         </configuration>
         <executions>
           <execution>

@@ -8,7 +8,7 @@
 
 package com.sanjnan.server.test;
 
-import com.sanjnan.server.sanjnan.pojos.SanjnanTokenResponse;
+import com.sanjnan.server.pojos.SanjnanTokenResponse;
 import com.sanjnan.server.pojos.constants.H2OConstants;
 import com.jayway.restassured.response.Response;
 import org.apache.log4j.Level;
