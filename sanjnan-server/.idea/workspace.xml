@@ -4,7 +4,6 @@
     <list default="true" id="104b4820-cf2b-438c-9847-75239371ae39" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../sanjnan-web/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../sanjnan-web/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../sanjnan-web/src/main/webapp/WEB-INF/views/jsp/hello.jsp" afterPath="$PROJECT_DIR$/../sanjnan-web/src/main/webapp/WEB-INF/views/jsp/hello.jsp" />
     </list>
     <ignored path="h2o-identity-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -134,8 +133,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.96495324">
-              <caret line="267" column="29" selection-start-line="267" selection-start-column="27" selection-end-line="267" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.14135514">
+              <caret line="220" column="45" selection-start-line="220" selection-start-column="45" selection-end-line="220" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -233,7 +232,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1690" />
-    <option name="y" value="57" />
+    <option name="y" value="56" />
     <option name="width" value="1910" />
     <option name="height" value="1000" />
   </component>
@@ -262,9 +261,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -822,15 +821,16 @@
       <workItem from="1464067240913" duration="1892000" />
       <workItem from="1464075220475" duration="933000" />
       <workItem from="1464077864382" duration="63000" />
-      <workItem from="1464077957154" duration="723000" />
+      <workItem from="1464077957154" duration="1693000" />
+      <workItem from="1464092250136" duration="1642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9559000" />
+    <option name="totallyTimeSpent" value="12171000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1690" y="57" width="1910" height="1000" extended-state="0" />
+    <frame x="1690" y="56" width="1910" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1322,8 +1322,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96495324">
-          <caret line="267" column="29" selection-start-line="267" selection-start-column="27" selection-end-line="267" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.14135514">
+          <caret line="220" column="45" selection-start-line="220" selection-start-column="45" selection-end-line="220" selection-end-column="45" />
           <folding />
         </state>
       </provider>
