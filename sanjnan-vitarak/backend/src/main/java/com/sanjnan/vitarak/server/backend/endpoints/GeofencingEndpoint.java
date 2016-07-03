@@ -53,11 +53,11 @@ import java.util.logging.Logger;
         name = "geofencingApi",
         version = "v1",
         scopes = {SanjnanConstants.EMAIL_SCOPE},
-        audiences = {SanjnanConstants.ADMIN_ANDROID_CLIENT_ID},
-        clientIds = {SanjnanConstants.WEB_CLIENT_ID, SanjnanConstants.ADMIN_ANDROID_CLIENT_ID},
+        audiences = {SanjnanConstants.SYSTEM_ADMIN_ANDROID_CLIENT_ID},
+        clientIds = {SanjnanConstants.WEB_CLIENT_ID, SanjnanConstants.SYSTEM_ADMIN_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
-                ownerDomain = "backend.khanakirana.com",
-                ownerName = "backend.khanakirana.com",
+                ownerDomain = "backend.server.vitarak.sanjnan.com",
+                ownerName = "backend.server.vitarak.sanjnan.com",
                 packagePath = ""
         )
 )

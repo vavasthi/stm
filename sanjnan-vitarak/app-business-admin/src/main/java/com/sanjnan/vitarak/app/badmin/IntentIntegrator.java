@@ -308,7 +308,7 @@ public class IntentIntegrator {
         intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intentScan.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
         attachMoreExtras(intentScan);
-        startActivityForResult(intentScan, KKAndroidConstants.BARCODE_SCAN_REQUEST);
+        startActivityForResult(intentScan, SanjnanAndroidConstants.BARCODE_SCAN_REQUEST);
         return null;
     }
 
@@ -399,7 +399,7 @@ public class IntentIntegrator {
      *  the fields will be null.
      */
     public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == KKAndroidConstants.BARCODE_SCAN_REQUEST) {
+        if (requestCode == SanjnanAndroidConstants.BARCODE_SCAN_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");

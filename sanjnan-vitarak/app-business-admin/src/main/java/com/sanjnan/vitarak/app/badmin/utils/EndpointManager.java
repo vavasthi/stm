@@ -8,9 +8,9 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.http.HttpRequestInitializer;
-import com.khanakirana.backend.businessApi.BusinessApi;
-import com.sanjnan.vitarak.app.badmin.KKAndroidConstants;
+import com.sanjnan.vitarak.app.badmin.SanjnanAndroidConstants;
 import com.sanjnan.vitarak.common.SanjnanConstants;
+import com.sanjnan.vitarak.server.backend.businessApi.BusinessApi;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class EndpointManager {
                 AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(),
                 requestInitializer)
-                .setRootUrl(KKAndroidConstants.ROOT_URL)
+                .setRootUrl(SanjnanAndroidConstants.ROOT_URL)
                 .setGoogleClientRequestInitializer(
                         new GoogleClientRequestInitializer() {
                             @Override

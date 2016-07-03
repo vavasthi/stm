@@ -10,7 +10,7 @@ android {
          * "http://10.0.2.2:8080/_ah/api/"
          */
         buildConfigField "String", "ROOT_URL",
-                "\"https://khanakirana.appspot.com/_ah/api/\""
+                "\"https://sanjnan-vitarak.appspot.com/_ah/api/\""
         // The IP ADDRESS of your SERVER. Yours may be different.
         /**
          * Defines whether authentication is required or not. Only works once
@@ -21,11 +21,11 @@ android {
          * Substitute you own sender ID here. This is the project number you got
          * from the API Console, as described in "Getting Started."
          */
-        buildConfigField "String", "SENDER_ID", "\"khanakirana\""
+        buildConfigField "String", "SENDER_ID", "\"sanjnan-vitarak\""
         /**
          * Web client ID from Google Cloud console.
          */
-        buildConfigField "String", "WEB_CLIENT_ID", "\"279496868246-qops46el59lfnj9jto74nro8f7kl0hbu.apps.googleusercontent.com\""
+        buildConfigField "String", "WEB_CLIENT_ID", "\"342435113451-57qqs775ba8a5lcrpfk4tbqkg0fn0f58.apps.googleusercontent.com\""
         /**
          * Dummy location used in the emulator when developing.
          */

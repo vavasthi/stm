@@ -14,10 +14,10 @@ import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.sanjnan.vitarak.common.SanjnanConstants;
 import com.sanjnan.vitarak.server.backend.OfyService;
+import com.sanjnan.vitarak.server.backend.entity.EstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
-import com.sanjnan.vitarak.server.backend.entity.UserAccount;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
 import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
@@ -41,8 +41,8 @@ import javax.inject.Named;
         audiences = {SanjnanConstants.ANDROID_AUDIENCE},
         clientIds = {SanjnanConstants.WEB_CLIENT_ID, SanjnanConstants.CUSTOMER_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
-                ownerDomain = "backend.khanakirana.com",
-                ownerName = "backend.khanakirana.com",
+                ownerDomain = "backend.server.vitarak.sanjnan.com",
+                ownerName = "backend.server.vitarak.sanjnan.com",
                 packagePath = ""
         )
 )
@@ -54,29 +54,29 @@ public class CustomerEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "register")
-    public UserAccount register(@Named("name") String name,
-                                        @Named("address") String address,
-                                        @Named("mobile") String mobile,
-                                        @Named("city") String city,
-                                        @Named("state") String state,
-                                        @Named("latitude") Double latitude,
-                                        @Named("longitude") Double longitude,
-                                User user) throws ForbiddenException {
+    public EstablishmentAccount register(@Named("name") String name,
+                                         @Named("address") String address,
+                                         @Named("mobile") String mobile,
+                                         @Named("city") String city,
+                                         @Named("state") String state,
+                                         @Named("latitude") Double latitude,
+                                         @Named("longitude") Double longitude,
+                                         User user) throws ForbiddenException {
         if (user == null) {
             throw new ForbiddenException("user is null.");
         }
-        UserAccount account = new UserAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
+        EstablishmentAccount account = new EstablishmentAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
         OfyService.ofy().save().entity(account).now();
         return account;
     }
 
     @ApiMethod(name = "authenticate")
-    public UserAccount authenticate(@Named("email") String email,
-                                    @Named("password") String password,
-                                    @Named("googleUser") Boolean googleUser) {
+    public EstablishmentAccount authenticate(@Named("email") String email,
+                                             @Named("password") String password,
+                                             @Named("googleUser") Boolean googleUser) {
         try {
             email = email.toLowerCase();
-            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
+            EstablishmentAccount account = OfyService.ofy().load().type(EstablishmentAccount.class).filter("email", email).first().now();
             logger.log(Level.INFO, "User Account retrieved." + account.toString());
             if (account == null) {
 
@@ -100,12 +100,12 @@ public class CustomerEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "isRegisteredUser")
-    public UserAccount isRegisteredUser(User user) throws InvalidUserAccountException, OAuthRequestException, ForbiddenException {
+    public EstablishmentAccount isRegisteredUser(User user) throws InvalidUserAccountException, OAuthRequestException, ForbiddenException {
 
         authorizeApi(user);
         try {
 
-            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
+            EstablishmentAccount account = OfyService.ofy().load().type(EstablishmentAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
             if (account == null) {
 
                 throw new InvalidUserAccountException();
@@ -151,7 +151,7 @@ public class CustomerEndpoint {
         if (user == null) {
             throw new OAuthRequestException("User is null");
         }
-        List<UserAccount> accounts = OfyService.ofy().load().type(UserAccount.class).filter("email", user.getEmail().toLowerCase()).list();
+        List<EstablishmentAccount> accounts = OfyService.ofy().load().type(EstablishmentAccount.class).filter("email", user.getEmail().toLowerCase()).list();
         if (accounts.size() == 0) {
             throw new ForbiddenException("User " + user.getUserId() + " is not authorized for customer activities.");
         }

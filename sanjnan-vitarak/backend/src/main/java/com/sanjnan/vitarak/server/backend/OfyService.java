@@ -7,10 +7,9 @@ import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MasterItem;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAccount;
-import com.sanjnan.vitarak.server.backend.entity.NotApprovedBusinessAccount;
+import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.SysadminAccount;
-import com.sanjnan.vitarak.server.backend.entity.UserAccount;
+import com.sanjnan.vitarak.server.backend.entity.EstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 
 /**
@@ -26,16 +25,15 @@ import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 public class OfyService {
 
     static {
-        ObjectifyService.register(UserAccount.class);
+        ObjectifyService.register(EstablishmentAccount.class);
         ObjectifyService.register(UserAccountRegion.class);
-        ObjectifyService.register(BusinessAccount.class);
+        ObjectifyService.register(BusinessEstablishmentAccount.class);
         ObjectifyService.register(SysadminAccount.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(ItemCategory.class);
-        ObjectifyService.register(NotApprovedBusinessAccount.class);
     }
 
     public static Objectify ofy() {

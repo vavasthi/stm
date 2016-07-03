@@ -5,7 +5,7 @@ package com.sanjnan.vitarak.server.backend.utils;
  */
 public enum AccountType {
     CUSTOMER(1, "CustomerAccount"),
-    BUSINESS(2, "BusinessAccount"),
+    BUSINESS(2, "BusinessEstablishmentAccount"),
     SYSADMIN(99, "SystemAdministrator");
 
     public final int type;

@@ -12,16 +12,20 @@ import com.sanjnan.vitarak.server.backend.utils.AccountType;
  * Created by vavasthi on 5/10/15.
  */
 @Entity
-public class AbstractUser {
-    enum ACCOUNT_TYPE {
-        CUSTOMER,
-        BUSINESS,
-        SYSADMIN
-    }
-    public AbstractUser() {
+public class AbstractEstablishment {
+    public AbstractEstablishment() {
 
     }
-    protected AbstractUser(String name, String address, String city, String state, String email, String mobile, Double latitude, Double longitude, Boolean googleUser, AccountType accountType, Boolean locked) {
+    protected AbstractEstablishment(String name,
+                                    String address,
+                                    String city,
+                                    String state,
+                                    String email,
+                                    String mobile,
+                                    Double latitude,
+                                    Double longitude,
+                                    Boolean locked,
+                                    Boolean approved) {
 
         this.name = name;
         this.address = address;
@@ -39,9 +43,8 @@ public class AbstractUser {
         this.mobile = mobile;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.googleUser = googleUser;
-        this.accountType = accountType.type;
         this.locked = locked;
+        this.approved = false;
     }
 
     public Long getId() {
@@ -132,10 +135,19 @@ public class AbstractUser {
         this.locked = locked;
     }
 
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+
     @Override
     public String toString() {
-        return "AbstractUser{" +
-                "id='" + id + '\'' +
+        return "AbstractEstablishment{" +
+                "accountType=" + accountType +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", region=" + region +
@@ -144,7 +156,8 @@ public class AbstractUser {
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", googleUser=" + googleUser +
-                ", accountType=" + accountType +
+                ", locked=" + locked +
+                ", approved=" + approved +
                 '}';
     }
 
@@ -166,5 +179,6 @@ public class AbstractUser {
     private int accountType;
     @Index
     private Boolean locked;
-
+    @Index
+    private Boolean approved;
 }

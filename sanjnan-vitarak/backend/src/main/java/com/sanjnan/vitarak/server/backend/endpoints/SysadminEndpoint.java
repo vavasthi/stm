@@ -16,14 +16,13 @@ import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.sanjnan.vitarak.server.backend.OfyService;
 import com.sanjnan.vitarak.server.backend.entity.Actionable;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAccount;
+import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
+import com.sanjnan.vitarak.server.backend.entity.EstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MasterItem;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
-import com.sanjnan.vitarak.server.backend.entity.NotApprovedBusinessAccount;
 import com.sanjnan.vitarak.server.backend.entity.SysadminAccount;
-import com.sanjnan.vitarak.server.backend.entity.UserAccount;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
 import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
 import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryDoesntExist;
@@ -50,8 +49,8 @@ import javax.inject.Named;
         audiences = {SanjnanConstants.ANDROID_AUDIENCE},
         clientIds = {SanjnanConstants.WEB_CLIENT_ID, SanjnanConstants.SYSTEM_ADMIN_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
-                ownerDomain = "backend.khanakirana.com",
-                ownerName = "backend.khanakirana.com",
+                ownerDomain = "backend.server.vitarak.sanjnan.com",
+                ownerName = "backend.server.vitarak.sanjnan.com",
                 packagePath = ""
         )
 )
@@ -67,7 +66,7 @@ public class SysadminEndpoint {
         authorizeApi(user);
         try {
             email = email.toLowerCase();
-            UserAccount account = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
+            EstablishmentAccount account = OfyService.ofy().load().type(EstablishmentAccount.class).filter("email", email).first().now();
             logger.log(Level.INFO, "User Account retrieved." + account.toString());
             if (account == null) {
 
@@ -101,7 +100,7 @@ public class SysadminEndpoint {
         authorizeApi(user);
         List<Actionable> actionables = new ArrayList<>();
         // First find pending for approval business users.
-        List<BusinessAccount> accounts = OfyService.ofy().load().type(BusinessAccount.class).filter("locked", true).list();
+        List<BusinessEstablishmentAccount> accounts = OfyService.ofy().load().type(BusinessEstablishmentAccount.class).filter("locked", true).list();
         logger.log(Level.INFO, "Total business accounts pending for approval " + accounts.size());
         if (accounts.size() > 0) {
 
@@ -119,26 +118,26 @@ public class SysadminEndpoint {
      * A simple endpoint method that takes a name and says Hi back
      */
     @ApiMethod(name = "approveBusiness")
-    public BusinessAccount approveBusiness(@Named("id") Long id,
-                                           @Named("approve") Boolean approve,
-                                           User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
+    public BusinessEstablishmentAccount approveBusiness(@Named("id") Long id,
+                                                        @Named("approve") Boolean approve,
+                                                        User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
 
         authorizeApi(user);
         try {
 
-            BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).id(id).now();
+            BusinessEstablishmentAccount account = OfyService.ofy().load().type(BusinessEstablishmentAccount.class).id(id).now();
             if (account != null) {
                 if (approve) {
                     account.setLocked(Boolean.FALSE);
                     logger.log(Level.INFO, "Business Account approved." + account.toString());
                     OfyService.ofy().save().entity(account).now();
                     return account;
-                } else {
+                } /*else {
                     NotApprovedBusinessAccount naba = new NotApprovedBusinessAccount(account);
                     OfyService.ofy().save().entity(naba).now();
                     OfyService.ofy().delete().entity(account).now();
                     logger.log(Level.INFO, "Business Account deleted." + account.toString());
-                }
+                }*/
             }
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Exception thrown by the load.", e);
@@ -252,7 +251,7 @@ public class SysadminEndpoint {
 
         authorizeApi(user);
         MeasurementCategory mc = getMeasurementCategory(measurementCategory);
-        UserAccount userAccount = getUserAccount(user.getEmail().toLowerCase());
+        EstablishmentAccount userAccount = getUserAccount(user.getEmail().toLowerCase());
         MasterItem mi = new MasterItem(name, description, upc, imageType, imageCloudKey, userAccount.getEmail(), mc.getId());
         OfyService.ofy().save().entity(mi).now();
         return mi;
@@ -320,10 +319,10 @@ public class SysadminEndpoint {
         return measurementCategory;
     }
 
-    private UserAccount getUserAccount(String email) throws MeasurementCategoryDoesntExist, InvalidUserAccountException {
+    private EstablishmentAccount getUserAccount(String email) throws MeasurementCategoryDoesntExist, InvalidUserAccountException {
 
         email = email.toLowerCase();
-        UserAccount userAccount = OfyService.ofy().load().type(UserAccount.class).filter("email", email).first().now();
+        EstablishmentAccount userAccount = OfyService.ofy().load().type(EstablishmentAccount.class).filter("email", email).first().now();
         if (userAccount == null) {
             throw new InvalidUserAccountException();
         }

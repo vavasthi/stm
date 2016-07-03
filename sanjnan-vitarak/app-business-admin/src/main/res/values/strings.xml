@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">KK Business</string>
-
+    <string name="app_name">Distributor</string>
     <string name="kk_master_item_list">Master Item List</string>
     <string name="kk_list_items">List Items</string>
     <string name="kk_add_item">Add Item</string>

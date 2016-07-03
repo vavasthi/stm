@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="false"
-    android:id="@+id/registration_google_user_view"
-    android:background="@color/kk_app_background">
+    android:id="@+id/registration_google_user_view">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/registration_google_layout"
@@ -20,8 +19,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:textSize="@dimen/kk_registration_popup_text_size"
-            android:hint="@string/kk_name_hint"
-            android:textColor="@color/kk_app_foreground" />
+            android:hint="@string/kk_name_hint"/>
 
         <EditText
             android:id="@+id/address"
@@ -32,7 +30,6 @@
             android:hint="@string/kk_address1_hint"
             android:textSize="@dimen/kk_registration_popup_text_size"
             android:singleLine="false"
-            android:textColor="@color/kk_app_foreground"
             android:minLines="3"
             android:maxLines="5"
             android:lines="3" />
@@ -42,10 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
+            android:inputType="none"
             android:textSize="@dimen/kk_registration_popup_text_size"
-            android:hint="@string/kk_email_hint"
-            android:textColor="@color/kk_app_foreground" />
+            android:hint="@string/kk_email_hint"/>
 
         <EditText
             android:id="@+id/mobile"
@@ -54,8 +50,7 @@
             android:ems="10"
             android:inputType="phone"
             android:textSize="@dimen/kk_registration_popup_text_size"
-            android:hint="@string/kk_mobile_hint"
-            android:textColor="@color/kk_app_foreground" />
+            android:hint="@string/kk_mobile_hint"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,22 +61,18 @@
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:editable="false"
                 android:enabled="false"
                 android:text="Bhopal"
                 android:textSize="@dimen/kk_registration_popup_text_size"
-                android:hint="@string/kk_city_hint"
-                android:textColor="@color/kk_app_foreground" />
+                android:hint="@string/kk_city_hint"/>
 
             <EditText
                 android:id="@+id/state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:editable="false"
                 android:text="MP"
                 android:textSize="@dimen/kk_registration_popup_text_size"
-                android:hint="@string/kk_state_hint"
-                android:textColor="@color/kk_app_foreground" />
+                android:hint="@string/kk_state_hint"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -91,16 +82,14 @@
             android:id="@+id/textView7"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/cancel"
-            android:textSize="@dimen/kk_text_small"
-            android:textColor="@color/kk_app_foreground" />
+            android:textSize="@dimen/kk_text_small"/>
 
         <CheckBox
             android:id="@+id/chooseLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/kk_registration_popup_text_size"
-            android:text="@string/chooseLocation"
-            android:textColor="@color/kk_app_foreground" />
+            android:text="@string/chooseLocation"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -115,8 +104,7 @@
                 android:textSize="@dimen/kk_registration_popup_text_size"
                 android:text="@string/kk_cancel_button"
                 android:layout_alignParentLeft="true"
-                android:onClick="cancelRegister"
-                android:textColor="@color/kk_app_foreground" />
+                android:onClick="cancelRegister"/>
 
             <Button
                 android:id="@+id/register"
@@ -126,8 +114,7 @@
                 android:textSize="@dimen/kk_registration_popup_text_size"
                 android:text="@string/kk_register_button"
                 android:layout_alignParentRight="true"
-                android:onClick="registerUser"
-                android:textColor="@color/kk_app_foreground" />
+                android:onClick="registerUser"/>
         </RelativeLayout>
 
     </LinearLayout>

@@ -3,7 +3,7 @@ package com.sanjnan.vitarak.server.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAccount;
+import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
 
 /**
  * The object model for the data we are sending through endpoints
@@ -13,9 +13,9 @@ public class BusinessAdministrator {
     public BusinessAdministrator() {
     }
 
-    public BusinessAdministrator(Long id, BusinessAccount registeredBusinessAccount) {
+    public BusinessAdministrator(Long id, BusinessEstablishmentAccount registeredBusinessEstablishmentAccount) {
         this.id = id;
-        this.registeredBusinessAccount = registeredBusinessAccount;
+        this.registeredBusinessEstablishmentAccount = registeredBusinessEstablishmentAccount;
     }
 
     public Long getId() {
@@ -26,24 +26,24 @@ public class BusinessAdministrator {
         this.id = id;
     }
 
-    public BusinessAccount getRegisteredBusinessAccount() {
-        return registeredBusinessAccount;
+    public BusinessEstablishmentAccount getRegisteredBusinessEstablishmentAccount() {
+        return registeredBusinessEstablishmentAccount;
     }
 
-    public void setRegisteredBusinessAccount(BusinessAccount registeredBusinessAccount) {
-        this.registeredBusinessAccount = registeredBusinessAccount;
+    public void setRegisteredBusinessEstablishmentAccount(BusinessEstablishmentAccount registeredBusinessEstablishmentAccount) {
+        this.registeredBusinessEstablishmentAccount = registeredBusinessEstablishmentAccount;
     }
 
     @Override
     public String toString() {
         return "BusinessAdministrator{" +
                 "id=" + id +
-                ", registeredBusinessAccount=" + registeredBusinessAccount +
+                ", registeredBusinessEstablishmentAccount=" + registeredBusinessEstablishmentAccount +
                 '}';
     }
 
     @Id
     private Long id;
     @Index
-    private BusinessAccount registeredBusinessAccount;
+    private BusinessEstablishmentAccount registeredBusinessEstablishmentAccount;
 }

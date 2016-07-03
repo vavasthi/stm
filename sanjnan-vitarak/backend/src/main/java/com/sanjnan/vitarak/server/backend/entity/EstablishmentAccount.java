@@ -7,13 +7,14 @@ import com.sanjnan.vitarak.server.backend.utils.AccountType;
  * The object model for the data we are sending through endpoints
  */
 @Entity
-public class SysadminAccount extends AbstractEstablishment {
+public class EstablishmentAccount extends AbstractEstablishment {
 
-    public SysadminAccount() {
+    public EstablishmentAccount() {
     }
 
-    public SysadminAccount(String name, String address, String email, String mobile, String city, String state, Double latitude, Double longitude) {
+    public EstablishmentAccount(String name, String address, String email, String mobile, String city, String state, Double latitude, Double longitude) {
 
         super(name, address, city, state, email, mobile, latitude, longitude, Boolean.TRUE, Boolean.FALSE);
     }
+
 }

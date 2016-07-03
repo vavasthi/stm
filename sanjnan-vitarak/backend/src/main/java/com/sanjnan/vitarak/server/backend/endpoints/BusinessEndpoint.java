@@ -17,10 +17,10 @@ import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.sanjnan.vitarak.server.backend.OfyService;
 import com.sanjnan.vitarak.server.backend.entity.BusinessAccountResult;
+import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAccount;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
 import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
@@ -47,8 +47,8 @@ import javax.inject.Named;
         audiences = {SanjnanConstants.ANDROID_AUDIENCE},
         clientIds = {SanjnanConstants.WEB_CLIENT_ID, SanjnanConstants.BUSINESS_ADMIN_ANDROID_CLIENT_ID},
         namespace = @ApiNamespace(
-                ownerDomain = "backend.khanakirana.com",
-                ownerName = "backend.khanakirana.com",
+                ownerDomain = "backend.server.vitarak.sanjnan.com",
+                ownerName = "backend.server.vitarak.sanjnan.com",
                 packagePath = ""
         )
 )
@@ -71,12 +71,12 @@ public class BusinessEndpoint {
      */
     @ApiMethod(name = "register")
     public BusinessAccountResult register(@Named("name") String name,
-                                        @Named("address") String address,
-                                        @Named("mobile") String mobile,
-                                        @Named("city") String city,
-                                        @Named("state") String state,
-                                        @Named("latitude") Double latitude,
-                                        @Named("longitude") Double longitude,
+                                          @Named("address") String address,
+                                          @Named("mobile") String mobile,
+                                          @Named("city") String city,
+                                          @Named("state") String state,
+                                          @Named("latitude") Double latitude,
+                                          @Named("longitude") Double longitude,
                                           User user) throws ForbiddenException, OAuthRequestException {
 
         if (user == null) {
@@ -84,24 +84,24 @@ public class BusinessEndpoint {
         }
         try {
 
-            BusinessAccount account = authorizeApi(user);
+            BusinessEstablishmentAccount account = authorizeApi(user);
             throw new ConflictException(user.getEmail() + " already exists.");
         }
         catch(Exception ex) {
-
+            logger.log(Level.SEVERE, String.format("Some error while authorizing user %s", user.getEmail()));
         }
 
-        BusinessAccount account = new BusinessAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
+        BusinessEstablishmentAccount account = new BusinessEstablishmentAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
         OfyService.ofy().save().entity(account).now();
         return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
     }
 
     @ApiMethod(name = "updateLocation")
     public BusinessAccountResult updateLocation(@Named("latitude") Double latitude,
-                                             @Named("longitude") Double longitude,
-                                             User user) throws ForbiddenException, OAuthRequestException {
+                                                @Named("longitude") Double longitude,
+                                                User user) throws ForbiddenException, OAuthRequestException {
 
-        BusinessAccount account = authorizeApi(user);
+        BusinessEstablishmentAccount account = authorizeApi(user);
         if (account == null) {
             throw new ForbiddenException(user.getEmail() + " is an invalid user.");
         }
@@ -160,11 +160,11 @@ public class BusinessEndpoint {
         }
         return itemCategories;
     }
-    private BusinessAccount authorizeApi(com.google.appengine.api.users.User user) throws ForbiddenException, OAuthRequestException {
+    private BusinessEstablishmentAccount authorizeApi(com.google.appengine.api.users.User user) throws ForbiddenException, OAuthRequestException {
         if (user == null) {
             throw new OAuthRequestException("User is null");
         }
-        BusinessAccount account = OfyService.ofy().load().type(BusinessAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
+        BusinessEstablishmentAccount account = OfyService.ofy().load().type(BusinessEstablishmentAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
         if (account == null) {
 
             throw new ForbiddenException("User " + user.getUserId() + " is not authorized for admin activities.");

@@ -1,11 +1,10 @@
 package com.sanjnan.vitarak.app.badmin;
 
-import com.khanakirana.badmin.khanakirana.BuildConfig;
 
 /**
  * Created by vavasthi on 19/9/15.
  */
-public class KKAndroidConstants {
+public class SanjnanAndroidConstants {
 
     static final String SENDER_ID = BuildConfig.SENDER_ID;
 
@@ -43,6 +42,6 @@ public class KKAndroidConstants {
     /**
      * Default constructor, never called.
      */
-    private KKAndroidConstants() { }
+    private SanjnanAndroidConstants() { }
 
 }

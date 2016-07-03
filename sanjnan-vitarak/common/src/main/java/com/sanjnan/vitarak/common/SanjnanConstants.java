@@ -5,17 +5,16 @@ package com.sanjnan.vitarak.common;
  */
 public class SanjnanConstants {
 
-    public static final String WEB_CLIENT_ID = "342435113451-tpjfqfrtt86cgd22spp2fgb27ecsiq6s.apps.googleusercontent.com";
+    public static final String WEB_CLIENT_ID = "342435113451-57qqs775ba8a5lcrpfk4tbqkg0fn0f58.apps.googleusercontent.com";
 
-    public static final String BUSINESS_ADMIN_ANDROID_CLIENT_ID = "342435113451-bil2a2v1ccdoq9qmqt82eeogr81op5k6.apps.googleusercontent.com";
-    public static final String ADMIN_ANDROID_CLIENT_ID = "279496868246-9p5f2b5m8bm06e6n75r6r5bhec68k0bp.apps.googleusercontent.com";
+    public static final String BUSINESS_ADMIN_ANDROID_CLIENT_ID = "342435113451-pfl039c0vd5067got1f0udkbo9mrdgkk.apps.googleusercontent.com";
     public static final String ANDROID_AUDIENCE = WEB_CLIENT_ID;
-    public static final String SYSTEM_ADMIN_ANDROID_CLIENT_ID = "342435113451-rln7a442d8spmp4p7kppqqbf5e30ia7c.apps.googleusercontent.com";
-    public static final String CUSTOMER_ANDROID_CLIENT_ID = "342435113451-rqp6tdlb66lofufs59obpe6mc1b2453d.apps.googleusercontent.com";
+    public static final String SYSTEM_ADMIN_ANDROID_CLIENT_ID = "790307256440-o3hqjn73cikvhb02trupt1q06qik4ctn.apps.googleusercontent.com";
+    public static final String CUSTOMER_ANDROID_CLIENT_ID = "790307256440-3a5r14leaiptf6h2hkag2jvdj0qnajq6.apps.googleusercontent.com";
 
-    public static final String WEB_CLIENT_SECRET = "ua4hI9YPBuBD6Lf5dKx50_bU";
+    public static final String WEB_CLIENT_SECRET = "SNhq2zJEVM1ZEB3Y4PLglsri";
 
-    public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+    public static final String EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.profile";
 
     public static final String IMAGE_PART_NAME = "imageToBeUploaded";
     public static final String MASTER_ITEM_IMAGE_UPLOAD_URL = "/_ah/kkupload";
