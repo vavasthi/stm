@@ -52,7 +52,7 @@ import javax.inject.Named;
                 packagePath = ""
         )
 )
-public class BusinessEndpoint {
+public class BusinessEndpoint extends BaseEndpoint {
 
     private final static Logger logger = Logger.getLogger(BusinessEndpoint.class.getName());
 
@@ -63,7 +63,7 @@ public class BusinessEndpoint {
     public BusinessAccountResult isRegisteredUser(User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
 
 
-        return new BusinessAccountResult(authorizeApi(user), ServerInteractionReturnStatus.SUCCESS);
+        return new BusinessAccountResult(authorizeBusinessUser(user), ServerInteractionReturnStatus.SUCCESS);
     }
 
     /**
@@ -84,8 +84,11 @@ public class BusinessEndpoint {
         }
         try {
 
-            BusinessEstablishmentAccount account = authorizeApi(user);
-            throw new ConflictException(user.getEmail() + " already exists.");
+            BusinessEstablishmentAccount account = findBusinessUser(user);
+            if (account != null) {
+
+                throw new ConflictException(user.getEmail() + " already exists.");
+            }
         }
         catch(Exception ex) {
             logger.log(Level.SEVERE, String.format("Some error while authorizing user %s", user.getEmail()));
@@ -101,7 +104,7 @@ public class BusinessEndpoint {
                                                 @Named("longitude") Double longitude,
                                                 User user) throws ForbiddenException, OAuthRequestException {
 
-        BusinessEstablishmentAccount account = authorizeApi(user);
+        BusinessEstablishmentAccount account = authorizeBusinessUser(user);
         if (account == null) {
             throw new ForbiddenException(user.getEmail() + " is an invalid user.");
         }
@@ -119,7 +122,7 @@ public class BusinessEndpoint {
     @ApiMethod(name = "supportedRegions")
     public List<UserAccountRegion> supportedRegions(User user) throws OAuthRequestException, ForbiddenException {
 
-        authorizeApi(user);
+        authorizeBusinessUser(user);
         List<UserAccountRegion> regions = OfyService.ofy().load().type(UserAccountRegion.class).list();
         return regions;
     }
@@ -127,7 +130,7 @@ public class BusinessEndpoint {
     @ApiMethod(name = "listMeasurementCategories")
     public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
 
-        authorizeApi(user);
+        authorizeBusinessUser(user);
         return OfyService.ofy().load().type(MeasurementCategory.class).list();
     }
 
@@ -135,7 +138,7 @@ public class BusinessEndpoint {
     public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
                                                      User user) throws MeasurementCategoryDoesntExist, OAuthRequestException, ForbiddenException {
 
-        authorizeApi(user);
+        authorizeBusinessUser(user);
         measurementCategory = measurementCategory.toUpperCase();
         MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
         List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
@@ -146,29 +149,18 @@ public class BusinessEndpoint {
     @ApiMethod(name = "getUploadURL")
     public UploadURL getUploadURL(User user) throws OAuthRequestException, ForbiddenException {
 
-        authorizeApi(user);
+        authorizeBusinessUser(user);
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         return new UploadURL(blobstoreService.createUploadUrl(SanjnanConstants.MASTER_ITEM_IMAGE_UPLOAD_URL));
     }
     @ApiMethod(name = "getItemCategories")
     public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException, ForbiddenException {
 
-        authorizeApi(user);
+        authorizeBusinessUser(user);
         List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
         if (itemCategories == null || itemCategories.size() == 0) {
             return new ArrayList<ItemCategory>();
         }
         return itemCategories;
-    }
-    private BusinessEstablishmentAccount authorizeApi(com.google.appengine.api.users.User user) throws ForbiddenException, OAuthRequestException {
-        if (user == null) {
-            throw new OAuthRequestException("User is null");
-        }
-        BusinessEstablishmentAccount account = OfyService.ofy().load().type(BusinessEstablishmentAccount.class).filter("email", user.getEmail().toLowerCase()).first().now();
-        if (account == null) {
-
-            throw new ForbiddenException("User " + user.getUserId() + " is not authorized for admin activities.");
-        }
-        return account;
     }
 }

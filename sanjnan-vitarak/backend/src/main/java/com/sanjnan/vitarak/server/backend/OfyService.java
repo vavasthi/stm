@@ -10,6 +10,8 @@ import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
 import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
 import com.sanjnan.vitarak.server.backend.entity.SysadminAccount;
 import com.sanjnan.vitarak.server.backend.entity.EstablishmentAccount;
+import com.sanjnan.vitarak.server.backend.entity.TaxCategoryEntity;
+import com.sanjnan.vitarak.server.backend.entity.TaxSurchargeEntity;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 
 /**
@@ -26,14 +28,18 @@ public class OfyService {
 
     static {
         ObjectifyService.register(EstablishmentAccount.class);
-        ObjectifyService.register(UserAccountRegion.class);
         ObjectifyService.register(BusinessEstablishmentAccount.class);
+        ObjectifyService.register(UserAccountRegion.class);
+
         ObjectifyService.register(SysadminAccount.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);
         ObjectifyService.register(MasterItem.class);
         ObjectifyService.register(ItemCategory.class);
+
+        ObjectifyService.register(TaxCategoryEntity.class);
+        ObjectifyService.register(TaxSurchargeEntity.class);
     }
 
     public static Objectify ofy() {

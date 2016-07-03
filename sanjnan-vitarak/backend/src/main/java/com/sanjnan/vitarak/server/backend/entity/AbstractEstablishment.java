@@ -111,22 +111,6 @@ public class AbstractEstablishment {
         this.longitude = longitude;
     }
 
-    public Boolean getGoogleUser() {
-        return googleUser;
-    }
-
-    public void setGoogleUser(Boolean googleUser) {
-        this.googleUser = googleUser;
-    }
-
-    public int getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(int accountType) {
-        this.accountType = accountType;
-    }
-
     public Boolean getLocked() {
         return locked;
     }
@@ -146,7 +130,6 @@ public class AbstractEstablishment {
     @Override
     public String toString() {
         return "AbstractEstablishment{" +
-                "accountType=" + accountType +
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
@@ -155,7 +138,6 @@ public class AbstractEstablishment {
                 ", mobile='" + mobile + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", googleUser=" + googleUser +
                 ", locked=" + locked +
                 ", approved=" + approved +
                 '}';
@@ -173,10 +155,6 @@ public class AbstractEstablishment {
     private String mobile;
     private Double latitude;
     private Double longitude;
-    @Index
-    private Boolean googleUser;
-    @Index
-    private int accountType;
     @Index
     private Boolean locked;
     @Index
