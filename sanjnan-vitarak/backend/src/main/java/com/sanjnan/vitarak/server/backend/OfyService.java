@@ -3,7 +3,6 @@ package com.sanjnan.vitarak.server.backend;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
-import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MasterItem;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
@@ -36,7 +35,6 @@ public class OfyService {
         ObjectifyService.register(MeasurementCategory.class);
         ObjectifyService.register(MeasurementUnit.class);
         ObjectifyService.register(MasterItem.class);
-        ObjectifyService.register(ItemCategory.class);
 
         ObjectifyService.register(TaxCategoryEntity.class);
         ObjectifyService.register(TaxSurchargeEntity.class);

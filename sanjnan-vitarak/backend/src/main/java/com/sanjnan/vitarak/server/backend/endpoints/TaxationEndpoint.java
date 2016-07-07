@@ -9,36 +9,18 @@ package com.sanjnan.vitarak.server.backend.endpoints;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.ForbiddenException;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
 import com.sanjnan.vitarak.common.SanjnanConstants;
-import com.sanjnan.vitarak.common.ServerInteractionReturnStatus;
 import com.sanjnan.vitarak.server.backend.OfyService;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAccountResult;
-import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
-import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
-import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
-import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
 import com.sanjnan.vitarak.server.backend.entity.TaxCategoryEntity;
 import com.sanjnan.vitarak.server.backend.entity.TaxSurchargeEntity;
-import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryDoesntExist;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementPrimaryUnitException;
-import com.sanjnan.vitarak.server.backend.jsonresource.UploadURL;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.inject.Named;
 
 /**
  * An endpoint class we are exposing

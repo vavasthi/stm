@@ -9,7 +9,7 @@ import com.googlecode.objectify.annotation.Index;
  */
 @Entity
 public class TaxSurchargeEntity {
-    public TaxSurchargeEntity(String name, Double surchargeRate) {
+    public TaxSurchargeEntity(String name, Float surchargeRate) {
         this.name = name;
         this.surchargeRate = surchargeRate;
     }
@@ -33,11 +33,11 @@ public class TaxSurchargeEntity {
         this.name = name;
     }
 
-    public Double getSurchargeRate() {
+    public Float getSurchargeRate() {
         return surchargeRate;
     }
 
-    public void setSurchargeRate(Double surchargeRate) {
+    public void setSurchargeRate(Float surchargeRate) {
         this.surchargeRate = surchargeRate;
     }
 
@@ -70,5 +70,5 @@ public class TaxSurchargeEntity {
     private Long id;
     @Index
     private String name;
-    private Double surchargeRate;
+    private Float surchargeRate;
 }

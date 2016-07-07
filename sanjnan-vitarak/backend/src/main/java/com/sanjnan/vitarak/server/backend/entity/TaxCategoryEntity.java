@@ -11,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 public class TaxCategoryEntity {
-    public TaxCategoryEntity(String name, Double taxRate, Set<Long> surchargeEntitySet) {
+    public TaxCategoryEntity(String name, Float taxRate, Set<Long> surchargeEntitySet) {
         this.name = name;
         this.taxRate = taxRate;
         this.surchargeEntitySet = surchargeEntitySet;
@@ -44,11 +44,11 @@ public class TaxCategoryEntity {
         this.surchargeEntitySet = surchargeEntitySet;
     }
 
-    public Double getTaxRate() {
+    public Float getTaxRate() {
         return taxRate;
     }
 
-    public void setTaxRate(Double taxRate) {
+    public void setTaxRate(Float taxRate) {
         this.taxRate = taxRate;
     }
 
@@ -82,6 +82,6 @@ public class TaxCategoryEntity {
     private Long id;
     @Index
     private String name;
-    private Double taxRate;
+    private Float taxRate;
     private Set<Long> surchargeEntitySet;
 }

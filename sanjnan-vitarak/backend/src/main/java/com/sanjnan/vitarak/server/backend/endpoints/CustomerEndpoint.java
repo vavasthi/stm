@@ -15,7 +15,6 @@ import com.google.appengine.api.users.User;
 import com.sanjnan.vitarak.common.SanjnanConstants;
 import com.sanjnan.vitarak.server.backend.OfyService;
 import com.sanjnan.vitarak.server.backend.entity.EstablishmentAccount;
-import com.sanjnan.vitarak.server.backend.entity.ItemCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
@@ -137,16 +136,6 @@ public class CustomerEndpoint {
         return lmu;
     }
 
-    @ApiMethod(name = "getItemCategories")
-    public List<ItemCategory> getItemCategories(User user) throws OAuthRequestException, ForbiddenException {
-
-        authorizeApi(user);
-        List<ItemCategory> itemCategories = OfyService.ofy().load().type(ItemCategory.class).list();
-        if (itemCategories == null || itemCategories.size() == 0) {
-            return new ArrayList<ItemCategory>();
-        }
-        return itemCategories;
-    }
     private void authorizeApi(User user) throws ForbiddenException, OAuthRequestException {
         if (user == null) {
             throw new OAuthRequestException("User is null");

@@ -1,5 +1,6 @@
 package com.sanjnan.vitarak.server.backend.entity;
 
+import com.google.appengine.repackaged.com.google.common.base.Flag;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -12,11 +13,11 @@ public class MeasurementUnit {
     public MeasurementUnit() {
     }
 
-    public MeasurementUnit(String name, String acronym, Long measurementCategoryId, Boolean primaryUnit, Double factor) {
+    public MeasurementUnit(String name, String acronym, Long measurementCategoryId, Long relatedUnit, Double factor) {
         this.name = name;
         this.acronym = acronym;
         this.measurementCategoryId = measurementCategoryId;
-        this.primaryUnit = primaryUnit;
+        this.relatedUnit = relatedUnit;
         this.factor = factor;
     }
 
@@ -44,12 +45,12 @@ public class MeasurementUnit {
         this.acronym = acronym;
     }
 
-    public Boolean getPrimaryUnit() {
-        return primaryUnit;
+    public Long getRelatedUnit() {
+        return relatedUnit;
     }
 
-    public void setPrimaryUnit(Boolean primaryUnit) {
-        this.primaryUnit = primaryUnit;
+    public void setRelatedUnit(Long relatedUnit) {
+        this.relatedUnit = relatedUnit;
     }
 
     public Double getFactor() {
@@ -68,18 +69,6 @@ public class MeasurementUnit {
         this.measurementCategoryId = measurementCategoryId;
     }
 
-    @Override
-    public String toString() {
-        return "MeasurementUnit{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", acronym='" + acronym + '\'' +
-                ", measurementCategoryId=" + measurementCategoryId +
-                ", primaryUnit=" + primaryUnit +
-                ", factor=" + factor +
-                '}';
-    }
-
     @Id
     private Long id;
     @Index
@@ -89,6 +78,6 @@ public class MeasurementUnit {
     @Index
     private Long measurementCategoryId;
     @Index
-    private Boolean primaryUnit;
+    private Long relatedUnit;
     private Double factor;
 }

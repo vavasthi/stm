@@ -9,7 +9,14 @@ import com.googlecode.objectify.annotation.Index;
  */
 @Entity
 public class MasterItem {
-    public MasterItem(String name, String description, String upc, String imageType, String imageCloudKey, String userEmailId, Long measurementCategoryId) {
+    public MasterItem(String name,
+                      String description,
+                      String upc,
+                      String imageType,
+                      String imageCloudKey,
+                      String userEmailId,
+                      Long measurementCategoryId,
+                      Long taxCategoryId) {
         this.name = name;
         this.description = description;
         this.upc = upc;
@@ -17,6 +24,7 @@ public class MasterItem {
         this.imageCloudKey = imageCloudKey;
         this.userEmailId = userEmailId;
         this.measurementCategoryId = measurementCategoryId;
+        this.taxCategoryId = taxCategoryId;
     }
 
     public MasterItem() {
@@ -87,6 +95,29 @@ public class MasterItem {
         this.measurementCategoryId = measurementCategoryId;
     }
 
+    public Long getTaxCategoryId() {
+        return taxCategoryId;
+    }
+
+    public void setTaxCategoryId(Long taxCategoryId) {
+        this.taxCategoryId = taxCategoryId;
+    }
+
+    @Override
+    public String toString() {
+        return "MasterItem{" +
+                "description='" + description + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", upc='" + upc + '\'' +
+                ", imageType='" + imageType + '\'' +
+                ", imageCloudKey='" + imageCloudKey + '\'' +
+                ", userEmailId='" + userEmailId + '\'' +
+                ", taxCategoryId=" + taxCategoryId +
+                ", measurementCategoryId=" + measurementCategoryId +
+                '}';
+    }
+
     @Id
     private Long id;
     @Index
@@ -98,6 +129,8 @@ public class MasterItem {
     private String imageCloudKey;
     @Index
     private String userEmailId;
+    @Index
+    private Long taxCategoryId;
     @Index
     private Long measurementCategoryId;
 }
