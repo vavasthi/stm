@@ -1,5 +1,8 @@
 ## https://github.com/github/gitignore/blob/master/Java.gitignore
 *.class
+.idea
+*.iml
+*.hprof
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -22,3 +25,4 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+*.apk
