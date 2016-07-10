@@ -15,12 +15,8 @@ import com.google.appengine.api.users.User;
 import com.sanjnan.vitarak.common.SanjnanConstants;
 import com.sanjnan.vitarak.server.backend.OfyService;
 import com.sanjnan.vitarak.server.backend.entity.AccountAccount;
-import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryDoesntExist;
-import com.sanjnan.vitarak.server.backend.exceptions.MeasurementPrimaryUnitException;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -115,24 +111,6 @@ public class CustomerEndpoint {
         return null;
     }
 
-    @ApiMethod(name = "listMeasurementCategories")
-    public List<MeasurementCategory> lisMeasurementCategories(User user) throws MeasurementCategoryDoesntExist, MeasurementPrimaryUnitException, MeasurementCategoryAlreadyExists, OAuthRequestException, ForbiddenException {
-
-        authorizeApi(user);
-        return OfyService.ofy().load().type(MeasurementCategory.class).list();
-    }
-
-    @ApiMethod(name = "getUnitsForCategory")
-    public List<MeasurementUnit> getUnitsForCategory(@Named("measurementCategory") String measurementCategory,
-                                                     User user) throws MeasurementCategoryDoesntExist, OAuthRequestException, ForbiddenException {
-
-        authorizeApi(user);
-        measurementCategory = measurementCategory.toUpperCase();
-        MeasurementCategory mc = EndpointUtility.getMeasurementCategory(measurementCategory);
-        List<MeasurementUnit> lmu = OfyService.ofy().load().type(MeasurementUnit.class).filter("measurementCategoryId", mc.getId()).list();
-        logger.log(Level.INFO, "Count for units for category :" + mc.toString() + " = " + lmu.size());
-        return lmu;
-    }
 
     private void authorizeApi(User user) throws ForbiddenException, OAuthRequestException {
         if (user == null) {
