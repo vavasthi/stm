@@ -13,11 +13,11 @@ public class MeasurementUnit {
     public MeasurementUnit() {
     }
 
-    public MeasurementUnit(String name, String acronym, Long measurementCategoryId, Long relatedUnit, Double factor) {
+    public MeasurementUnit(String businessId, String name, String acronym, Long relatedUnit, Boolean primaryUnit, Double factor) {
         this.name = name;
         this.acronym = acronym;
-        this.measurementCategoryId = measurementCategoryId;
         this.relatedUnit = relatedUnit;
+        this.primaryUnit = primaryUnit;
         this.factor = factor;
     }
 
@@ -27,6 +27,22 @@ public class MeasurementUnit {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Long businessId) {
+        this.businessId = businessId;
+    }
+
+    public Boolean getPrimaryUnit() {
+        return primaryUnit;
+    }
+
+    public void setPrimaryUnit(Boolean primaryUnit) {
+        this.primaryUnit = primaryUnit;
     }
 
     public String getName() {
@@ -61,23 +77,17 @@ public class MeasurementUnit {
         this.factor = factor;
     }
 
-    public Long getMeasurementCategoryId() {
-        return measurementCategoryId;
-    }
-
-    public void setMeasurementCategoryId(Long measurementCategoryId) {
-        this.measurementCategoryId = measurementCategoryId;
-    }
-
     @Id
     private Long id;
+    @Index
+    private Long businessId;
     @Index
     private String name;
     @Index
     private String acronym;
     @Index
-    private Long measurementCategoryId;
-    @Index
     private Long relatedUnit;
+    @Index
+    private Boolean primaryUnit;
     private Double factor;
 }

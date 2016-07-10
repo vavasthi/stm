@@ -1,7 +1,6 @@
 package com.sanjnan.vitarak.server.backend.exceptions;
 
 import com.google.api.server.spi.ServiceException;
-import com.sanjnan.vitarak.server.backend.entity.MeasurementCategory;
 
 /**
  * Created by vavasthi on 13/9/15.

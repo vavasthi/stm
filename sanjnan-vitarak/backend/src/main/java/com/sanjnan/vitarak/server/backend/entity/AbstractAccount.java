@@ -12,20 +12,20 @@ import com.sanjnan.vitarak.server.backend.utils.AccountType;
  * Created by vavasthi on 5/10/15.
  */
 @Entity
-public class AbstractEstablishment {
-    public AbstractEstablishment() {
+public class AbstractAccount {
+    public AbstractAccount() {
 
     }
-    protected AbstractEstablishment(String name,
-                                    String address,
-                                    String city,
-                                    String state,
-                                    String email,
-                                    String mobile,
-                                    Double latitude,
-                                    Double longitude,
-                                    Boolean locked,
-                                    Boolean approved) {
+    protected AbstractAccount(String name,
+                              String address,
+                              String city,
+                              String state,
+                              String email,
+                              String mobile,
+                              Double latitude,
+                              Double longitude,
+                              Boolean locked,
+                              Boolean approved) {
 
         this.name = name;
         this.address = address;
@@ -129,7 +129,7 @@ public class AbstractEstablishment {
 
     @Override
     public String toString() {
-        return "AbstractEstablishment{" +
+        return "AbstractAccount{" +
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +

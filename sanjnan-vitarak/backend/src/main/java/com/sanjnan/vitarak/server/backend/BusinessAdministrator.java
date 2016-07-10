@@ -3,7 +3,7 @@ package com.sanjnan.vitarak.server.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import com.sanjnan.vitarak.server.backend.entity.BusinessEstablishmentAccount;
+import com.sanjnan.vitarak.server.backend.entity.BusinessAdminAccount;
 
 /**
  * The object model for the data we are sending through endpoints
@@ -13,7 +13,7 @@ public class BusinessAdministrator {
     public BusinessAdministrator() {
     }
 
-    public BusinessAdministrator(Long id, BusinessEstablishmentAccount registeredBusinessEstablishmentAccount) {
+    public BusinessAdministrator(Long id, BusinessAdminAccount registeredBusinessEstablishmentAccount) {
         this.id = id;
         this.registeredBusinessEstablishmentAccount = registeredBusinessEstablishmentAccount;
     }
@@ -26,11 +26,11 @@ public class BusinessAdministrator {
         this.id = id;
     }
 
-    public BusinessEstablishmentAccount getRegisteredBusinessEstablishmentAccount() {
+    public BusinessAdminAccount getRegisteredBusinessEstablishmentAccount() {
         return registeredBusinessEstablishmentAccount;
     }
 
-    public void setRegisteredBusinessEstablishmentAccount(BusinessEstablishmentAccount registeredBusinessEstablishmentAccount) {
+    public void setRegisteredBusinessEstablishmentAccount(BusinessAdminAccount registeredBusinessEstablishmentAccount) {
         this.registeredBusinessEstablishmentAccount = registeredBusinessEstablishmentAccount;
     }
 
@@ -45,5 +45,5 @@ public class BusinessAdministrator {
     @Id
     private Long id;
     @Index
-    private BusinessEstablishmentAccount registeredBusinessEstablishmentAccount;
+    private BusinessAdminAccount registeredBusinessEstablishmentAccount;
 }

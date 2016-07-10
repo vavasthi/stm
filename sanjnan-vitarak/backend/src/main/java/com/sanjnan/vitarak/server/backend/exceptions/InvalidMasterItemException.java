@@ -10,4 +10,7 @@ public class InvalidMasterItemException extends ServiceException {
     public InvalidMasterItemException(Long masterItemId) {
         super(404, String.format("Invoice id %d doesn't exist.", masterItemId));
     }
+    public InvalidMasterItemException(String message) {
+        super(404, message);
+    }
 }

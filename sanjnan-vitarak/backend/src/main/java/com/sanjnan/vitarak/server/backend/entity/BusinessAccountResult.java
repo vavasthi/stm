@@ -12,16 +12,16 @@ public class BusinessAccountResult {
     public BusinessAccountResult() {
     }
 
-    public BusinessAccountResult(BusinessEstablishmentAccount account, Integer status) {
+    public BusinessAccountResult(BusinessAdminAccount account, Integer status) {
         this.account = account;
         this.status = status;
     }
 
-    public BusinessEstablishmentAccount getAccount() {
+    public BusinessAdminAccount getAccount() {
         return account;
     }
 
-    public void setAccount(BusinessEstablishmentAccount account) {
+    public void setAccount(BusinessAdminAccount account) {
         this.account = account;
     }
 
@@ -41,6 +41,6 @@ public class BusinessAccountResult {
                 '}';
     }
 
-    private BusinessEstablishmentAccount account;
+    private BusinessAdminAccount account;
     private Integer status;
 }

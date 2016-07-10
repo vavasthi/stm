@@ -16,28 +16,30 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
+import com.sanjnan.vitarak.common.SanjnanConstants;
+import com.sanjnan.vitarak.common.ServerInteractionReturnStatus;
 import com.sanjnan.vitarak.server.backend.OfyService;
-import com.sanjnan.vitarak.server.backend.entity.BusinessAdminAccount;
 import com.sanjnan.vitarak.server.backend.entity.BusinessAccountResult;
+import com.sanjnan.vitarak.server.backend.entity.BusinessAdminAccount;
 import com.sanjnan.vitarak.server.backend.entity.DeliveryAccount;
-import com.sanjnan.vitarak.server.backend.entity.DisaggregationEntity;
+import com.sanjnan.vitarak.server.backend.entity.DeliveryTripEntity;
 import com.sanjnan.vitarak.server.backend.entity.InvoiceItem;
 import com.sanjnan.vitarak.server.backend.entity.MasterItem;
-import com.sanjnan.vitarak.server.backend.entity.MasterStockEntity;
 import com.sanjnan.vitarak.server.backend.entity.MeasurementUnit;
 import com.sanjnan.vitarak.server.backend.entity.SalesInvoice;
 import com.sanjnan.vitarak.server.backend.entity.UserAccountRegion;
-import com.sanjnan.vitarak.server.backend.exceptions.CantBeDisaggregatedException;
+import com.sanjnan.vitarak.server.backend.exceptions.DeliveryTripAlreadyExistsException;
+import com.sanjnan.vitarak.server.backend.exceptions.DeliveryUserDoesntExistException;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidInvoiceException;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidMasterItemException;
 import com.sanjnan.vitarak.server.backend.exceptions.InvalidUserAccountException;
-import com.sanjnan.vitarak.server.backend.exceptions.MasterItemStockZeroException;
-import com.sanjnan.vitarak.server.backend.exceptions.NoDisaggregationPolicyException;
+import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryAlreadyExists;
+import com.sanjnan.vitarak.server.backend.exceptions.MeasurementCategoryDoesntExist;
+import com.sanjnan.vitarak.server.backend.exceptions.MeasurementPrimaryUnitException;
 import com.sanjnan.vitarak.server.backend.jsonresource.UploadURL;
-import com.sanjnan.vitarak.common.SanjnanConstants;
-import com.sanjnan.vitarak.common.ServerInteractionReturnStatus;
 import com.sanjnan.vitarak.server.backend.utils.Pair;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +50,7 @@ import javax.inject.Named;
  * An endpoint class we are exposing
  */
 @Api(
-        name = "businessApi",
+        name = "deliveryTripApi",
         version = "v1",
         scopes = {SanjnanConstants.EMAIL_SCOPE},
         audiences = {SanjnanConstants.ANDROID_AUDIENCE},
@@ -59,9 +61,9 @@ import javax.inject.Named;
                 packagePath = ""
         )
 )
-public class BusinessEndpoint extends BaseEndpoint {
+public class DeliveryTripEndpoint extends BaseEndpoint {
 
-    private final static Logger logger = Logger.getLogger(BusinessEndpoint.class.getName());
+    private final static Logger logger = Logger.getLogger(DeliveryTripEndpoint.class.getName());
 
     /**
      * This endpoint is called to check if the user is a registered user or not.
@@ -72,11 +74,34 @@ public class BusinessEndpoint extends BaseEndpoint {
      * @throws ForbiddenException
      * @throws OAuthRequestException
      */
-    @ApiMethod(name = "isRegisteredUser")
-    public BusinessAccountResult isRegisteredUser(User user) throws InvalidUserAccountException, ForbiddenException, OAuthRequestException {
+    @ApiMethod(httpMethod = "POST", name = "createDeliveryTrip")
+    public DeliveryTripEntity createDeliveryTrip(@Named("name") String name,
+                                                 @Named("deliveryUserId") Long deliveryUserId,
+                                                 User user)
+            throws InvalidUserAccountException,
+            ForbiddenException,
+            OAuthRequestException,
+            DeliveryUserDoesntExistException,
+            DeliveryTripAlreadyExistsException {
 
-
-        return new BusinessAccountResult(authorizeBusinessUser(user), ServerInteractionReturnStatus.SUCCESS);
+        BusinessAdminAccount account = authorizeBusinessUser(user);
+        DeliveryAccount deliveryAccount = findDeliveryUser(deliveryUserId);
+        List<DeliveryTripEntity> deliveryTripEntityList
+                = OfyService
+                .ofy()
+                .load()
+                .type(DeliveryTripEntity.class)
+                .filter("businessId", account.getId())
+                .filter("userId", deliveryUserId)
+                .filter("done", false)
+                .list();
+        if (deliveryTripEntityList != null && deliveryTripEntityList.size() > 0) {
+            throw new DeliveryTripAlreadyExistsException(String.format("Delivery Trip already exists for user %s", deliveryAccount.getEmail()));
+        }
+        DeliveryTripEntity deliveryTripEntity = new DeliveryTripEntity(account.getId(), deliveryUserId, name, new Date());
+        Key<DeliveryTripEntity> deliveryTripEntityKey
+                = OfyService.ofy().save().entity(deliveryTripEntity).now();
+        return OfyService.ofy().load().key(deliveryTripEntityKey).now();
     }
 
     /**
@@ -122,139 +147,9 @@ public class BusinessEndpoint extends BaseEndpoint {
 
         BusinessAdminAccount account
                 = new BusinessAdminAccount(name, address, user.getEmail().toLowerCase(), mobile, city, state, longitude, latitude);
-        Key<BusinessAdminAccount> businessAdminAccountKey
-        = OfyService.ofy().save().entity(account).now();
-        account = OfyService.ofy().load().key(businessAdminAccountKey).now();
+        OfyService.ofy().save().entity(account).now();
         return new BusinessAccountResult(account, ServerInteractionReturnStatus.SUCCESS);
     }
-
-    @ApiMethod(name = "addDisaggregationPolicy")
-    public DisaggregationEntity addDisaggregationPolicy(@Named("aggregateItemId") Long aggregateItemId,
-                                                        @Named("aggregateItemMeasurementUnitId") Long aggregateItemMeasurementUnitId,
-                                                        @Named("disaggregateItemId") Long disaggregateItemId,
-                                                        @Named("disAggregateItemMeasurementUnitId") Long disAggregateItemMeasurementUnitId,
-                                                        @Named("factor") Float factor,
-                                                        User user) throws ForbiddenException, OAuthRequestException {
-        BusinessAdminAccount account = findBusinessUser(user);
-        DisaggregationEntity disaggregationEntity
-                 = new DisaggregationEntity(account.getId(),
-                aggregateItemId,
-                aggregateItemMeasurementUnitId,
-                disaggregateItemId,
-                disAggregateItemMeasurementUnitId,
-                factor);
-        Key<DisaggregationEntity> disaggregationEntityKey
-        = OfyService.ofy().save().entity(disaggregationEntity).now();
-        disaggregationEntity = OfyService.ofy().load().key(disaggregationEntityKey).now();
-        return disaggregationEntity;
-    }
-
-    @ApiMethod(name = "getAllDisaggregationPolicies")
-    public DisaggregationEntity[] getAllDisaggregationPolicies(User user) throws ForbiddenException, OAuthRequestException {
-
-        BusinessAdminAccount account = findBusinessUser(user);
-        List<DisaggregationEntity> disaggregationEntities
-                = OfyService.ofy().load().type(DisaggregationEntity.class).filter("businessId", account.getId()).list();
-        return disaggregationEntities.toArray(new DisaggregationEntity[disaggregationEntities.size()]);
-    }
-
-    @ApiMethod(name = "disAggregateItem")
-    public DisaggregationEntity[] disAggregateItem(@Named("itemId") Long itemId,
-                                                   @Named("measurementUnitId") Long measurementUnitId,
-                                                   User user)
-            throws ForbiddenException,
-            OAuthRequestException,
-            InvalidMasterItemException,
-            MasterItemStockZeroException,
-            CantBeDisaggregatedException,
-            NoDisaggregationPolicyException {
-
-        BusinessAdminAccount account = findBusinessUser(user);
-        Key<MasterItem> masterItemKey = Key.create(MasterItem.class, itemId);
-        MasterItem masterItem
-                = OfyService
-                .ofy()
-                .load()
-                .key(masterItemKey)
-                .now();
-        if (masterItem.getFractional()) {
-            throw new CantBeDisaggregatedException(itemId);
-        }
-        MeasurementUnit measurementUnit
-                = OfyService
-                .ofy()
-                .load()
-                .key(Key.create(MeasurementUnit.class, measurementUnitId))
-                .now();
-        if (masterItem == null || measurementUnit == null) {
-            throw new InvalidMasterItemException(String.format("Master item %d not found with unit %d", itemId, measurementUnitId));
-        }
-        List<MasterStockEntity> masterStockEntities
-                = OfyService.ofy().load().type(MasterStockEntity.class).filter("itemId", itemId).list();
-        if (masterStockEntities == null ||
-                masterStockEntities.size() == 0 ||
-                (masterStockEntities.size() == 1 && masterStockEntities.get(0).getStock() != 0)) {
-            throw new MasterItemStockZeroException(itemId);
-        }
-        MasterStockEntity masterStockEntity = masterStockEntities.iterator().next();
-        List<DisaggregationEntity> disaggregationEntities
-                = OfyService
-                .ofy()
-                .load()
-                .type(DisaggregationEntity.class)
-                .filter("businessId", account.getId())
-                .filter("aggregatedItemId", itemId)
-                .filter("aggregateItemMeasurementUnitId", measurementUnitId)
-                .list();
-        if (disaggregationEntities == null || disaggregationEntities.size() == 0) {
-            throw new NoDisaggregationPolicyException(itemId);
-        }
-        DisaggregationEntity disaggregationEntity = disaggregationEntities.iterator().next();
-        MasterStockEntity disaggregatedItem
-                = new MasterStockEntity(account.getId(),
-                disaggregationEntity.getDisaggregateItemId(),
-                disaggregationEntity.getDisAggregateItemMeasurementUnitId(),
-                disaggregationEntity.getFactor());
-        masterStockEntity.setStock(masterStockEntity.getStock() - 1);
-        if (masterStockEntity.getStock() == 0) {
-            OfyService.ofy().delete().entity(masterStockEntity);
-        }
-        else {
-
-            OfyService.ofy().save().entity(masterStockEntity);
-        }
-        OfyService.ofy().save().entity(disaggregatedItem);
-        return disaggregationEntities.toArray(new DisaggregationEntity[disaggregationEntities.size()]);
-    }
-
-    @ApiMethod(name = "registerMasterItem")
-    public MasterItem registerMasterItem(@Named("name") String name,
-                                         @Named("description") String description,
-                                         @Named("upc") String upc,
-                                         @Named("fractional") Boolean fractional,
-                                         @Named("imageType") String imageType,
-                                         @Named("imageCloudKey") String imageCloudKey,
-                                         @Named("measurementCategoryId") Long measurementCategoryId,
-                                         @Named("taxSurchargeId") Long taxSurchargeId,
-                                         User user) throws ForbiddenException, OAuthRequestException {
-
-        BusinessAdminAccount account = authorizeBusinessUser(user);
-        if (account == null) {
-            throw new ForbiddenException(user.getEmail() + " is an invalid user.");
-        }
-        MasterItem masterItem = new MasterItem(account.getId(),
-                name,
-                description,
-                upc,
-                fractional,
-                imageType,
-                imageCloudKey,
-                user.getEmail(),
-                taxSurchargeId);
-        Key<MasterItem> masterItemKey = OfyService.ofy().save().entity(masterItem).now();
-        return OfyService.ofy().load().key(masterItemKey).now();
-    }
-
     @ApiMethod(name = "createSalesInvoice")
     public SalesInvoice createSalesInvoice(@Named("businessId") Long businessId,
                                            @Named("buyerId") Long buyerId,
@@ -278,7 +173,7 @@ public class BusinessEndpoint extends BaseEndpoint {
                                          @Named("measurementUnitId") Long measurementUnitId,
                                          @Named("price") Float price,
                                          @Named("quantity") Float quantity,
-                                        User user)
+                                           User user)
             throws ForbiddenException,
             OAuthRequestException,
             InvalidInvoiceException,
@@ -346,31 +241,6 @@ public class BusinessEndpoint extends BaseEndpoint {
         salesInvoice.setTotalSurcharge(totalSurcharge);
         salesInvoiceKey = OfyService.ofy().save().entity(salesInvoice).now();
         return OfyService.ofy().load().key(salesInvoiceKey).now();
-    }
-    @ApiMethod(name = "getMasterItems")
-    public MasterItem[] getMasterItems(User user)
-            throws ForbiddenException,
-            OAuthRequestException,
-            InvalidInvoiceException,
-            InvalidMasterItemException {
-
-        BusinessAdminAccount account = authorizeBusinessUser(user);
-        List<MasterItem> masterItemList
-                = OfyService.ofy().load().type(MasterItem.class).filter("businessId", account.getId()).list();
-        return masterItemList.toArray(new MasterItem[masterItemList.size()]);
-    }
-
-    @ApiMethod(name = "getAllMeasurementUnits")
-    public MeasurementUnit[] getAllMeasurementUnits(User user)
-            throws ForbiddenException,
-            OAuthRequestException,
-            InvalidInvoiceException,
-            InvalidMasterItemException {
-
-        BusinessAdminAccount account = authorizeBusinessUser(user);
-        List<MeasurementUnit> measurementUnitList
-                = OfyService.ofy().load().type(MeasurementUnit.class).filter("businessId", account.getId()).list();
-        return measurementUnitList.toArray(new MeasurementUnit[measurementUnitList.size()]);
     }
     @ApiMethod(name = "updateLocation")
     public BusinessAccountResult updateLocation(@Named("latitude") Double latitude,

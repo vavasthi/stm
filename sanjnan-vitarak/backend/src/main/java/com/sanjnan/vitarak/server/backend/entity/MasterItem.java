@@ -9,21 +9,24 @@ import com.googlecode.objectify.annotation.Index;
  */
 @Entity
 public class MasterItem {
-    public MasterItem(String name,
+    public MasterItem(Long businessId,
+                      String name,
                       String description,
                       String upc,
+                      Boolean fractional,
                       String imageType,
                       String imageCloudKey,
                       String userEmailId,
-                      Long measurementCategoryId,
                       Long taxCategoryId) {
+
+        this.businessId = businessId;
         this.name = name;
         this.description = description;
         this.upc = upc;
+        this.fractional = fractional;
         this.imageType = imageType;
         this.imageCloudKey = imageCloudKey;
         this.userEmailId = userEmailId;
-        this.measurementCategoryId = measurementCategoryId;
         this.taxCategoryId = taxCategoryId;
     }
 
@@ -37,6 +40,14 @@ public class MasterItem {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Long businessId) {
+        this.businessId = businessId;
     }
 
     public String getName() {
@@ -63,6 +74,14 @@ public class MasterItem {
         this.upc = upc;
     }
 
+    public Boolean getFractional() {
+        return fractional;
+    }
+
+    public void setFractional(Boolean fractional) {
+        this.fractional = fractional;
+    }
+
     public String getImageType() {
         return imageType;
     }
@@ -87,14 +106,6 @@ public class MasterItem {
     }
 
 
-    public Long getMeasurementCategoryId() {
-        return measurementCategoryId;
-    }
-
-    public void setMeasurementCategoryId(Long measurementCategoryId) {
-        this.measurementCategoryId = measurementCategoryId;
-    }
-
     public Long getTaxCategoryId() {
         return taxCategoryId;
     }
@@ -106,31 +117,34 @@ public class MasterItem {
     @Override
     public String toString() {
         return "MasterItem{" +
-                "description='" + description + '\'' +
+                "businessId=" + businessId +
                 ", id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", upc='" + upc + '\'' +
+                ", fractional=" + fractional +
                 ", imageType='" + imageType + '\'' +
                 ", imageCloudKey='" + imageCloudKey + '\'' +
                 ", userEmailId='" + userEmailId + '\'' +
                 ", taxCategoryId=" + taxCategoryId +
-                ", measurementCategoryId=" + measurementCategoryId +
                 '}';
     }
 
     @Id
     private Long id;
     @Index
+    private Long businessId;
+    @Index
     private String name;
     private String description;
     @Index
     private String upc;
+    @Index
+    private Boolean fractional;
     private String imageType;
     private String imageCloudKey;
     @Index
     private String userEmailId;
     @Index
     private Long taxCategoryId;
-    @Index
-    private Long measurementCategoryId;
 }
