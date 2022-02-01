@@ -16,21 +16,19 @@
       <scope>test</scope>
     </dependency>
     
-    <!-- MySQL database driver -->
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.9</version>
-	</dependency>
-	
-	<!-- Hibernate framework -->
-	<dependency>
-		<groupId>org.hibernate</groupId>
-		<artifactId>hibernate</artifactId>
-		<version>3.5.4-Final</version>
-	</dependency>
-	
-	
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.28</version>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.0.0.CR1</version>
+        <type>pom</type>
+    </dependency>
+
+
 	<!-- Hibernate library dependecy start -->
 	<dependency>
 		<groupId>dom4j</groupId>
@@ -45,11 +43,11 @@
 	</dependency>
 	
 	<dependency>
-		<groupId>commons-collections</groupId>
-		<artifactId>commons-collections</artifactId>
-		<version>3.2.1</version>
-	</dependency>
-	
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+
 	<dependency>
 		<groupId>cglib</groupId>
 		<artifactId>cglib</artifactId>
